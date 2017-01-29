@@ -28,25 +28,25 @@
 test -s ~/.alias && . ~/.alias || true
 
 # Put all directories first when calling 'll'
-alias ll='ls -l --group-directories-first'
+alias ll="ls -l --group-directories-first"
 
 # OpenFOAM Aliases
-alias ofdev='source $HOME/OpenFOAM/OpenFOAM-dev/etc/bashrc $FOAM_SETTINGS'
-alias of4x='source $HOME/OpenFOAM/OpenFOAM-4.x/etc/bashrc $FOAM_SETTINGS'
-alias of30x='source $HOME/OpenFOAM/OpenFOAM-3.0.x/etc/bashrc $FOAM_SETTINGS'
+alias ofdev="source $HOME/OpenFOAM/OpenFOAM-dev/etc/bashrc $FOAM_SETTINGS"
+alias of4x="source $HOME/OpenFOAM/OpenFOAM-4.x/etc/bashrc $FOAM_SETTINGS"
+alias of30x="source $HOME/OpenFOAM/OpenFOAM-3.0.x/etc/bashrc $FOAM_SETTINGS"
 
 # Python path
 PATH="$HOME/anaconda3/bin:$PATH"
-PYTHONPATH='$HOME/projects/':$PYTHONPATH
+PYTHONPATH="$HOME/projects/":$PYTHONPATH
 
 # added by travis gem
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 
 # Haskel executables
-PATH='$HOME/.local/bin':$PATH
+PATH="$HOME/.local/bin":$PATH
 
 # Export variables
-export PS1='\u:[\w]\$ \[$(tput sgr0)\]'
-export PS2='> '
+export PS1="\u:[\w]\$ \[$(tput sgr0)\]"
+export PS2="> "
 export PATH
 export PYTHONPATH
