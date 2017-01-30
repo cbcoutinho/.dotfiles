@@ -7,7 +7,6 @@
       "atom-beautify"
       "git-time-machine"
     ]
-    projectHome: "/home/chris/Projects"
     telemetryConsent: "limited"
     themes: [
       "one-dark-ui"
