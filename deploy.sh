@@ -3,8 +3,9 @@
 
 set -e
 
+# Find all files and are not in the .git directory, and do not include the
+# README or the deploy.sh script
 files="$(find -type f | grep -v '.git' | grep -v 'README.md' | grep -v 'deploy.sh')"
-# echo $files
 
 for file in $files
 do
@@ -18,17 +19,17 @@ do
 
     # If file is a symlink, delete it, otherwise move it
     if [ -L "$target" ]; then
-      echo "Is a link! Destroy"
+      # echo "Is a link! Destroy: $target"
       rm "$target"
     else
-      echo "Is not a link! Move!"
+      # echo "Is not a link! Move: $target"
       mv "$target" "$target.orig"
     fi
-
+  # else
+    # echo "File doesn't exist: $target"
   fi
-  # echo $localfile
-  # echo $target
 
+  echo "Creating link: $target -> $localfile"
   ln -s $localfile $target
 
 done
