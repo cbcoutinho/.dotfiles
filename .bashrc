@@ -49,6 +49,11 @@ PATH="$HOME/.local/bin":$PATH
 # Rust directory
 PATH="$HOME/.cargo/bin:$PATH"
 
+# Git Hub autocompletion for bash
+if [ -f $HOME/Software/hub/etc/hub.bash_completion.sh ]; then
+    . $HOME/Software/hub/etc/hub.bash_completion.sh
+fi
+
 # Export variables
 export PS1="\u:[\w]\$ \[$(tput sgr0)\]"
 export PS2="> "
