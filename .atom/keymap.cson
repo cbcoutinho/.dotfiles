@@ -1,0 +1,5 @@
+'.editor':
+  'ctrl-shift-X': 'editor:toggle-soft-wrap'
+
+'.tree-view':
+  'ctrl-i': 'tree-view:toggle-ignored-names'

@@ -1,0 +1,52 @@
+"*":
+  "atom-html-preview":
+    enableMathJax: true
+  core:
+    disabledPackages: [
+      "markdown-preview"
+      "atom-beautify"
+      "git-time-machine"
+    ]
+    projectHome: "/home/chris/Projects"
+    telemetryConsent: "limited"
+    themes: [
+      "one-dark-ui"
+      "gruvbox-plus-syntax"
+    ]
+    warnOnLargeFileLimit: 10
+  editor:
+    fontFamily: "Source code pro"
+    scrollPastEnd: true
+    showIndentGuide: true
+    showInvisibles: true
+    softWrapAtPreferredLineLength: true
+    tabType: "soft"
+  "exception-reporting":
+    userId: "391e7d9a-1bd2-6a34-1d95-f5efafa612ae"
+  "git-plus":
+    commits:
+      verboseCommits: true
+  "gruvbox-plus-syntax":
+    contrast: "Soft"
+  latex:
+    opener: "pdf-view"
+    outputDirectory: "build"
+  "markdown-preview-plus":
+    enableLatexRenderingByDefault: true
+    enablePandoc: true
+  minimap:
+    plugins:
+      "git-diff": true
+      "git-diffDecorationsZIndex": 0
+      "highlight-selected": true
+      "highlight-selectedDecorationsZIndex": 0
+      pigments: true
+      pigmentsDecorationsZIndex: 0
+  pigments:
+    markerType: "dot"
+  tabs:
+    enableVcsColoring: true
+  "tree-view":
+    hideVcsIgnoredFiles: true
+  welcome:
+    showOnStartup: false
