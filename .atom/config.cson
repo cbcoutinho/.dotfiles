@@ -15,6 +15,7 @@
     warnOnLargeFileLimit: 10
   editor:
     fontFamily: "Source code pro"
+    fontSize: 15
     scrollPastEnd: true
     showIndentGuide: true
     showInvisibles: true
@@ -35,6 +36,8 @@
     enablePandoc: true
   minimap:
     plugins:
+      cursorline: true
+      cursorlineDecorationsZIndex: 0
       "git-diff": true
       "git-diffDecorationsZIndex": 0
       "highlight-selected": true
@@ -43,6 +46,8 @@
       pigmentsDecorationsZIndex: 0
   pigments:
     markerType: "dot"
+    mergeColorDuplicates: true
+    sortPaletteColors: "by color"
   tabs:
     enableVcsColoring: true
   "tree-view":

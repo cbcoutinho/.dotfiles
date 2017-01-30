@@ -54,3 +54,32 @@ export PS1="\u:[\w]\$ \[$(tput sgr0)\]"
 export PS2="> "
 export PATH
 export PYTHONPATH
+
+
+
+### PETSC
+# export PETSC_DIR="/usr/lib64/mpi/gcc/openmpi/lib64/petsc/3.4.3"
+# export PETSC_ARCH="linux-gnu-c-opt"
+export PETSC_DIR="$HOME/Software/petsc/petsc-3.5.4"
+export PETSC_ARCH="arch-linux2-c-debug"
+
+### DEALII
+# export DEAL_II_DIR="$HOME/Software/dealii/build"
+# export DEAL_II_DIR="$HOME/Software/dealii/build2"
+
+### Trilinos
+export TRILINOS_DIR="$HOME/Software/Trilinos/build/INSTALL"
+
+### P4EST
+export P4EST_DIR="$HOME/Software/p4est/p4est-0.3.4.1"
+# export P4EST_DIR="$HOME/Software/p4est/p4est-0.3.4.1/DEBUG"
+# export P4EST_DIR="$HOME/Software/p4est/p4est-0.3.4.1/FAST"
+# export P4EST_DIR="$HOME/Software/p4est/p4est-0.3.4.2"
+# export P4EST_DIR="$HOME/Software/p4est/p4est-0.3.4.2/DEBUG"
+# export P4EST_DIR="$HOME/Software/p4est/p4est-0.3.4.2/FAST"
+# export P4EST_DIR="$HOME/Software/p4est/p4est-1.0"
+# export P4EST_DIR="$HOME/Software/p4est/p4est-1.0/DEBUG"
+# export P4EST_DIR="$HOME/Software/p4est/p4est-1.0/FAST"
+# export P4EST_DIR="$HOME/Software/p4est/p4est-1.1"
+# export P4EST_DIR="$HOME/Software/p4est/p4est-1.1/DEBUG"
+# export P4EST_DIR="$HOME/Software/p4est/p4est-1.1/FAST"
