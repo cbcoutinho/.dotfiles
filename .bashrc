@@ -46,6 +46,9 @@ PYTHONPATH="$HOME/projects/":$PYTHONPATH
 # Haskel executables
 PATH="$HOME/.local/bin":$PATH
 
+# Rust directory
+PATH="$HOME/.cargo/bin:$PATH"
+
 # Export variables
 export PS1="\u:[\w]\$ \[$(tput sgr0)\]"
 export PS2="> "
