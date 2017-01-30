@@ -27,8 +27,9 @@
 
 test -s ~/.alias && . ~/.alias || true
 
-# Put all directories first when calling 'll'
+# Various aliases
 alias ll="ls -l --group-directories-first"
+alias git=hub
 
 # OpenFOAM Aliases
 alias ofdev="source $HOME/OpenFOAM/OpenFOAM-dev/etc/bashrc $FOAM_SETTINGS"
