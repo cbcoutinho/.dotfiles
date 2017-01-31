@@ -55,7 +55,8 @@
       pigments: true
       pigmentsDecorationsZIndex: 0
   pigments:
-    markerType: "dot"
+    extendAutocompleteToVariables: true
+    markerType: "native-square-dot"
     mergeColorDuplicates: true
     sortPaletteColors: "by color"
   tabs:
