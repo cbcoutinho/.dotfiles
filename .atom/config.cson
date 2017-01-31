@@ -1,4 +1,7 @@
 "*":
+  "atom-beautify":
+    general:
+      _analyticsUserId: "817f02f9-2f9a-493a-8de9-9bf02a6cbb6e"
   "atom-html-preview":
     enableMathJax: true
   core:
@@ -11,8 +14,8 @@
       ]
     disabledPackages: [
       "markdown-preview"
-      "atom-beautify"
       "git-time-machine"
+      "atom-beautify"
     ]
     telemetryConsent: "limited"
     themes: [
