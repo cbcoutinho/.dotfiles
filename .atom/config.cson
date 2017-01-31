@@ -13,6 +13,9 @@
       "gruvbox-plus-syntax"
     ]
     warnOnLargeFileLimit: 10
+    customFileTypes:
+      'source.shell': ['profile']
+      'source.matlab': ['m']
   editor:
     fontFamily: "Source code pro"
     fontSize: 15
