@@ -2,6 +2,13 @@
   "atom-html-preview":
     enableMathJax: true
   core:
+    customFileTypes:
+      "source.matlab": [
+        "m"
+      ]
+      "source.shell": [
+        "profile"
+      ]
     disabledPackages: [
       "markdown-preview"
       "atom-beautify"
@@ -13,9 +20,6 @@
       "gruvbox-plus-syntax"
     ]
     warnOnLargeFileLimit: 10
-    customFileTypes:
-      'source.shell': ['profile']
-      'source.matlab': ['m']
   editor:
     fontFamily: "Source code pro"
     fontSize: 15
