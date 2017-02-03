@@ -1,0 +1,4 @@
+'.source.fortran':
+  'program':
+    'prefix': 'prog'
+    'body': 'program ${1:name}\n\n\tuse iso_fortran_env, only: wp=>real64\n\timplicit none\n\t$0\n\nend program $1\n'
