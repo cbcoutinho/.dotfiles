@@ -16,6 +16,7 @@
       "markdown-preview"
       "git-time-machine"
       "atom-beautify"
+      "language-gfm"
     ]
     telemetryConsent: "limited"
     themes: [
