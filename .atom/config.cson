@@ -26,7 +26,6 @@
     warnOnLargeFileLimit: 10
   editor:
     fontFamily: "Source code pro"
-    fontSize: 15
     scrollPastEnd: true
     showIndentGuide: true
     showInvisibles: true
@@ -40,8 +39,10 @@
   "gruvbox-plus-syntax":
     contrast: "Soft"
   latex:
-    opener: "pdf-view"
-    outputDirectory: "build"
+    engine: "xelatex"
+    openResultInBackground: false
+    opener: "evince"
+    outputDirectory: ".build"
   "markdown-preview-plus":
     enableLatexRenderingByDefault: true
     enablePandoc: true
