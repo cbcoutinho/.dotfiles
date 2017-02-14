@@ -63,6 +63,7 @@
     sortPaletteColors: "by color"
   tabs:
     enableVcsColoring: true
+  "todo-show": {}
   "tree-view":
     hideVcsIgnoredFiles: true
   welcome:

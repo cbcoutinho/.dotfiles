@@ -29,7 +29,7 @@ test -s ~/.alias && . ~/.alias || true
 
 # Various aliases
 alias ll="ls -l --group-directories-first"
-alias git=hub
+eval "$(hub alias -s)"
 
 # OpenFOAM Aliases
 alias ofdev="source $HOME/OpenFOAM/OpenFOAM-dev/etc/bashrc $FOAM_SETTINGS"
@@ -55,14 +55,15 @@ if [ -f $HOME/Software/hub/etc/hub.bash_completion.sh ]; then
 fi
 
 # GCC development directories
-# PATH="$HOME/Software/gcc/install/bin/":$PATH
-# LD_LIBRARY_PATH="$HOME/Software/gcc/install/lib64/gcc/x86_64-pc-linux-gnu/7.0.1/":$LD_LIBRARY_PATH
-# LD_LIBRARY_PATH="$HOME/Software/gcc/install/lib64/gcc/x86_64-pc-linux-gnu/lib64/":$LD_LIBRARY_PATH
+PATH="$HOME/Software/gcc/install/bin/":$PATH
+LIBRARY_PATH="$HOME/Software/gcc/install/lib64/gcc/x86_64-pc-linux-gnu/lib64/":$LIBRARY_PATH
+LD_LIBRARY_PATH="$HOME/Software/gcc/install/lib64/gcc/x86_64-pc-linux-gnu/7.0.1/":$LD_LIBRARY_PATH
 
 # Export variables
 export PS1="\u:[\w]\$ \[$(tput sgr0)\]"
 export PS2="> "
 export PATH
+export LIBRARY_PATH
 export LD_LIBRARY_PATH
 export PYTHONPATH
 
