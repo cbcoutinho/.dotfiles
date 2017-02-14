@@ -54,12 +54,17 @@ if [ -f $HOME/Software/hub/etc/hub.bash_completion.sh ]; then
     . $HOME/Software/hub/etc/hub.bash_completion.sh
 fi
 
+# GCC development directories
+# PATH="$HOME/Software/gcc/install/bin/":$PATH
+# LD_LIBRARY_PATH="$HOME/Software/gcc/install/lib64/gcc/x86_64-pc-linux-gnu/7.0.1/":$LD_LIBRARY_PATH
+# LD_LIBRARY_PATH="$HOME/Software/gcc/install/lib64/gcc/x86_64-pc-linux-gnu/lib64/":$LD_LIBRARY_PATH
+
 # Export variables
 export PS1="\u:[\w]\$ \[$(tput sgr0)\]"
 export PS2="> "
 export PATH
+export LD_LIBRARY_PATH
 export PYTHONPATH
-
 
 
 ### PETSC
