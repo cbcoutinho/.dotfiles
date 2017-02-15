@@ -59,6 +59,14 @@ PATH="$HOME/Software/gcc/install/bin/":$PATH
 LIBRARY_PATH="$HOME/Software/gcc/install/lib64/gcc/x86_64-pc-linux-gnu/lib64/":$LIBRARY_PATH
 LD_LIBRARY_PATH="$HOME/Software/gcc/install/lib64/gcc/x86_64-pc-linux-gnu/7.0.1/":$LD_LIBRARY_PATH
 
+# CMake repository build (need v3.7+ for learn_dg)
+PATH="$HOME/Software/cmake/bin/":$PATH
+
+# Node Version Manager (NVM)
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+[[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
+
 # Export variables
 export PS1="\u:[\w]\$ \[$(tput sgr0)\]"
 export PS2="> "

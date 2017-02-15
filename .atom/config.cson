@@ -14,7 +14,6 @@
       ]
     disabledPackages: [
       "markdown-preview"
-      "git-time-machine"
       "atom-beautify"
       "language-gfm"
     ]
@@ -61,6 +60,12 @@
     markerType: "native-square-dot"
     mergeColorDuplicates: true
     sortPaletteColors: "by color"
+  "split-diff":
+    diffWords: true
+    ignoreWhitespace: true
+    leftEditorColor: "red"
+    rightEditorColor: "green"
+    scrollSyncType: "Vertical + Horizontal"
   tabs:
     enableVcsColoring: true
   "todo-show": {}
