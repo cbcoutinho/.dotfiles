@@ -9,6 +9,10 @@
       "source.matlab": [
         "m"
       ]
+      "source.modula2": [
+        "mod"
+        "smod"
+      ]
       "source.shell": [
         "profile"
       ]
@@ -57,7 +61,10 @@
       pigmentsDecorationsZIndex: 0
   pigments:
     extendAutocompleteToVariables: true
-    markerType: "native-square-dot"
+    ignoredScopes: [
+      ".comment"
+    ]
+    markerType: "native-underline"
     mergeColorDuplicates: true
     sortPaletteColors: "by color"
   "split-diff":
