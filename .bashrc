@@ -59,8 +59,19 @@ PATH="$HOME/Software/gcc/install/bin/":$PATH
 LIBRARY_PATH="$HOME/Software/gcc/install/lib64/gcc/x86_64-pc-linux-gnu/lib64/":$LIBRARY_PATH
 LD_LIBRARY_PATH="$HOME/Software/gcc/install/lib64/gcc/x86_64-pc-linux-gnu/7.0.1/":$LD_LIBRARY_PATH
 
+# Boost development directories
+# LIBRARY_PATH="$HOME/Software/boost/install/":$LIBRARY_PATH
+
+# Dakota directories
+PATH="$HOME/Software/dakota/install/bin":$PATH
+LD_LIBRARY_PATH="$HOME/Software/dakota/install/lib":"$HOME/Software/dakota/install/lib":$LD_LIBRARY_PATH
+PYTHONPATH="$HOME/Software/dakota/install/share/dakota/interfaces/":$PYTHONPATH
+
 # CMake repository build (need v3.7+ for learn_dg)
 PATH="$HOME/Software/cmake/bin/":$PATH
+
+# OpenMPI directory
+PATH="$HOME/Software/openmpi/install/bin":$PATH
 
 # Node Version Manager (NVM)
 export NVM_DIR="$HOME/.nvm"
