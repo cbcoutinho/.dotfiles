@@ -73,6 +73,10 @@ PATH="$HOME/Software/cmake/bin/":$PATH
 # OpenMPI directory
 PATH="$HOME/Software/openmpi/install/bin":$PATH
 
+# CUDA directory
+PATH="/usr/local/cuda/bin":$PATH
+LD_LIBRARY_PATH="/usr/local/cuda/lib64":$LD_LIBRARY_PATH
+
 # Node Version Manager (NVM)
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
