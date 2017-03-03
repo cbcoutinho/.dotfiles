@@ -73,9 +73,16 @@ PATH="$HOME/Software/cmake/bin/":$PATH
 # OpenMPI directory
 PATH="$HOME/Software/openmpi/install/bin":$PATH
 
+# HDF5 directory
+PATH="$HOME/Software/hdf5/install/bin/":$PATH
+LD_LIBRARY_PATH="$HOME/Software/hdf5/install/lib64":$LD_LIBRARY_PATH
+
 # CUDA directory
 PATH="/usr/local/cuda/bin":$PATH
 LIBRARY_PATH="/usr/local/cuda/lib64":$LIBRARY_PATH
+
+# CMAKE directory
+PATH="$HOME/Software/cmake/install/bin/":$PATH
 
 # Node Version Manager (NVM)
 export NVM_DIR="$HOME/.nvm"

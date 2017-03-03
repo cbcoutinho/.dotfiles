@@ -29,6 +29,7 @@
     warnOnLargeFileLimit: 10
   editor:
     fontFamily: "Source code pro"
+    fontSize: 15
     scrollPastEnd: true
     showIndentGuide: true
     showInvisibles: true
