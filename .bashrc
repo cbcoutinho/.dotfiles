@@ -97,6 +97,9 @@ export LIBRARY_PATH
 export LD_LIBRARY_PATH
 export PYTHONPATH
 
+# Creates a log file of all commands used per day. Must create ~/.logs/ first
+export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history 1)" >> ~/.logs/bash-history-$(date "+%Y-%m-%d").log; fi'
+
 
 ### PETSC
 # export PETSC_DIR="/usr/lib64/mpi/gcc/openmpi/lib64/petsc/3.4.3"
