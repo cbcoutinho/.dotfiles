@@ -51,6 +51,7 @@
     enableLatexRenderingByDefault: true
     enablePandoc: true
   minimap:
+    disablePythonDocLinks: true
     plugins:
       cursorline: true
       cursorlineDecorationsZIndex: 0

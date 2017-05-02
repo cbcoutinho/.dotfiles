@@ -86,12 +86,14 @@ PATH="$HOME/Software/cmake/install/bin/":$PATH
 
 # Microsoft SQL Server stuff, based on instructions from:
 #   https://docs.microsoft.com/en-us/sql/connect/odbc/linux/installing-the-microsoft-odbc-driver-for-sql-server-on-linux
-# Which is essentially this:
+#
+# The steps to install the sql driver are essentially these:
 #   su
 #   zypper ar https://packages.microsoft.com/config/sles/12/prod.repo
 #   exit
 #   sudo zypper install msodbcsql mssql-tools unixODBC-devel
-echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
+
+PATH="/opt/mssql-tools/bin":$PATH
 
 # Node Version Manager (NVM)
 export NVM_DIR="$HOME/.nvm"
