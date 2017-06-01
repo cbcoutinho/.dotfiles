@@ -58,6 +58,7 @@ fi
 PATH="$HOME/Software/gcc/install/bin/":$PATH
 LIBRARY_PATH="$HOME/Software/gcc/install/lib64/gcc/x86_64-pc-linux-gnu/lib64/":$LIBRARY_PATH
 LD_LIBRARY_PATH="$HOME/Software/gcc/install/lib64/gcc/x86_64-pc-linux-gnu/7.0.1/":$LD_LIBRARY_PATH
+# LD_LIBRARY_PATH="$HOME/Software/gcc/install/lib64/gcc/x86_64-pc-linux-gnu/8.0.0/":$LD_LIBRARY_PATH
 
 # Boost development directories
 # LIBRARY_PATH="$HOME/Software/boost/install/":$LIBRARY_PATH
@@ -66,9 +67,6 @@ LD_LIBRARY_PATH="$HOME/Software/gcc/install/lib64/gcc/x86_64-pc-linux-gnu/7.0.1/
 PATH="$HOME/Software/dakota/install/bin":$PATH
 LD_LIBRARY_PATH="$HOME/Software/dakota/install/lib":"$HOME/Software/dakota/install/lib":$LD_LIBRARY_PATH
 PYTHONPATH="$HOME/Software/dakota/install/share/dakota/interfaces/":$PYTHONPATH
-
-# CMake repository build (need v3.7+ for learn_dg)
-PATH="$HOME/Software/cmake/bin/":$PATH
 
 # OpenMPI directory
 PATH="$HOME/Software/openmpi/install/bin":$PATH
@@ -81,7 +79,7 @@ LD_LIBRARY_PATH="$HOME/Software/hdf5/install/lib64":$LD_LIBRARY_PATH
 PATH="/usr/local/cuda/bin":$PATH
 LIBRARY_PATH="/usr/local/cuda/lib64":$LIBRARY_PATH
 
-# CMAKE directory
+# CMake repository build (need v3.7+ for learn_dg)
 PATH="$HOME/Software/cmake/install/bin/":$PATH
 
 # Microsoft SQL Server stuff, based on instructions from:
@@ -94,6 +92,9 @@ PATH="$HOME/Software/cmake/install/bin/":$PATH
 #   sudo zypper install msodbcsql mssql-tools unixODBC-devel
 
 PATH="/opt/mssql-tools/bin":$PATH
+
+# Salome directory
+PATH="$HOME/Software/Salome/appli_V8_2_0/":$PATH
 
 # Node Version Manager (NVM)
 export NVM_DIR="$HOME/.nvm"
