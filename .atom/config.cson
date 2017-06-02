@@ -20,6 +20,8 @@
       "markdown-preview"
       "atom-beautify"
       "language-gfm"
+      "racer"
+      "terminal-plus"
     ]
     telemetryConsent: "limited"
     themes: [
@@ -77,6 +79,9 @@
     scrollSyncType: "Vertical + Horizontal"
   tabs:
     enableVcsColoring: true
+  "terminal-plus":
+    core: {}
+    style: {}
   "todo-show": {}
   "tree-view":
     hideVcsIgnoredFiles: true
