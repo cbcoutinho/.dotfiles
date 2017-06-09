@@ -37,7 +37,8 @@ alias of4x="source $HOME/OpenFOAM/OpenFOAM-4.x/etc/bashrc $FOAM_SETTINGS"
 alias of30x="source $HOME/OpenFOAM/OpenFOAM-3.0.x/etc/bashrc $FOAM_SETTINGS"
 
 # Python path
-PATH="$HOME/anaconda3/bin:$PATH"
+# PATH="$HOME/anaconda3/bin:$PATH"
+alias ana="export PATH=$HOME/anaconda3/bin:$PATH"
 PYTHONPATH="$HOME/Projects/":$PYTHONPATH
 
 # added by travis gem
