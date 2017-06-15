@@ -71,6 +71,7 @@ PYTHONPATH="$HOME/Software/dakota/install/share/dakota/interfaces/":$PYTHONPATH
 
 # OpenMPI directory
 PATH="$HOME/Software/openmpi/install/bin":$PATH
+LD_LIBRARY_PATH="$HOME/Software/openmpi/install/lib64":$LD_LIBRARY_PATH
 
 # HDF5 directory
 PATH="$HOME/Software/hdf5/install/bin/":$PATH
