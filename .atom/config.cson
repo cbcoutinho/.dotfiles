@@ -87,3 +87,21 @@
     hideVcsIgnoredFiles: true
   welcome:
     showOnStartup: false
+".c.source":
+  editor:
+    tabLength: 4
+".cpp.source":
+  editor:
+    tabLength: 4
+".fixed.fortran.source":
+  editor:
+    tabLength: 4
+".fortran.free.source":
+  editor:
+    tabLength: 4
+".fortran.modern.source":
+  editor:
+    tabLength: 4
+".fortran.punchcard.source":
+  editor:
+    tabLength: 4
