@@ -103,8 +103,13 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
 
+# Get the git branch name
+parse_git_branch() {
+     /usr/bin/git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
 # Export variables
-export PS1="\u:[\w]\$ \[$(tput sgr0)\]"
+export PS1="\u:[\w]\$(parse_git_branch)\[\033[00m\]\n\$ "
 export PS2="> "
 export PATH
 export LIBRARY_PATH
