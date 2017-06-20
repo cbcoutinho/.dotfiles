@@ -114,7 +114,8 @@ parse_git_branch() {
 }
 
 # Export variables
-export PS1="\u:[\w]\$(parse_git_branch)\[\033[00m\]\n\$ "
+export PROMPT_DIRTRIM=3 # Reduces the full path name to .../path/to/wherever/
+export PS1="\u:[\w]\$(parse_git_branch)\[\033[00m\]\$ "
 export PS2="> "
 export PATH
 export LIBRARY_PATH
