@@ -99,9 +99,9 @@ PATH="/opt/mssql-tools/bin":$PATH
 PATH="$HOME/Software/Salome/appli_V8_2_0/":$PATH
 
 # ParaView directory
-PYTHONPATH="$HOME/Software/ParaView/paraview-obj/bin":$PYTHONPATH
-PYTHONPATH="$HOME/Software/ParaView/paraview-obj/lib":$PYTHONPATH
-PYTHONPATH="$HOME/Software/ParaView/paraview-obj/lib/site-packages":$PYTHONPATH
+# PYTHONPATH="$HOME/Software/ParaView/paraview-obj/bin":$PYTHONPATH
+# PYTHONPATH="$HOME/Software/ParaView/paraview-obj/lib":$PYTHONPATH
+# PYTHONPATH="$HOME/Software/ParaView/paraview-obj/lib/site-packages":$PYTHONPATH
 
 # Node Version Manager (NVM)
 export NVM_DIR="$HOME/.nvm"
