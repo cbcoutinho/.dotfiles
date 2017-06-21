@@ -114,7 +114,7 @@ parse_git_branch() {
 }
 
 # Export variables
-export PROMPT_DIRTRIM=3 # Reduces the full path name to .../path/to/wherever/
+export PROMPT_DIRTRIM=2 # Trims path name to only last 'N' sub-directories
 export PS1="\u:[\w]\$(parse_git_branch)\[\033[00m\]\$ "
 export PS2="> "
 export PATH
