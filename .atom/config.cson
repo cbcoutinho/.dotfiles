@@ -87,21 +87,30 @@
     hideVcsIgnoredFiles: true
   welcome:
     showOnStartup: false
+".bat.cmake.source.template":
+  editor:
+    tabLength: 4
+".c.cmake.source.template":
+  editor:
+    tabLength: 4
 ".c.source":
   editor:
     tabLength: 4
+".cache.cmake.source":
+  editor:
+    tabLength: 4
+".cmake.cpp.source.template":
+  editor:
+    tabLength: 4
+".cmake.shell.source.template":
+  editor:
+    tabLength: 4
+".cmake.source":
+  editor:
+    tabLength: 4
+".cmake.source.template":
+  editor:
+    tabLength: 4
 ".cpp.source":
-  editor:
-    tabLength: 4
-".fixed.fortran.source":
-  editor:
-    tabLength: 4
-".fortran.free.source":
-  editor:
-    tabLength: 4
-".fortran.modern.source":
-  editor:
-    tabLength: 4
-".fortran.punchcard.source":
   editor:
     tabLength: 4
