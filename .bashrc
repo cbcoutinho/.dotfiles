@@ -75,7 +75,8 @@ LD_LIBRARY_PATH="$HOME/Software/openmpi/install/lib64":$LD_LIBRARY_PATH
 
 # HDF5 directory
 PATH="$HOME/Software/hdf5/install/bin/":$PATH
-LD_LIBRARY_PATH="$HOME/Software/hdf5/install/lib64":$LD_LIBRARY_PATH
+LIBRARY_PATH="$HOME/Software/hdf5/install/lib":$LIBRARY_PATH
+LD_LIBRARY_PATH="$HOME/Software/hdf5/install/lib":$LD_LIBRARY_PATH
 
 # CUDA directory
 PATH="/usr/local/cuda/bin":$PATH
