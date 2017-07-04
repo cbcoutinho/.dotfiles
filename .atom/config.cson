@@ -20,16 +20,14 @@
       "markdown-preview"
       "atom-beautify"
       "language-gfm"
-      "racer"
-      "terminal-plus"
       "Parinfer"
       "language-common-lisp"
       "language-cython"
       "language-haskell"
-      "language-svg"
       "latex"
       "svg-preview"
       "language-go"
+      "language-svg"
     ]
     telemetryConsent: "limited"
     themes: [
