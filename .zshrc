@@ -4,7 +4,8 @@ fortune -sa && echo '\n'
 export ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
-DEFAULT_USER=$USER
+# Uncomment the following line to hide user@host in prompt_context - see below
+# DEFAULT_USER=$USER
 plugins=(git)
 
 
