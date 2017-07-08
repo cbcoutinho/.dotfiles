@@ -1,7 +1,12 @@
-DEFAULT_USER=$USER
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/Software/oh-my-zsh
 fortune -sa && echo '\n'
+
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
+source $ZSH/oh-my-zsh.sh
+
+DEFAULT_USER=$USER
+plugins=(git)
+
 
 #-------------------------------------------------------------
 # options
@@ -17,7 +22,8 @@ source ~/.shrc
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+
 # man page colours
 export LESS_TERMCAP_mb=$'\e[0;31m'
 export LESS_TERMCAP_md=$'\e[0;34m'
