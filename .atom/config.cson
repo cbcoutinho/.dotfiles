@@ -15,6 +15,7 @@
       ]
       "source.shell": [
         "profile"
+        "shrc"
       ]
     disabledPackages: [
       "markdown-preview"

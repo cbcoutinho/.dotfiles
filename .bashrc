@@ -28,86 +28,12 @@
 test -s ~/.alias && . ~/.alias || true
 
 # Various aliases
-alias ll="ls -l --group-directories-first"
-eval "$(hub alias -s)"
-
-# OpenFOAM Aliases
-alias ofdev="source $HOME/OpenFOAM/OpenFOAM-dev/etc/bashrc $FOAM_SETTINGS"
-alias of4x="source $HOME/OpenFOAM/OpenFOAM-4.x/etc/bashrc $FOAM_SETTINGS"
-alias of30x="source $HOME/OpenFOAM/OpenFOAM-3.0.x/etc/bashrc $FOAM_SETTINGS"
-
-# Python path
-# PATH="$HOME/anaconda3/bin:$PATH"
-alias ana="export PATH=$HOME/anaconda3/bin:$PATH"
-PYTHONPATH="$HOME/Projects/":$PYTHONPATH
-
-# added by travis gem
-[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
-
-# Haskel executables
-PATH="$HOME/.local/bin":$PATH
-
-# Rust directory
-PATH="$HOME/.cargo/bin:$PATH"
+source ~/.shrc
 
 # Git Hub autocompletion for bash
 if [ -f $HOME/Software/hub/etc/hub.bash_completion.sh ]; then
     . $HOME/Software/hub/etc/hub.bash_completion.sh
 fi
-
-# GCC development directories
-PATH="$HOME/Software/gcc/install/bin/":$PATH
-LIBRARY_PATH="$HOME/Software/gcc/install/lib64/gcc/x86_64-pc-linux-gnu/lib64/":$LIBRARY_PATH
-LD_LIBRARY_PATH="$HOME/Software/gcc/install/lib64/gcc/x86_64-pc-linux-gnu/7.0.1/":$LD_LIBRARY_PATH
-# LD_LIBRARY_PATH="$HOME/Software/gcc/install/lib64/gcc/x86_64-pc-linux-gnu/8.0.0/":$LD_LIBRARY_PATH
-
-# Boost development directories
-# LIBRARY_PATH="$HOME/Software/boost/install/":$LIBRARY_PATH
-
-# Dakota directories
-PATH="$HOME/Software/dakota/install/bin":$PATH
-LD_LIBRARY_PATH="$HOME/Software/dakota/install/lib":"$HOME/Software/dakota/install/lib":$LD_LIBRARY_PATH
-PYTHONPATH="$HOME/Software/dakota/install/share/dakota/interfaces/":$PYTHONPATH
-
-# OpenMPI directory
-PATH="$HOME/Software/openmpi/install/bin":$PATH
-LD_LIBRARY_PATH="$HOME/Software/openmpi/install/lib64":$LD_LIBRARY_PATH
-
-# HDF5 directory
-PATH="$HOME/Software/hdf5/install/bin/":$PATH
-LIBRARY_PATH="$HOME/Software/hdf5/install/lib":$LIBRARY_PATH
-LD_LIBRARY_PATH="$HOME/Software/hdf5/install/lib":$LD_LIBRARY_PATH
-
-# CUDA directory
-PATH="/usr/local/cuda/bin":$PATH
-LIBRARY_PATH="/usr/local/cuda/lib64":$LIBRARY_PATH
-
-# CMake repository build (need v3.7+ for learn_dg)
-PATH="$HOME/Software/cmake/install/bin/":$PATH
-
-# Microsoft SQL Server stuff, based on instructions from:
-#   https://docs.microsoft.com/en-us/sql/connect/odbc/linux/installing-the-microsoft-odbc-driver-for-sql-server-on-linux
-#
-# The steps to install the sql driver are essentially these:
-#   su
-#   zypper ar https://packages.microsoft.com/config/sles/12/prod.repo
-#   exit
-#   sudo zypper install msodbcsql mssql-tools unixODBC-devel
-
-PATH="/opt/mssql-tools/bin":$PATH
-
-# Salome directory
-PATH="$HOME/Software/Salome/appli_V8_2_0/":$PATH
-
-# ParaView directory
-# PYTHONPATH="$HOME/Software/ParaView/paraview-obj/bin":$PYTHONPATH
-# PYTHONPATH="$HOME/Software/ParaView/paraview-obj/lib":$PYTHONPATH
-# PYTHONPATH="$HOME/Software/ParaView/paraview-obj/lib/site-packages":$PYTHONPATH
-
-# Node Version Manager (NVM)
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-[[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
 
 # Get the git branch name
 parse_git_branch() {
