@@ -2,11 +2,10 @@ fortune -sa && echo '\n'
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 
 # Uncomment the following line to hide user@host in prompt_context - see below
 # DEFAULT_USER=$USER
-plugins=(git)
 
 
 #-------------------------------------------------------------
@@ -40,6 +39,7 @@ export LESS_TERMCAP_us=$'\e[0;35m'
 
 # ls
 export COLUMNS  # Remember columns for subprocesses.
+# eval `dircolors ~/.dir_colors/dircolors-solarized/dircolors.ansi-dark`
 eval "$(dircolors)"
 function ls {
 	command ls -F -h --color=always -v --author --time-style=long-iso -C "$@" | less -R -X -F
@@ -240,17 +240,23 @@ PROMPT='%{%f%b%k%}$(build_prompt) '
 
 zstyle ':completion:*' menu select
 
+# LS_COLORS='no=00;37:fi=00:di=00;33:ln=04;36:pi=40;33:so=01;35:bd=40;33;01:'
+# export LS_COLORS
+# zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# zstyle ':completion:*' list-colors 'di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+
 # Trims path name to only last 'N' sub-directories
 # export PROMPT_DIRTRIM=2
 # %(4~|.../%3~|%~)
 
-# Creates a log file of all commands used per day. Must create ~/.logs/ first
-# export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history 1)" >> ~/.logs/zsh-history-$(date "+%Y-%m-%d").log; fi'
+
+plugins=(git zsh-syntax-highlighting)
 
 # Hub completions
 fpath=(~/.zsh/completions $fpath)
 autoload -U compinit && compinit
 
+# Copy of PROMPT_COMMAND from bash
 precmd() { eval 'if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history 1)" >> ~/.logs/zsh-history-$(date "+%Y-%m-%d").log; fi' }
 
 export PATH
