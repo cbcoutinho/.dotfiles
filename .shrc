@@ -52,7 +52,7 @@ LD_LIBRARY_PATH="$HOME/Software/OpenBLAS/install/lib":$LD_LIBRARY_PATH
 
 # Dakota directories
 PATH="$HOME/Software/dakota/install/bin":$PATH
-LD_LIBRARY_PATH="$HOME/Software/dakota/install/lib":"$HOME/Software/dakota/install/lib":$LD_LIBRARY_PATH
+LD_LIBRARY_PATH="$HOME/Software/dakota/install/lib":$LD_LIBRARY_PATH
 PYTHONPATH="$HOME/Software/dakota/install/share/dakota/interfaces/":$PYTHONPATH
 
 # OpenMPI directory
@@ -61,8 +61,8 @@ LD_LIBRARY_PATH="$HOME/Software/openmpi/install/lib64":$LD_LIBRARY_PATH
 
 # HDF5 directory
 PATH="$HOME/Software/hdf5/install/bin/":$PATH
-LIBRARY_PATH="$HOME/Software/hdf5/install/lib":$LIBRARY_PATH
-LD_LIBRARY_PATH="$HOME/Software/hdf5/install/lib":$LD_LIBRARY_PATH
+LIBRARY_PATH="$HOME/Software/hdf5/install/lib64":$LIBRARY_PATH
+LD_LIBRARY_PATH="$HOME/Software/hdf5/install/lib64":$LD_LIBRARY_PATH
 
 # CUDA directory
 PATH="/usr/local/cuda/bin":$PATH

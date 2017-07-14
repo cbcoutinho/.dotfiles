@@ -60,6 +60,9 @@ bindkey -v
 source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
+# rust completions
+fpath+=~/.zfunc
+
 # completions
 autoload -Uz compinit && compinit
 compinit

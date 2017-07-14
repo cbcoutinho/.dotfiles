@@ -90,7 +90,8 @@
     core: {}
     style: {}
   "todo-show": {}
-  "tree-view": {}
+  "tree-view":
+    hideVcsIgnoredFiles: true
   welcome:
     showOnStartup: false
 ".bat.cmake.source.template":
