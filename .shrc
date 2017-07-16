@@ -95,6 +95,9 @@ PATH="$HOME/Software/Salome/appli_V8_2_0/":$PATH
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
 
+# Rust source code repo, needed by racer
+export RUST_SRC_PATH=~/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src/
+
 # extract archives
 function extract()
 {

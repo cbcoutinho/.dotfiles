@@ -19,17 +19,12 @@
       ]
     disabledPackages: [
       "markdown-preview"
-      "atom-beautify"
       "language-gfm"
       "Parinfer"
-      "language-common-lisp"
-      "language-cython"
-      "language-haskell"
       "latex"
-      "svg-preview"
       "language-go"
-      "language-svg"
     ]
+    projectHome: "/home/chris/Projects"
     telemetryConsent: "limited"
     themes: [
       "one-dark-ui"
@@ -78,6 +73,9 @@
     markerType: "native-underline"
     mergeColorDuplicates: true
     sortPaletteColors: "by color"
+  racer:
+    racerBinPath: "/home/chris/.cargo/bin/racer"
+    rustSrcPath: "/home/chris/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src/"
   "split-diff":
     diffWords: true
     ignoreWhitespace: true
@@ -91,6 +89,7 @@
     style: {}
   "todo-show": {}
   "tree-view":
+    hideIgnoredNames: true
     hideVcsIgnoredFiles: true
   welcome:
     showOnStartup: false
