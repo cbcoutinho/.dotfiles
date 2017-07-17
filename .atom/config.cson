@@ -1,7 +1,4 @@
 "*":
-  "atom-beautify":
-    general:
-      _analyticsUserId: "817f02f9-2f9a-493a-8de9-9bf02a6cbb6e"
   "atom-html-preview":
     enableMathJax: true
   core:
@@ -12,6 +9,9 @@
       "source.modula2": [
         "mod"
         "smod"
+      ]
+      "source.rust": [
+        "rs.bk"
       ]
       "source.shell": [
         "profile"
