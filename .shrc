@@ -72,6 +72,9 @@ LIBRARY_PATH="/usr/local/cuda/lib64":$LIBRARY_PATH
 PATH="$HOME/Software/cmake/install/bin/":$PATH
 export CMAKE_PREFIX_PATH=$LD_LIBRARY_PATH
 
+# PGI Community edition
+PATH="$HOME/Software/pgice/linux86-64/17.4/bin":$PATH
+
 # Microsoft SQL Server stuff, based on instructions from:
 #   https://docs.microsoft.com/en-us/sql/connect/odbc/linux/installing-the-microsoft-odbc-driver-for-sql-server-on-linux
 #
