@@ -25,6 +25,7 @@ eval "$(hub alias -s)"
 
 # OpenFOAM Aliases
 alias ofdev="source $HOME/OpenFOAM/OpenFOAM-dev/etc/bashrc $FOAM_SETTINGS"
+alias of5x="source $HOME/OpenFOAM/OpenFOAM-5.x/etc/bashrc $FOAM_SETTINGS"
 alias of4x="source $HOME/OpenFOAM/OpenFOAM-4.x/etc/bashrc $FOAM_SETTINGS"
 alias of30x="source $HOME/OpenFOAM/OpenFOAM-3.0.x/etc/bashrc $FOAM_SETTINGS"
 
