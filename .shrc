@@ -103,7 +103,8 @@ export NVM_DIR="$HOME/.nvm"
 export RUST_SRC_PATH=~/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src/
 
 # Matlab use system java later than 1.7 because graphics issues
-export MATLAB_JAVA=/usr/lib64/jvm/java-1.8.0-openjdk/jre
+export JAVA_HOME=/usr/lib64/jvm/java-1.8.0-openjdk/jre
+export MATLAB_JAVA=$JAVA_HOME
 
 # extract archives
 function extract()
