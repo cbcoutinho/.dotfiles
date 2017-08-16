@@ -68,6 +68,7 @@ LD_LIBRARY_PATH="$HOME/Software/hdf5/install/lib64":$LD_LIBRARY_PATH
 # CUDA directory
 PATH="/usr/local/cuda/bin":$PATH
 LIBRARY_PATH="/usr/local/cuda/lib64":$LIBRARY_PATH
+LD_LIBRARY_PATH="/usr/local/cuda/lib64":$LD_LIBRARY_PATH
 
 # CMake repository build (need v3.7+ for learn_dg)
 PATH="$HOME/Software/cmake/install/bin/":$PATH
@@ -103,8 +104,8 @@ export NVM_DIR="$HOME/.nvm"
 export RUST_SRC_PATH=~/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src/
 
 # Matlab use system java later than 1.7 because graphics issues
-export JAVA_HOME=/usr/lib64/jvm/java-1.8.0-openjdk/jre
-export MATLAB_JAVA=$JAVA_HOME
+export JAVA_HOME=/usr/lib64/jvm/java-1.8.0-openjdk
+export MATLAB_JAVA=$JAVA_HOME/jre
 
 # extract archives
 function extract()
