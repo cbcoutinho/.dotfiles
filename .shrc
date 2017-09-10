@@ -42,6 +42,7 @@ PATH="$HOME/.local/bin":$PATH
 
 # Rust directory
 PATH="$HOME/.cargo/bin:$PATH"
+LD_LIBRARY_PATH=$(rustc --print sysroot)/lib:$LD_LIBRARY_PATH # For rustfmt
 
 # GCC development directories
 # PATH="$HOME/Software/gcc/install/bin/":$PATH
