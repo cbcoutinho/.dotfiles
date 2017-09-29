@@ -86,7 +86,6 @@ PATH="$HOME/Software/pgice/linux86-64/17.4/bin":$PATH
 #   zypper ar https://packages.microsoft.com/config/sles/12/prod.repo
 #   exit
 #   sudo zypper install msodbcsql mssql-tools unixODBC-devel
-
 PATH="/opt/mssql-tools/bin":$PATH
 
 # Salome directory
@@ -96,6 +95,10 @@ PATH="$HOME/Software/Salome/appli_V8_2_0/":$PATH
 # PYTHONPATH="$HOME/Software/ParaView/paraview-obj/bin":$PYTHONPATH
 # PYTHONPATH="$HOME/Software/ParaView/paraview-obj/lib":$PYTHONPATH
 # PYTHONPATH="$HOME/Software/ParaView/paraview-obj/lib/site-packages":$PYTHONPATH
+
+# Go-related paths
+export GOPATH="$HOME/Software/go"
+PATH="$GOPATH/bin":$PATH
 
 # Node Version Manager (NVM)
 export NVM_DIR="$HOME/.nvm"
