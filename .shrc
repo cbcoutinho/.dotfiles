@@ -1,6 +1,7 @@
 # ls aliases
 alias ll='ls -l --group-directories-first'
 alias l='ls -l -a --group-directories-first'
+alias exa='exa --group-directories-first'
 
 # basic utils
 alias rm='rm -iv'
