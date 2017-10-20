@@ -1,8 +1,17 @@
 "*":
+  "atom-beautify":
+    general:
+      _analyticsUserId: "f22bfcb5-5e72-4a51-bbdc-58a2d4303c6b"
   "atom-html-preview":
     enableMathJax: true
   core:
     customFileTypes:
+      "source.cpp": [
+        "C"
+      ]
+      "source.hpp": [
+        "H"
+      ]
       "source.matlab": [
         "m"
       ]
