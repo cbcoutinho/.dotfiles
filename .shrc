@@ -35,7 +35,7 @@ alias fe40="source $HOME/OpenFOAM/foam-extend-4.0/etc/bashrc"
 # Python path
 # PATH="$HOME/anaconda3/bin:$PATH"
 alias ana="export PATH=$HOME/anaconda3/bin:$PATH"
-PYTHONPATH="$HOME/Projects/":$PYTHONPATH
+PYTHONPATH="$HOME/Projects":$PYTHONPATH
 
 # added by travis gem
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
@@ -48,9 +48,9 @@ PATH="$HOME/.cargo/bin:$PATH"
 LD_LIBRARY_PATH=$(rustc --print sysroot)/lib:$LD_LIBRARY_PATH # For rustfmt
 
 # GCC development directories
-# PATH="$HOME/Software/gcc/install/bin/":$PATH
-# LIBRARY_PATH="$HOME/Software/gcc/install/lib64/gcc/x86_64-pc-linux-gnu/lib64/":$LIBRARY_PATH
-# LD_LIBRARY_PATH="$HOME/Software/gcc/install/lib64/gcc/x86_64-pc-linux-gnu/8.0.0/":$LD_LIBRARY_PATH
+# PATH="$HOME/Software/gcc/install/bin":$PATH
+# LIBRARY_PATH="$HOME/Software/gcc/install/lib64/gcc/x86_64-pc-linux-gnu/lib64":$LIBRARY_PATH
+# LD_LIBRARY_PATH="$HOME/Software/gcc/install/lib64/gcc/x86_64-pc-linux-gnu/8.0.0":$LD_LIBRARY_PATH
 
 # OpenBLAS development directories
 LD_LIBRARY_PATH="$HOME/Software/OpenBLAS/install/lib":$LD_LIBRARY_PATH
@@ -58,14 +58,14 @@ LD_LIBRARY_PATH="$HOME/Software/OpenBLAS/install/lib":$LD_LIBRARY_PATH
 # Dakota directories
 PATH="$HOME/Software/dakota/install/bin":$PATH
 LD_LIBRARY_PATH="$HOME/Software/dakota/install/lib":$LD_LIBRARY_PATH
-PYTHONPATH="$HOME/Software/dakota/install/share/dakota/interfaces/":$PYTHONPATH
+PYTHONPATH="$HOME/Software/dakota/install/share/dakota/interfaces":$PYTHONPATH
 
 # OpenMPI directory
 PATH="$HOME/Software/openmpi/install/bin":$PATH
 LD_LIBRARY_PATH="$HOME/Software/openmpi/install/lib64":$LD_LIBRARY_PATH
 
 # HDF5 directory
-PATH="$HOME/Software/hdf5/install/bin/":$PATH
+PATH="$HOME/Software/hdf5/install/bin":$PATH
 LIBRARY_PATH="$HOME/Software/hdf5/install/lib64":$LIBRARY_PATH
 LD_LIBRARY_PATH="$HOME/Software/hdf5/install/lib64":$LD_LIBRARY_PATH
 
@@ -75,7 +75,7 @@ LIBRARY_PATH="/usr/local/cuda/lib64":$LIBRARY_PATH
 LD_LIBRARY_PATH="/usr/local/cuda/lib64":$LD_LIBRARY_PATH
 
 # CMake repository build (need v3.7+ for learn_dg)
-PATH="$HOME/Software/cmake/install/bin/":$PATH
+PATH="$HOME/Software/cmake/install/bin":$PATH
 export CMAKE_PREFIX_PATH=$LD_LIBRARY_PATH
 
 # PGI Community edition
@@ -92,7 +92,7 @@ PATH="$HOME/Software/pgice/linux86-64/17.4/bin":$PATH
 PATH="/opt/mssql-tools/bin":$PATH
 
 # Salome directory
-PATH="$HOME/Software/Salome/appli_V8_2_0/":$PATH
+PATH="$HOME/Software/Salome/appli_V8_2_0":$PATH
 
 # ParaView directory
 # PYTHONPATH="$HOME/Software/ParaView/paraview-obj/bin":$PYTHONPATH
