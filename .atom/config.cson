@@ -58,8 +58,6 @@
     openResultInBackground: false
     opener: "evince"
     outputDirectory: ".build"
-  "linter-ui-default":
-    panelHeight: 300
   "markdown-preview-plus":
     enableLatexRenderingByDefault: true
     enablePandoc: true

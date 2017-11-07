@@ -1,40 +1,40 @@
 # ls aliases
-alias ll='ls -l --group-directories-first'
-alias l='ls -l -a --group-directories-first'
-alias exa='exa --group-directories-first'
+alias ll="ls -l --group-directories-first"
+alias l="ls -l -a --group-directories-first"
+alias exa="exa --group-directories-first"
 
 # basic utils
-alias rm='rm -iv'
-alias cp='cp -iv'
-alias mv='mv -iv'
+alias rm="rm -iv"
+alias cp="cp -iv"
+alias mv="mv -iv"
 
 # prevents accidentally clobbering files
-alias mkdir='mkdir -p'
+alias mkdir="mkdir -p"
 
 # pretty-print of some PATH variables
-alias path='echo -e ${PATH//:/\\n}'
-alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
+alias path="echo -e ${PATH//:/\\n}"
+alias libpath="echo -e ${LD_LIBRARY_PATH//:/\\n}"
 
 # ayy lmao
-alias qutebrowser='qutebrowser --backend webengine'
-alias chromium='chromium --disk-cache-dir=/tmp/cache'
-alias vi='nvim'
-alias vim='nvim'
+alias qutebrowser="qutebrowser --backend webengine"
+alias chromium="chromium --disk-cache-dir=/tmp/cache"
+alias vi="nvim"
+alias vim="nvim"
 
 eval "$(hub alias -s)"
 
 
 # OpenFOAM Aliases
-alias ofdev='source $HOME/OpenFOAM/OpenFOAM-dev/etc/bashrc $FOAM_SETTINGS'
-alias of5x='source $HOME/OpenFOAM/OpenFOAM-5.x/etc/bashrc $FOAM_SETTINGS'
-alias of4x='source $HOME/OpenFOAM/OpenFOAM-4.x/etc/bashrc $FOAM_SETTINGS'
-alias of30x='source $HOME/OpenFOAM/OpenFOAM-3.0.x/etc/bashrc $FOAM_SETTINGS'
+alias ofdev="source $HOME/OpenFOAM/OpenFOAM-dev/etc/bashrc $FOAM_SETTINGS"
+alias of5x="source $HOME/OpenFOAM/OpenFOAM-5.x/etc/bashrc $FOAM_SETTINGS"
+alias of4x="source $HOME/OpenFOAM/OpenFOAM-4.x/etc/bashrc $FOAM_SETTINGS"
+alias of30x="source $HOME/OpenFOAM/OpenFOAM-3.0.x/etc/bashrc $FOAM_SETTINGS"
 
-alias fe40='source $HOME/OpenFOAM/foam-extend-4.0/etc/bashrc'
+alias fe40="source $HOME/OpenFOAM/foam-extend-4.0/etc/bashrc"
 
 # Python path
 # PATH="$HOME/anaconda3/bin:$PATH"
-alias ana='export PATH=$HOME/anaconda3/bin:$PATH'
+alias ana="export PATH=$HOME/anaconda3/bin:$PATH"
 PYTHONPATH='$HOME/Projects':$PYTHONPATH
 
 # added by travis gem
@@ -44,13 +44,13 @@ PYTHONPATH='$HOME/Projects':$PYTHONPATH
 PATH="$HOME/.local/bin":$PATH
 
 # Rust directory
-PATH="$HOME/.cargo/bin:$PATH"
+PATH="$HOME/.cargo/bin":$PATH
 LD_LIBRARY_PATH=$(rustc --print sysroot)/lib:$LD_LIBRARY_PATH # For rustfmt
 
 # GCC development directories
-# PATH="$HOME/Software/gcc/install/bin":$PATH
-# LIBRARY_PATH="$HOME/Software/gcc/install/lib64/gcc/x86_64-pc-linux-gnu/lib64":$LIBRARY_PATH
-# LD_LIBRARY_PATH="$HOME/Software/gcc/install/lib64/gcc/x86_64-pc-linux-gnu/8.0.0":$LD_LIBRARY_PATH
+# PATH='$HOME/Software/gcc/install/bin':$PATH
+# LIBRARY_PATH='$HOME/Software/gcc/install/lib64/gcc/x86_64-pc-linux-gnu/lib64':$LIBRARY_PATH
+# LD_LIBRARY_PATH='$HOME/Software/gcc/install/lib64/gcc/x86_64-pc-linux-gnu/8.0.0':$LD_LIBRARY_PATH
 
 # OpenBLAS development directories
 LD_LIBRARY_PATH="$HOME/Software/OpenBLAS/install/lib":$LD_LIBRARY_PATH
