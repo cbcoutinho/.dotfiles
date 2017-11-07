@@ -25,16 +25,16 @@ eval "$(hub alias -s)"
 
 
 # OpenFOAM Aliases
-alias ofdev="source $HOME/OpenFOAM/OpenFOAM-dev/etc/bashrc $FOAM_SETTINGS"
-alias of5x="source $HOME/OpenFOAM/OpenFOAM-5.x/etc/bashrc $FOAM_SETTINGS"
-alias of4x="source $HOME/OpenFOAM/OpenFOAM-4.x/etc/bashrc $FOAM_SETTINGS"
-alias of30x="source $HOME/OpenFOAM/OpenFOAM-3.0.x/etc/bashrc $FOAM_SETTINGS"
+alias ofdev='source $HOME/OpenFOAM/OpenFOAM-dev/etc/bashrc $FOAM_SETTINGS'
+alias of5x='source $HOME/OpenFOAM/OpenFOAM-5.x/etc/bashrc $FOAM_SETTINGS'
+alias of4x='source $HOME/OpenFOAM/OpenFOAM-4.x/etc/bashrc $FOAM_SETTINGS'
+alias of30x='source $HOME/OpenFOAM/OpenFOAM-3.0.x/etc/bashrc $FOAM_SETTINGS'
 
-alias fe40="source $HOME/OpenFOAM/foam-extend-4.0/etc/bashrc"
+alias fe40='source $HOME/OpenFOAM/foam-extend-4.0/etc/bashrc'
 
 # Python path
 # PATH="$HOME/anaconda3/bin:$PATH"
-alias ana="export PATH=$HOME/anaconda3/bin:$PATH"
+alias ana='export PATH=$HOME/anaconda3/bin:$PATH'
 PYTHONPATH="$HOME/Projects/":$PYTHONPATH
 
 # added by travis gem
@@ -95,9 +95,12 @@ PATH="/opt/mssql-tools/bin":$PATH
 PATH="$HOME/Software/Salome/appli_V8_2_0/":$PATH
 
 # ParaView directory
+PATH="$HOME/Software/ParaView/install/bin":$PATH
+LD_LIBRARY_PATH="$HOME/Software/ParaView/install/lib/paraview-5.4":$LD_LIBRARY_PATH
 # PYTHONPATH="$HOME/Software/ParaView/paraview-obj/bin":$PYTHONPATH
-# PYTHONPATH="$HOME/Software/ParaView/paraview-obj/lib":$PYTHONPATH
-# PYTHONPATH="$HOME/Software/ParaView/paraview-obj/lib/site-packages":$PYTHONPATH
+# PYTHONPATH="$HOME/Software/ParaView/install/lib/paraview-5.4":$PYTHONPATH
+# PYTHONPATH="$HOME/Software/ParaView/install/lib/paraview-5.4/site-packages":$PYTHONPATH
+# PYTHONPATH="$HOME/Software/ParaView/install/Utilities/VTKPythonWrapping/site-packages":$PYTHONPATH
 
 # Go-related paths
 export GOPATH="$HOME/Software/go"
