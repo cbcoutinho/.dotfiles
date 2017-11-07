@@ -29,7 +29,6 @@
     disabledPackages: [
       "markdown-preview"
       "language-gfm"
-      "latex"
       "language-go"
     ]
     projectHome: "/home/chris/Projects"
