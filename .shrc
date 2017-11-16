@@ -97,10 +97,9 @@ PATH="$HOME/Software/Salome/appli_V8_2_0":$PATH
 # ParaView directory
 PATH="$HOME/Software/ParaView/install/bin":$PATH
 LD_LIBRARY_PATH="$HOME/Software/ParaView/install/lib/paraview-5.4":$LD_LIBRARY_PATH
-# PYTHONPATH="$HOME/Software/ParaView/paraview-obj/bin":$PYTHONPATH
-# PYTHONPATH="$HOME/Software/ParaView/install/lib/paraview-5.4":$PYTHONPATH
-# PYTHONPATH="$HOME/Software/ParaView/install/lib/paraview-5.4/site-packages":$PYTHONPATH
-# PYTHONPATH="$HOME/Software/ParaView/install/Utilities/VTKPythonWrapping/site-packages":$PYTHONPATH
+PYTHONPATH="$HOME/Software/ParaView/install/lib/paraview-5.4":$PYTHONPATH
+PYTHONPATH="$HOME/Software/ParaView/install/lib/paraview-5.4/site-packages":$PYTHONPATH
+export PYTHONSTARTUP="$HOME/.pythonrc" # For tab-completion in pvpython
 
 # Go-related paths
 export GOPATH="$HOME/Software/go"
