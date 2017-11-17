@@ -1,28 +1,8 @@
-# ls aliases
-alias ll="ls -l --group-directories-first"
-alias l="ls -l -a --group-directories-first"
-alias exa="exa --group-directories-first"
+# make flags
+export MAKEFLAGS="$MAKEFLAGS -j$(($(nproc)))"
 
-# basic utils
-alias rm="rm -iv"
-alias cp="cp -iv"
-alias mv="mv -iv"
-
-# prevents accidentally clobbering files
-alias mkdir="mkdir -p"
-
-# pretty-print of some PATH variables
-alias path="echo -e ${PATH//:/\\n}"
-alias libpath="echo -e ${LD_LIBRARY_PATH//:/\\n}"
-
-# ayy lmao
-alias qutebrowser="qutebrowser --backend webengine"
-alias chromium="chromium --disk-cache-dir=/tmp/cache"
-alias vi="nvim"
-alias vim="nvim"
-
-eval "$(hub alias -s)"
-
+# Sudo functions
+PATH="/usr/sbin":$PATH
 
 # OpenFOAM Aliases
 alias ofdev="source $HOME/OpenFOAM/OpenFOAM-dev/etc/bashrc $FOAM_SETTINGS"
@@ -138,3 +118,28 @@ function extract()
     echo "'$1' is not a valid file!"
   fi
 }
+
+# ls aliases
+alias ll="ls -l --group-directories-first"
+alias l="ls -l -a --group-directories-first"
+alias exa="exa --group-directories-first"
+
+# basic utils
+alias rm="rm -iv"
+alias cp="cp -iv"
+alias mv="mv -iv"
+
+# prevents accidentally clobbering files
+alias mkdir="mkdir -p"
+
+# pretty-print of some PATH variables
+alias path="echo -e ${PATH//:/\\\n}"
+alias libpath="echo -e ${LD_LIBRARY_PATH//:/\\\n}"
+
+# ayy lmao
+alias qutebrowser="qutebrowser --backend webengine"
+alias chromium="chromium --disk-cache-dir=/tmp/cache"
+alias vi="nvim"
+alias vim="nvim"
+
+eval "$(hub alias -s)"

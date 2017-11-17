@@ -12,9 +12,6 @@ DEFAULT_USER=$USER
 # options
 #-------------------------------------------------------------
 
-# make
-export MAKEFLAGS="$MAKEFLAGS -j$(($(nproc)))"
-
 # colours
 source ~/.vim/bundle/gruvbox/gruvbox_256palette.sh
 source ~/.shrc
