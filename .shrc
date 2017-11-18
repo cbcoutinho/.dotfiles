@@ -1,5 +1,6 @@
 # make flags
 export MAKEFLAGS="$MAKEFLAGS -j$(($(nproc)))"
+export OMP_NUM_THREADS=`nproc`
 
 # Sudo functions
 PATH="/usr/sbin":$PATH
@@ -77,9 +78,10 @@ PATH="$HOME/Software/Salome/appli_V8_2_0":$PATH
 # ParaView directory
 PATH="$HOME/Software/ParaView/install/bin":$PATH
 LD_LIBRARY_PATH="$HOME/Software/ParaView/install/lib/paraview-5.4":$LD_LIBRARY_PATH
-PYTHONPATH="$HOME/Software/ParaView/install/lib/paraview-5.4":$PYTHONPATH
-PYTHONPATH="$HOME/Software/ParaView/install/lib/paraview-5.4/site-packages":$PYTHONPATH
-export PYTHONSTARTUP="$HOME/.pythonrc" # For tab-completion in pvpython
+# *** ParaView contains six 1.7.2, whereas matplotlib 2.10 needs system six 1.11 ***
+# PYTHONPATH="$HOME/Software/ParaView/install/lib/paraview-5.4":$PYTHONPATH
+# PYTHONPATH="$HOME/Software/ParaView/install/lib/paraview-5.4/site-packages":$PYTHONPATH
+# export PYTHONSTARTUP="$HOME/.pythonrc" # For tab-completion in pvpython
 
 # Go-related paths
 export GOPATH="$HOME/Software/go"
@@ -90,7 +92,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
 
 # Rust source code repo, needed by racer
-export RUST_SRC_PATH=~/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src/
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 # Matlab use system java later than 1.7 because graphics issues
 export JAVA_HOME=/usr/lib64/jvm/java-1.8.0-openjdk
