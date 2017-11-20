@@ -1,7 +1,3 @@
-# make flags
-export MAKEFLAGS="$MAKEFLAGS -j$(($(nproc)))"
-export OMP_NUM_THREADS=`nproc`
-
 # Sudo functions
 PATH="/usr/sbin":$PATH
 
@@ -82,6 +78,10 @@ LD_LIBRARY_PATH="$HOME/Software/ParaView/install/lib/paraview-5.4":$LD_LIBRARY_P
 # PYTHONPATH="$HOME/Software/ParaView/install/lib/paraview-5.4":$PYTHONPATH
 # PYTHONPATH="$HOME/Software/ParaView/install/lib/paraview-5.4/site-packages":$PYTHONPATH
 # export PYTHONSTARTUP="$HOME/.pythonrc" # For tab-completion in pvpython
+
+# make flags
+export MAKEFLAGS="$MAKEFLAGS -j`nproc`"
+export OMP_NUM_THREADS=`nproc`
 
 # Go-related paths
 export GOPATH="$HOME/Software/go"
