@@ -2,7 +2,9 @@
 .node-gyp
 blob-store
 compile-cache
+git-time-machine
 packages
 recovery
 snapshot-cache
+split-diff
 storage
