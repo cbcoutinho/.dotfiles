@@ -1,5 +1,5 @@
-# Sudo functions
-PATH="/usr/sbin":$PATH
+# Sudo functions + ~/bin for tumbleweed?
+PATH="/usr/sbin:$HOME/bin":$PATH
 
 # OpenFOAM Aliases
 alias ofdev="source $HOME/OpenFOAM/OpenFOAM-dev/etc/bashrc $FOAM_SETTINGS"
