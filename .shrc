@@ -23,6 +23,7 @@ PATH="$HOME/.local/bin":$PATH
 # Rust directory
 PATH="$HOME/.cargo/bin":$PATH
 LD_LIBRARY_PATH=$(rustc --print sysroot)/lib:$LD_LIBRARY_PATH # For rustfmt
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src" # For racer
 
 # GCC development directories
 # PATH="$HOME/Software/gcc/install/bin":$PATH
@@ -90,9 +91,6 @@ PATH="$GOPATH/bin":$PATH
 # Node Version Manager (NVM)
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
-
-# Rust source code repo, needed by racer
-export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 # Matlab use system java later than 1.7 because graphics issues
 # NOTE: 2017b upgraded to java 1.8
