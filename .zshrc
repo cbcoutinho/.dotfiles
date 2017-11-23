@@ -13,7 +13,7 @@ DEFAULT_USER=$USER
 #-------------------------------------------------------------
 
 # colours
-source ~/.vim/bundle/gruvbox/gruvbox_256palette.sh
+source ~/.vim/plugged/gruvbox/gruvbox_256palette.sh
 source ~/.shrc
 
 # Uncomment the following line if you want to disable marking untracked files
