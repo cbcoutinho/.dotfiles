@@ -2,16 +2,31 @@
 
 set shell=/bin/bash
 set nocompatible              " be iMproved, required
-filetype off                  " required
+" filetype off                  " required
 
-syntax on
+" syntax on
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim/    " Location of VundleVim
-call vundle#begin('~/.vim/bundle')    " Where to install plugins
+" set rtp+=~/.vim/bundle/Vundle.vim/    " Location of VundleVim
+" call vundle#begin('~/.vim/bundle')    " Where to install plugins
+
+" NOTE: If using regular vim, change the target directory below to '.vim/autoload/plug.vim'
+"auto-install vim-plug for nvim
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall
+endif
+
+
+call plug#begin('~/.vim/plugged')
+" Plug 'junegunn/seoul256.vim'
+" Plug 'junegunn/goyo.vim'
+" Plug 'junegunn/limelight.vim'
+
 
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+" Plugin 'VundleVim/Vundle.vim'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -30,12 +45,15 @@ Plugin 'VundleVim/Vundle.vim'
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
 
-Plugin 'rust-lang/rust.vim'
-Plugin 'morhetz/gruvbox'
+Plug 'rust-lang/rust.vim'
+Plug 'morhetz/gruvbox'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()
+" call vundle#end()            " required
+" filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 " filetype plugin on
 "
