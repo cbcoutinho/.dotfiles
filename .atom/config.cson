@@ -30,6 +30,7 @@
       "markdown-preview"
       "language-gfm"
       "language-go"
+      "atom-beautify"
     ]
     projectHome: "/home/chris/Projects"
     telemetryConsent: "limited"

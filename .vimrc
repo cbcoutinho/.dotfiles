@@ -3,6 +3,7 @@
 set shell=/bin/bash
 set nocompatible              " be iMproved, required
 " filetype off                  " required
+set number
 
 " syntax on
 
@@ -11,13 +12,19 @@ set nocompatible              " be iMproved, required
 " call vundle#begin('~/.vim/bundle')    " Where to install plugins
 
 " NOTE: If using regular vim, change the target directory below to '.vim/autoload/plug.vim'
+"auto-install vim-plug for vim
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall
+endif
+
 "auto-install vim-plug for nvim
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
       \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall
 endif
-
 
 call plug#begin('~/.vim/plugged')
 " Plug 'junegunn/seoul256.vim'
@@ -45,13 +52,24 @@ call plug#begin('~/.vim/plugged')
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
 
-Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim' 		" Rust stuff
+
+" Color schemes
 Plug 'morhetz/gruvbox'
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'altercation/vim-colors-solarized'
+
+Plug 'scrooloose/nerdtree' 		" Project tree directory
+Plug 'scrooloose/nerdcommenter' 	" Easily comment lines
+Plug 'Xuyuanp/nerdtree-git-plugin'	" Git pluggin for NERDTree
 
 " All of your Plugins must be added before the following line
 call plug#end()
+
+let g:gruvbox_italic=1 	" Allows italics for gruvbox
+colorscheme gruvbox
+" colorscheme solarized
+set background=dark 	" Options: [light/dark]
+
 " call vundle#end()            " required
 " filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
