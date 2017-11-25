@@ -1,9 +1,24 @@
 " Make sure to slink this to ~/.vimrc (for vim) and ~/.config/nvim/init.vim (for neovim)
 
 set shell=/bin/bash
-set nocompatible              " be iMproved, required
+set nocompatible             	" be iMproved, required
 " filetype off                  " required
-set number
+set number			" Line numbers
+
+if has('nvim')
+	set termguicolors	" True color in neovim
+endif
+
+set textwidth=79 		" Set textwidth to <n> chars, wrap after that
+set formatoptions+=t 		" Automatically wrap lines after <textwidth> chars
+set formatoptions-=l 		" Already long lines will also be auto-wrapped if appended to
+" Further, from the wiki:
+" If you want to wrap lines in a specific area, move the cursor to the text you
+" want to format and type gq followed by the range. For example, gqq wraps the
+" current line and gqip wraps the current paragraph.
+
+" Spell checking
+set spell spelllang=en_us
 
 " syntax on
 
