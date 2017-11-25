@@ -47,6 +47,7 @@
     showInvisibles: true
     softWrap: true
     softWrapAtPreferredLineLength: true
+    tabLength: 4
     tabType: "soft"
   "exception-reporting":
     userId: "391e7d9a-1bd2-6a34-1d95-f5efafa612ae"
@@ -117,30 +118,6 @@
     hideVcsIgnoredFiles: true
   welcome:
     showOnStartup: false
-".bat.cmake.source.template":
+".fortran.source":
   editor:
-    tabLength: 4
-".c.cmake.source.template":
-  editor:
-    tabLength: 4
-".c.source":
-  editor:
-    tabLength: 4
-".cache.cmake.source":
-  editor:
-    tabLength: 4
-".cmake.cpp.source.template":
-  editor:
-    tabLength: 4
-".cmake.shell.source.template":
-  editor:
-    tabLength: 4
-".cmake.source":
-  editor:
-    tabLength: 4
-".cmake.source.template":
-  editor:
-    tabLength: 4
-".cpp.source":
-  editor:
-    tabLength: 4
+    tabLength: 2
