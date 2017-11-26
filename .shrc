@@ -25,6 +25,11 @@ PATH="$HOME/.cargo/bin":$PATH
 LD_LIBRARY_PATH=$(rustc --print sysroot)/lib:$LD_LIBRARY_PATH # For rustfmt
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src" # For racer
 
+# Ruby/Gem bin
+if which ruby >/dev/null && which gem >/dev/null; then
+    PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
+
 # GCC development directories
 # PATH="$HOME/Software/gcc/install/bin":$PATH
 # LIBRARY_PATH="$HOME/Software/gcc/install/lib64/gcc/x86_64-pc-linux-gnu/lib64":$LIBRARY_PATH

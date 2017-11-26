@@ -26,6 +26,7 @@ set formatoptions-=l        " Already long lines will also be auto-wrapped if ap
 
 " Spell checking
 set spell spelllang=en_us
+au BufNewFile,BufRead .shrc set filetype=sh
 
 if has('nvim')
 	"echo "I'm nvim"
