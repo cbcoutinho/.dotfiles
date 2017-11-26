@@ -37,9 +37,6 @@ else
 	let plugin_dir = '~/.vim/plugged'
 endif
 
-echo plugfile
-echo plugin_dir
-
 if empty(glob(plugfile))
     function GetPlugVim(plugfile)
         execute '!curl -fLo'
@@ -54,20 +51,21 @@ endif
 call plug#begin(plugin_dir)
 
 " Language specific plugins
-Plug 'rust-lang/rust.vim' 		" Rust stuff
-Plug 'racer-rust/vim-racer'         	" Racer in vim
+Plug 'rust-lang/rust.vim'           " Rust stuff
+Plug 'racer-rust/vim-racer'         " Racer in vim
 if has('nvim')
-    Plug 'snoe/nvim-parinfer.js'	" Lisp auto-adjust parens
+    Plug 'snoe/nvim-parinfer.js'    " Lisp auto-adjust parens
 endif
 
 " Color schemes
 Plug 'morhetz/gruvbox'
 Plug 'altercation/vim-colors-solarized'
 
-Plug 'scrooloose/nerdtree' 		" Project tree directory
-Plug 'scrooloose/nerdcommenter' 	" Easily comment lines
-Plug 'Xuyuanp/nerdtree-git-plugin'	" Git plugin for NERDTree
-Plug 'tpope/vim-fugitive'          	" Git plugin for vim
+Plug 'scrooloose/nerdtree'          " Project tree directory
+Plug 'scrooloose/nerdcommenter'     " Easily comment lines
+Plug 'Xuyuanp/nerdtree-git-plugin'  " Git plugin for NERDTree
+Plug 'tpope/vim-fugitive'           " Git plugin for vim
+Plug 'airblade/vim-gitgutter'       " Git status in gutter (next to line numbers)
 " All of your Plugins must be added before the following line
 call plug#end()
 

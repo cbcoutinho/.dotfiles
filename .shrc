@@ -1,5 +1,5 @@
 # Sudo functions + ~/bin for tumbleweed?
-PATH="/usr/sbin:$HOME/bin":$PATH
+PATH="/usr/sbin:$HOME/bin:$HOME/.local/bin":$PATH
 
 # OpenFOAM Aliases
 alias ofdev="source $HOME/OpenFOAM/OpenFOAM-dev/etc/bashrc $FOAM_SETTINGS"
@@ -121,8 +121,9 @@ function extract()
 }
 
 # ls aliases
-alias ll="ls -l --group-directories-first"
-alias l="ls -l -a --group-directories-first"
+alias ls="ls --group-directories-first"
+alias ll="ls -l"
+alias l="ls -l -a"
 alias exa="exa --group-directories-first"
 
 # basic utils
