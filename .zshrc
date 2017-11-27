@@ -38,8 +38,20 @@ export LESS_TERMCAP_us=$'\e[0;35m'
 export COLUMNS  # Remember columns for subprocesses.
 # eval `dircolors ~/.dir_colors/dircolors-solarized/dircolors.ansi-dark`
 eval "$(dircolors)"
+# NOTE: cannot comment inside bash functions, so 'execute' them instead
 function ls {
-	command ls -F -h --color=always -v --author --time-style=long-iso -C "$@" | less -R -X -F
+	command ls \
+    -F                      `# Append indicator (one of */=>@|) to entries` \
+    -h                      `# with -l and/or -s, print human readable sizes` \
+    --color=always          `# colorize the output` \
+    -v                      `# natural sort of (version) numbers within text` \
+    --author                `# with -l, print the author of each file` \
+    --time-style=long-iso   `# with -l, show times using style STYLE` \
+    -C "$@"                 `# list entries ($@) by columns` \
+    | less                  `# Pipe output into 'less'` \
+    -R                      `# Output "raw" control characters.` \
+    -X                      `# Don't use termcap init/deinit strings` \
+    -F                      `# Quit if entire file fits on first screen`
 }
 
 # powerline test

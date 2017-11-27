@@ -12,8 +12,8 @@ set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
 
-if has('nvim')
-    set termguicolors	    " True color in neovim
+if has('nvim-0.1.5')        " True color in neovim wasn't added until 0.1.5
+    set termguicolors
 endif
 
 set textwidth=79 		    " Set textwidth to <n> chars, wrap after that
@@ -54,8 +54,10 @@ call plug#begin(plugin_dir)
 " Language specific plugins
 Plug 'rust-lang/rust.vim'           " Rust stuff
 Plug 'racer-rust/vim-racer'         " Racer in vim
-if has('nvim')
-    Plug 'snoe/nvim-parinfer.js'    " Lisp auto-adjust parens
+if has('nvim-0.1.5')
+    Plug 'snoe/nvim-parinfer.js'    " Lisp parens auto-adjust for nvim 0.1.5+
+else
+    Plug 'bhurlow/vim-parinfer'     " Vim port of nvim-parinfer.js
 endif
 
 " Color schemes
