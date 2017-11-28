@@ -17,9 +17,6 @@ PYTHONPATH="$HOME/Projects":$PYTHONPATH
 # added by travis gem
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 
-# Haskel executables
-PATH="$HOME/.local/bin":$PATH
-
 # Rust directory
 PATH="$HOME/.cargo/bin":$PATH
 LD_LIBRARY_PATH=$(rustc --print sysroot)/lib:$LD_LIBRARY_PATH # For rustfmt
@@ -58,7 +55,7 @@ LIBRARY_PATH="/usr/local/cuda/lib64":$LIBRARY_PATH
 LD_LIBRARY_PATH="/usr/local/cuda/lib64":$LD_LIBRARY_PATH
 
 # CMake repository build (need v3.7+ for learn_dg)
-PATH="$HOME/Software/cmake/install/bin":$PATH
+PATH="$HOME/Software/cmake/install/bin":$PATH # NOTE: Install in ~/.local and remove
 export CMAKE_PREFIX_PATH=$LD_LIBRARY_PATH
 
 # PGI Community edition
