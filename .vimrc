@@ -23,6 +23,9 @@ set formatoptions-=l        " Already long lines will also be auto-wrapped if ap
 " If you want to wrap lines in a specific area, move the cursor to the text you
 " want to format and type gq followed by the range. For example, gqq wraps the
 " current line and gqip wraps the current paragraph.
+if executable('par')        " See 'par' vimcast for amazing text wrangler
+    set formatprg=par
+endif
 
 " Spell checking
 set spell spelllang=en_us
@@ -69,6 +72,7 @@ Plug 'scrooloose/nerdcommenter'     " Easily comment lines
 Plug 'Xuyuanp/nerdtree-git-plugin'  " Git plugin for NERDTree
 Plug 'tpope/vim-fugitive'           " Git plugin for vim
 Plug 'airblade/vim-gitgutter'       " Git status in gutter (next to line numbers)
+
 " All of your Plugins must be added before the following line
 call plug#end()
 
