@@ -14,6 +14,8 @@ set expandtab
 
 if has('nvim-0.1.5')        " True color in neovim wasn't added until 0.1.5
     set termguicolors
+elseif has('nvim')
+    let $NVIM_TUI_ENABLE_TRUE_COLORS=1
 endif
 
 set textwidth=79 		    " Set textwidth to <n> chars, wrap after that
@@ -29,7 +31,7 @@ endif
 
 " Spell checking
 set spell spelllang=en_us
-au BufNewFile,BufRead .shrc set filetype=sh
+au BufNewFile,BufRead .shrc set filetype=sh     " Sets .shrc files to use sh syntax
 
 if has('nvim')
 	"echo "I'm nvim"
@@ -66,20 +68,33 @@ endif
 " Color schemes
 Plug 'morhetz/gruvbox'
 Plug 'altercation/vim-colors-solarized'
+Plug 'joshdick/onedark.vim'
+Plug 'sheerun/vim-polyglot'         " Syntax highlighting for different languages
 
 Plug 'scrooloose/nerdtree'          " Project tree directory
 Plug 'scrooloose/nerdcommenter'     " Easily comment lines
 Plug 'Xuyuanp/nerdtree-git-plugin'  " Git plugin for NERDTree
 Plug 'tpope/vim-fugitive'           " Git plugin for vim
 Plug 'airblade/vim-gitgutter'       " Git status in gutter (next to line numbers)
+Plug 'itchyny/lightline.vim'        " Status line for vim
 
 " All of your Plugins must be added before the following line
 call plug#end()
 
-let g:gruvbox_italic=1 	" Allows italics for gruvbox
 colorscheme gruvbox
-" colorscheme solarized
+let g:gruvbox_italic=1 	" Allows italics for gruvbox
 set background=dark 	" Options: [light/dark]
+let g:lightline = {'colorscheme':'onedark'}
+
+"colorscheme solarized
+"set background=dark 	" Options: [light/dark]
+"let g:lightline = {'colorscheme':'solarized'}
+
+"colorscheme onedark
+"let g:onedark_terminal_italics=1 	" Allows italics for onedark
+"let g:lightline = {'colorscheme':'onedark'}
+
+set noshowmode          " Status is already in lightline - no need for redundency
 
 " Options for vim-racer
 let g:racer_cmd = "~/.cargo/bin/racer"
