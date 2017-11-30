@@ -54,12 +54,11 @@ PATH="/usr/local/cuda/bin":$PATH
 LIBRARY_PATH="/usr/local/cuda/lib64":$LIBRARY_PATH
 LD_LIBRARY_PATH="/usr/local/cuda/lib64":$LD_LIBRARY_PATH
 
-# CMake repository build (need v3.7+ for learn_dg)
-PATH="$HOME/Software/cmake/install/bin":$PATH # NOTE: Install in ~/.local and remove
+# CMake repository build (need v3.7+ for learn_dg and Fortran submodules)
 export CMAKE_PREFIX_PATH=$LD_LIBRARY_PATH
 
 # PGI Community edition
-PATH="$HOME/Software/pgice/linux86-64/17.4/bin":$PATH
+#PATH="$HOME/Software/pgice/linux86-64/17.4/bin":$PATH
 
 # Microsoft SQL Server stuff, based on instructions from:
 #   https://docs.microsoft.com/en-us/sql/connect/odbc/linux/installing-the-microsoft-odbc-driver-for-sql-server-on-linux
