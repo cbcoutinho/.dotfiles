@@ -1,5 +1,6 @@
 # Sudo functions + ~/bin for tumbleweed?
 PATH="/usr/sbin:$HOME/bin:$HOME/.local/bin":$PATH
+LD_LIBRARY_PATH="$HOME/.local/lib:$HOME/.local/lib64":$LD_LIBRARY_PATH
 
 # OpenFOAM Aliases
 alias ofdev="source $HOME/OpenFOAM/OpenFOAM-dev/etc/bashrc $FOAM_SETTINGS"
@@ -31,9 +32,6 @@ fi
 # PATH="$HOME/Software/gcc/install/bin":$PATH
 # LIBRARY_PATH="$HOME/Software/gcc/install/lib64/gcc/x86_64-pc-linux-gnu/lib64":$LIBRARY_PATH
 # LD_LIBRARY_PATH="$HOME/Software/gcc/install/lib64/gcc/x86_64-pc-linux-gnu/8.0.0":$LD_LIBRARY_PATH
-
-# OpenBLAS development directories
-LD_LIBRARY_PATH="$HOME/Software/OpenBLAS/install/lib":$LD_LIBRARY_PATH
 
 # Dakota directories
 PATH="$HOME/Software/dakota/install/bin:$HOME/Software/dakota/install/test":$PATH
