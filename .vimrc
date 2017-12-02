@@ -66,17 +66,17 @@ else
 endif
 
 " Color schemes
-Plug 'morhetz/gruvbox'
-Plug 'altercation/vim-colors-solarized'
-Plug 'joshdick/onedark.vim'
-Plug 'sheerun/vim-polyglot'         " Syntax highlighting for different languages
+Plug 'morhetz/gruvbox'                  " Gruvbox theme for vim
+Plug 'altercation/vim-colors-solarized' " Solarized theme for vim
+Plug 'joshdick/onedark.vim'             " Onedark theme from Atom ported to vim
+Plug 'sheerun/vim-polyglot'             " Syntax highlighting for different languages
 
-Plug 'scrooloose/nerdtree'          " Project tree directory
-Plug 'scrooloose/nerdcommenter'     " Easily comment lines
-Plug 'Xuyuanp/nerdtree-git-plugin'  " Git plugin for NERDTree
-Plug 'tpope/vim-fugitive'           " Git plugin for vim
-Plug 'airblade/vim-gitgutter'       " Git status in gutter (next to line numbers)
-Plug 'itchyny/lightline.vim'        " Status line for vim
+Plug 'scrooloose/nerdtree'              " Project tree directory
+Plug 'scrooloose/nerdcommenter'         " Easily comment lines
+Plug 'Xuyuanp/nerdtree-git-plugin'      " Git plugin for NERDTree
+Plug 'tpope/vim-fugitive'               " Git plugin for vim
+Plug 'airblade/vim-gitgutter'           " Git status in gutter (next to line numbers)
+Plug 'itchyny/lightline.vim'            " Status line for vim
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -84,14 +84,14 @@ call plug#end()
 colorscheme gruvbox
 let g:gruvbox_italic=1 	" Allows italics for gruvbox
 set background=dark 	" Options: [light/dark]
-let g:lightline = {'colorscheme':'onedark'}
+let g:lightline = {'colorscheme':'gruvbox'}
 
 "colorscheme solarized
 "set background=dark 	" Options: [light/dark]
 "let g:lightline = {'colorscheme':'solarized'}
 
-"colorscheme onedark
 "let g:onedark_terminal_italics=1 	" Allows italics for onedark
+"colorscheme onedark
 "let g:lightline = {'colorscheme':'onedark'}
 
 set noshowmode          " Status is already in lightline - no need for redundency
