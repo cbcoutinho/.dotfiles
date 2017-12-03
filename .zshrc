@@ -16,9 +16,9 @@ DEFAULT_USER=$USER
 source ~/.vim/plugged/gruvbox/gruvbox_256palette.sh
 source ~/.shrc
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
+# Uncomment the following line if you want to disable marking untracked
+# files under VCS as dirty. This makes repository status check for large
+# repositories much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # man page colours
@@ -50,7 +50,7 @@ function ls {
     -C "$@"                 `# list entries ($@) by columns` \
     | less                  `# Pipe output into 'less'` \
     -R                      `# Output "raw" control characters.` \
-    -X                      `# Don't use termcap init/deinit strings` \
+    -X                      `# Do not use termcap init/deinit strings` \
     -F                      `# Quit if entire file fits on first screen`
 }
 
