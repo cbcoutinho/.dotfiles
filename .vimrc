@@ -3,6 +3,7 @@
 set shell=/bin/bash         " Force shell to use bash
 set nocompatible            " Be iMproved, required for (n)vim
 set number                  " Line numbers
+set relativenumber          " Relative line numbers w.r.t the cursor
 
 filetype plugin indent on
 " show existing tab with 4 spaces width
