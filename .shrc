@@ -84,7 +84,7 @@ export MAKEFLAGS="$MAKEFLAGS -j`nproc`"
 export OMP_NUM_THREADS=`nproc`
 
 # Go-related paths
-export GOPATH="$HOME/Software/go"
+export GOPATH="$HOME/.go"
 PATH="$GOPATH/bin":$PATH
 
 # Node Version Manager (NVM)
