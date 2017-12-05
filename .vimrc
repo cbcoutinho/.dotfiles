@@ -33,6 +33,7 @@ endif
 " Spell checking
 set spell spelllang=en_us
 au BufNewFile,BufRead .shrc set filetype=sh     " Sets .shrc files to use sh syntax
+au BufNewFile,BufRead *.cls set filetype=tex     " Sets .cls files to use latex syntax
 
 if has('nvim')
 	"echo "I'm nvim"
