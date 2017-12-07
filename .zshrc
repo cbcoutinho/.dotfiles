@@ -12,10 +12,6 @@ DEFAULT_USER=$USER
 # options
 #-------------------------------------------------------------
 
-# colours
-source ~/.vim/plugged/gruvbox/gruvbox_256palette.sh
-source ~/.shrc
-
 # Uncomment the following line if you want to disable marking untracked
 # files under VCS as dirty. This makes repository status check for large
 # repositories much, much faster.
@@ -65,7 +61,14 @@ alias testpl='echo "\ue0b0 \u00b1 \ue0a0 \u27a6 \u2718 \u26a1 \u2699"'
 # vim mode
 bindkey -v
 
+# PATH assignments
+source ~/.shrc
+
+# colours
+source ~/.vim/plugged/gruvbox/gruvbox_256palette.sh
+
 # syntax highlighting
+source ~/Software/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
 # Shell completions (rust, cargo, and hub)
