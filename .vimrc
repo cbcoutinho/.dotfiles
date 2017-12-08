@@ -6,12 +6,11 @@ set number                  " Line numbers
 set relativenumber          " Relative line numbers w.r.t the cursor
 
 filetype plugin indent on
-" show existing tab with 4 spaces width
-set tabstop=4
-" when indenting with '>', use 4 spaces width
-set shiftwidth=4
-" On pressing tab, insert 4 spaces
-set expandtab
+set expandtab               " Uses spaces instead of tabs
+set tabstop     =4          " show existing tab with 4 spaces width
+set shiftwidth  =4          " when indenting with '>', use 4 spaces width
+set softtabstop =4          " Tab key indents by 4 spaces
+set backspace   =indent,eol,start   " Make backspace work as expected
 
 if has('nvim-0.1.5')        " True color in neovim wasn't added until 0.1.5
     set termguicolors
@@ -20,9 +19,9 @@ elseif has('nvim')
 endif
 
 set nowrap                  " Don't wrap long lines automatically
-set textwidth=75            " Set textwidth to <n> chars, wrap after that
-set formatoptions+=t        " Automatically wrap lines after <textwidth> chars
-set formatoptions-=l        " Already long lines will also be auto-wrapped if appended to
+set textwidth       =75     " Set textwidth to <n> chars, wrap after that
+set formatoptions   +=t     " Automatically wrap lines after <textwidth> chars
+set formatoptions   -=l     " Already long lines will also be auto-wrapped if appended to
 
 " Further, from the wiki:
 " If you want to wrap lines in a specific area, move the cursor to the
@@ -37,14 +36,12 @@ endif
 " Spell checking
 set spell spelllang=en_us
 au BufNewFile,BufRead .shrc set filetype=sh     " Sets .shrc files to use sh syntax
-au BufNewFile,BufRead *.cls set filetype=tex     " Sets .cls files to use latex syntax
+au BufNewFile,BufRead *.cls set filetype=tex    " Sets .cls files to use latex syntax
 
 if has('nvim')
-	"echo "I'm nvim"
 	let plugfile = '~/.local/share/nvim/site/autoload/plug.vim'
 	let plugin_dir = '~/.local/share/nvim/plugged'
 else
-	"echo "I'm vim"
 	let plugfile = '~/.vim/autoload/plug.vim'
 	let plugin_dir = '~/.vim/plugged'
 endif

@@ -257,8 +257,3 @@ plugins=(git zsh-syntax-highlighting)
 
 # Copy of PROMPT_COMMAND from bash
 precmd() { eval 'if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history 1)" >> ~/.logs/zsh-history-$(date "+%Y-%m-%d").log; fi' }
-
-export PATH
-export LIBRARY_PATH
-export LD_LIBRARY_PATH
-export PYTHONPATH
