@@ -72,8 +72,6 @@ PATH="/opt/mssql-tools/bin":$PATH
 PATH="$HOME/Software/Salome/appli_V8_2_0":$PATH
 
 # ParaView directory
-PATH="$HOME/Software/ParaView/install/bin":$PATH
-LD_LIBRARY_PATH="$HOME/Software/ParaView/install/lib/paraview-5.4":$LD_LIBRARY_PATH
 # *** ParaView contains six 1.7.2, whereas matplotlib 2.10 needs system six 1.11 ***
 # PYTHONPATH="$HOME/Software/ParaView/install/lib/paraview-5.4":$PYTHONPATH
 # PYTHONPATH="$HOME/Software/ParaView/install/lib/paraview-5.4/site-packages":$PYTHONPATH
