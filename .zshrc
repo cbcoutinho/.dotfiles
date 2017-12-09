@@ -40,7 +40,6 @@ function ls {
     -F                      `# Append indicator (one of */=>@|) to entries` \
     -h                      `# with -l and/or -s, print human readable sizes` \
     --color=always          `# colorize the output` \
-    -v                      `# natural sort of (version) numbers within text` \
     --author                `# with -l, print the author of each file` \
     --time-style=long-iso   `# with -l, show times using style STYLE` \
     -C "$@"                 `# list entries ($@) by columns` \
@@ -49,6 +48,7 @@ function ls {
     -X                      `# Do not use termcap init/deinit strings` \
     -F                      `# Quit if entire file fits on first screen`
 }
+# -v                      `# natural sort of (version) numbers within text` \
 
 # powerline test
 alias testpl='echo "\ue0b0 \u00b1 \ue0a0 \u27a6 \u2718 \u26a1 \u2699"'
