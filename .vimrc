@@ -11,6 +11,8 @@ set tabstop     =4          " show existing tab with 4 spaces width
 set shiftwidth  =4          " when indenting with '>', use 4 spaces width
 set softtabstop =4          " Tab key indents by 4 spaces
 set backspace   =indent,eol,start   " Make backspace work as expected
+set ignorecase              " Ignore case in search results, using \C overrides this
+set smartcase               " Ignores 'set ignorecase' if search contains upper case letter
 
 if has('nvim-0.1.5')        " True color in neovim wasn't added until 0.1.5
     set termguicolors

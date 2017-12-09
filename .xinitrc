@@ -47,6 +47,7 @@ esac
 # Add your own lines here...
 #
 
+# This is for paraview, because making softlink to ~/bin doesn't work
 export PATH="$HOME/.local/bin":$PATH
 
 
