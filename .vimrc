@@ -62,8 +62,17 @@ endif
 call plug#begin(plugin_dir)
 
 " Language specific plugins
+" Completions in neovim
+if has('nvim')
+    Plug 'roxma/nvim-completion-manager'
+    Plug 'SirVer/ultisnips'
+    Plug 'honza/vim-snippets'
+endif
+
 Plug 'rust-lang/rust.vim'           " Rust stuff
 Plug 'racer-rust/vim-racer'         " Racer in vim
+Plug 'roxma/nvim-cm-racer'          " Neovim/vim8 completion for rust
+
 if has('nvim-0.1.5')
     Plug 'snoe/nvim-parinfer.js'    " Lisp parens auto-adjust for nvim 0.1.5+
 else
@@ -79,8 +88,12 @@ Plug 'sheerun/vim-polyglot'             " Syntax highlighting for different lang
 Plug 'scrooloose/nerdtree'              " Project tree directory
 Plug 'scrooloose/nerdcommenter'         " Easily comment lines
 Plug 'Xuyuanp/nerdtree-git-plugin'      " Git plugin for NERDTree
+
 Plug 'tpope/vim-fugitive'               " Git plugin for vim
+Plug 'tpope/vim-rhubarb'                " Git plugin for vim - extension for Github
+"Plug 'humphrey/fugitive-gitlab.vim'     " Git plugin for vim - extension for Gitlab
 Plug 'airblade/vim-gitgutter'           " Git status in gutter (next to line numbers)
+
 Plug 'itchyny/lightline.vim'            " Status line for vim
 
 " All of your Plugins must be added before the following line

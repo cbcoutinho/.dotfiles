@@ -20,7 +20,7 @@ PYTHONPATH="$HOME/Projects":$PYTHONPATH
 
 # Rust directory
 PATH="$HOME/.cargo/bin":$PATH
-LD_LIBRARY_PATH=$(rustc --print sysroot)/lib:$LD_LIBRARY_PATH # For rustfmt
+LD_LIBRARY_PATH="$(rustc --print sysroot)/lib":$LD_LIBRARY_PATH # For rustfmt
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src" # For racer
 
 # Ruby/Gem bin
