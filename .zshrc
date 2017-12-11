@@ -65,7 +65,7 @@ bindkey -v
 source ~/.shrc
 
 # colours
-source ~/.vim/plugged/gruvbox/gruvbox_256palette.sh
+source ~/.local/share/nvim/plugged/gruvbox/gruvbox_256palette.sh
 
 # syntax highlighting
 source ~/Software/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
