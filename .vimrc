@@ -65,14 +65,18 @@ call plug#begin(plugin_dir)
 " Completions in neovim
 if has('nvim')
     Plug 'roxma/nvim-completion-manager'
-    Plug 'SirVer/ultisnips'
-    Plug 'honza/vim-snippets'
 endif
 
+" Snippets for code completion 
+Plug 'SirVer/ultisnips'             " The snippets engine
+Plug 'honza/vim-snippets'           " Snippets themselves
+
+" Rust
 Plug 'rust-lang/rust.vim'           " Rust stuff
 Plug 'racer-rust/vim-racer'         " Racer in vim
 Plug 'roxma/nvim-cm-racer'          " Neovim/vim8 completion for rust
 
+" Lisp-like (e.g. Clojure)
 if has('nvim-0.1.5')
     Plug 'snoe/nvim-parinfer.js'    " Lisp parens auto-adjust for nvim 0.1.5+
 else
@@ -124,7 +128,7 @@ au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
 " From https://stackoverflow.com/questions/6577579/task-tags-in-vim
 if has("autocmd")
-  " Highlight TODO, FIXME, NOTE, etc.
+  " Highlight TODO, FIXME, NOTE, BUG, etc.
   if v:version > 701
     autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|CHANGED\|XXX\|BUG\|HACK\)')
     autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\)')
