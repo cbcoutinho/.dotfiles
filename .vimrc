@@ -21,7 +21,7 @@ elseif has('nvim')
 endif
 
 set nowrap                  " Don't wrap long lines automatically
-set textwidth       =75     " Set textwidth to <n> chars, wrap after that
+set textwidth       =72     " Set textwidth to <n> chars, wrap after that
 set formatoptions   +=t     " Automatically wrap lines after <textwidth> chars
 set formatoptions   -=l     " Already long lines will also be auto-wrapped if appended to
 
@@ -95,7 +95,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'      " Git plugin for NERDTree
 
 Plug 'tpope/vim-fugitive'               " Git plugin for vim
 Plug 'tpope/vim-rhubarb'                " Git plugin for vim - extension for Github
-"Plug 'humphrey/fugitive-gitlab.vim'     " Git plugin for vim - extension for Gitlab
+Plug 'shumphrey/fugitive-gitlab.vim'     " Git plugin for vim - extension for Gitlab
 Plug 'airblade/vim-gitgutter'           " Git status in gutter (next to line numbers)
 
 Plug 'itchyny/lightline.vim'            " Status line for vim
