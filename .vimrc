@@ -134,3 +134,9 @@ if has("autocmd")
     autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\)')
   endif
 endif
+
+" For rusty-tags support in rust files using vim
+" Requires the `exuberant-ctags` package to be installed
+autocmd BufRead *.rs :setlocal tags+=./.rusty-tags.vi;/,$RUST_SRC_PATH/.rusty-tags.vi
+autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
+
