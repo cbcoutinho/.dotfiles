@@ -64,7 +64,7 @@ bindkey -v
 # PATH assignments
 source ~/.shrc
 
-# colours
+# colours from neovim/gruvbox
 source ~/.local/share/nvim/plugged/gruvbox/gruvbox_256palette.sh
 
 # syntax highlighting
@@ -73,6 +73,7 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
 # Shell completions (rust, cargo, and hub)
 fpath+=~/.zfunc
+fpath+=~/Software/zsh-completions/src
 
 # completions
 autoload -Uz compinit && compinit
