@@ -25,6 +25,12 @@ set textwidth       =72     " Set textwidth to <n> chars, wrap after that
 set formatoptions   +=t     " Automatically wrap lines after <textwidth> chars
 set formatoptions   -=l     " Already long lines will also be auto-wrapped if appended to
 
+" Fortran specific spacing:
+let fortran_free_source=1
+let fortran_have_tabs=1
+let fortran_more_precise=1
+let fortran_do_enddo=1
+
 " Further, from the wiki:
 " If you want to wrap lines in a specific area, move the cursor to the
 " text you want to format and type gq followed by the range.  For
@@ -67,14 +73,13 @@ if has('nvim')
     Plug 'roxma/nvim-completion-manager'
 endif
 
-" Snippets for code completion 
-Plug 'SirVer/ultisnips'             " The snippets engine
-Plug 'honza/vim-snippets'           " Snippets themselves
+" Fortran
+"Plug 'vim-scripts/fortran.vim'      " Extra indentation rules for Fortran
 
 " Rust
 Plug 'rust-lang/rust.vim'           " Rust stuff
 Plug 'racer-rust/vim-racer'         " Racer in vim
-Plug 'roxma/nvim-cm-racer'          " Neovim/vim8 completion for rust
+Plug 'roxma/nvim-cm-racer'          " Neovim/vim8 completion for Rust
 
 " Lisp-like (e.g. Clojure)
 if has('nvim-0.1.5')
@@ -140,3 +145,5 @@ endif
 autocmd BufRead *.rs :setlocal tags+=./.rusty-tags.vi;/,$RUST_SRC_PATH/.rusty-tags.vi
 autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
 
+"Remove all trailing whitespace by pressing F5
+nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
