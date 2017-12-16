@@ -4,6 +4,7 @@
 # But not these files...
 !.gitignore
 !matplotlibrc
+!presentation.mplstyle
 
 # ...even if they are in subdirectories
 !*/
