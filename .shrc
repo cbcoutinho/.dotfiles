@@ -41,10 +41,6 @@ PATH="$HOME/Software/dakota/install/bin:$HOME/Software/dakota/install/test":$PAT
 LD_LIBRARY_PATH="$HOME/Software/dakota/install/lib":$LD_LIBRARY_PATH
 PYTHONPATH="$HOME/Software/dakota/install/share/dakota/Python":$PYTHONPATH
 
-# OpenMPI directory
-PATH="$HOME/Software/openmpi/install/bin":$PATH
-LD_LIBRARY_PATH="$HOME/Software/openmpi/install/lib64":$LD_LIBRARY_PATH
-
 # HDF5 directory
 PATH="$HOME/Software/hdf5/install/bin":$PATH
 LIBRARY_PATH="$HOME/Software/hdf5/install/lib64":$LIBRARY_PATH
@@ -82,7 +78,7 @@ PATH="$HOME/Software/Salome/appli_V8_2_0":$PATH
 
 
 # Pointwise directories
-LD_LIBRARY_PATH="LD_LIBRARY_PATH=/opt/Pointwise/PointwiseV18.0R4/linux_x86_64/bin":$LD_LIBRARY_PATH
+LD_LIBRARY_PATH="/opt/Pointwise/PointwiseV18.0R4/linux_x86_64/bin":$LD_LIBRARY_PATH
 LD_LIBRARY_PATH="/opt/Pointwise/PointwiseV18.0R4/linux_x86_64/lib":$LD_LIBRARY_PATH
 
 # make flags
