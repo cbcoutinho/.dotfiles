@@ -80,6 +80,11 @@ PATH="$HOME/Software/Salome/appli_V8_2_0":$PATH
 # PYTHONPATH="$HOME/Software/ParaView/install/lib/paraview-5.4/site-packages":$PYTHONPATH
 # export PYTHONSTARTUP="$HOME/.pythonrc" # For tab-completion in pvpython
 
+
+# Pointwise directories
+LD_LIBRARY_PATH="LD_LIBRARY_PATH=/opt/Pointwise/PointwiseV18.0R4/linux_x86_64/bin":$LD_LIBRARY_PATH
+LD_LIBRARY_PATH="/opt/Pointwise/PointwiseV18.0R4/linux_x86_64/lib":$LD_LIBRARY_PATH
+
 # make flags
 export MAKEFLAGS="$MAKEFLAGS -j`nproc`"
 export OMP_NUM_THREADS=`nproc`
