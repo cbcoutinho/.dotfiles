@@ -93,6 +93,13 @@ PATH="$GOPATH/bin":$PATH
 export NVM_DIR="$HOME/Software/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
 
+# Pip save wheels cache
+[ -d "$HOME/.cache/pip/wheelhouse" ] || mkdir $HOME/.cache/pip/wheelhouse
+export STANDARD_CACHE_DIR="${XDG_CACHE_HOME:-${HOME}/.cache}/pip"
+export WHEELHOUSE="${STANDARD_CACHE_DIR}/wheelhouse"
+export PIP_FIND_LINKS="file://${WHEELHOUSE}"
+export PIP_WHEEL_DIR="${WHEELHOUSE}"
+
 # Matlab use system java later than 1.7 because graphics issues
 # NOTE: 2017b upgraded to java 1.8
 #export JAVA_HOME=/usr/lib64/jvm/java-1.8.0-openjdk
