@@ -1,3 +1,5 @@
+#To use this style, just add the following to .py file:
+#   plt.style.use('presentation')
 axes.titlesize : 24
 axes.labelsize : 20
 lines.linewidth : 3
