@@ -1,7 +1,7 @@
+#compdef pytest py.test
+
 # Found in unfinished PR:
 #   https://github.com/blueyed/zsh-completions/tree/pytest
-
-#compdef pytest py.test
 
 local ret=1
 
