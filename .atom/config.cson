@@ -117,6 +117,3 @@
     hideVcsIgnoredFiles: true
   welcome:
     showOnStartup: false
-".fortran.source":
-  editor:
-    tabLength: 2

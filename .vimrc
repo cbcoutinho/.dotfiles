@@ -147,3 +147,6 @@ autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . 
 
 "Remove all trailing whitespace by pressing F5
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+
+" Coffeescript syntax for cson files
+au BufRead,BufNewFile *.cson set ft=coffee
