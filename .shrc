@@ -85,6 +85,11 @@ LD_LIBRARY_PATH="/opt/Pointwise/PointwiseV18.0R4/linux_x86_64/lib":$LD_LIBRARY_P
 export MAKEFLAGS="$MAKEFLAGS -j`nproc`"
 export OMP_NUM_THREADS=`nproc`
 
+# GCC variables
+export FC=gfortran
+export CC=gcc
+export CXX=g++
+
 # Go-related paths
 export GOPATH="$HOME/.go"
 PATH="$GOPATH/bin":$PATH
