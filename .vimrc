@@ -150,3 +150,6 @@ nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 " Coffeescript syntax for cson files
 au BufRead,BufNewFile *.cson set ft=coffee
+
+" Remove highlighted search text after search/sed/etc...
+nnoremap <esc> :noh<return><esc>

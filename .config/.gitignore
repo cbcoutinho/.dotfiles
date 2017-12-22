@@ -7,3 +7,4 @@
 #Or these directories
 !matplotlib/
 !pip/
+!onedrive/

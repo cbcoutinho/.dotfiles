@@ -1,0 +1,6 @@
+# Ignore everything
+*
+
+# Except for .gitignore and config
+!.gitignore
+!config
