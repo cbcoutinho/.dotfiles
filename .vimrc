@@ -123,6 +123,7 @@ let g:lightline = {'colorscheme':'gruvbox'}
 
 set noshowmode          " Status is already in lightline - no need for redundency
 
+""" Rust Lang Options
 " Options for vim-racer
 let g:racer_cmd = "~/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
@@ -130,6 +131,15 @@ au FileType rust nmap gd <Plug>(rust-def)
 au FileType rust nmap gs <Plug>(rust-def-split)
 au FileType rust nmap gx <Plug>(rust-def-vertical)
 au FileType rust nmap <leader>gd <Plug>(rust-doc)
+
+" For rusty-tags support in rust files using vim
+" Requires the `exuberant-ctags` package to be installed
+autocmd BufRead *.rs :setlocal tags+=./.rusty-tags.vi;/,$RUST_SRC_PATH/.rusty-tags.vi
+autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
+
+" Auto-rustfmt on save
+let g:autofmt_autosave = 1
+
 
 " From https://stackoverflow.com/questions/6577579/task-tags-in-vim
 if has("autocmd")
@@ -139,11 +149,6 @@ if has("autocmd")
     autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\)')
   endif
 endif
-
-" For rusty-tags support in rust files using vim
-" Requires the `exuberant-ctags` package to be installed
-autocmd BufRead *.rs :setlocal tags+=./.rusty-tags.vi;/,$RUST_SRC_PATH/.rusty-tags.vi
-autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
 
 "Remove all trailing whitespace by pressing F5
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
