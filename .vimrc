@@ -21,7 +21,7 @@ elseif has('nvim')
 endif
 
 set nowrap                  " Don't wrap long lines automatically
-set textwidth       =72     " Set textwidth to <n> chars, wrap after that
+set textwidth       =70     " Set textwidth to <n> chars, wrap after that
 set formatoptions   +=t     " Automatically wrap lines after <textwidth> chars
 set formatoptions   -=l     " Already long lines will also be auto-wrapped if appended to
 
