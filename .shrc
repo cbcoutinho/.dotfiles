@@ -1,5 +1,5 @@
 # Sudo functions + ~/bin for tumbleweed?
-PATH="/usr/sbin:$HOME/bin:$HOME/.local/bin":$PATH
+PATH="/usr/sbin:/sbin:$HOME/bin:$HOME/.local/bin":$PATH
 LD_LIBRARY_PATH="$HOME/.local/lib:$HOME/.local/lib64":$LD_LIBRARY_PATH
 MANPATH="$HOME/.local/share/man":$MANPATH
 
@@ -19,6 +19,7 @@ alias ana="export PATH=$HOME/anaconda3/bin:$PATH"
 # added by travis gem
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 
+# Rust-related env vars
 PATH="$HOME/.cargo/bin":$PATH
 if command -v rustc > /dev/null 2>&1; then
     # Rust directory
@@ -30,6 +31,9 @@ fi
 if command -v ruby >/dev/null && command -v gem >/dev/null; then
     PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
+
+# Haskell directory
+PATH="$HOME/.cabal/bin":$PATH
 
 # GCC development directories
 # PATH="$HOME/Software/gcc/install/bin":$PATH
