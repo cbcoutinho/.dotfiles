@@ -94,16 +94,19 @@ Plug 'altercation/vim-colors-solarized' " Solarized theme for vim
 Plug 'joshdick/onedark.vim'             " Onedark theme from Atom ported to vim
 Plug 'sheerun/vim-polyglot'             " Syntax highlighting for different languages
 
+
+" Vim-related plugins
 Plug 'scrooloose/nerdtree'              " Project tree directory
 Plug 'scrooloose/nerdcommenter'         " Easily comment lines
-Plug 'Xuyuanp/nerdtree-git-plugin'      " Git plugin for NERDTree
+Plug 'tpope/vim-surround'               " Easily surround text with parens, quotes, etc.
+Plug 'itchyny/lightline.vim'            " Status line for vim
 
+" Vim/git-related plugins
 Plug 'tpope/vim-fugitive'               " Git plugin for vim
 Plug 'tpope/vim-rhubarb'                " Git plugin for vim - extension for Github
-Plug 'shumphrey/fugitive-gitlab.vim'     " Git plugin for vim - extension for Gitlab
+Plug 'shumphrey/fugitive-gitlab.vim'    " Git plugin for vim - extension for Gitlab
+Plug 'Xuyuanp/nerdtree-git-plugin'      " Git plugin for vim - extension for NERDTree
 Plug 'airblade/vim-gitgutter'           " Git status in gutter (next to line numbers)
-
-Plug 'itchyny/lightline.vim'            " Status line for vim
 
 " All of your Plugins must be added before the following line
 call plug#end()
