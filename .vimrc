@@ -126,6 +126,9 @@ let g:lightline = {'colorscheme':'gruvbox'}
 
 set noshowmode          " Status is already in lightline - no need for redundency
 
+" Allows NERDTree to show .dot files
+let NERDTreeShowHidden=1
+
 """ Rust Lang Options
 " Options for vim-racer
 let g:racer_cmd = "~/.cargo/bin/racer"
