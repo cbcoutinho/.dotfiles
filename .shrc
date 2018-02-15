@@ -4,11 +4,12 @@ LD_LIBRARY_PATH="$HOME/.local/lib:$HOME/.local/lib64":$LD_LIBRARY_PATH
 MANPATH="$HOME/.local/share/man":$MANPATH
 
 # OpenFOAM Aliases
-alias ofdev="source $HOME/OpenFOAM/OpenFOAM-dev/etc/bashrc $FOAM_SETTINGS"
-alias of5x="source $HOME/OpenFOAM/OpenFOAM-5.x/etc/bashrc $FOAM_SETTINGS"
-alias of4x="source $HOME/OpenFOAM/OpenFOAM-4.x/etc/bashrc $FOAM_SETTINGS"
-alias of30x="source $HOME/OpenFOAM/OpenFOAM-3.0.x/etc/bashrc $FOAM_SETTINGS"
-alias of1712="source $HOME/OpenFOAM/OpenFOAM-v1712/etc/bashrc $FOAM_SETTINGS"
+OF_DIR=`[ -d $HOME/OpenFOAM ] && echo $HOME/OpenFOAM || echo /opt/OpenFOAM`
+alias ofdev="source $OF_DIR/OpenFOAM-dev/etc/bashrc $FOAM_SETTINGS"
+alias of5x="source $OF_DIR/OpenFOAM-5.x/etc/bashrc $FOAM_SETTINGS"
+alias of4x="source $OF_DIR/OpenFOAM-4.x/etc/bashrc $FOAM_SETTINGS"
+alias of30x="source $OF_DIR/OpenFOAM-3.0.x/etc/bashrc $FOAM_SETTINGS"
+alias of1712="source $OF_DIR/OpenFOAM-v1712/etc/bashrc $FOAM_SETTINGS"
 
 alias fe40="source $HOME/foam/foam-extend-4.0/etc/bashrc"
 
@@ -104,7 +105,7 @@ export NVM_DIR="$HOME/Software/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
 
 # Pip save wheels cache
-[ -d "$HOME/.cache/pip/wheelhouse" ] || mkdir $HOME/.cache/pip/wheelhouse
+[ -d "$HOME/.cache/pip/wheelhouse" ] || mkdir -p $HOME/.cache/pip/wheelhouse
 export STANDARD_CACHE_DIR="${XDG_CACHE_HOME:-${HOME}/.cache}/pip"
 export WHEELHOUSE="${STANDARD_CACHE_DIR}/wheelhouse"
 export PIP_FIND_LINKS="file://${WHEELHOUSE}"
@@ -118,6 +119,7 @@ export PIP_WHEEL_DIR="${WHEELHOUSE}"
 # extract archives
 function extract()
 {
+    set -x
   if [ -f $1 ] ; then
     case $1 in
       *.tar.bz2)   tar xvjf $1     ;;
@@ -137,6 +139,11 @@ function extract()
     echo "'$1' is not a valid file!"
   fi
 }
+
+# Fix PATH, LIBRARY_PATH, LD_LIBRARY_PATH due to possible 'blanks'
+PATH=$(echo $PATH | sed -E -e 's/^:*//' -e 's/:*$//' -e 's/:+/:/g')
+LIBRARY_PATH=$(echo $LIBRARY_PATH | sed -E -e 's/^:*//' -e 's/:*$//' -e 's/:+/:/g')
+LD_LIBRARY_PATH=$(echo $LD_LIBRARY_PATH | sed -E -e 's/^:*//' -e 's/:*$//' -e 's/:+/:/g')
 
 # ls aliases
 alias ls="ls --group-directories-first"
