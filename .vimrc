@@ -43,6 +43,8 @@ endif
 
 " Spell checking
 set spell spelllang=en_us
+
+" Filetype associations
 au BufNewFile,BufRead .shrc set filetype=sh     " Sets .shrc files to use sh syntax
 au BufNewFile,BufRead *.cls set filetype=tex    " Sets .cls files to use latex syntax
 
@@ -82,6 +84,8 @@ Plug 'racer-rust/vim-racer'         " Racer in vim
 Plug 'roxma/nvim-cm-racer'          " Neovim/vim8 completion for Rust
 
 " Lisp-like (e.g. Clojure)
+Plug 'tpope/vim-fireplace'          " Connects to the nREPL for 'dynamic' clojure development
+Plug 'kien/rainbow_parentheses.vim' " Rainbow parens for Lisps - see options below
 if has('nvim-0.1.5')
     Plug 'snoe/nvim-parinfer.js'    " Lisp parens auto-adjust for nvim 0.1.5+
 else
@@ -100,6 +104,7 @@ Plug 'scrooloose/nerdtree'              " Project tree directory
 Plug 'scrooloose/nerdcommenter'         " Easily comment lines
 Plug 'tpope/vim-surround'               " Easily surround text with parens, quotes, etc.
 Plug 'itchyny/lightline.vim'            " Status line for vim
+Plug 'godlygeek/tabular'                " Easily align text based on a characher - see http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
 
 " Vim/git-related plugins
 Plug 'tpope/vim-fugitive'               " Git plugin for vim
@@ -124,10 +129,15 @@ let g:lightline = {'colorscheme':'gruvbox'}
 "colorscheme onedark
 "let g:lightline = {'colorscheme':'onedark'}
 
-set noshowmode          " Status is already in lightline - no need for redundency
+" Status is already in lightline - no need for redundency
+set noshowmode
+
 
 " Allows NERDTree to show .dot files
 let NERDTreeShowHidden=1
+
+" Git gutter update time (in ms)
+set updatetime=100
 
 """ Rust Lang Options
 " Options for vim-racer
@@ -147,6 +157,13 @@ autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . 
 let g:autofmt_autosave = 1
 
 
+" Rainbow parens options for Lisps => defaults to `ON`
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+
 " From https://stackoverflow.com/questions/6577579/task-tags-in-vim
 if has("autocmd")
   " Highlight TODO, FIXME, NOTE, BUG, etc.
@@ -162,5 +179,5 @@ nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 " Coffeescript syntax for cson files
 au BufRead,BufNewFile *.cson set ft=coffee
 
-" Remove highlighted search text after search/sed/etc...
+" Remove highlighted search text after search/sed/etc by hitting <esc>
 nnoremap <esc> :noh<return><esc>
