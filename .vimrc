@@ -137,7 +137,7 @@ set noshowmode
 let NERDTreeShowHidden=1
 
 " Git gutter update time (in ms)
-set updatetime=100
+set updatetime=1000
 
 """ Rust Lang Options
 " Options for vim-racer
