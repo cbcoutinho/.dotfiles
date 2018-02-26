@@ -119,7 +119,34 @@ call plug#end()
 colorscheme gruvbox
 let g:gruvbox_italic=1 	" Allows italics for gruvbox
 set background=dark 	" Options: [light/dark]
-let g:lightline = {'colorscheme':'gruvbox'}
+
+" Extra `lightline` options found here: http://newbilityvery.github.io/2017/08/04/switch-to-lightline/
+let g:lightline = {
+    \   'colorscheme':'gruvbox',
+    \   'active': {
+    \       'left': [   ['mode', 'paste'],
+    \                   ['gitbranch', 'readonly', 'filename', 'modified' ]
+    \       ],
+    \   },
+    \   'component': {
+    \       'lineinfo': ' %3l:%-2v',
+    \   },
+    \   'component_function': {
+    \       'gitbranch': 'fugitive#head',
+    \   },
+\   }
+let g:lightline.separator = {
+	\   'left': '', 'right': '',
+\   }
+let g:lightline.subseparator = {
+	\   'left': '', 'right': '',
+\   }
+"let g:lightline.tabline = {
+    "\   'left': [ ['tabs'] ],
+    "\   'right': [ ['close'] ]
+"\   }
+"set showtabline=2  " Show tabline
+"set guioptions-=e  " Don't use GUI tabline
 
 "colorscheme solarized
 "set background=dark 	" Options: [light/dark]
@@ -159,9 +186,9 @@ let g:autofmt_autosave = 1
 
 " Rainbow parens options for Lisps => defaults to `ON`
 au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+au Syntax   * RainbowParenthesesLoadRound
+au Syntax   * RainbowParenthesesLoadSquare
+au Syntax   * RainbowParenthesesLoadBraces
 
 
 " From https://stackoverflow.com/questions/6577579/task-tags-in-vim
