@@ -155,6 +155,7 @@ alias exa="exa --group-directories-first"
 alias rm="rm -iv"
 alias cp="cp -iv"
 alias mv="mv -iv"
+alias tree="tree -a -I '.git' -F"
 
 # prevents accidentally clobbering files
 alias mkdir="mkdir -p"
