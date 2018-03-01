@@ -6,10 +6,14 @@ set number                  " Line numbers
 set relativenumber          " Relative line numbers w.r.t the cursor
 
 filetype plugin indent on
-set expandtab               " Uses spaces instead of tabs
+"set expandtab               " Uses spaces instead of tabs
 set tabstop     =4          " show existing tab with 4 spaces width
 set shiftwidth  =4          " when indenting with '>', use 4 spaces width
-set softtabstop =4          " Tab key indents by 4 spaces
+"set softtabstop =4          " Tab key indents by 4 spaces
+set list
+set listchars=tab:>-
+set listchars+=trail:x
+
 set backspace   =indent,eol,start   " Make backspace work as expected
 set ignorecase              " Ignore case in search results, using \C overrides this
 set smartcase               " Ignores 'set ignorecase' if search contains upper case letter
@@ -57,14 +61,14 @@ else
 endif
 
 if empty(glob(plugfile))
-    function GetPlugVim(plugfile)
-        execute '!curl -fLo'
-        \ a:plugfile
-        \ '--create-dirs'
-        \ 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-        autocmd VimEnter * PlugInstall
-    endfunction
-    call GetPlugVim(plugfile)
+	function GetPlugVim(plugfile)
+		execute '!curl -fLo'
+		\ a:plugfile
+		\ '--create-dirs'
+		\ 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+		autocmd VimEnter * PlugInstall
+	endfunction
+	call GetPlugVim(plugfile)
 endif
 
 call plug#begin(plugin_dir)
@@ -76,20 +80,26 @@ if has('nvim')
 endif
 
 " Fortran
-"Plug 'vim-scripts/fortran.vim'      " Extra indentation rules for Fortran
+"Plug 'vim-scripts/fortran.vim'          " Extra indentation rules for Fortran
 
 " Rust
-Plug 'rust-lang/rust.vim'           " Rust stuff
-Plug 'racer-rust/vim-racer'         " Racer in vim
-Plug 'roxma/nvim-cm-racer'          " Neovim/vim8 completion for Rust
+Plug 'rust-lang/rust.vim', {'for': 'rust'}               " Rust stuff
+Plug 'racer-rust/vim-racer', {'for': 'rust'}             " Racer in vim
+Plug 'roxma/nvim-cm-racer', {'for': 'rust'}              " Neovim/vim8 completion for Rust
 
 " Lisp-like (e.g. Clojure)
-Plug 'tpope/vim-fireplace'          " Connects to the nREPL for 'dynamic' clojure development
-Plug 'kien/rainbow_parentheses.vim' " Rainbow parens for Lisps - see options below
+Plug 'tpope/vim-fireplace', {'for': 'clojure'}              " Connects to the nREPL for 'dynamic' clojure development
+Plug 'kien/rainbow_parentheses.vim'     " Rainbow parens for Lisps - see options below
 if has('nvim-0.1.5')
-    Plug 'snoe/nvim-parinfer.js'    " Lisp parens auto-adjust for nvim 0.1.5+
+	function! UpdateRPlugin(info)
+		silent UpdateRemotePlugins
+		echomsg 'rplugin updated: ' . a:info['name'] . ', restart vim for changes'
+	endfunction
+	Plug 'snoe/nvim-parinfer.js', {
+				\ 'do': function('UpdateRPlugin'),
+				\ 'for': 'clojure'}        " Lisp parens auto-adjust for nvim 0.1.5+
 else
-    Plug 'bhurlow/vim-parinfer'     " Vim port of nvim-parinfer.js
+	Plug 'bhurlow/vim-parinfer', {'for': 'clojure'}         " Vim port of nvim-parinfer.js
 endif
 
 " Color schemes
@@ -122,18 +132,18 @@ set background=dark 	" Options: [light/dark]
 
 " Extra `lightline` options found here: http://newbilityvery.github.io/2017/08/04/switch-to-lightline/
 let g:lightline = {
-    \   'colorscheme':'gruvbox',
-    \   'active': {
-    \       'left': [   ['mode', 'paste'],
-    \                   ['gitbranch', 'readonly', 'filename', 'modified' ]
-    \       ],
-    \   },
-    \   'component': {
-    \       'lineinfo': ' %3l:%-2v',
-    \   },
-    \   'component_function': {
-    \       'gitbranch': 'fugitive#head',
-    \   },
+	\   'colorscheme':'gruvbox',
+	\   'active': {
+	\       'left': [   ['mode', 'paste'],
+	\                   ['gitbranch', 'readonly', 'filename', 'modified' ]
+	\       ],
+	\   },
+	\   'component': {
+	\       'lineinfo': ' %3l:%-2v',
+	\   },
+	\   'component_function': {
+	\       'gitbranch': 'fugitive#head',
+	\   },
 \   }
 let g:lightline.separator = {
 	\   'left': '', 'right': '',
@@ -142,8 +152,8 @@ let g:lightline.subseparator = {
 	\   'left': '', 'right': '',
 \   }
 "let g:lightline.tabline = {
-    "\   'left': [ ['tabs'] ],
-    "\   'right': [ ['close'] ]
+	"\   'left': [ ['tabs'] ],
+	"\   'right': [ ['close'] ]
 "\   }
 "set showtabline=2  " Show tabline
 "set guioptions-=e  " Don't use GUI tabline
@@ -176,7 +186,7 @@ au FileType rust nmap gx <Plug>(rust-def-vertical)
 au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
 " For rusty-tags support in rust files using vim
-" Requires the `exuberant-ctags` package to be installed
+" Requires the `universal-ctags` package to be installed
 autocmd BufRead *.rs :setlocal tags+=./.rusty-tags.vi;/,$RUST_SRC_PATH/.rusty-tags.vi
 autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
 
@@ -193,11 +203,11 @@ au Syntax   * RainbowParenthesesLoadBraces
 
 " From https://stackoverflow.com/questions/6577579/task-tags-in-vim
 if has("autocmd")
-  " Highlight TODO, FIXME, NOTE, BUG, etc.
-  if v:version > 701
-    autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|CHANGED\|XXX\|BUG\|HACK\)')
-    autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\)')
-  endif
+	" Highlight TODO, FIXME, NOTE, BUG, etc.
+	if v:version > 701
+		autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|CHANGED\|XXX\|BUG\|HACK\)')
+		autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\)')
+	endif
 endif
 
 "Remove all trailing whitespace by pressing F5
