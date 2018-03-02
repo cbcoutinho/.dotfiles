@@ -1,4 +1,4 @@
-fortune -sa && echo '\n'
+#fortune -sa && echo '\n'
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -34,21 +34,23 @@ export LESS_TERMCAP_us=$'\e[0;35m'
 export COLUMNS  # Remember columns for subprocesses.
 # eval `dircolors ~/.dir_colors/dircolors-solarized/dircolors.ansi-dark`
 eval "$(dircolors)"
+
 # NOTE: cannot comment inside bash functions, so 'execute' them instead
-function ls {
-	command ls \
-    -F                      `# Append indicator (one of */=>@|) to entries` \
-    -h                      `# with -l and/or -s, print human readable sizes` \
-    --color=always          `# colorize the output` \
-    --author                `# with -l, print the author of each file` \
-    --time-style=long-iso   `# with -l, show times using style STYLE` \
-    -C "$@"                 `# list entries ($@) by columns` \
-    | less                  `# Pipe output into 'less'` \
-    -R                      `# Output "raw" control characters.` \
-    -X                      `# Do not use termcap init/deinit strings` \
-    -F                      `# Quit if entire file fits on first screen`
+function ls
+{
+	 command ls \
+	 -F                      `# Append indicator (one of */=>@|) to entries` \
+	 -h                      `# with -l and/or -s, print human readable sizes` \
+	 --color=always          `# colorize the output` \
+	 --author                `# with -l, print the author of each file` \
+	 --time-style=long-iso   `# with -l, show times using style STYLE` \
+	 -C "$@"                 `# list entries ($@) by columns` \
+	 | less                  `# Pipe output into 'less'` \
+	 -R                      `# Output "raw" control characters.` \
+	 -X                      `# Do not use termcap init/deinit strings` \
+	 -F                      `# Quit if entire file fits on first screen`
 }
-# -v                      `# natural sort of (version) numbers within text` \
+
 
 # powerline test
 alias testpl='echo "\ue0b0 \u00b1 \ue0a0 \u27a6 \u2718 \u26a1 \u2699"'
@@ -273,6 +275,3 @@ plugins=(git zsh-syntax-highlighting)
 
 # Copy of PROMPT_COMMAND from bash
 #precmd() { eval 'if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history 1)" >> ~/.logs/zsh-history-$(date "+%Y-%m-%d").log; fi' }
-
-# Log commands to syslog for future reference
-precmd() { eval 'RETRN_VAL=$?;logger -p local6.debug "$(whoami) [$$]: $(history | tail -n1 | sed "s/^[ ]*[0-9]\+[ ]*//" ) [$RETRN_VAL]"' }

@@ -121,6 +121,7 @@ Plug 'tpope/vim-fugitive'               " Git plugin for vim
 Plug 'tpope/vim-rhubarb'                " Git plugin for vim - extension for Github
 Plug 'shumphrey/fugitive-gitlab.vim'    " Git plugin for vim - extension for Gitlab
 Plug 'Xuyuanp/nerdtree-git-plugin'      " Git plugin for vim - extension for NERDTree
+Plug 'octref/RootIgnore'                " Git Plugin for Vim - ignore files in .gitignore
 Plug 'airblade/vim-gitgutter'           " Git status in gutter (next to line numbers)
 
 " All of your Plugins must be added before the following line
@@ -155,16 +156,10 @@ let g:lightline.subseparator = {
 	"\   'left': [ ['tabs'] ],
 	"\   'right': [ ['close'] ]
 "\   }
+
 "set showtabline=2  " Show tabline
 "set guioptions-=e  " Don't use GUI tabline
 
-"colorscheme solarized
-"set background=dark 	" Options: [light/dark]
-"let g:lightline = {'colorscheme':'solarized'}
-
-"let g:onedark_terminal_italics=1 	" Allows italics for onedark
-"colorscheme onedark
-"let g:lightline = {'colorscheme':'onedark'}
 
 " Status is already in lightline - no need for redundency
 set noshowmode
@@ -172,6 +167,14 @@ set noshowmode
 
 " Allows NERDTree to show .dot files
 let NERDTreeShowHidden=1
+let NERDTreeRespectWildIgnore=1
+let loaded_netrwPlugin=1
+" Toggle NERDTree
+noremap <C-n> :NERDTreeToggle<CR>
+
+" Close Vim if NERDTree is last window open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 
 " Git gutter update time (in ms)
 set updatetime=1000

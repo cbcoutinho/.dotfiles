@@ -140,6 +140,7 @@ function extract()
   fi
 }
 
+
 # Fix PATH, LIBRARY_PATH, LD_LIBRARY_PATH due to possible 'blanks'
 PATH=$(echo $PATH | sed -E -e 's/^:*//' -e 's/:*$//' -e 's/:+/:/g')
 LIBRARY_PATH=$(echo $LIBRARY_PATH | sed -E -e 's/^:*//' -e 's/:*$//' -e 's/:+/:/g')
@@ -170,6 +171,7 @@ alias chromium="chromium --disk-cache-dir=/tmp/cache"
 alias vi="nvim"
 alias vim="nvim"
 export EDITOR="nvim"
+export VISUAL="nvim"
 
 eval "$(hub alias -s)"
 
@@ -177,3 +179,6 @@ export PATH
 export LIBRARY_PATH
 export LD_LIBRARY_PATH
 export PYTHONPATH
+
+# Log commands to syslog for future reference
+precmd() { eval 'RETRN_VAL=$?;logger -p local6.debug "$(whoami) [$$]: $(history | tail -n1 | sed "s/^[ ]*[0-9]\+[ ]*//" ) [$RETRN_VAL]"' }
