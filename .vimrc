@@ -108,6 +108,8 @@ Plug 'altercation/vim-colors-solarized' " Solarized theme for vim
 Plug 'joshdick/onedark.vim'             " Onedark theme from Atom ported to vim
 Plug 'sheerun/vim-polyglot'             " Syntax highlighting for different languages
 
+" Supercollider vim plugin
+Plug 'supercollider/scvim'
 
 " Vim-related plugins
 Plug 'scrooloose/nerdtree'              " Project tree directory
