@@ -3,10 +3,6 @@
 
 # But not these files...
 !.gitignore
+!tex.vim
 
 #Or these directories
-!matplotlib/
-!pip/
-!onedrive/
-!alacritty/
-!nvim/

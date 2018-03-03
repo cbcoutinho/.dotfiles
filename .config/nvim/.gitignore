@@ -5,8 +5,4 @@
 !.gitignore
 
 #Or these directories
-!matplotlib/
-!pip/
-!onedrive/
-!alacritty/
-!nvim/
+!after/

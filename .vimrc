@@ -174,9 +174,9 @@ noremap <C-n> :NERDTreeToggle<CR>
 " Close Vim if NERDTree is last window open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-
 " Git gutter update time (in ms)
 set updatetime=1000
+
 
 """ Rust Lang Options
 " Options for vim-racer
