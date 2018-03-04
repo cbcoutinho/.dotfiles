@@ -45,8 +45,6 @@ if executable('par')        " See 'par' vimcast for amazing text wrangler
     set formatprg=par
 endif
 
-" Spell checking
-set spell spelllang=en_us
 
 " Filetype associations
 au BufNewFile,BufRead .shrc set filetype=sh     " Sets .shrc files to use sh syntax
@@ -127,8 +125,8 @@ Plug 'airblade/vim-gitgutter'           " Git status in gutter (next to line num
 call plug#end()
 
 colorscheme gruvbox
-let g:gruvbox_italic=1 	" Allows italics for gruvbox
-set background=dark 	" Options: [light/dark]
+let g:gruvbox_italic=1	" Allows italics for gruvbox
+set background=light		" Options: [light/dark]
 
 " Extra `lightline` options found here: http://newbilityvery.github.io/2017/08/04/switch-to-lightline/
 let g:lightline = {
@@ -165,7 +163,7 @@ set noshowmode
 
 
 " Allows NERDTree to show .dot files
-let NERDTreeShowHidden=1
+"let NERDTreeShowHidden=1
 let NERDTreeRespectWildIgnore=1
 let loaded_netrwPlugin=1
 " Toggle NERDTree
@@ -192,8 +190,9 @@ au FileType rust nmap <leader>gd <Plug>(rust-doc)
 autocmd BufRead *.rs :setlocal tags+=./.rusty-tags.vi;/,$RUST_SRC_PATH/.rusty-tags.vi
 autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
 
-" Auto-rustfmt on save
-let g:autofmt_autosave = 1
+" Auto-rustfmt on save. Make sure to have rustfmt installed
+"	rustup component add rustfmt-preview
+let g:rustfmt_autosave = 1
 
 
 " Rainbow parens options for Lisps => defaults to `ON`
