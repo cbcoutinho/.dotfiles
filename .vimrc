@@ -146,16 +146,10 @@ let g:lightline = {
 let g:lightline.separator = {
 	\   'left': '', 'right': '',
 \   }
-let g:lightline.subseparator = {
-	\   'left': '', 'right': '',
+let g:lightline.tabline = {
+	\   'left': [ ['tabs'] ],
+	\   'right': [ ['close'] ]
 \   }
-"let g:lightline.tabline = {
-	"\   'left': [ ['tabs'] ],
-	"\   'right': [ ['close'] ]
-"\   }
-
-"set showtabline=2  " Show tabline
-"set guioptions-=e  " Don't use GUI tabline
 
 
 " Status is already in lightline - no need for redundency
