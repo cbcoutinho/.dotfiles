@@ -125,8 +125,8 @@ Plug 'airblade/vim-gitgutter'           " Git status in gutter (next to line num
 call plug#end()
 
 colorscheme gruvbox
-let g:gruvbox_italic=1	" Allows italics for gruvbox
-set background=light		" Options: [light/dark]
+let g:gruvbox_italic=1		" Allows italics for gruvbox
+set background=dark			" Options: [light/dark]
 
 " Extra `lightline` options found here: http://newbilityvery.github.io/2017/08/04/switch-to-lightline/
 let g:lightline = {
