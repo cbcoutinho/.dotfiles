@@ -181,7 +181,8 @@ au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
 " For rusty-tags support in rust files using vim
 " Requires the `universal-ctags` package to be installed
-autocmd BufRead *.rs :setlocal tags+=./.rusty-tags.vi;/,$RUST_SRC_PATH/.rusty-tags.vi
+" NOTE: Format is set in ~/.rusty-tags/config.toml
+autocmd BufRead *.rs :setlocal tags+=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
 autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
 
 " Auto-rustfmt on save. Make sure to have rustfmt installed
