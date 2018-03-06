@@ -180,6 +180,3 @@ export PATH
 export LIBRARY_PATH
 export LD_LIBRARY_PATH
 export PYTHONPATH
-
-# Log commands to syslog for future reference
-precmd() { eval 'RETRN_VAL=$?;logger -p local6.debug "$(whoami) [$$]: $(history | tail -n1 | sed "s/^[ ]*[0-9]\+[ ]*//" ) [$RETRN_VAL]"' }

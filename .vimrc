@@ -88,7 +88,7 @@ Plug 'roxma/nvim-cm-racer', {'for': 'rust'}              " Neovim/vim8 completio
 " Lisp-like (e.g. Clojure)
 Plug 'tpope/vim-fireplace', {'for': 'clojure'}              " Connects to the nREPL for 'dynamic' clojure development
 Plug 'kien/rainbow_parentheses.vim'     " Rainbow parens for Lisps - see options below
-if has('nvim-0.1.5')
+if has('nvim-0.2.1')
 	Plug 'snoe/nvim-parinfer.js' ", {'for': 'clojure'}
 else
 	Plug 'bhurlow/vim-parinfer', {'for': 'clojure'}         " Vim port of nvim-parinfer.js

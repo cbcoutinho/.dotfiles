@@ -31,7 +31,11 @@ export PS1="\u:[\w]\$(parse_git_branch)\[\033[00m\]\$ "
 export PS2="> "
 
 # Creates a log file of all commands used per day. Must create ~/.logs/ first
-export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history 1)" >> ~/.logs/bash-history-$(date "+%Y-%m-%d").log; fi'
+#export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history 1)" >> ~/.logs/bash-history-$(date "+%Y-%m-%d").log; fi'
+
+# Log commands to syslog for future reference
+# 	Move to global /etc/bash.bashrc
+# export PROMPT_COMMAND='RETRN_VAL=$?;logger -p local6.debug "$(whoami) [$$]: $(history 1 | sed "s/^[ ]*[0-9]\+[ ]*//" ) [$RETRN_VAL]"'
 
 
 ### PETSC
