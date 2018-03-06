@@ -30,18 +30,23 @@ if command -v rustc > /dev/null 2>&1; then
     export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src" # For racer
 fi
 
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+PATH="$HOME/.rvm/bin":$PATH
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && \
+	source "$HOME/.rvm/scripts/rvm" || \
+	echo "No rvm found, execute the following:\n	curl -sSL https://get.rvm.io | bash -s stable"
+# Load RVM into a shell session *as a function*
+
 # Ruby/Gem bin
 if command -v ruby >/dev/null && command -v gem >/dev/null; then
     PATH="$(ruby -rrubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
 
+
 # Haskell directory
 PATH="$HOME/.cabal/bin":$PATH
 
-# GCC development directories
-# PATH="$HOME/Software/gcc/install/bin":$PATH
-# LIBRARY_PATH="$HOME/Software/gcc/install/lib64/gcc/x86_64-pc-linux-gnu/lib64":$LIBRARY_PATH
-# LD_LIBRARY_PATH="$HOME/Software/gcc/install/lib64/gcc/x86_64-pc-linux-gnu/8.0.0":$LD_LIBRARY_PATH
 
 # Dakota directories
 PATH="$HOME/Software/dakota/install/bin:$HOME/Software/dakota/install/test":$PATH
@@ -57,9 +62,6 @@ LD_LIBRARY_PATH="$HOME/Software/hdf5/install/lib64":$LD_LIBRARY_PATH
 PATH="/usr/local/cuda/bin":$PATH
 LIBRARY_PATH="/usr/local/cuda/lib64":$LIBRARY_PATH
 LD_LIBRARY_PATH="/usr/local/cuda/lib64":$LD_LIBRARY_PATH
-
-# CMake repository build (need v3.7+ for learn_dg and Fortran submodules)
-export CMAKE_PREFIX_PATH=$LD_LIBRARY_PATH
 
 # PGI Community edition
 #PATH="$HOME/Software/pgice/linux86-64/17.4/bin":$PATH
@@ -77,14 +79,9 @@ PATH="/opt/mssql-tools/bin":$PATH
 # Salome directory
 PATH="$HOME/Software/Salome/appli_V8_2_0":$PATH
 
-# ParaView directory
-# *** ParaView contains six 1.7.2, whereas matplotlib 2.10 needs system six 1.11 ***
-# PYTHONPATH="$HOME/Software/ParaView/install/lib/paraview-5.4":$PYTHONPATH
-# PYTHONPATH="$HOME/Software/ParaView/install/lib/paraview-5.4/site-packages":$PYTHONPATH
-# export PYTHONSTARTUP="$HOME/.pythonrc" # For tab-completion in pvpython
-
 
 # Pointwise directories
+PATH="/opt/Pointwise/PointwiseV18.0R4":$PATH
 #LD_LIBRARY_PATH="/opt/Pointwise/PointwiseV18.0R4/linux_x86_64/bin":$LD_LIBRARY_PATH
 #LD_LIBRARY_PATH="/opt/Pointwise/PointwiseV18.0R4/linux_x86_64/lib":$LD_LIBRARY_PATH
 
@@ -180,3 +177,6 @@ export PATH
 export LIBRARY_PATH
 export LD_LIBRARY_PATH
 export PYTHONPATH
+
+# CMake repository build (need v3.7+ for learn_dg and Fortran submodules)
+export CMAKE_PREFIX_PATH=$LD_LIBRARY_PATH
