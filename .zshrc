@@ -64,6 +64,7 @@ alias testpl='echo "\ue0b0 \u00b1 \ue0a0 \u27a6 \u2718 \u26a1 \u2699"'
 bindkey -v
 
 # PATH assignments
+# NOTE: No longer necessary - see ~/.zshenv
 source ~/.shrc
 
 # colours from neovim/gruvbox - assumes nvim has installed gruvbox

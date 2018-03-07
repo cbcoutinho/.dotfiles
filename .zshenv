@@ -1,4 +1,4 @@
 # PATH assignments
-#source ~/.shrc
+#source ~/.zshrc
 
 #fortune -sa && echo '\n'

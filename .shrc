@@ -1,11 +1,11 @@
-# Sudo functions + ~/bin for tumbleweed?
-PATH="/usr/sbin:/sbin:$HOME/bin:$HOME/.local/bin":$PATH
-LD_LIBRARY_PATH="$HOME/.local/lib:$HOME/.local/lib64":$LD_LIBRARY_PATH
-MANPATH="$HOME/.local/share/man":$MANPATH
-CPATH="$HOME/.local/include:$CPATH"
-
 # OpenFOAM Aliases
-OF_DIR=`[ -d $HOME/OpenFOAM ] && echo $HOME/OpenFOAM || echo /opt/OpenFOAM`
+if test -n "$(find ~/OpenFOAM -maxdepth 1 -type d -name 'OpenFOAM-*' -print -quit)"
+then
+	OF_DIR=$HOME/OpenFOAM
+else
+	OF_DIR=/opt/OpenFOAM
+fi
+#OF_DIR=`[ -d $HOME/OpenFOAM ] && echo $HOME/OpenFOAM || echo /opt/OpenFOAM`
 alias ofdev="source $OF_DIR/OpenFOAM-dev/etc/bashrc $FOAM_SETTINGS"
 alias of5x="source $OF_DIR/OpenFOAM-5.x/etc/bashrc $FOAM_SETTINGS"
 alias of4x="source $OF_DIR/OpenFOAM-4.x/etc/bashrc $FOAM_SETTINGS"
@@ -23,8 +23,8 @@ alias ana="export PATH=$HOME/anaconda3/bin:$PATH"
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 
 # Rust-related env vars
-PATH="$HOME/.cargo/bin":$PATH
-if command -v rustc > /dev/null 2>&1; then
+if command -v $HOME/.cargo/bin/rustc > /dev/null 2>&1; then
+	export PATH="$HOME/.cargo/bin":$PATH
     # Rust directory
     LD_LIBRARY_PATH="$(rustc --print sysroot)/lib":$LD_LIBRARY_PATH # For rustfmt
     export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src" # For racer
@@ -32,7 +32,7 @@ fi
 
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-PATH="$HOME/.rvm/bin":$PATH
+export PATH="$HOME/.rvm/bin":$PATH
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && \
 	source "$HOME/.rvm/scripts/rvm" || \
 	echo "No rvm found, execute the following:\n	curl -sSL https://get.rvm.io | bash -s stable"
@@ -40,50 +40,26 @@ PATH="$HOME/.rvm/bin":$PATH
 
 # Ruby/Gem bin
 if command -v ruby >/dev/null && command -v gem >/dev/null; then
-    PATH="$(ruby -rrubygems -e 'puts Gem.user_dir')/bin:$PATH"
+    export PATH="$(ruby -rrubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
 
+## HDF5 directory
+#PATH="$HOME/Software/hdf5/install/bin":$PATH
+#LIBRARY_PATH="$HOME/Software/hdf5/install/lib64":$LIBRARY_PATH
+#LD_LIBRARY_PATH="$HOME/Software/hdf5/install/lib64":$LD_LIBRARY_PATH
 
-# Haskell directory
-PATH="$HOME/.cabal/bin":$PATH
-
-
-# Dakota directories
-PATH="$HOME/Software/dakota/install/bin:$HOME/Software/dakota/install/test":$PATH
-LD_LIBRARY_PATH="$HOME/Software/dakota/install/lib":$LD_LIBRARY_PATH
-PYTHONPATH="$HOME/Software/dakota/install/share/dakota/Python":$PYTHONPATH
-
-# HDF5 directory
-PATH="$HOME/Software/hdf5/install/bin":$PATH
-LIBRARY_PATH="$HOME/Software/hdf5/install/lib64":$LIBRARY_PATH
-LD_LIBRARY_PATH="$HOME/Software/hdf5/install/lib64":$LD_LIBRARY_PATH
-
-# CUDA directory
-PATH="/usr/local/cuda/bin":$PATH
-LIBRARY_PATH="/usr/local/cuda/lib64":$LIBRARY_PATH
-LD_LIBRARY_PATH="/usr/local/cuda/lib64":$LD_LIBRARY_PATH
+## CUDA directory
+#PATH="/usr/local/cuda/bin":$PATH
+#LIBRARY_PATH="/usr/local/cuda/lib64":$LIBRARY_PATH
+#LD_LIBRARY_PATH="/usr/local/cuda/lib64":$LD_LIBRARY_PATH
 
 # PGI Community edition
 #PATH="$HOME/Software/pgice/linux86-64/17.4/bin":$PATH
 
-# Microsoft SQL Server stuff, based on instructions from:
-#   https://docs.microsoft.com/en-us/sql/connect/odbc/linux/installing-the-microsoft-odbc-driver-for-sql-server-on-linux
-#
-# The steps to install the sql driver are essentially these:
-#   su
-#   zypper ar https://packages.microsoft.com/config/sles/12/prod.repo
-#   exit
-#   sudo zypper install msodbcsql mssql-tools unixODBC-devel
-PATH="/opt/mssql-tools/bin":$PATH
 
-# Salome directory
-PATH="$HOME/Software/Salome/appli_V8_2_0":$PATH
+## Salome directory
+#PATH="$HOME/Software/Salome/appli_V8_2_0":$PATH
 
-
-# Pointwise directories
-PATH="/opt/Pointwise/PointwiseV18.0R4":$PATH
-#LD_LIBRARY_PATH="/opt/Pointwise/PointwiseV18.0R4/linux_x86_64/bin":$LD_LIBRARY_PATH
-#LD_LIBRARY_PATH="/opt/Pointwise/PointwiseV18.0R4/linux_x86_64/lib":$LD_LIBRARY_PATH
 
 # make flags
 export MAKEFLAGS="$MAKEFLAGS -j`nproc`"
@@ -94,25 +70,23 @@ export FC=gfortran
 export CC=gcc
 export CXX=g++
 
-# Go-related paths
-export GOPATH="$HOME/.go"
-PATH="$GOPATH/bin":$PATH
-
 # Node Version Manager (NVM)
 export NVM_DIR="$HOME/Software/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
 
-# Pip save wheels cache
-[ -d "$HOME/.cache/pip/wheelhouse" ] || mkdir -p $HOME/.cache/pip/wheelhouse
-export STANDARD_CACHE_DIR="${XDG_CACHE_HOME:-${HOME}/.cache}/pip"
-export WHEELHOUSE="${STANDARD_CACHE_DIR}/wheelhouse"
-export PIP_FIND_LINKS="file://${WHEELHOUSE}"
-export PIP_WHEEL_DIR="${WHEELHOUSE}"
+export PATH
+export LIBRARY_PATH
+export LD_LIBRARY_PATH
+export PYTHONPATH
 
-# Matlab use system java later than 1.7 because graphics issues
-# NOTE: 2017b upgraded to java 1.8
-#export JAVA_HOME=/usr/lib64/jvm/java-1.8.0-openjdk
-#export MATLAB_JAVA=$JAVA_HOME/jre
+# CMake repository build (need v3.7+ for learn_dg and Fortran submodules)
+export CMAKE_PREFIX_PATH=$LD_LIBRARY_PATH
+
+# Fix PATH, LIBRARY_PATH, LD_LIBRARY_PATH due to possible 'blanks'
+export PATH=$(echo $PATH | sed -E -e 's/^:*//' -e 's/:*$//' -e 's/:+/:/g')
+export LIBRARY_PATH=$(echo $LIBRARY_PATH | sed -E -e 's/^:*//' -e 's/:*$//' -e 's/:+/:/g')
+export LD_LIBRARY_PATH=$(echo $LD_LIBRARY_PATH | sed -E -e 's/^:*//' -e 's/:*$//' -e 's/:+/:/g')
+
 
 # extract archives
 function extract()
@@ -138,11 +112,6 @@ function extract()
   fi
 }
 
-
-# Fix PATH, LIBRARY_PATH, LD_LIBRARY_PATH due to possible 'blanks'
-PATH=$(echo $PATH | sed -E -e 's/^:*//' -e 's/:*$//' -e 's/:+/:/g')
-LIBRARY_PATH=$(echo $LIBRARY_PATH | sed -E -e 's/^:*//' -e 's/:*$//' -e 's/:+/:/g')
-LD_LIBRARY_PATH=$(echo $LD_LIBRARY_PATH | sed -E -e 's/^:*//' -e 's/:*$//' -e 's/:+/:/g')
 
 # ls aliases
 alias ls="ls --group-directories-first"
@@ -172,11 +141,3 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 
 eval "$(hub alias -s)"
-
-export PATH
-export LIBRARY_PATH
-export LD_LIBRARY_PATH
-export PYTHONPATH
-
-# CMake repository build (need v3.7+ for learn_dg and Fortran submodules)
-export CMAKE_PREFIX_PATH=$LD_LIBRARY_PATH
