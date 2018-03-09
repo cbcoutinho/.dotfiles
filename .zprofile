@@ -10,11 +10,12 @@ unsetopt nonomatch
 # Sudo functions + ~/bin for tumbleweed?
 PATH="/usr/sbin:/sbin:$HOME/bin:$HOME/.local/bin":$PATH
 LD_LIBRARY_PATH="$HOME/.local/lib:$HOME/.local/lib64":$LD_LIBRARY_PATH
+#LD_LIBRARY_PATH="/usr/local/lib64:/usr/local/lib64/openmpi":$LD_LIBRARY_PATH
 MANPATH="$HOME/.local/share/man":$MANPATH
-CPATH="$HOME/.local/include:$CPATH"
+CPATH="$HOME/.local/include:/usr/local/include:$CPATH"
 
 # Dakota directories
-PATH="$HOME/Software/dakota/install/bin:$HOME/Software/dakota/install/test":$PATH
+PATH="$HOME/Software/dakota/install/bin:$HOME/Software/dakota/install/share/example/test":$PATH
 LD_LIBRARY_PATH="$HOME/Software/dakota/install/lib":$LD_LIBRARY_PATH
 PYTHONPATH="$HOME/Software/dakota/install/share/dakota/Python":$PYTHONPATH
 
@@ -22,7 +23,7 @@ PYTHONPATH="$HOME/Software/dakota/install/share/dakota/Python":$PYTHONPATH
 PATH="$HOME/.cabal/bin":$PATH
 
 # Pointwise directories
-PATH="/opt/Pointwise/PointwiseV18.0R4":$PATH
+#PATH="/opt/Pointwise/PointwiseV18.0R4":$PATH
 
 # Go-related paths
 export GOPATH="$HOME/.go"
@@ -36,7 +37,7 @@ PATH="$GOPATH/bin":$PATH
 #   zypper ar https://packages.microsoft.com/config/sles/12/prod.repo
 #   exit
 #   sudo zypper install msodbcsql mssql-tools unixODBC-devel
-PATH="/opt/mssql-tools/bin":$PATH
+#PATH="/opt/mssql-tools/bin":$PATH
 
 # Pip save wheels cache
 [ -d "$HOME/.cache/pip/wheelhouse" ] || mkdir -p $HOME/.cache/pip/wheelhouse
@@ -48,4 +49,5 @@ export PIP_WHEEL_DIR="${WHEELHOUSE}"
 export PATH
 export LIBRARY_PATH
 export LD_LIBRARY_PATH
+export CPATH
 export PYTHONPATH
