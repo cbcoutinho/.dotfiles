@@ -129,8 +129,15 @@ alias tree="tree -a -I '.git' -F"
 alias mkdir="mkdir -p"
 
 # pretty-print of some PATH variables
-alias path="echo -e ${PATH//:/\\\n}"
-alias libpath="echo -e ${LD_LIBRARY_PATH//:/\\\n}"
+#alias path="echo -e ${PATH//:/\\\n}"
+#alias libpath="echo -e ${LD_LIBRARY_PATH//:/\\\n}"
+function path () {
+	echo $PATH | sed 's/:/\n/g'
+}
+
+function libpath () {
+	echo $LD_LIBRARY_PATH | sed 's/:/\n/g'
+}
 
 # ayy lmao
 alias qutebrowser="qutebrowser --backend webengine"
