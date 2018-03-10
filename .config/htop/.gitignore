@@ -3,11 +3,6 @@
 
 # But not these files...
 !.gitignore
+!htoprc-tumbleweed
 
 #Or these directories
-!matplotlib/
-!pip/
-!onedrive/
-!alacritty/
-!nvim/
-!htop/
