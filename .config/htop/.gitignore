@@ -4,5 +4,6 @@
 # But not these files...
 !.gitignore
 !htoprc-tumbleweed
+!htoprc-leap
 
 #Or these directories
