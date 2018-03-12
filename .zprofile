@@ -19,6 +19,12 @@ PATH="$HOME/Software/dakota/install/bin:$HOME/Software/dakota/install/share/exam
 LD_LIBRARY_PATH="$HOME/Software/dakota/install/lib":$LD_LIBRARY_PATH
 PYTHONPATH="$HOME/Software/dakota/install/share/dakota/Python":$PYTHONPATH
 
+# PETSc
+#export PETSC_DIR=/home/chris/Software/petsc/install
+#export PETSC_ARCH=""
+export PETSC_DIR=/home/chris/Software/petsc/petsc-src
+export PETSC_ARCH=arch-linux2-c-debug
+
 # Haskell directory
 PATH="$HOME/.cabal/bin":$PATH
 
