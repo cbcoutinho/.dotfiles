@@ -25,25 +25,18 @@ PYTHONPATH="$HOME/Software/dakota/install/share/dakota/Python":$PYTHONPATH
 export PETSC_DIR=/home/chris/Software/petsc/petsc-src
 export PETSC_ARCH=arch-linux2-c-debug
 
+# MOOSE
+export MOOSE_DIR="$HOME/Software/MOOSE/moose-src"
+export MOOSE_JOBS=`nproc`
+
+
 # Haskell directory
 PATH="$HOME/.cabal/bin":$PATH
-
-# Pointwise directories
-#PATH="/opt/Pointwise/PointwiseV18.0R4":$PATH
 
 # Go-related paths
 export GOPATH="$HOME/.go"
 PATH="$GOPATH/bin":$PATH
 
-# Microsoft SQL Server stuff, based on instructions from:
-#   https://docs.microsoft.com/en-us/sql/connect/odbc/linux/installing-the-microsoft-odbc-driver-for-sql-server-on-linux
-#
-# The steps to install the sql driver are essentially these:
-#   su
-#   zypper ar https://packages.microsoft.com/config/sles/12/prod.repo
-#   exit
-#   sudo zypper install msodbcsql mssql-tools unixODBC-devel
-#PATH="/opt/mssql-tools/bin":$PATH
 
 # Pip save wheels cache
 [ -d "$HOME/.cache/pip/wheelhouse" ] || mkdir -p $HOME/.cache/pip/wheelhouse
