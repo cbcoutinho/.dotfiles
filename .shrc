@@ -36,10 +36,14 @@ fi
 
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$HOME/.rvm/bin":$PATH
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && \
-	source "$HOME/.rvm/scripts/rvm" || \
-	echo "No rvm found, execute the following:\n	curl -sSL https://get.rvm.io | bash -s stable"
+if [[ -s "$HOME/.rvm/scripts/rvm" ]]
+then
+	source "$HOME/.rvm/scripts/rvm"
+	export PATH="$HOME/.rvm/bin":$PATH
+else
+	echo "No rvm found, execute the following:"
+	echo "	curl -sSL https://get.rvm.io | bash -s stable"
+fi
 # Load RVM into a shell session *as a function*
 
 # Ruby/Gem bin
@@ -47,27 +51,10 @@ if command -v ruby >/dev/null && command -v gem >/dev/null; then
     export PATH="$(ruby -rrubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
 
-## HDF5 directory
-#PATH="$HOME/Software/hdf5/install/bin":$PATH
-#LIBRARY_PATH="$HOME/Software/hdf5/install/lib64":$LIBRARY_PATH
-#LD_LIBRARY_PATH="$HOME/Software/hdf5/install/lib64":$LD_LIBRARY_PATH
 
-## CUDA directory
-#PATH="/usr/local/cuda/bin":$PATH
-#LIBRARY_PATH="/usr/local/cuda/lib64":$LIBRARY_PATH
-#LD_LIBRARY_PATH="/usr/local/cuda/lib64":$LD_LIBRARY_PATH
-
-# PGI Community edition
-#PATH="$HOME/Software/pgice/linux86-64/17.4/bin":$PATH
-
-
-## Salome directory
-#PATH="$HOME/Software/Salome/appli_V8_2_0":$PATH
-
-
-# make flags
-export MAKEFLAGS="$MAKEFLAGS -j`nproc`"
-export OMP_NUM_THREADS=`nproc`
+# gmake flags
+command -v nproc >/dev/null && export MAKEFLAGS="$MAKEFLAGS -j`nproc`"
+command -v nproc >/dev/null && export OMP_NUM_THREADS=`nproc`
 
 # GCC variables
 export FC=gfortran
@@ -83,13 +70,13 @@ export LIBRARY_PATH
 export LD_LIBRARY_PATH
 export PYTHONPATH
 
-# CMake repository build (need v3.7+ for learn_dg and Fortran submodules)
-export CMAKE_PREFIX_PATH=$LD_LIBRARY_PATH
-
 # Fix PATH, LIBRARY_PATH, LD_LIBRARY_PATH due to possible 'blanks'
 export PATH=$(echo $PATH | sed -E -e 's/^:*//' -e 's/:*$//' -e 's/:+/:/g')
 export LIBRARY_PATH=$(echo $LIBRARY_PATH | sed -E -e 's/^:*//' -e 's/:*$//' -e 's/:+/:/g')
 export LD_LIBRARY_PATH=$(echo $LD_LIBRARY_PATH | sed -E -e 's/^:*//' -e 's/:*$//' -e 's/:+/:/g')
+
+# CMake repository build (need v3.7+ for learn_dg and Fortran submodules)
+export CMAKE_PREFIX_PATH="$LD_LIBRARY_PATH"
 
 
 # extract archives
@@ -151,4 +138,4 @@ alias vim="nvim"
 export EDITOR="nvim"
 export VISUAL="nvim"
 
-eval "$(hub alias -s)"
+command -v hub && eval "$(hub alias -s)"
