@@ -1,18 +1,22 @@
-# OpenFOAM Aliases
-if test -n "$(find ~/OpenFOAM -maxdepth 1 -type d -name 'OpenFOAM-*' -print -quit)"
-then
-	OF_DIR=$HOME/OpenFOAM
-else
-	OF_DIR=/opt/OpenFOAM
-fi
-#OF_DIR=`[ -d $HOME/OpenFOAM ] && echo $HOME/OpenFOAM || echo /opt/OpenFOAM`
-alias ofdev="source $OF_DIR/OpenFOAM-dev/etc/bashrc $FOAM_SETTINGS"
-alias of5x="source $OF_DIR/OpenFOAM-5.x/etc/bashrc $FOAM_SETTINGS"
-alias of4x="source $OF_DIR/OpenFOAM-4.x/etc/bashrc $FOAM_SETTINGS"
-alias of30x="source $OF_DIR/OpenFOAM-3.0.x/etc/bashrc $FOAM_SETTINGS"
-alias of1712="source $OF_DIR/OpenFOAM-v1712/etc/bashrc $FOAM_SETTINGS"
 
-alias fe40="source $HOME/foam/foam-extend-4.0/etc/bashrc"
+if [ -d $HOME/OpenFOAM ]
+then
+	# OpenFOAM Aliases
+	if test -n "$(find ~/OpenFOAM -maxdepth 1 -type d -name 'OpenFOAM-*' -print -quit)"
+	then
+		OF_DIR=$HOME/OpenFOAM
+	else
+		OF_DIR=/opt/OpenFOAM
+	fi
+	#OF_DIR=`[ -d $HOME/OpenFOAM ] && echo $HOME/OpenFOAM || echo /opt/OpenFOAM`
+	alias ofdev="source $OF_DIR/OpenFOAM-dev/etc/bashrc $FOAM_SETTINGS"
+	alias of5x="source $OF_DIR/OpenFOAM-5.x/etc/bashrc $FOAM_SETTINGS"
+	alias of4x="source $OF_DIR/OpenFOAM-4.x/etc/bashrc $FOAM_SETTINGS"
+	alias of30x="source $OF_DIR/OpenFOAM-3.0.x/etc/bashrc $FOAM_SETTINGS"
+	alias of1712="source $OF_DIR/OpenFOAM-v1712/etc/bashrc $FOAM_SETTINGS"
+
+	alias fe40="source $HOME/foam/foam-extend-4.0/etc/bashrc"
+fi
 
 # Python path
 # PATH="$HOME/anaconda3/bin:$PATH"
