@@ -138,4 +138,4 @@ alias vim="nvim"
 export EDITOR="nvim"
 export VISUAL="nvim"
 
-command -v hub && eval "$(hub alias -s)"
+command -v hub >/dev/null && eval "$(hub alias -s)"
