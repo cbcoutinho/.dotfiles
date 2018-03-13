@@ -3,6 +3,9 @@
 # Originally from
 # https://askubuntu.com/a/201018
 
+# Usage:
+#	byzanz-record-region 30 -c output.gif
+
 # Delay before starting
 DELAY=10
 # Sound notification to let one know when recording is about to start (and ends)
