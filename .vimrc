@@ -119,8 +119,10 @@ Plug 'tpope/vim-rhubarb'                " Git plugin for vim - extension for Git
 Plug 'shumphrey/fugitive-gitlab.vim'    " Git plugin for vim - extension for Gitlab
 Plug 'Xuyuanp/nerdtree-git-plugin'      " Git plugin for vim - extension for NERDTree
 Plug 'octref/RootIgnore'                " Git Plugin for Vim - ignore files in .gitignore
-Plug 'airblade/vim-gitgutter'           " Git status in gutter (next to line numbers)
-
+if has('nvim-0.2.0')
+	" On debian (nvim-0.1.7), there is an api bug
+	Plug 'airblade/vim-gitgutter'		" Git status in gutter (next to line numbers)
+endif
 " All of your Plugins must be added before the following line
 call plug#end()
 
