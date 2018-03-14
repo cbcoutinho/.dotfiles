@@ -1,5 +1,5 @@
 
-if [ -d $HOME/OpenFOAM ]
+if [[ -d $HOME/OpenFOAM ]]
 then
 	# OpenFOAM Aliases
 	if test -n "$(find ~/OpenFOAM -maxdepth 1 -type d -name 'OpenFOAM-*' -print -quit)"
@@ -43,6 +43,7 @@ then
 else
 	echo "No rvm found, execute the following:"
 	echo "	curl -sSL https://get.rvm.io | bash -s stable"
+	export rvm_ignore_dotfiles=yes
 fi
 # Load RVM into a shell session *as a function*
 

@@ -4,7 +4,8 @@
 export ZSH=$HOME/.oh-my-zsh
 # source $ZSH/oh-my-zsh.sh
 
-# Uncomment the following line to hide user@host in prompt_context - see below
+# Uncomment the following line to hide user@host in prompt_context
+#	NOTE: See below
 DEFAULT_USER=$USER
 
 
@@ -64,7 +65,6 @@ alias testpl='echo "\ue0b0 \u00b1 \ue0a0 \u27a6 \u2718 \u26a1 \u2699"'
 bindkey -v
 
 # PATH assignments
-# NOTE: No longer necessary - see ~/.zshenv
 source ~/.shrc
 
 # colours from neovim/gruvbox - assumes nvim has installed gruvbox
@@ -150,8 +150,8 @@ prompt_end() {
 }
 
 # Prompt components
-# Each component will draw itself, and hide itself if no information needs to be shown
-# Context: user@hostname (who am I and where am I)
+# Each component will draw itself, and hide itself if no information
+# needs to be shown Context: user@hostname (who am I and where am I)
 prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
     prompt_segment 246 235 "%(!.%{%F{yellow}%}.)$USER@%m"
