@@ -123,6 +123,16 @@ if has('nvim-0.2.0')
 	" On debian (nvim-0.1.7), there is an api bug
 	Plug 'airblade/vim-gitgutter'		" Git status in gutter (next to line numbers)
 endif
+
+" Normal `gx` doesn't work, so we remap it
+"	https://github.com/neovim/neovim/issues/4612
+Plug 'tyru/open-browser.vim' "{
+  " Disable netrw gx mapping.
+  let g:netrw_nogx = get(g:, 'netrw_nogx', 1)
+  nmap gx <Plug>(openbrowser-open)
+  vmap gx <Plug>(openbrowser-open)
+"}
+
 " All of your Plugins must be added before the following line
 call plug#end()
 

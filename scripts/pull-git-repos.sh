@@ -6,7 +6,7 @@
 # Show lines being run
 set -x
 
-for ii in `find $HOME/Software -type d -name '.git' -prune -exec dirname {} \;`; do
+for ii in `find Software -type d -execdir test -d {}/'.git' \; -prune -print` do
 echo && echo $ii
 git -C $ii submodule update --init --recursive
 git -C $ii pull --recurse-submodules
