@@ -16,7 +16,7 @@ test -z "$PROFILEREAD" && . /etc/profile || true
 #export LANG=de_DE.UTF-8	# uncomment this line for German output
 #export LANG=fr_FR.UTF-8	# uncomment this line for French output
 #export LANG=es_ES.UTF-8	# uncomment this line for Spanish output
-export LANG=nl_NL.UTF-8	# uncomment this line for Dutch output
+#export LANG=nl_NL.UTF-8	# uncomment this line for Dutch output
 
 
 # Some people don't like fortune. If you uncomment the following lines,
