@@ -27,7 +27,6 @@ export PETSC_ARCH=arch-linux2-c-debug
 
 # MOOSE
 export MOOSE_DIR="$HOME/Software/MOOSE"
-export MOOSE_JOBS=`nproc`
 
 
 # Haskell directory

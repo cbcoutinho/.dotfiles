@@ -53,9 +53,12 @@ if command -v ruby >/dev/null && command -v gem >/dev/null; then
 fi
 
 
-# gmake flags
-command -v nproc >/dev/null && export MAKEFLAGS="$MAKEFLAGS -j`nproc`"
-command -v nproc >/dev/null && export OMP_NUM_THREADS=`nproc`
+# Flags using `nproc`
+if command -v nproc >/dev/null; then
+	export MAKEFLAGS="$MAKEFLAGS -j`nproc`"
+	export OMP_NUM_THREADS=`nproc`
+	export MOOSE_JOBS=`nproc`
+fi
 
 # GCC variables
 export FC=gfortran

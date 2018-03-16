@@ -226,3 +226,20 @@ au BufRead,BufNewFile *.cson set ft=coffee
 
 " Remove highlighted search text after search/sed/etc by hitting <esc>
 nnoremap <esc> :noh<return><esc>
+
+" Interleave similar sized blocks, from:
+"	https://vi.stackexchange.com/questions/4575
+function! Interleave()
+    " retrieve last selected area position and size
+    let start = line(".")
+    execute "normal! gvo\<esc>"
+    let end = line(".")
+    let [start, end] = sort([start, end], "n")
+    let size = (end - start + 1) / 2
+    " and interleave!
+    for i in range(size - 1)
+        execute (start + size + i). 'm' .(start + 2 * i)
+    endfor
+endfunction
+" Select your two contiguous, same-sized blocks, and use it to Interleave ;)
+vnoremap <pickYourMap> <esc>:call Interleave()<CR>
