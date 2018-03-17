@@ -18,6 +18,9 @@ set backspace   =indent,eol,start   " Make backspace work as expected
 set ignorecase              " Ignore case in search results, using \C overrides this
 set smartcase               " Ignores 'set ignorecase' if search contains upper case letter
 
+set splitbelow				" Split new buffer below instead of above
+set splitright				" Split new buffer right instead of left
+
 if has('nvim-0.1.5')        " True color in neovim wasn't added until 0.1.5
     set termguicolors
 elseif has('nvim')
