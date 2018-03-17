@@ -1,18 +1,34 @@
 " Make sure to slink this to ~/.vimrc (for vim) and ~/.config/nvim/init.vim (for neovim)
 
+" Vim settings {{{
 set shell=/bin/bash         " Force shell to use bash
 set nocompatible            " Be iMproved, required for (n)vim
 set number                  " Line numbers
 set relativenumber          " Relative line numbers w.r.t the cursor
+set cursorline				" Highlight current line
+set wildmenu				" Visual autocomplete for command menu - shows options when :sp _, etc
+set showcmd					" Show command being typed in bottom left - useful for keymaps
 
 filetype plugin indent on
 "set expandtab               " Uses spaces instead of tabs
 set tabstop     =4          " show existing tab with 4 spaces width
 set shiftwidth  =4          " when indenting with '>', use 4 spaces width
 "set softtabstop =4          " Tab key indents by 4 spaces
-set list
-set listchars=tab:>-
-set listchars+=trail:x
+" NOTE: Python overrides space/tabs settings in:
+"	/usr/share/nvim/runtime/ftplugin/python.vim
+
+" Code folding options are:
+"	[indent, marker, manual, expr, syntax, diff, indent]
+"set foldmethod=marker
+"set foldlevel=0
+
+set modelines=1				" This tells vim to look at the last line for the fold method
+
+
+
+set list					" Replaces certain whitespace with characters
+set listchars=tab:>-		" Replaces <TAB> with >---
+set listchars+=trail:x		" Replaces trailing whitespace with 'x'
 
 set backspace   =indent,eol,start   " Make backspace work as expected
 set ignorecase              " Ignore case in search results, using \C overrides this
@@ -39,8 +55,8 @@ let fortran_more_precise=1
 let fortran_do_enddo=1
 
 " Further, from the wiki:
-" If you want to wrap lines in a specific area, move the cursor to the
-" text you want to format and type gq followed by the range.  For
+" If you want to wrap lines in a specific area, move the cursor to
+" the text you want to format and type gq followed by the range. For
 " example, gqq wraps the current line and gqip wraps the current
 " paragraph.
 
@@ -49,10 +65,8 @@ if executable('par')        " See 'par' vimcast for amazing text wrangler
 endif
 
 
-" Filetype associations
-au BufNewFile,BufRead .shrc set filetype=sh     " Sets .shrc files to use sh syntax
-au BufNewFile,BufRead *.cls set filetype=tex    " Sets .cls files to use latex syntax
-
+" }}}
+" Plugins {{{
 if has('nvim')
 	let plugfile = '~/.local/share/nvim/site/autoload/plug.vim'
 	let plugin_dir = '~/.local/share/nvim/plugged'
@@ -116,6 +130,7 @@ Plug 'scrooloose/nerdcommenter'         " Easily comment lines
 Plug 'tpope/vim-surround'               " Easily surround text with parens, quotes, etc.
 Plug 'itchyny/lightline.vim'            " Status line for vim
 Plug 'godlygeek/tabular'                " Easily align text based on a characher - see http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
+Plug 'sjl/gundo.vim'					" View vim 'undo' as a tree
 
 " Vim/git-related plugins
 Plug 'tpope/vim-fugitive'               " Git plugin for vim
@@ -139,11 +154,28 @@ vmap gx <Plug>(openbrowser-open)
 
 " All of your Plugins must be added before the following line
 call plug#end()
-
+" }}}
+" Colorscheme {{{
 colorscheme gruvbox
 let g:gruvbox_italic=1		" Allows italics for gruvbox
 set background=dark			" Options: [light/dark]
 
+" Rainbow parens options for Lisps => defaults to `ON`
+au VimEnter * RainbowParenthesesToggle
+au Syntax   * RainbowParenthesesLoadRound
+au Syntax   * RainbowParenthesesLoadSquare
+au Syntax   * RainbowParenthesesLoadBraces
+
+" From https://stackoverflow.com/questions/6577579/task-tags-in-vim
+if has("autocmd")
+	" Highlight TODO, FIXME, NOTE, BUG, etc.
+	if v:version > 701
+		autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|CHANGED\|XXX\|BUG\|HACK\)')
+		autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\)')
+	endif
+endif
+" }}}
+" Lightline {{{
 " Extra `lightline` options found here: http://newbilityvery.github.io/2017/08/04/switch-to-lightline/
 let g:lightline = {
 			\	'colorscheme':'gruvbox',
@@ -167,11 +199,10 @@ let g:lightline.tabline = {
 			\	'right': [ ['close'] ]
 			\	}
 
-
 " Status is already in lightline - no need for redundency
 set noshowmode
-
-
+" }}}
+" NERDTree {{{
 " Allows NERDTree to show .dot files
 "let NERDTreeShowHidden=1
 let NERDTreeRespectWildIgnore=1
@@ -184,9 +215,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " Git gutter update time (in ms)
 set updatetime=1000
+" }}}
+" Rust {{{
 
-
-""" Rust Lang Options
 " Options for vim-racer
 let g:racer_cmd = "~/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
@@ -204,32 +235,37 @@ autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . 
 " Auto-rustfmt on save. Make sure to have rustfmt installed
 "	rustup component add rustfmt-preview
 let g:rustfmt_autosave = 1
+" }}}
+" Keymaps {{{
+"let mapleader=","		" Sets <leader> to ','
 
+" Move vertically by line, doesn't skip over wrapped lines
+nnoremap j gj
+nnoremap k gk
 
-" Rainbow parens options for Lisps => defaults to `ON`
-au VimEnter * RainbowParenthesesToggle
-au Syntax   * RainbowParenthesesLoadRound
-au Syntax   * RainbowParenthesesLoadSquare
-au Syntax   * RainbowParenthesesLoadBraces
+" Highlights last insert text
+nnoremap gV `[v`]		
 
-
-" From https://stackoverflow.com/questions/6577579/task-tags-in-vim
-if has("autocmd")
-	" Highlight TODO, FIXME, NOTE, BUG, etc.
-	if v:version > 701
-		autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|CHANGED\|XXX\|BUG\|HACK\)')
-		autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\)')
-	endif
-endif
+" jk is escape
+"inoremap jk <esc>
 
 "Remove all trailing whitespace by pressing F5
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
-" Coffeescript syntax for cson files
-au BufRead,BufNewFile *.cson set ft=coffee
+" Close a fold when arrow keys
+"nnoremap <Left> zm
+
+" Filetype associations
+au BufNewFile,BufRead *.cson set filetype=coffee
+au BufNewFile,BufRead .shrc set filetype=sh     " Sets .shrc files to use sh syntax
+au BufNewFile,BufRead *.cls set filetype=tex    " Sets .cls files to use latex syntax
 
 " Remove highlighted search text after search/sed/etc by hitting <esc>
 nnoremap <esc> :noh<return><esc>
+
+" Toggle gundo with a keymap
+nnoremap <leader>u :GundoToggle<CR>
+
 
 " Interleave similar sized blocks, from:
 "	https://vi.stackexchange.com/questions/4575
@@ -245,5 +281,11 @@ function! Interleave()
 		execute (start + size + i). 'm' .(start + 2 * i)
 	endfor
 endfunction
-" Select your two contiguous, same-sized blocks, and use it to Interleave ;)
-vnoremap <pickYourMap> <esc>:call Interleave()<CR>
+
+" Select your two contiguous, same-sized blocks, and use it to
+" Interleave ;)
+"	NOTE: <leader> is backslash '\' by default
+vnoremap <leader>it <esc>:call Interleave()<CR>
+" }}}
+
+" vim:foldmethod=marker:foldlevel=0

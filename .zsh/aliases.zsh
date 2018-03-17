@@ -19,6 +19,7 @@ alias rm="rm -iv"
 alias cp="cp -iv"
 alias mv="mv -iv"
 alias tree="tree -a -I '.git' -F"
+alias grep="grep --color=always"
 
 # prevents accidentally clobbering files
 alias mkdir="mkdir -p"

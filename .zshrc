@@ -1,3 +1,6 @@
+# Organizing this file drew inspiration from:
+#	https://github.com/maximbaz/dotfiles
+
 # Lazy-loading
 source ~/.zsh/sandboxd.zsh
 
@@ -8,7 +11,6 @@ source ~/.zsh/aliases.zsh
 
 # The user prompt (PS1)
 source ~/.zsh/prompt.zsh
-
 
 #-------------------------------------------------------------
 # options
