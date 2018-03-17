@@ -76,18 +76,21 @@ source ~/.local/share/nvim/plugged/gruvbox/gruvbox_256palette.sh
 # Fish shell like syntax highlighting for Zsh
 #
 # @link: http://github.com/zsh-users/zsh-syntax-highlighting
-source ~/Software/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
+if [ -d ~/Software/zsh-syntax-highlighting ]; then
+	source ~/Software/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+	ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
-# To have commands starting with `rm -rf /` in red:
-ZSH_HIGHLIGHT_PATTERNS=('rm -rf /*' 'fg=white,bold,bg=red')
+	# To have commands starting with `rm -rf /` in red:
+	ZSH_HIGHLIGHT_PATTERNS=('rm -rf /*' 'fg=white,bold,bg=red')
+fi
 
 #.# zsh-autosuggestions
 #
 # Fish-like fast/unobtrusive autosuggestions for zsh.
 #
 # @link: http://github.com/zsh-users/zsh-autosuggestions
-source ~/Software/zsh-autosuggestions/zsh-autosuggestions.zsh
+[ -d ~/Software/zsh-autosuggestions ] && \
+	source ~/Software/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Shell completions (rust, cargo, and hub)
 fpath+=~/.zfunc
