@@ -20,7 +20,13 @@ export FC=gfortran
 export CC=gcc
 export CXX=g++
 
-export PATH="/usr/sbin:/sbin:$HOME/.local/bin:$PATH"
+export PATH="/usr/sbin:/sbin:$PATH"
+# ~/.local/bin already added in ~/.xinitrc
+if [[ "$PATH" != *":$HOME/.local/bin:"* ]]; then
+	# Add ~/.local/bin to path if not already
+	export PATH="$HOME/.local/bin:$PATH"
+fi
+
 export LD_LIBRARY_PATH="$HOME/.local/lib:$HOME/.local/lib64:$LD_LIBRARY_PATH"
 export MANPATH="$HOME/.local/share/man:$MANPATH"
 export CPATH="$HOME/.local/include:$CPATH"

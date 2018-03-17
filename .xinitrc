@@ -47,6 +47,10 @@ esac
 # Add your own lines here...
 #
 
+# Add ~/.local/bin to path if not already
+if [[ "$PATH" != *":$HOME/.local/bin:"* ]]; then
+	export PATH="$HOME/.local/bin:$PATH"
+fi
 
 # day planer deamon
 # pland &
