@@ -22,9 +22,9 @@ set splitbelow				" Split new buffer below instead of above
 set splitright				" Split new buffer right instead of left
 
 if has('nvim-0.1.5')        " True color in neovim wasn't added until 0.1.5
-    set termguicolors
+	set termguicolors
 elseif has('nvim')
-    let $NVIM_TUI_ENABLE_TRUE_COLORS=1
+	let $NVIM_TUI_ENABLE_TRUE_COLORS=1
 endif
 
 set nowrap                  " Don't wrap long lines automatically
@@ -45,7 +45,7 @@ let fortran_do_enddo=1
 " paragraph.
 
 if executable('par')        " See 'par' vimcast for amazing text wrangler
-    set formatprg=par
+	set formatprg=par
 endif
 
 
@@ -64,9 +64,9 @@ endif
 if empty(glob(plugfile))
 	function GetPlugVim(plugfile)
 		execute '!curl -fLo'
-		\ a:plugfile
-		\ '--create-dirs'
-		\ 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+					\ a:plugfile
+					\ '--create-dirs'
+					\ 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 		autocmd VimEnter * PlugInstall
 	endfunction
 	call GetPlugVim(plugfile)
@@ -77,7 +77,7 @@ call plug#begin(plugin_dir)
 " Language specific plugins
 " Completions in neovim
 if has('nvim')
-    Plug 'roxma/nvim-completion-manager'
+	Plug 'roxma/nvim-completion-manager'
 endif
 
 " Fortran
@@ -131,10 +131,10 @@ endif
 " Normal `gx` doesn't work, so we remap it
 "	https://github.com/neovim/neovim/issues/4612
 Plug 'tyru/open-browser.vim' "{
-  " Disable netrw gx mapping.
-  let g:netrw_nogx = get(g:, 'netrw_nogx', 1)
-  nmap gx <Plug>(openbrowser-open)
-  vmap gx <Plug>(openbrowser-open)
+" Disable netrw gx mapping.
+let g:netrw_nogx = get(g:, 'netrw_nogx', 1)
+nmap gx <Plug>(openbrowser-open)
+vmap gx <Plug>(openbrowser-open)
 "}
 
 " All of your Plugins must be added before the following line
@@ -146,26 +146,26 @@ set background=dark			" Options: [light/dark]
 
 " Extra `lightline` options found here: http://newbilityvery.github.io/2017/08/04/switch-to-lightline/
 let g:lightline = {
-	\   'colorscheme':'gruvbox',
-	\   'active': {
-	\       'left': [   ['mode', 'paste'],
-	\                   ['gitbranch', 'readonly', 'filename', 'modified' ]
-	\       ],
-	\   },
-	\   'component': {
-	\       'lineinfo': ' %3l:%-2v',
-	\   },
-	\   'component_function': {
-	\       'gitbranch': 'fugitive#head',
-	\   },
-\   }
+			\	'colorscheme':'gruvbox',
+			\	'active': {
+			\		'left': [   ['mode', 'paste'],
+			\			['gitbranch', 'readonly', 'filename', 'modified' ]
+			\		],
+			\	},
+			\	'component': {
+			\		'lineinfo': ' %3l:%-2v',
+			\	},
+			\	'component_function': {
+			\		'gitbranch': 'fugitive#head',
+			\	},
+			\	}
 let g:lightline.separator = {
-	\   'left': '', 'right': '',
-\   }
+			\	'left': '', 'right': '',
+			\	}
 let g:lightline.tabline = {
-	\   'left': [ ['tabs'] ],
-	\   'right': [ ['close'] ]
-\   }
+			\	'left': [ ['tabs'] ],
+			\	'right': [ ['close'] ]
+			\	}
 
 
 " Status is already in lightline - no need for redundency
@@ -234,16 +234,16 @@ nnoremap <esc> :noh<return><esc>
 " Interleave similar sized blocks, from:
 "	https://vi.stackexchange.com/questions/4575
 function! Interleave()
-    " retrieve last selected area position and size
-    let start = line(".")
-    execute "normal! gvo\<esc>"
-    let end = line(".")
-    let [start, end] = sort([start, end], "n")
-    let size = (end - start + 1) / 2
-    " and interleave!
-    for i in range(size - 1)
-        execute (start + size + i). 'm' .(start + 2 * i)
-    endfor
+	" retrieve last selected area position and size
+	let start = line(".")
+	execute "normal! gvo\<esc>"
+	let end = line(".")
+	let [start, end] = sort([start, end], "n")
+	let size = (end - start + 1) / 2
+	" and interleave!
+	for i in range(size - 1)
+		execute (start + size + i). 'm' .(start + 2 * i)
+	endfor
 endfunction
 " Select your two contiguous, same-sized blocks, and use it to Interleave ;)
 vnoremap <pickYourMap> <esc>:call Interleave()<CR>

@@ -5,11 +5,9 @@ source ~/.zsh/sandboxd.zsh
 source ~/.zsh/environment.zsh
 source ~/.zsh/myfunctions.zsh
 source ~/.zsh/aliases.zsh
-source ~/.zsh/prompt.zsh
 
-# Path to your oh-my-zsh installation.
-#export ZSH=$HOME/.oh-my-zsh
-# source $ZSH/oh-my-zsh.sh
+# The user prompt (PS1)
+source ~/.zsh/prompt.zsh
 
 
 #-------------------------------------------------------------
@@ -35,7 +33,6 @@ export LESS_TERMCAP_us=$'\e[0;35m'
 #-------------------------------------------------------------
 
 export COLUMNS  # Remember columns for subprocesses.
-# eval `dircolors ~/.dir_colors/dircolors-solarized/dircolors.ansi-dark`
 eval "$(dircolors)"
 
 #-------------------------------------------------------------
@@ -45,8 +42,25 @@ eval "$(dircolors)"
 # vim mode
 bindkey -v
 
-# PATH assignments
-#source ~/.shrc
+# Extra stuff from
+#	https://dougblack.io/words/zsh-vi-mode.html
+#bindkey '^P' up-history
+#bindkey '^N' down-history
+#bindkey '^?' backward-delete-char
+#bindkey '^h' backward-delete-char
+#bindkey '^w' backward-kill-word
+#bindkey '^r' history-incremental-search-backward
+#
+#function zle-line-init zle-keymap-select {
+#    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+#    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+#    zle reset-prompt
+#}
+#
+#zle -N zle-line-init
+#zle -N zle-keymap-select
+#export KEYTIMEOUT=1
+
 
 # colours from neovim/gruvbox - assumes nvim has installed gruvbox
 # package
@@ -100,8 +114,6 @@ HISTSIZE=1000
 SAVEHIST=1000
 setopt HIST_IGNORE_DUPS
 
-
-#plugins=(git zsh-syntax-highlighting)
 
 # Log commands to rsyslog for future reference
 #	To use system-wide, copy the following to /etc/zshrc
