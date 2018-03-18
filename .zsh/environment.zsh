@@ -104,7 +104,11 @@ sandbox_init_rvm() {
 # Node Version Manager (NVM)
 sandbox_init_nvm() {
 	export NVM_DIR=~/Software/nvm
-	[ -s $NVM_DIR/nvm.sh ] && source $NVM_DIR/nvm.sh
+	if [ -d $NVM_DIR ]; then
+		[ -s $NVM_DIR/nvm.sh ] && source $NVM_DIR/nvm.sh
+	else
+		echo "You're trying to use 'nvm', but it's not installed"
+	fi
 }
 
 # Don't load modules unless used
