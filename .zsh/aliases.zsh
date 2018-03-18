@@ -11,6 +11,7 @@ alias vim="nvim"
 # ls aliases
 alias ls="ls --group-directories-first"
 alias ll="ls -l"
+alias la="ls -a"
 alias l="ls -l -a"
 alias exa="exa --group-directories-first"
 
@@ -18,7 +19,7 @@ alias exa="exa --group-directories-first"
 alias rm="rm -iv"
 alias cp="cp -iv"
 alias mv="mv -iv"
-alias tree="tree -a -I '.git' -F"
+alias tree="tree -a -F -C"
 alias grep="grep --color=always"
 
 # prevents accidentally clobbering files
