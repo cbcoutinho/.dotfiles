@@ -6,8 +6,8 @@ unsetopt nonomatch
 # put your own login shell specific configuration below
 # this line
 
-if [ -x /usr/bin/fortune ] ; then
-	echo
-	/usr/bin/fortune
-	echo
-fi
+#if [ -x /usr/bin/fortune ] ; then
+#	echo
+#	/usr/bin/fortune
+#	echo
+#fi

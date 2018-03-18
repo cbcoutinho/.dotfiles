@@ -1,13 +1,16 @@
 " Make sure to slink this to ~/.vimrc (for vim) and ~/.config/nvim/init.vim (for neovim)
 
 " Vim settings {{{
-set shell=/bin/bash         " Force shell to use bash
-set nocompatible            " Be iMproved, required for (n)vim
-set number                  " Line numbers
-set relativenumber          " Relative line numbers w.r.t the cursor
+set shell=/bin/bash			" Force shell to use bash
+set nocompatible			" Be iMproved, required for (n)vim
+set number					" Line numbers
+set relativenumber			" Relative line numbers w.r.t the cursor
 set cursorline				" Highlight current line
 set wildmenu				" Visual autocomplete for command menu - shows options when :sp _, etc
 set showcmd					" Show command being typed on bottom right - useful for keymaps
+
+set spell					" Sets spelling to `ON`
+set spelllang=en_us,nl		" Spelling language [en|nl]
 
 filetype plugin indent on
 "set expandtab               " Uses spaces instead of tabs

@@ -6,3 +6,5 @@
 
 #Or these directories
 !after/
+!ftplugin/
+!spell/

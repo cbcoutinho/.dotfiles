@@ -1,8 +1,0 @@
-# Blacklist files/folders in same directory as the .gitignore file
-/*
-
-# But not these files...
-!.gitignore
-!tex.vim
-
-#Or these directories
