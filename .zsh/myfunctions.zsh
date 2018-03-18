@@ -8,10 +8,7 @@ function ls {
 		--author                `# with -l, print the author of each file` \
 		--time-style=long-iso   `# with -l, show times using style STYLE` \
 		-C "$@"                 `# list entries ($@) by columns` \
-		| less                  `# Pipe output into 'less'` \
-		-R                      `# Output 'raw' control characters.` \
-		-X                      `# Do not use termcap init/deinit strings` \
-		-F                      `# Quit if entire file fits on first screen`
+		| less                  `# Pipe output into 'less' alias - see .zsh/aliases.zsh` \
 }
 
 # extract archives

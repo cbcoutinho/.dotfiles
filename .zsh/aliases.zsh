@@ -12,7 +12,7 @@ alias vim="nvim"
 alias ls="ls --group-directories-first"
 alias ll="ls -l"
 alias la="ls -a"
-alias l="ls -l -a"
+alias l="ls -la"
 alias exa="exa --group-directories-first"
 
 # basic utils
@@ -21,6 +21,10 @@ alias cp="cp -iv"
 alias mv="mv -iv"
 alias tree="tree -a -F -C"
 alias grep="grep --color=always"
+alias less="less -R -X -F"
+# -R -> Output 'raw' ASCII control characters
+# -X -> Do not use termcap init/deinit strings
+# -F -> Quit if entire file fits on first screen
 
 # prevents accidentally clobbering files
 alias mkdir="mkdir -p"

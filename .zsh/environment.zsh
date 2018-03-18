@@ -61,10 +61,6 @@ if command -v $HOME/.cargo/bin/rustc > /dev/null 2>&1; then
 	export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src" # For racer
 fi
 
-# Ruby/Gem-related path
-if command -v ruby >/dev/null && command -v gem >/dev/null; then
-	export PATH="$(ruby -rrubygems -e 'puts Gem.user_dir')/bin:$PATH"
-fi
 
 # added by travis gem
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
@@ -87,11 +83,21 @@ export CMAKE_PREFIX_PATH="$LD_LIBRARY_PATH"
 # RVM configuration
 sandbox_init_rvm() {
 	if [ -f ~/.rvm/scripts/rvm ]; then
+		# Load `rvm`
 		source ~/.rvm/scripts/rvm
 	else
-		echo "No rvm found, execute the following to get 'rvm':"
+		# No `rvm` found
+		if command -v ruby >/dev/null && command -v gem >/dev/null; then
+			# `rvm` doesn't exist, but `ruby` and `gem` do, so add gems
+			# bin to path
+			echo "No 'rvm' found, using system ruby for \$PATH"
+			export PATH="$(command ruby -rrubygems -e 'puts Gem.user_dir')/bin:$PATH"
+		else
+			# You called `ruby`, but `ruby` or `gem` wasn't found
+			echo "No 'ruby' found - you probably don't want to be here"
+		fi
+		echo "Execute the following to download 'rvm':"
 		echo "	curl -sSL https://get.rvm.io | bash -s stable"
-		export rvm_ignore_dotfiles=yes
 	fi
 }
 
@@ -105,6 +111,7 @@ sandbox_init_nvm() {
 sandbox_hook rvm rvm
 sandbox_hook rvm gem
 sandbox_hook rvm ruby
+sandbox_hook rvm irb
 
 sandbox_hook nvm nvm
 sandbox_hook nvm npm
