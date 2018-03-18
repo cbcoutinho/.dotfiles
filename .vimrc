@@ -100,9 +100,6 @@ if has('nvim')
 	Plug 'roxma/nvim-completion-manager'
 endif
 
-" Fortran
-"Plug 'vim-scripts/fortran.vim', {'for': 'fortran'}       " Extra indentation rules for Fortran
-
 " Rust
 Plug 'rust-lang/rust.vim', {'for': 'rust'}               " Rust stuff
 Plug 'racer-rust/vim-racer', {'for': 'rust'}             " Racer in vim
@@ -137,6 +134,7 @@ Plug 'tpope/vim-surround'               " Easily surround text with parens, quot
 Plug 'itchyny/lightline.vim'            " Status line for vim
 Plug 'godlygeek/tabular'                " Easily align text based on a characher - see http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
 Plug 'sjl/gundo.vim'					" View vim 'undo' as a tree
+Plug 'nelstrom/vim-markdown-folding'	" Easily fold markdown files by section
 
 " Vim/git-related plugins
 Plug 'tpope/vim-fugitive'               " Git plugin for vim
