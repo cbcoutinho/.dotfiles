@@ -7,7 +7,7 @@ set number                  " Line numbers
 set relativenumber          " Relative line numbers w.r.t the cursor
 set cursorline				" Highlight current line
 set wildmenu				" Visual autocomplete for command menu - shows options when :sp _, etc
-set showcmd					" Show command being typed in bottom left - useful for keymaps
+set showcmd					" Show command being typed on bottom right - useful for keymaps
 
 filetype plugin indent on
 "set expandtab               " Uses spaces instead of tabs
@@ -15,10 +15,10 @@ set tabstop     =4          " show existing tab with 4 spaces width
 set shiftwidth  =4          " when indenting with '>', use 4 spaces width
 "set softtabstop =4          " Tab key indents by 4 spaces
 " NOTE: Python overrides space/tabs settings in:
-"	/usr/share/nvim/runtime/ftplugin/python.vim
+"	$VIMRUNTIME/ftplugin/python.vim
 
 " Code folding options are:
-"	[indent, marker, manual, expr, syntax, diff, indent]
+"	[marker, manual, expr, syntax, diff, indent]
 "set foldmethod=marker
 "set foldlevel=0
 
@@ -180,8 +180,8 @@ endif
 let g:lightline = {
 			\	'colorscheme':'gruvbox',
 			\	'active': {
-			\		'left': [   ['mode', 'paste'],
-			\			['gitbranch', 'readonly', 'filename', 'modified' ]
+			\		'left': [ ['mode', 'paste'],
+			\			['gitbranch', 'readonly', 'filename', 'modified']
 			\		],
 			\	},
 			\	'component': {

@@ -1,6 +1,10 @@
 #!/bin/zsh
-# Based on github.com/maximbaz/dotfiles/.zsh/sandboxd.zsh
+# Based on
+#	https://github.com/maximbaz/dotfiles/.zsh/sandboxd.zsh
+# which was originally adapted from:
+#	https://github.vom/benvan/sandboxd
 
+# Start with an empty list of all sandbox cmd:hook pairs
 sandbox_hooks=()
 
 # deletes all hooks associated with cmd
@@ -18,8 +22,9 @@ function sandbox_delete_hooks() {
 # prepares environment and removes hooks
 function sandbox() {
 	local cmd=$1
-	if [[ "$(type $cmd | grep -o function)" = "function" ]]; then
-		(>&2 echo "Lazy-loading $cmd for the first time...")
+	# NOTE: Use original grep, because aliased grep is using color
+	if [[ "$(type $cmd | \grep -o function)" = "function" ]]; then
+		(>&2 echo "Lazy-loading '$cmd' for the first time...")
 		sandbox_delete_hooks $cmd
 		sandbox_init_$cmd
 	else
@@ -32,6 +37,7 @@ function sandbox_hook() {
 	local cmd=$1
 	local hook=$2
 
+	#echo "Creating hook ($2) for cmd ($1)"
 	sandbox_hooks+=("${cmd}:${hook}")
 
 	eval "$hook(){ sandbox $cmd; $hook \$@ }"

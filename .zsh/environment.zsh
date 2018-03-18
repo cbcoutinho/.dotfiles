@@ -86,8 +86,8 @@ export CMAKE_PREFIX_PATH="$LD_LIBRARY_PATH"
 
 # RVM configuration
 sandbox_init_rvm() {
-	if [ -f "$HOME/.rvm/scripts/rvm" ]; then
-		source "$HOME/.rvm/scripts/rvm"
+	if [ -f ~/.rvm/scripts/rvm ]; then
+		source ~/.rvm/scripts/rvm
 	else
 		echo "No rvm found, execute the following to get 'rvm':"
 		echo "	curl -sSL https://get.rvm.io | bash -s stable"
@@ -97,10 +97,16 @@ sandbox_init_rvm() {
 
 # Node Version Manager (NVM)
 sandbox_init_nvm() {
-	export NVM_DIR="$HOME/Software/nvm"
-	[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+	export NVM_DIR=~/Software/nvm
+	[ -s $NVM_DIR/nvm.sh ] && source $NVM_DIR/nvm.sh
 }
 
 # Don't load modules unless used
 sandbox_hook rvm rvm
+sandbox_hook rvm gem
+sandbox_hook rvm ruby
+
 sandbox_hook nvm nvm
+sandbox_hook nvm npm
+sandbox_hook nvm node
+sandbox_hook nvm nvim # This is needed for nvim plugins via npm
