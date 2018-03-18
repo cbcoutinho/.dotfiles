@@ -9,7 +9,7 @@ set cursorline				" Highlight current line
 set wildmenu				" Visual autocomplete for command menu - shows options when :sp _, etc
 set showcmd					" Show command being typed on bottom right - useful for keymaps
 
-set spell					" Sets spelling to `ON`
+"set spell					" By default spelling is `OFF`
 set spelllang=en_us,nl		" Spelling language [en|nl]
 
 filetype plugin indent on
@@ -57,6 +57,9 @@ let fortran_have_tabs=1
 let fortran_more_precise=1
 let fortran_do_enddo=1
 
+" Turns off spell checking in TeX comments
+let g:tex_comment_nospell=1
+
 " Further, from the wiki:
 " If you want to wrap lines in a specific area, move the cursor to
 " the text you want to format and type gq followed by the range. For
@@ -67,9 +70,9 @@ if executable('par')        " See 'par' vimcast for amazing text wrangler
 	set formatprg=par
 endif
 
-
 " }}}
 " Plugins {{{
+
 if has('nvim')
 	let plugfile = '~/.local/share/nvim/site/autoload/plug.vim'
 	let plugin_dir = '~/.local/share/nvim/plugged'
@@ -157,8 +160,10 @@ vmap gx <Plug>(openbrowser-open)
 
 " All of your Plugins must be added before the following line
 call plug#end()
+
 " }}}
 " Colorscheme {{{
+
 colorscheme gruvbox
 let g:gruvbox_italic=1		" Allows italics for gruvbox
 set background=dark			" Options: [light/dark]
@@ -177,8 +182,10 @@ if has("autocmd")
 		autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\)')
 	endif
 endif
+
 " }}}
 " Lightline {{{
+
 " Extra `lightline` options found here: http://newbilityvery.github.io/2017/08/04/switch-to-lightline/
 let g:lightline = {
 			\	'colorscheme':'gruvbox',
@@ -204,8 +211,10 @@ let g:lightline.tabline = {
 
 " Status is already in lightline - no need for redundency
 set noshowmode
+
 " }}}
 " NERDTree {{{
+
 " Allows NERDTree to show .dot files
 "let NERDTreeShowHidden=1
 let NERDTreeRespectWildIgnore=1
@@ -218,6 +227,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " Git gutter update time (in ms)
 set updatetime=1000
+
 " }}}
 " Rust {{{
 
@@ -238,8 +248,10 @@ autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . 
 " Auto-rustfmt on save. Make sure to have rustfmt installed
 "	rustup component add rustfmt-preview
 let g:rustfmt_autosave = 1
+
 " }}}
 " Keymaps {{{
+
 "let mapleader=","		" Sets <leader> to ','
 
 " Move vertically by line, doesn't skip over wrapped lines
