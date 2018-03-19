@@ -101,22 +101,25 @@ if has('nvim')
 endif
 
 " Rust
-Plug 'rust-lang/rust.vim', {'for': 'rust'}               " Rust stuff
-Plug 'racer-rust/vim-racer', {'for': 'rust'}             " Racer in vim
-Plug 'roxma/nvim-cm-racer', {'for': 'rust'}              " Neovim/vim8 completion for Rust
+Plug 'rust-lang/rust.vim',				" Rust stuff
+Plug 'racer-rust/vim-racer',			" Racer in vim
+Plug 'roxma/nvim-cm-racer', 			" Neovim/vim8 completion for Rust
 
 " Lisp-like (e.g. Clojure)
-Plug 'tpope/vim-fireplace', {'for': 'clojure'}              " Connects to the nREPL for 'dynamic' clojure development
+Plug 'tpope/vim-fireplace'				" Connects to the nREPL for 'dynamic' clojure development
 Plug 'kien/rainbow_parentheses.vim'     " Rainbow parens for Lisps - see options below
-"Plug 'eraserhd/parinfer-rust'			" Parinfer port to rust
 if has('nvim-0.2.1')
-	Plug 'snoe/nvim-parinfer.js' ", {'for': 'clojure'}
+	Plug 'snoe/nvim-parinfer.js', {'do': 'lein npm install'}
 else
-	Plug 'bhurlow/vim-parinfer', {'for': 'clojure'}         " Vim port of nvim-parinfer.js
+	" Parinfer port to rust
+	Plug 'eraserhd/parinfer-rust', {'do':
+				\ 'cargo build --manifest-path=cparinfer/Cargo.toml --release'}
+	" Parinfer port to VimL
+	"Plug 'bhurlow/vim-parinfer'
 endif
 
 " Golang plugin for vim
-Plug 'fatih/vim-go',			{'for': 'go'}
+Plug 'fatih/vim-go'
 
 " Color schemes
 Plug 'morhetz/gruvbox'                  " Gruvbox theme for vim
@@ -257,7 +260,7 @@ nnoremap j gj
 nnoremap k gk
 
 " Highlights last insert text
-nnoremap gV `[v`]		
+nnoremap gV `[v`]
 
 " jk is escape
 "inoremap jk <esc>
