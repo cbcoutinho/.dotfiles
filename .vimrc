@@ -83,8 +83,8 @@ endif
 " Plugins {{{
 
 if has('win32')
-	let plugfile = 'C:\Users\ccoutinho\AppData\Local\nvim\site\autoload\plug.vim'
-	let plugin_dir = 'C:\Users\ccoutinho\AppData\Local\nvim\plugged'
+	let plugfile = 'C:/Users/ccoutinho/AppData/Local/nvim/site/autoload/plug.vim'
+	let plugin_dir = 'C:/Users/ccoutinho/AppData/Local/nvim/plugged'
 
 	" https://github.com/equalsraf/neovim-qt/issues/327
 	source $VIMRUNTIME\mswin.vim
@@ -101,13 +101,15 @@ endif
 if empty(glob(plugfile))
 	function GetPlugVim(plugfile)
 		if has('win32')
-			execute "!md ~\AppData\Local\nvim\autoload"
-			execute "!(New-Object Net.WebClient).DownloadFile("
-						\ "'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim',"
-						\ "$ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath("
-						\ a:plugfile
-						\ "))"
-			execute
+			execute "!echo `plug.vim` not found, first download it manually."
+md -Force ~/AppData/Local/nvim/autoload;
+$url = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'; 
+(New-Object Net.WebClient).DownloadFile( `
+$url, `
+$ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath( `
+	'~\AppData\Local\nvim\autoload\plug.vim' `
+) `
+)
 		else
 			" Unix world
 			execute '!curl -fLo'
