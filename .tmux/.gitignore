@@ -1,0 +1,9 @@
+# Blacklist files/folders in same directory as the .gitignore file
+/*
+
+# But not these files...
+!.gitignore
+!source_powerline.sh
+!tmux-gruvbox-dark.conf
+
+#Or these directories
