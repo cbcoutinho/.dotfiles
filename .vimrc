@@ -73,12 +73,20 @@ endif
 " }}}
 " Plugins {{{
 
-if has('nvim')
-	let plugfile = '~/.local/share/nvim/site/autoload/plug.vim'
-	let plugin_dir = '~/.local/share/nvim/plugged'
+if has('win32')
+	let plugfile = 'C:\Users\ccoutinho\AppData\Local\nvim\site\autoload\plug.vim'
+	let plugin_dir = 'C:\Users\ccoutinho\AppData\Local\nvim\plugged'
+
+	" https://github.com/equalsraf/neovim-qt/issues/327
+	source $VIMRUNTIME\mswin.vim
 else
-	let plugfile = '~/.vim/autoload/plug.vim'
-	let plugin_dir = '~/.vim/plugged'
+	if has('nvim')
+		let plugfile = '~/.local/share/nvim/site/autoload/plug.vim'
+		let plugin_dir = '~/.local/share/nvim/plugged'
+	else
+		let plugfile = '~/.vim/autoload/plug.vim'
+		let plugin_dir = '~/.vim/plugged'
+	endif
 endif
 
 if empty(glob(plugfile))
