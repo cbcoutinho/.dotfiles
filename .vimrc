@@ -1,7 +1,7 @@
 " Make sure to slink this to ~/.vimrc (for vim) and ~/.config/nvim/init.vim (for neovim)
 
 " Shell settings {{{
-"
+
 if has('win32')
 	set shell=powershell.exe
 else
@@ -10,7 +10,8 @@ endif
 
 " }}}
 " Vim settings {{{
-"
+
+filetype plugin indent on
 set nocompatible			" Be iMproved, required for (n)vim
 set number					" Line numbers
 set relativenumber			" Relative line numbers w.r.t the cursor
@@ -21,53 +22,44 @@ set showcmd					" Show command being typed on bottom right - useful for keymaps
 "set spell					" By default spelling is `OFF`
 set spelllang=en_us,nl		" Spelling language [en|nl]
 
-filetype plugin indent on
+" Space/Tab options {{{
 "set expandtab               " Uses spaces instead of tabs
 set tabstop     =4          " show existing tab with 4 spaces width
 set shiftwidth  =4          " when indenting with '>', use 4 spaces width
 "set softtabstop =4          " Tab key indents by 4 spaces
 " NOTE: Python overrides space/tabs settings in:
 "	$VIMRUNTIME/ftplugin/python.vim
-
+set list					" Replaces certain whitespace with characters
+set listchars=tab:>-		" Replaces <TAB> with >---
+set listchars+=trail:x		" Replaces trailing whitespace with 'x'
+" }}}
+" Folding options {{{
 " Code folding options are:
 "	[marker, manual, expr, syntax, diff, indent]
 "set foldmethod=marker
 "set foldlevel=0
-
 set modelines=1				" This tells vim to look at the last line for the fold method
+" }}}
 
-
-
-set list					" Replaces certain whitespace with characters
-set listchars=tab:>-		" Replaces <TAB> with >---
-set listchars+=trail:x		" Replaces trailing whitespace with 'x'
-
-set backspace   =indent,eol,start   " Make backspace work as expected
+set backspace   =indent,eol,start   " Make backspace work as expected (i.e. wraps around end of line)
 set ignorecase              " Ignore case in search results, using \C overrides this
 set smartcase               " Ignores 'set ignorecase' if search contains upper case letter
 
 set splitbelow				" Split new buffer below instead of above
 set splitright				" Split new buffer right instead of left
 
+" True Color options {{{
 if has('nvim-0.1.5')        " True color in neovim wasn't added until 0.1.5
 	set termguicolors
 elseif has('nvim')
 	let $NVIM_TUI_ENABLE_TRUE_COLORS=1
 endif
+" }}}
 
 set nowrap                  " Don't wrap long lines automatically
 set textwidth       =70     " Set textwidth to <n> chars, wrap after that
 set formatoptions   +=t     " Automatically wrap lines after <textwidth> chars
 set formatoptions   -=l     " Already long lines will also be auto-wrapped if appended to
-
-" Fortran specific spacing:
-let fortran_free_source=1
-let fortran_have_tabs=1
-let fortran_more_precise=1
-let fortran_do_enddo=1
-
-" Turns off spell checking in TeX comments
-let g:tex_comment_nospell=1
 
 " Further, from the wiki:
 " If you want to wrap lines in a specific area, move the cursor to
@@ -81,7 +73,7 @@ endif
 
 " }}}
 " Plugins {{{
-
+" Download and install `plug-vim` {{{
 if has('win32')
 	let plugfile = 'C:/Users/ccoutinho/AppData/Local/nvim/autoload/plug.vim'
 	let plugin_dir = 'C:/Users/ccoutinho/AppData/Local/nvim/plugged'
@@ -119,21 +111,20 @@ if empty(glob(plugfile))
 	endfunction
 	call GetPlugVim(plugfile,plug_url)
 endif
-
+" }}}
 call plug#begin(plugin_dir)
-
-" Language specific plugins
-" Completions in neovim
+" Language-specfic plugins {{{
+" Completions in neovim {{{
 if has('nvim')
 	Plug 'roxma/nvim-completion-manager'
 endif
-
-" Rust
+" }}}
+" Rust {{{
 Plug 'rust-lang/rust.vim',				" Rust stuff
 Plug 'racer-rust/vim-racer',			" Racer in vim
 Plug 'roxma/nvim-cm-racer', 			" Neovim/vim8 completion for Rust
-
-" Lisp-like (e.g. Clojure)
+" }}}
+" Lisp-like (e.g. Clojure) {{{
 Plug 'tpope/vim-fireplace'				" Connects to the nREPL for 'dynamic' clojure development
 Plug 'kien/rainbow_parentheses.vim'     " Rainbow parens for Lisps - see options below
 if has('nvim-0.2.1')
@@ -145,20 +136,21 @@ else
 	" Parinfer port to VimL
 	"Plug 'bhurlow/vim-parinfer'
 endif
-
-" Golang plugin for vim
+" }}}
+" Golang {{{
 Plug 'fatih/vim-go'
-
-" Color schemes
+" }}}
+" }}}
+" Color schemes {{{
 Plug 'morhetz/gruvbox'                  " Gruvbox theme for vim
 Plug 'altercation/vim-colors-solarized' " Solarized theme for vim
 Plug 'joshdick/onedark.vim'             " Onedark theme from Atom ported to vim
 Plug 'sheerun/vim-polyglot'             " Syntax highlighting for different languages
-
-" Supercollider vim plugin
+" }}}
+" Supercollider vim plugin {{{
 Plug 'supercollider/scvim'
-
-" Vim-related plugins
+" }}}
+" Vim-related plugins {{{
 Plug 'scrooloose/nerdtree'              " Project tree directory
 Plug 'scrooloose/nerdcommenter'         " Easily comment lines
 Plug 'tpope/vim-surround'               " Easily surround text with parens, quotes, etc.
@@ -166,8 +158,8 @@ Plug 'itchyny/lightline.vim'            " Status line for vim
 Plug 'godlygeek/tabular'                " Easily align text based on a characher - see http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
 Plug 'sjl/gundo.vim'					" View vim 'undo' as a tree
 Plug 'nelstrom/vim-markdown-folding'	" Easily fold markdown files by section
-
-" Vim/git-related plugins
+" }}}
+" Vim/git-related plugins {{{
 Plug 'tpope/vim-fugitive'               " Git plugin for vim
 Plug 'tpope/vim-rhubarb'                " Git plugin for vim - extension for Github
 Plug 'shumphrey/fugitive-gitlab.vim'    " Git plugin for vim - extension for Gitlab
@@ -177,7 +169,8 @@ if has('nvim-0.2.0')
 	" On debian (nvim-0.1.7), there is an api bug
 	Plug 'airblade/vim-gitgutter'		" Git status in gutter (next to line numbers)
 endif
-
+" }}}
+" Fix `gx` bug {{{
 " Normal `gx` doesn't work, so we remap it
 "	https://github.com/neovim/neovim/issues/4612
 Plug 'tyru/open-browser.vim' "{
@@ -186,10 +179,8 @@ let g:netrw_nogx = get(g:, 'netrw_nogx', 1)
 nmap gx <Plug>(openbrowser-open)
 vmap gx <Plug>(openbrowser-open)
 "}
-
-" All of your Plugins must be added before the following line
+" }}}
 call plug#end()
-
 " }}}
 " Colorscheme {{{
 
@@ -258,6 +249,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 set updatetime=1000
 
 " }}}
+" Language-specific options {{{
 " Rust {{{
 
 " Options for vim-racer
@@ -279,6 +271,18 @@ autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . 
 let g:rustfmt_autosave = 1
 
 " }}}
+" Fortran {{{
+" Fortran specific spacing:
+let fortran_free_source=1
+let fortran_have_tabs=1
+let fortran_more_precise=1
+let fortran_do_enddo=1
+" }}}
+" LaTeX {{{
+" Turns off spell checking in TeX comments
+let g:tex_comment_nospell=1
+" }}}
+" }}}
 " Keymaps {{{
 
 "let mapleader=","		" Sets <leader> to ','
@@ -292,6 +296,9 @@ nnoremap gV `[v`]
 
 " jk is escape
 "inoremap jk <esc>
+
+" Make opening and closing folds easier
+nnoremap <Space> za
 
 "Remove all trailing whitespace by pressing F5
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
@@ -310,7 +317,7 @@ nnoremap <esc> :noh<return><esc>
 " Toggle gundo with a keymap
 nnoremap <leader>u :GundoToggle<CR>
 
-
+" Interleave Function {{{
 " Interleave similar sized blocks, from:
 "	https://vi.stackexchange.com/questions/4575
 function! Interleave()
@@ -330,6 +337,7 @@ endfunction
 " Interleave ;)
 "	NOTE: <leader> is backslash '\' by default
 vnoremap <leader>it <esc>:call Interleave()<CR>
+" }}}
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0
