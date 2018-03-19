@@ -1,7 +1,16 @@
 " Make sure to slink this to ~/.vimrc (for vim) and ~/.config/nvim/init.vim (for neovim)
 
+" Shell settings {{{
+"
+if has('win32')
+	set shell=powershell.exe
+else
+	"set shell=/bin/bash			" Force shell to use bash
+endif
+
+" }}}
 " Vim settings {{{
-set shell=/bin/bash			" Force shell to use bash
+"
 set nocompatible			" Be iMproved, required for (n)vim
 set number					" Line numbers
 set relativenumber			" Relative line numbers w.r.t the cursor
@@ -91,10 +100,21 @@ endif
 
 if empty(glob(plugfile))
 	function GetPlugVim(plugfile)
-		execute '!curl -fLo'
-					\ a:plugfile
-					\ '--create-dirs'
-					\ 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+		if has('win32')
+			execute "!md ~\AppData\Local\nvim\autoload"
+			execute "!(New-Object Net.WebClient).DownloadFile("
+						\ "'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim',"
+						\ "$ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath("
+						\ a:plugfile
+						\ "))"
+			execute
+		else
+			" Unix world
+			execute '!curl -fLo'
+						\ a:plugfile
+						\ '--create-dirs'
+						\ 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+		endif
 		autocmd VimEnter * PlugInstall
 	endfunction
 	call GetPlugVim(plugfile)
