@@ -83,11 +83,11 @@ endif
 " Plugins {{{
 
 if has('win32')
-	let plugfile = 'C:/Users/ccoutinho/AppData/Local/nvim/site/autoload/plug.vim'
+	let plugfile = 'C:/Users/ccoutinho/AppData/Local/nvim/autoload/plug.vim'
 	let plugin_dir = 'C:/Users/ccoutinho/AppData/Local/nvim/plugged'
 
 	" https://github.com/equalsraf/neovim-qt/issues/327
-	source $VIMRUNTIME\mswin.vim
+	source $VIMRUNTIME/mswin.vim
 else
 	if has('nvim')
 		let plugfile = '~/.local/share/nvim/site/autoload/plug.vim'
@@ -99,17 +99,15 @@ else
 endif
 
 if empty(glob(plugfile))
-	function GetPlugVim(plugfile)
+	let plug_url = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+	function GetPlugVim(plugfile, plug_url)
 		if has('win32')
-			execute "!echo `plug.vim` not found, first download it manually."
-md -Force ~/AppData/Local/nvim/autoload;
-$url = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'; 
-(New-Object Net.WebClient).DownloadFile( `
-$url, `
-$ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath( `
-	'~\AppData\Local\nvim\autoload\plug.vim' `
-) `
-)
+			"execute "!echo `plug.vim` not found, first download it manually."
+			execute "!md -Force ~/AppData/Local/nvim/autoload;"
+				\ "$url = '" a:plug_url "'; $url = $url.replace(' ','');"
+				\ "$file = '" a:plugfile "'; $file = $file.replace(' ','');"
+				\ "(New-Object Net.WebClient).DownloadFile( $url, "
+				\ " $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath( $file ))"
 		else
 			" Unix world
 			execute '!curl -fLo'
@@ -119,7 +117,7 @@ $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath( `
 		endif
 		autocmd VimEnter * PlugInstall
 	endfunction
-	call GetPlugVim(plugfile)
+	call GetPlugVim(plugfile,plug_url)
 endif
 
 call plug#begin(plugin_dir)
