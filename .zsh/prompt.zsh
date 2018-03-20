@@ -129,8 +129,9 @@ prompt_hg() {
 
 # Dir: current working directory
 prompt_dir() {
-	# prompt_segment 239 248 '%~'
-	prompt_segment 239 248 '%(3~|.../%2~|%~)'
+	#prompt_segment 239 248 '%~'
+	#prompt_segment 239 248 '%(3~|.../%2~|%~)'
+	prompt_segment 239 248 ${${:-/${(j:/:)${(M)${(s:/:)${(D)PWD:h}}#(|.)[^.]}}/${PWD:t}}//\/~/\~}
 }
 
 # Virtualenv: current working virtualenv
