@@ -90,14 +90,15 @@ sandbox_init_rvm() {
 		if command -v ruby >/dev/null && command -v gem >/dev/null; then
 			# `rvm` doesn't exist, but `ruby` and `gem` do, so add gems
 			# bin to path
-			echo "No 'rvm' found, using system ruby for \$PATH"
+			echo 'No `rvm` found, using system ruby for $PATH'
 			export PATH="$(command ruby -rrubygems -e 'puts Gem.user_dir')/bin:$PATH"
 		else
 			# You called `ruby`, but `ruby` or `gem` wasn't found
 			echo "No 'ruby' found - you probably don't want to be here"
 		fi
-		echo "Execute the following to download 'rvm':"
-		echo "	curl -sSL https://get.rvm.io | bash -s stable"
+		echo 'To get `rvm` first softlink .rvmrc to $HOME, then'
+		echo 'Execute the following to download `rvm`:'
+		echo '	curl -sSL https://get.rvm.io | bash -s stable'
 	fi
 }
 
