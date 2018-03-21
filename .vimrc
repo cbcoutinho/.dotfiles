@@ -4,6 +4,9 @@
 
 if has('win32')
 	set shell=powershell.exe
+	let g:python_host_prog='C:/Development/anaconda3/envs/neovim/python.exe'
+	let g:python3_host_prog='C:/Development/anaconda3/envs/neovim3/python.exe'
+	let g:ruby_host_prog='C:/Users/ccoutinho/scoop/apps/ruby/current/gems/bin/neovim-ruby-host.bat'
 else
 	"set shell=/bin/bash			" Force shell to use bash
 endif
@@ -128,6 +131,13 @@ Plug 'racer-rust/vim-racer',			" Racer in vim
 Plug 'roxma/nvim-cm-racer', 			" Neovim/vim8 completion for Rust
 
 " }}}
+" Python {{{
+
+if has('unix')
+	Plug 'direnv/direnv.vim'
+endif
+
+" }}}
 " Lisp-like (e.g. Clojure) {{{
 
 Plug 'tpope/vim-fireplace'				" Connects to the nREPL for 'dynamic' clojure development
@@ -138,8 +148,7 @@ if has('nvim-0.2.1')
 else
 	" Parinfer port to rust
 	Plug 'eraserhd/parinfer-rust', {'do':
-				\ 'cargo +stable build --release'
-				\ '--manifest-path=cparinfer/Cargo.toml'}
+				\ 'cargo +stable build --release --manifest-path=cparinfer/Cargo.toml'}
 	" Parinfer port to VimL
 	"Plug 'bhurlow/vim-parinfer'
 endif
@@ -154,7 +163,7 @@ Plug 'fatih/vim-go'
 
 " View rendered markdown in vim
 Plug 'euclio/vim-markdown-composer', {'do':
-			\ 'cargo +stable build --release --verbose > ~/vim.log 2>&1'}
+			\ 'cargo +stable build --release'}
 Plug 'nelstrom/vim-markdown-folding'	" Easily fold markdown files by section
 
 
@@ -166,6 +175,7 @@ Plug 'morhetz/gruvbox'                  " Gruvbox theme for vim
 Plug 'altercation/vim-colors-solarized' " Solarized theme for vim
 Plug 'joshdick/onedark.vim'             " Onedark theme from Atom ported to vim
 Plug 'sheerun/vim-polyglot'             " Syntax highlighting for different languages
+Plug 'tyrannicaltoucan/vim-deep-space'
 
 " }}}
 " Supercollider vim plugin {{{
@@ -210,11 +220,19 @@ vmap gx <Plug>(openbrowser-open)
 " }}}
 call plug#end()
 " }}}
+" Colors {{{
 " Colorscheme {{{
 
-colorscheme gruvbox
-let g:gruvbox_italic=1		" Allows italics for gruvbox
 set background=dark			" Options: [light/dark]
+
+colorscheme gruvbox
+let g:gruvbox_italic=1
+
+"colorscheme deep-space
+"let g:deepspace_italics=1
+
+" }}}
+" Rainbow Parentheses {{{
 
 " Rainbow parens options for Lisps => defaults to `ON`
 au VimEnter * RainbowParenthesesToggle
@@ -222,6 +240,8 @@ au Syntax   * RainbowParenthesesLoadRound
 au Syntax   * RainbowParenthesesLoadSquare
 au Syntax   * RainbowParenthesesLoadBraces
 
+" }}}
+" Highlight keywords {{{
 " From https://stackoverflow.com/questions/6577579/task-tags-in-vim
 if has("autocmd")
 	" Highlight TODO, FIXME, NOTE, BUG, etc.
@@ -231,6 +251,7 @@ if has("autocmd")
 	endif
 endif
 
+" }}}
 " }}}
 " Lightline {{{
 
