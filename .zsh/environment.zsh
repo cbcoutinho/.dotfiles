@@ -72,10 +72,14 @@ export WHEELHOUSE="${STANDARD_CACHE_DIR}/wheelhouse"
 export PIP_FIND_LINKS="file://${WHEELHOUSE}"
 export PIP_WHEEL_DIR="${WHEELHOUSE}"
 
-# Fix PATH, LIBRARY_PATH, LD_LIBRARY_PATH due to possible 'blanks'
+# Fix PATH, LD_LIBRARY_PATH due to possible 'blanks'
+#	https://github.com/google/pulldown-cmark/issues/122
 export PATH=$(echo $PATH | sed -E -e 's/^:*//' -e 's/:*$//' -e 's/:+/:/g')
-export LIBRARY_PATH=$(echo $LIBRARY_PATH | sed -E -e 's/^:*//' -e 's/:*$//' -e 's/:+/:/g')
 export LD_LIBRARY_PATH=$(echo $LD_LIBRARY_PATH | sed -E -e 's/^:*//' -e 's/:*$//' -e 's/:+/:/g')
+
+# Set LIBRARY_PATH to LD_LIBRARY_PATH if unset (related to issue
+# above)
+export LIBRARY_PATH=${LIBRARY_PATH:-$LD_LIBRARY_PATH}
 
 # CMake repository build (need v3.7+ for learn_dg and Fortran submodules)
 export CMAKE_PREFIX_PATH="$LD_LIBRARY_PATH"

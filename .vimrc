@@ -96,10 +96,10 @@ if empty(glob(plugfile))
 		if has('win32')
 			"execute "!echo `plug.vim` not found, first download it manually."
 			execute "!md -Force ~/AppData/Local/nvim/autoload;"
-				\ "$url = '" a:plug_url "'; $url = $url.replace(' ','');"
-				\ "$file = '" a:plugfile "'; $file = $file.replace(' ','');"
-				\ "(New-Object Net.WebClient).DownloadFile( $url, "
-				\ " $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath( $file ))"
+						\ "$url = '" a:plug_url "'; $url = $url.replace(' ','');"
+						\ "$file = '" a:plugfile "'; $file = $file.replace(' ','');"
+						\ "(New-Object Net.WebClient).DownloadFile( $url, "
+						\ " $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath( $file ))"
 		else
 			" Unix world
 			execute '!curl -fLo'
@@ -115,51 +115,76 @@ endif
 call plug#begin(plugin_dir)
 " Language-specfic plugins {{{
 " Completions in neovim {{{
+
 if has('nvim')
 	Plug 'roxma/nvim-completion-manager'
 endif
+
 " }}}
 " Rust {{{
+
 Plug 'rust-lang/rust.vim',				" Rust stuff
 Plug 'racer-rust/vim-racer',			" Racer in vim
 Plug 'roxma/nvim-cm-racer', 			" Neovim/vim8 completion for Rust
+
 " }}}
 " Lisp-like (e.g. Clojure) {{{
+
 Plug 'tpope/vim-fireplace'				" Connects to the nREPL for 'dynamic' clojure development
 Plug 'kien/rainbow_parentheses.vim'     " Rainbow parens for Lisps - see options below
 if has('nvim-0.2.1')
-	Plug 'snoe/nvim-parinfer.js', {'do': 'lein npm install'}
+	Plug 'snoe/nvim-parinfer.js', {'do':
+				\ 'lein npm install'}
 else
 	" Parinfer port to rust
 	Plug 'eraserhd/parinfer-rust', {'do':
-				\ 'cargo build --manifest-path=cparinfer/Cargo.toml --release'}
+				\ 'cargo +stable build --release'
+				\ '--manifest-path=cparinfer/Cargo.toml'}
 	" Parinfer port to VimL
 	"Plug 'bhurlow/vim-parinfer'
 endif
+
 " }}}
 " Golang {{{
+
 Plug 'fatih/vim-go'
+
+" }}}
+" Markdown {{{
+
+" View rendered markdown in vim
+Plug 'euclio/vim-markdown-composer', {'do':
+			\ 'cargo +stable build --release --verbose > ~/vim.log 2>&1'}
+Plug 'nelstrom/vim-markdown-folding'	" Easily fold markdown files by section
+
+
 " }}}
 " }}}
 " Color schemes {{{
+
 Plug 'morhetz/gruvbox'                  " Gruvbox theme for vim
 Plug 'altercation/vim-colors-solarized' " Solarized theme for vim
 Plug 'joshdick/onedark.vim'             " Onedark theme from Atom ported to vim
 Plug 'sheerun/vim-polyglot'             " Syntax highlighting for different languages
+
 " }}}
 " Supercollider vim plugin {{{
+
 Plug 'supercollider/scvim'
+
 " }}}
 " Vim-related plugins {{{
+
 Plug 'scrooloose/nerdtree'              " Project tree directory
 Plug 'scrooloose/nerdcommenter'         " Easily comment lines
 Plug 'tpope/vim-surround'               " Easily surround text with parens, quotes, etc.
 Plug 'itchyny/lightline.vim'            " Status line for vim
 Plug 'godlygeek/tabular'                " Easily align text based on a characher - see http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
 Plug 'sjl/gundo.vim'					" View vim 'undo' as a tree
-Plug 'nelstrom/vim-markdown-folding'	" Easily fold markdown files by section
+
 " }}}
 " Vim/git-related plugins {{{
+
 Plug 'tpope/vim-fugitive'               " Git plugin for vim
 Plug 'tpope/vim-rhubarb'                " Git plugin for vim - extension for Github
 Plug 'shumphrey/fugitive-gitlab.vim'    " Git plugin for vim - extension for Gitlab
@@ -169,8 +194,10 @@ if has('nvim-0.2.0')
 	" On debian (nvim-0.1.7), there is an api bug
 	Plug 'airblade/vim-gitgutter'		" Git status in gutter (next to line numbers)
 endif
+
 " }}}
 " Fix `gx` bug {{{
+
 " Normal `gx` doesn't work, so we remap it
 "	https://github.com/neovim/neovim/issues/4612
 Plug 'tyru/open-browser.vim' "{
@@ -179,6 +206,7 @@ let g:netrw_nogx = get(g:, 'netrw_nogx', 1)
 nmap gx <Plug>(openbrowser-open)
 vmap gx <Plug>(openbrowser-open)
 "}
+
 " }}}
 call plug#end()
 " }}}
