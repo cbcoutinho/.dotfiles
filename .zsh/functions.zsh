@@ -48,7 +48,6 @@ function libpath () {
 
 # Terminal color scheme
 function terminal-scheme() {
-	set -x
     config_file=~/.config/alacritty/alacritty.yml
     sed -i "s/\(^colors: \*\).*/\1$1/g" $config_file
 }

@@ -88,6 +88,7 @@ source "$HOME/.local/bin/virtualenvwrapper_lazy.sh"
 export PATH=$(echo $PATH | sed -E -e 's/^:*//' -e 's/:*$//' -e 's/:+/:/g')
 export LD_LIBRARY_PATH=$(echo $LD_LIBRARY_PATH | sed -E -e 's/^:*//' -e 's/:*$//' -e 's/:+/:/g')
 export PYTHONPATH=$(echo $PYTHONPATH | sed -E -e 's/^:*//' -e 's/:*$//' -e 's/:+/:/g')
+export CPATH=$(echo $CPATH | sed -E -e 's/^:*//' -e 's/:*$//' -e 's/:+/:/g')
 
 # Set LIBRARY_PATH to LD_LIBRARY_PATH if unset (related to issue
 # above)
