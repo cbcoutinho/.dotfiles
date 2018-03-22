@@ -11,8 +11,7 @@ else
 	"set shell=/bin/bash			" Force shell to use bash
 	let g:python_host_prog='/home/chris/Envs/neovim/bin/python'
 	let g:python3_host_prog='/home/chris/Envs/neovim3/bin/python3'
-	"let g:ruby_host_prog=system("which neovim-ruby-host")
-	let g:ruby_host_prog='/home/chris/.gem/ruby/2.5.0/bin/neovim-ruby-host'
+	let g:ruby_host_prog=systemlist("which neovim-ruby-host")[0]
 	let g:npm_host_prog=system("which npm | sed 's/npm/neovim-node-host/'")
 endif
 
