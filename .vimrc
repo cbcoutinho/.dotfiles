@@ -103,7 +103,8 @@ endif
 " }}}
 " Golang {{{
 
-Plug 'fatih/vim-go'
+" Only use a tagged release of vim-go
+"Plug 'fatih/vim-go', { 'tag': '*' }
 
 " }}}
 " Markdown {{{
