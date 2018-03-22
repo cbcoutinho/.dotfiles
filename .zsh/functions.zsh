@@ -45,3 +45,10 @@ function path () {
 function libpath () {
 	echo $LD_LIBRARY_PATH | sed 's/:/\n/g'
 }
+
+# Terminal color scheme
+function terminal-scheme() {
+	set -x
+    config_file=~/.config/alacritty/alacritty.yml
+    sed -i "s/\(^colors: \*\).*/\1$1/g" $config_file
+}

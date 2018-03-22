@@ -9,7 +9,7 @@ source ~/.zsh/environment.zsh
 source ~/.zsh/aliases.zsh
 
 # `ls` function needs `less` alias
-source ~/.zsh/myfunctions.zsh
+source ~/.zsh/functions.zsh
 
 # The user prompt (PS1)
 source ~/.zsh/prompt.zsh
