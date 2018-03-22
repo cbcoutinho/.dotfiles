@@ -1,9 +1,3 @@
-
-# Python path
-function ana() {
-	export PATH=$HOME/Software/anaconda3/bin:$PATH
-}
-
 # ayy lmao
 alias qutebrowser="qutebrowser --backend webengine"
 alias chromium="chromium --disk-cache-dir=/tmp/cache"

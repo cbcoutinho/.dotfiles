@@ -1,3 +1,7 @@
+# Anaconda path
+function ana() {
+	export PATH=$HOME/Software/anaconda3/bin:$PATH
+}
 
 # NOTE: cannot comment inside bash functions, so 'execute' them instead
 function ls {
