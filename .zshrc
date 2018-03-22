@@ -108,6 +108,11 @@ fi
 # completions
 autoload -Uz compinit && compinit
 compinit
+
+# Allow dot files to match on tab completion
+#	https://unix.stackexchange.com/a/308322/171562
+_comp_options+=(globdots)
+
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 setopt COMPLETE_ALIASES
