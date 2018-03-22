@@ -1,6 +1,8 @@
 
 # Python path
-alias ana="export PATH=$HOME/anaconda3/bin:$PATH"
+function ana() {
+	export PATH=$HOME/Software/anaconda3/bin:$PATH
+}
 
 # ayy lmao
 alias qutebrowser="qutebrowser --backend webengine"

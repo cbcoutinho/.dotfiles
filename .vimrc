@@ -60,6 +60,12 @@ function! BuildParinferRust(info)
 	endif
 endfunction
 
+function! BuildParinferClojure(info)
+	if a:info.status != 'unchanged' || a:info.force
+		!lein npm install
+	endif
+endfunction
+
 " }}}
 " Language-specfic plugins {{{
 " Completions in neovim {{{
@@ -92,12 +98,13 @@ Plug 'kien/rainbow_parentheses.vim'     " Rainbow parens for Lisps - see options
 if has('nvim-0.2.1')
 	" Parinfer implementation in Clojure
 	Plug 'snoe/nvim-parinfer.js', {
-				\ 'do': 'lein npm install' }
+				\ 'do': function('BuildParinferClojure') }
 else
 	" Parinfer re-implementation in Rust
-	Plug 'eraserhd/parinfer-rust', {
+	"Plug 'eraserhd/parinfer-rust', {
+				"\ 'do': function('BuildParinferRust') }
+	Plug 'file:///home/chris/Projects/parinfer-rust', {
 				\ 'do': function('BuildParinferRust') }
-	"Plug '~/Projects/parinfer-rust'
 endif
 
 " }}}
