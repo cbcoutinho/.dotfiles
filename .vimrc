@@ -184,7 +184,6 @@ Plug 'euclio/vim-markdown-composer', { 'do':
 			\ function('BuildComposer') }
 Plug 'nelstrom/vim-markdown-folding'	" Easily fold markdown files by section
 
-
 " }}}
 " }}}
 " Color schemes {{{
@@ -348,6 +347,12 @@ let fortran_do_enddo=1
 " LaTeX {{{
 " Turns off spell checking in TeX comments
 let g:tex_comment_nospell=1
+" }}}
+" Markdown {{{
+
+" Don't automatically open a rendered mardown doc in the browser
+let g:markdown_composer_open_browser=0
+
 " }}}
 " }}}
 " Keymaps {{{
