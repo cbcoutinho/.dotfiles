@@ -9,6 +9,11 @@ if has('win32')
 	let g:ruby_host_prog='C:/Users/ccoutinho/scoop/apps/ruby/current/gems/bin/neovim-ruby-host.bat'
 else
 	"set shell=/bin/bash			" Force shell to use bash
+	let g:python_host_prog='/home/chris/Envs/neovim/bin/python'
+	let g:python3_host_prog='/home/chris/Envs/neovim3/bin/python3'
+	"let g:ruby_host_prog=system("which neovim-ruby-host")
+	let g:ruby_host_prog='/home/chris/.gem/ruby/2.5.0/bin/neovim-ruby-host'
+	let g:npm_host_prog=system("which npm | sed 's/npm/neovim-node-host/'")
 endif
 
 " }}}
@@ -116,6 +121,20 @@ if empty(glob(plugfile))
 endif
 " }}}
 call plug#begin(plugin_dir)
+" Build Function(s) {{{
+
+" For vim/nvim compatibility, see 'euclio/vim-markdown-composer'
+function! BuildComposer(info)
+	if a:info.status != 'unchanged' || a:info.force
+		if has('nvim')
+			!cargo +stable build --release
+		else
+			!cargo +stable build --release --no-default-features --features json-rpc
+		endif
+	endif
+endfunction
+
+" }}}
 " Language-specfic plugins {{{
 " Completions in neovim {{{
 
@@ -143,11 +162,11 @@ endif
 Plug 'tpope/vim-fireplace'				" Connects to the nREPL for 'dynamic' clojure development
 Plug 'kien/rainbow_parentheses.vim'     " Rainbow parens for Lisps - see options below
 if has('nvim-0.2.1')
-	Plug 'snoe/nvim-parinfer.js', {'do':
+	Plug 'snoe/nvim-parinfer.js', { 'do':
 				\ 'lein npm install'}
 else
 	" Parinfer port to rust
-	Plug 'eraserhd/parinfer-rust', {'do':
+	Plug 'eraserhd/parinfer-rust', { 'do':
 				\ 'cargo +stable build --release --manifest-path=cparinfer/Cargo.toml'}
 	" Parinfer port to VimL
 	"Plug 'bhurlow/vim-parinfer'
@@ -162,8 +181,8 @@ Plug 'fatih/vim-go'
 " Markdown {{{
 
 " View rendered markdown in vim
-Plug 'euclio/vim-markdown-composer', {'do':
-			\ 'cargo +stable build --release'}
+Plug 'euclio/vim-markdown-composer', { 'do':
+			\ function('BuildComposer') }
 Plug 'nelstrom/vim-markdown-folding'	" Easily fold markdown files by section
 
 

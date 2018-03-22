@@ -35,6 +35,10 @@ alias testpl='echo "\ue0b0 \u00b1 \ue0a0 \u27a6 \u2718 \u26a1 \u2699"'
 # Alias hub to git
 command -v hub >/dev/null && eval "$(hub alias -s)"
 
+# Hook direnv into the shell
+command -v direnv >/dev/null && eval "$(direnv hook zsh)"
+
+
 # OpenFOAM Aliases
 if [[ -d $HOME/OpenFOAM ]]; then
 	# Test if a directory similar to ~/OpenFOAM/OpenFOAM-5.x exists

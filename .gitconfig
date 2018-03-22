@@ -7,6 +7,7 @@
 # This sets `git {diff,show} tabs as 4 spaces
 [core] 	# https://stackoverflow.com/a/10584237
 	pager = less -x1,5
+	excludesfile = /home/chris/.gitconfig_global
 
 [color]
 	ui = true

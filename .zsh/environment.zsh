@@ -46,6 +46,11 @@ export PETSC_ARCH=arch-linux2-c-debug
 # MOOSE
 export MOOSE_DIR="$HOME/Software/MOOSE"
 
+# User/System ruby gems
+if command -v ruby >/dev/null && command -v gem >/dev/null; then
+	PATH="$(command ruby -rrubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
+
 # Haskell directory
 PATH="$HOME/.cabal/bin":$PATH
 
@@ -72,10 +77,17 @@ export WHEELHOUSE="${STANDARD_CACHE_DIR}/wheelhouse"
 export PIP_FIND_LINKS="file://${WHEELHOUSE}"
 export PIP_WHEEL_DIR="${WHEELHOUSE}"
 
+# Python virtualenvwrapper
+export WORKON_HOME=~/Envs
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export VIRTUALENVWRAPPER_SCRIPT="$HOME/.local/bin/virtualenvwrapper.sh"
+source "$HOME/.local/bin/virtualenvwrapper_lazy.sh"
+
 # Fix PATH, LD_LIBRARY_PATH due to possible 'blanks'
 #	https://github.com/google/pulldown-cmark/issues/122
 export PATH=$(echo $PATH | sed -E -e 's/^:*//' -e 's/:*$//' -e 's/:+/:/g')
 export LD_LIBRARY_PATH=$(echo $LD_LIBRARY_PATH | sed -E -e 's/^:*//' -e 's/:*$//' -e 's/:+/:/g')
+export PYTHONPATH=$(echo $PYTHONPATH | sed -E -e 's/^:*//' -e 's/:*$//' -e 's/:+/:/g')
 
 # Set LIBRARY_PATH to LD_LIBRARY_PATH if unset (related to issue
 # above)
@@ -90,16 +102,6 @@ sandbox_init_rvm() {
 		# Load `rvm`
 		source ~/.rvm/scripts/rvm
 	else
-		# No `rvm` found
-		if command -v ruby >/dev/null && command -v gem >/dev/null; then
-			# `rvm` doesn't exist, but `ruby` and `gem` do, so add gems
-			# bin to path
-			echo 'No `rvm` found, using system ruby for $PATH'
-			export PATH="$(command ruby -rrubygems -e 'puts Gem.user_dir')/bin:$PATH"
-		else
-			# You called `ruby`, but `ruby` or `gem` wasn't found
-			echo "No 'ruby' found - you probably don't want to be here"
-		fi
 		echo 'To get `rvm` first softlink .rvmrc to $HOME, then'
 		echo 'Execute the following to download `rvm`:'
 		echo '	curl -sSL https://get.rvm.io | bash -s stable'
@@ -118,9 +120,6 @@ sandbox_init_nvm() {
 
 # Don't load modules unless used
 sandbox_hook rvm rvm
-sandbox_hook rvm gem
-sandbox_hook rvm ruby
-sandbox_hook rvm irb
 
 sandbox_hook nvm nvm
 sandbox_hook nvm npm
