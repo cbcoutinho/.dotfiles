@@ -154,16 +154,13 @@ endif
 " }}}
 " Fuzzy search {{{
 
-if has('win32')
-	let fzfdir = 'C:\Development\fzf'
-else
-	let fzfdir = '~/.fzf'
+if has('unix')
+	" Fuzzy search for vim - doesn't work on windows
+	Plug 'junegunn/fzf', {
+				\ 'dir': '~/.fzf',
+				\ 'do': './install --all' }
+	Plug 'junegunn/fzf.vim'
 endif
-
-" Fuzzy search for vim
-Plug 'junegunn/fzf', {
-			\ 'dir': fzfdir,
-			\ 'do': './install --all' }
 
 " }}}
 " Fix `gx` bug {{{
