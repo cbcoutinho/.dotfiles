@@ -119,6 +119,14 @@ sandbox_init_nvm() {
 	fi
 }
 
+sandbox_init_conda() {
+	if [ -d $HOME/Software/anaconda3 ]; then
+		export PATH=$HOME/Software/anaconda3/bin:$PATH
+	else
+		echo "You're trying to use 'anaconda', but it's not installed"
+	fi
+}
+
 # Don't load modules unless used
 sandbox_hook rvm rvm
 
@@ -126,3 +134,9 @@ sandbox_hook nvm nvm
 sandbox_hook nvm npm
 sandbox_hook nvm node
 sandbox_hook nvm nvim # This is needed for nvim plugins via npm
+
+# Anaconda
+sandbox_hook conda conda
+sandbox_hook conda conda-build
+sandbox_hook conda conda-index
+sandbox_hook conda conda-convert
