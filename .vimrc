@@ -249,8 +249,10 @@ endif
 
 set nowrap                  " Don't wrap long lines automatically
 set textwidth       =70     " Set textwidth to <n> chars, wrap after that
+
+" Default format options: tcqj (in vimrc: jcroql)
 set formatoptions   +=t     " Automatically wrap lines after <textwidth> chars
-set formatoptions   -=l     " Already long lines will also be auto-wrapped if appended to
+set formatoptions   +=l     " Already long lines will not be auto-wrapped if appended to
 
 " Further, from the wiki:
 " If you want to wrap lines in a specific area, move the cursor to
