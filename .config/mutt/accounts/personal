@@ -1,0 +1,25 @@
+# vim: filetype=muttrc
+
+## Account Settings -----------------------------------
+# Default inbox
+set spoolfile = "+chrisbcoutinho@gmail.com/INBOX"
+
+# Alternate email addresses
+#alternates chris@example.com
+
+# Mailboxes to show in the sidebar
+mailboxes +chrisbcoutinho@gmail.com/INBOX \
+			+chrisbcoutinho@gmail.com/Archive \
+			+chrisbcoutinho@gmail.com/Sent \
+			+chrisbcoutinho@gmail.com/Drafts \
+			+chrisbcoutinho@gmail.com/Mailing\ Lists  \
+			+chrisbcoutinho@gmail.com/Mailing\ Lists/Github  \
+			+chrisbcoutinho@gmail.com/Mailing\ Lists/Pass  \
+			+chrisbcoutinho@gmail.com/Mailing\ Lists/Cinemacephale  \
+
+set from = "chrisbcoutinho@gmail.com"
+set sendmail = "/usr/bin/msmtp -a personal"
+set sendmail_wait = 0
+
+set mbox = "+chrisbcoutinho@gmail.com/Archive"
+set postponed = "+chrisbcoutinho@gmail.com/Drafts"

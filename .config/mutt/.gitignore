@@ -3,14 +3,12 @@
 
 # But not these files...
 !.gitignore
-!redshift.conf
+!offlineimap.py
+!muttrc
+!mailcap
+!view_attachment.sh
+!README.md
 
 #Or these directories
-!matplotlib/
-!pip/
-!onedrive/
-!alacritty/
-!nvim/
-!htop/
-!offlineimap
-!mutt
+!accounts/
+!colors/

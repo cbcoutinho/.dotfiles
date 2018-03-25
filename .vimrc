@@ -194,8 +194,8 @@ if has('win32')
 	let g:ruby_host_prog='C:/Users/ccoutinho/scoop/apps/ruby/current/gems/bin/neovim-ruby-host.bat'
 else
 	"set shell=/bin/bash			" Force shell to use bash
-	let g:python_host_prog='/home/chris/Envs/neovim/bin/python'
-	let g:python3_host_prog='/home/chris/Envs/neovim3/bin/python3'
+	let g:python_host_prog='/home/chris/.envs/neovim/bin/python'
+	let g:python3_host_prog='/home/chris/.envs/neovim3/bin/python3'
 	let g:ruby_host_prog=systemlist("which neovim-ruby-host")[0]
 	let g:npm_host_prog=system("which npm | sed 's/npm/neovim-node-host/'")
 endif

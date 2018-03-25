@@ -1,0 +1,21 @@
+# vim: filetype=muttrc
+
+## Account Settings -----------------------------------
+# Default inbox
+set spoolfile = "+ccoutinho@a-hak.nl/INBOX"
+
+# Alternate email addresses
+#alternates chris@example.com
+
+# Mailboxes to show in the sidebar
+mailboxes +ccoutinho@a-hak.nl/INBOX \
+			+ccoutinho@a-hak.nl/archive \
+			+ccoutinho@a-hak.nl/sent \
+			+ccoutinho@a-hak.nl/drafts \
+
+set from = "ccoutinho@a-hak.nl"
+set sendmail = "/usr/bin/msmtp -a work"
+set sendmail_wait = 0
+
+set mbox = "+ccoutinho@a-hak.nl/archive"
+set postponed = "+ccoutinho@a-hak.nl/drafts"

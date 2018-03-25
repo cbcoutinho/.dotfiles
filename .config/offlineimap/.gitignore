@@ -3,14 +3,8 @@
 
 # But not these files...
 !.gitignore
-!redshift.conf
+!config
+!offlineimap.py
+!postsync.sh
 
 #Or these directories
-!matplotlib/
-!pip/
-!onedrive/
-!alacritty/
-!nvim/
-!htop/
-!offlineimap
-!mutt

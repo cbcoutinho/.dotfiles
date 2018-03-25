@@ -1,0 +1,51 @@
+# vim: filetype=conf
+
+[general]
+ui = TTY.TTYUI
+#ui = syslog
+accounts = ChrisCoutinho
+# NOTE: This is a python2 file
+pythonfile=~/.config/offlineimap/offlineimap.py
+fsync = False
+
+[Account ChrisCoutinho]
+localrepository = ChrisCoutinho-Local
+remoterepository = ChrisCoutinho-Remote
+synclabels = yes
+postsynchook = ~/.config/offlineimap/postsync.sh
+
+[Repository ChrisCoutinho-Local]
+type = GmailMaildir
+localfolders = ~/.mail/chrisbcoutinho@gmail.com
+nametrans = lambda folder: {'Drafts':  '[Gmail]/Drafts',
+                            'Sent':    '[Gmail]/Sent Mail',
+                            'Flagged': '[Gmail]/Starred',
+                            'Trash':   '[Gmail]/Trash',
+                            'Archive': '[Gmail]/All Mail',
+							'Mailing List/Github': '[Gmail]/Mailing List.Github',
+							'Mailing List/Pass': '[Gmail]/Mailing List.Pass',
+							'Mailing List/Cinemacephale': '[Gmail]/Mailing List.Cinemacephale',
+                            }.get(folder, folder)
+
+[Repository ChrisCoutinho-Remote]
+maxconnections = 1
+type = Gmail
+remoteuser = chrisbcoutinho@gmail.com
+remotepasseval = get_pass(account="Gmail")
+realdelete = no
+nametrans = lambda folder: {'[Gmail]/Drafts':    'Drafts',
+                            '[Gmail]/Sent Mail': 'Sent',
+                            '[Gmail]/Starred':   'Flagged',
+                            '[Gmail]/Trash':     'Trash',
+                            '[Gmail]/All Mail':  'Archive',
+							'[Gmail]/Mailing List.Github': 'Mailing List/Github',
+							'[Gmail]/Mailing List.Pass': 'Mailing List/Pass',
+							'[Gmail]/Mailing List.Cinemacephale': 'Mailing List/Cinemacephale',
+                            }.get(folder, folder)
+folderfilter = lambda folder: folder not in ['[Gmail]/Trash',
+                                             '[Gmail]/Important',
+                                             '[Gmail]/Spam',
+											 '[Gmail]/Bin',
+                                             ]
+
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
