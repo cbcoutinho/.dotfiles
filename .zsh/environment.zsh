@@ -133,6 +133,7 @@ sandbox_hook rvm rvm
 sandbox_hook nvm nvm
 sandbox_hook nvm npm
 sandbox_hook nvm node
+sandbox_hook nvm yarn
 sandbox_hook nvm nvim # This is needed for nvim plugins via npm
 
 # Anaconda
