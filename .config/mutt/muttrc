@@ -121,6 +121,11 @@ bind pager R  group-reply
 # View attachments properly.
 bind attach <return> view-mailcap
 
+# automatically view html mail using mailcap
+auto_view text/html
+# still, prefer text if available
+alternative_order text/plain text/enriched text/html
+
 # Handle url's gracefully using `urlview`
 macro pager \Cu "|urlview<enter>" "call urlview to open links"
 

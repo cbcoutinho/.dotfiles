@@ -4,8 +4,14 @@
 
 These websites were invaluable
 
-<https://pbrisbin.com/posts/mutt_gmail_offlineimap>
+- [Granddaddy mutt/gmail/offlineimap guide](https://pbrisbin.com/posts/mutt_gmail_offlineimap)
+
+## Mutt
+
+- [(Neo)mutt sidebar formatting](https://www.neomutt.org/guide/gettingstarted.html#intro-sidebar-format)
+- [Using Mutt with encryption](https://a3nm.net/blog/mutt_crypt_opportunistic_encrypt.html)
 
 ## OfflineImap
 
-<http://www.offlineimap.org/doc/use_cases.html>
+- [Docs: Offlineimap use cases](http://www.offlineimap.org/doc/use_cases.html)
+- [A simple offlineimap config gist](https://gist.github.com/dabrahams/3030332)
