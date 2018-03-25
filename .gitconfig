@@ -4,10 +4,11 @@
 [commit]
 	verbose = true
 
-# This sets `git {diff,show} tabs as 4 spaces
-[core] 	# https://stackoverflow.com/a/10584237
+[core]
+	excludesfile = /home/chris/.gitignore_global
 	pager = less -x1,5
-	excludesfile = /home/chris/.gitconfig_global
+	# This sets `git {diff,show} tabs as 4 spaces
+	#	https://stackoverflow.com/a/10584237
 
 [color]
 	ui = true
@@ -23,7 +24,8 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
-[pretty] # From https://github.com/nicksp/dotfiles
+[pretty]
+	# From https://github.com/nicksp/dotfiles
 	custom = "%C(magenta)%h%C(red)%d %C(yellow)%ar %C(green)%s %C(yellow)(%an)"
 	#                     │        │            │            │             └─ author name
 	#                     │        │            │            └─ message

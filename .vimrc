@@ -139,11 +139,11 @@ Plug 'supercollider/scvim'
 " }}}
 " Vim-related plugins {{{
 
-Plug 'scrooloose/nerdtree'              " Project tree directory
-Plug 'scrooloose/nerdcommenter'         " Easily comment lines
-Plug 'tpope/vim-surround'               " Easily surround text with parens, quotes, etc.
-Plug 'itchyny/lightline.vim'            " Status line for vim
-Plug 'godlygeek/tabular'                " Easily align text based on a characher - see http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
+Plug 'scrooloose/nerdtree'				" Project tree directory
+Plug 'scrooloose/nerdcommenter'			" Easily comment lines
+Plug 'tpope/vim-surround'				" Easily surround text with parens, quotes, etc.
+Plug 'itchyny/lightline.vim'			" Status line for vim
+Plug 'godlygeek/tabular'				" Easily align text based on a characher - see http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
 Plug 'sjl/gundo.vim'					" View vim 'undo' as a tree
 
 " }}}
@@ -401,6 +401,11 @@ nnoremap gV `[v`]
 
 " Make opening and closing folds easier
 nnoremap <Space> za
+
+" Switch between fixing cursor with `scrolloff`:
+"	http://vim.wikia.com/wiki/Keep_your_cursor_centered_vertically_on_the_screen
+nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
+
 
 "Remove all trailing whitespace by pressing F5
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>

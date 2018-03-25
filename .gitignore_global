@@ -2,3 +2,5 @@
 .direnv
 .envrc
 
+# For rust ctags files
+rusty-tags.vi

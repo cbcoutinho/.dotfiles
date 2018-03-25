@@ -28,14 +28,15 @@
 ## List of files to run at IPython startup.
 #c.InteractiveShellApp.exec_files = []
 
-## lines of code to run at IPython startup.
-c.InteractiveShellApp.exec_lines = [
-    '%autoreload 2',
-]
-
 ## A list of dotted module names of IPython extensions to load.
 c.InteractiveShellApp.extensions = [
     'autoreload',
+]
+
+## lines of code to run at IPython startup.
+# Automatically reload all modules before each command is executed.
+c.InteractiveShellApp.exec_lines = [
+    '%autoreload 2',
 ]
 
 ## dotted module name of an IPython extension to load.
@@ -278,7 +279,7 @@ c.InteractiveShellApp.extensions = [
 ## Set to confirm when you try to exit IPython with an EOF (Control-D in Unix,
 #  Control-Z/Enter in Windows). By typing 'exit' or 'quit', you can force a
 #  direct exit without any confirmation.
-#c.TerminalInteractiveShell.confirm_exit = True
+c.TerminalInteractiveShell.confirm_exit = False
 
 ## Options for displaying tab completions, 'column', 'multicolumn', and
 #  'readlinelike'. These options are for `prompt_toolkit`, see `prompt_toolkit`
@@ -286,7 +287,7 @@ c.InteractiveShellApp.extensions = [
 #c.TerminalInteractiveShell.display_completions = 'multicolumn'
 
 ## Shortcut style to use at the prompt. 'vi' or 'emacs'.
-#c.TerminalInteractiveShell.editing_mode = 'emacs'
+c.TerminalInteractiveShell.editing_mode = 'vi'
 
 ## Set the editor used by IPython (default to $EDITOR/vi/notepad).
 #c.TerminalInteractiveShell.editor = 'nvim'
