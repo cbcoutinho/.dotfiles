@@ -1,11 +1,10 @@
 # vim: filetype=conf
 
 [general]
-ui = ttyui
-#ui = TTY.TTYUI
+#ui = ttyui
 #ui = syslog
-#ui = Curses.Blinkenlights
-accounts = ChrisCoutinho
+ui = blinkenlights
+accounts = ChrisCoutinho,Work
 
 # NOTE: This is a python2 file
 pythonfile=~/.config/offlineimap/offlineimap.py
