@@ -8,6 +8,7 @@
 !mailcap
 !view_attachment.sh
 !README.md
+!alias_generator.sh
 
 #Or these directories
 !accounts/
