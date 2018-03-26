@@ -33,7 +33,7 @@ remoteuser = chrisbcoutinho@gmail.com
 remotepasseval = get_pass(account="Gmail")
 realdelete = no
 ssl = yes
-sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+sslcacertfile = /var/lib/ca-certificates/ca-bundle.pem
 nametrans = lambda folder: {'[Gmail]/Drafts':    'Drafts',
 							'[Gmail]/Sent Mail': 'Sent',
 							'[Gmail]/Starred':   'Flagged',
@@ -66,7 +66,7 @@ remotehost = outlook.office365.com
 remoteport = 993
 realdelete = no
 ssl = yes
-sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+sslcacertfile = /var/lib/ca-certificates/ca-bundle.pem
 nametrans = lambda folder: {'Sent Items': 'Sent'}.get(folder, folder)
 folderfilter = lambda folder: folder in [
 	'INBOX',
