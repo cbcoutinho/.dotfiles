@@ -1,20 +1,24 @@
 ##- Mutt basic settings
 
-# Paths ----------------------------------------------
-set folder           = ~/.mail						# mailbox location
-set alias_file       = ~/.config/mutt/alias			# where to store aliases
-set header_cache     = ~/.config/mutt/.cache/headers	# where to store headers
-set message_cachedir = ~/.config/mutt/.cache/bodies	# where to store bodies
-set certificate_file = ~/.config/mutt/certificates	# where to store certs
-set mailcap_path     = ~/.config/mutt/mailcap		# entries for filetypes
-set tmpdir           = ~/.config/mutt/temp			# where to keep temp files
-set signature        = ~/.config/mutt/sig			# my signature file
+# Folder hooks
+folder-hook 'personal' 'source ~/.config/mutt/accounts/personal'
+folder-hook 'work' 'source ~/.config/mutt/accounts/work'
 
 # chrisbcoutinho@gmail.com
 source accounts/personal
 
 # ccoutinho@a-hak.nl
 #source accounts/work
+
+macro index <f2> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/personal<enter><change-folder>!<enter>'
+macro index <f2> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/work<enter><change-folder>!<enter>'
+
+
+# Paths ----------------------------------------------
+set alias_file       = ~/.config/mutt/alias			# where to store aliases
+set mailcap_path     = ~/.config/mutt/mailcap		# entries for filetypes
+set tmpdir           = ~/.config/mutt/temp			# where to keep temp files
+
 
 # Basic Options --------------------------------------
 set wait_key = no        # shut up, mutt
@@ -78,7 +82,7 @@ set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
 
 ##- Index Key Bindings ---------------------------------
 
-bind index g 		noop # https://www.neomutt.org/guide/configuration.html#bind-warnings
+bind index g		noop # https://www.neomutt.org/guide/configuration.html#bind-warnings
 bind index gg       first-entry
 bind index G        last-entry
 

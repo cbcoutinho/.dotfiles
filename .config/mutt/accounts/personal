@@ -2,33 +2,40 @@
 
 ## Account Settings -----------------------------------
 # Default inbox
-set spoolfile = "+chrisbcoutinho@gmail.com/INBOX"
+
+set folder           = ~/.mail/gmail						# mailbox location
+set header_cache     = ~/.config/mutt/.gmail/cache/headers	# where to store headers
+set message_cachedir = ~/.config/mutt/.gmail/cache/bodies	# where to store bodies
+set certificate_file = ~/.config/mutt/.gmail/certificates	# where to store certs
+set signature        = ~/.config/mutt/.gmail/sig			# my signature file
 
 # Alternate email addresses
 #alternates chris@example.com
 
 # Mailboxes to show in the sidebar
-mailboxes +chrisbcoutinho@gmail.com/INBOX \
-			+chrisbcoutinho@gmail.com/Archive \
-			+chrisbcoutinho@gmail.com/Sent \
-			+chrisbcoutinho@gmail.com/Drafts \
-			+chrisbcoutinho@gmail.com/Important \
-			+chrisbcoutinho@gmail.com/Mailing\ Lists  \
-			+chrisbcoutinho@gmail.com/Mailing\ Lists.Github  \
-			+chrisbcoutinho@gmail.com/Mailing\ Lists.Pass  \
-			+chrisbcoutinho@gmail.com/Mailing\ Lists.Cinemacephale  \
-			+chrisbcoutinho@gmail.com/Categories  \
-			+chrisbcoutinho@gmail.com/Categories.Forums  \
-			+chrisbcoutinho@gmail.com/Categories.Promotions  \
-			+chrisbcoutinho@gmail.com/Categories.Social  \
-			+chrisbcoutinho@gmail.com/Categories.Updates \
+unmailboxes *
+mailboxes +INBOX \
+			+Archive \
+			+Sent \
+			+Drafts \
+			+Important \
+			+Mailing\ Lists  \
+			+Mailing\ Lists.Github  \
+			+Mailing\ Lists.Pass  \
+			+Mailing\ Lists.Cinemacephale  \
+			+Categories  \
+			+Categories.Forums  \
+			+Categories.Promotions  \
+			+Categories.Social  \
+			+Categories.Updates \
 
 set from = "chrisbcoutinho@gmail.com"
 set sendmail = "/usr/bin/msmtp -a personal"
 set sendmail_wait = 0
 
-set mbox = "+chrisbcoutinho@gmail.com/Archive"
-set postponed = "+chrisbcoutinho@gmail.com/Drafts"
+set spoolfile = "+INBOX"
+set mbox = "+Archive"
+set postponed = "+Drafts"
 
 set crypt_use_gpgme = yes
 

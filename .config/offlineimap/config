@@ -18,16 +18,13 @@ postsynchook = ~/.config/offlineimap/postsync.sh
 
 [Repository ChrisCoutinho-Local]
 type = GmailMaildir
-localfolders = ~/.mail/chrisbcoutinho@gmail.com
+localfolders = ~/.mail/gmail
 nametrans = lambda folder: {'Drafts':  '[Gmail]/Drafts',
 							'Sent':    '[Gmail]/Sent Mail',
 							'Flagged': '[Gmail]/Starred',
 							'Trash':   '[Gmail]/Trash',
 							'Archive': '[Gmail]/All Mail',
 							'Important': '[Gmail]/Important',
-							'Mailing List/Github': 'Mailing List.Github',
-							'Mailing List/Pass': 'Mailing List.Pass',
-							'Mailing List/Cinemacephale': 'Mailing List.Cinemacephale',
                             }.get(folder, folder)
 
 [Repository ChrisCoutinho-Remote]
@@ -44,9 +41,6 @@ nametrans = lambda folder: {'[Gmail]/Drafts':    'Drafts',
 							'[Gmail]/Trash':     'Trash',
 							'[Gmail]/All Mail':  'Archive',
 							'[Gmail]/Important': 'Important',
-							'Mailing List.Github': 'Mailing List/Github',
-							'Mailing List.Pass': 'Mailing List/Pass',
-							'Mailing List.Cinemacephale': 'Mailing List/Cinemacephale',
                             }.get(folder, folder)
 folderfilter = lambda folder: folder not in ['[Gmail]/Trash',
 											 '[Gmail]/Spam',
@@ -64,7 +58,7 @@ maxsyncaccounts = 4
 
 [Repository Work-Local]
 type = Maildir
-localfolders = ~/.mail/c.coutinho@redstack.nl
+localfolders = ~/.mail/office365
 #nametrans = lambda folder: {}.get(folder, folder)
 
 [Repository Work-Remote]
