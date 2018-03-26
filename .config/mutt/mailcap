@@ -13,4 +13,8 @@ application/pdf; ~/.config/mutt/view_attachment.sh %s pdf
 image/pdf; ~/.config/mutt/view_attachment.sh %s pdf
 
 # HTML
-text/html; ~/.config/mutt/view_attachment.sh %s html
+#text/html; ~/.config/mutt/view_attachment.sh %s html
+#text/html; pandoc -f html -o markdown %s html
+
+text/html; w3m -I %{charset} -T text/html; copiousoutput;
+#	https://unix.stackexchange.com/a/258911/171562<Paste>

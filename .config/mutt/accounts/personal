@@ -51,3 +51,7 @@ set crypt_verify_sig=yes
 set crypt_replysign=yes
 set crypt_replyencrypt=yes
 set crypt_replysignencrypted=yes
+
+# Sync email
+macro index O "<shell-escape>offlineimap -a ChrisCoutinho -s<enter>"           "run offlineimap to sync all mail"
+macro index o "<shell-escape>offlineimap -a ChrisCoutinho -s -qf INBOX<enter>" "run offlineimap to sync inbox"

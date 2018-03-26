@@ -105,10 +105,6 @@ bind index <space>  collapse-thread
 # Ctrl-R to mark all as read
 macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
 
-# Sync email
-macro index O "<shell-escape>offlineimap -s<enter>"           "run offlineimap to sync all mail"
-macro index o "<shell-escape>offlineimap -s -qf INBOX<enter>" "run offlineimap to sync inbox"
-
 # Saner copy/move dialogs
 macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
 macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
