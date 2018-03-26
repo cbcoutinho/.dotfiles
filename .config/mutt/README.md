@@ -11,6 +11,7 @@ These websites were invaluable
 
 - [(Neo)mutt sidebar formatting](https://www.neomutt.org/guide/gettingstarted.html#intro-sidebar-format)
 - [Using Mutt with encryption](https://a3nm.net/blog/mutt_crypt_opportunistic_encrypt.html)
+- [Multiple accounts with Mutt](https://gist.github.com/miguelmota/9456162)
 
 ## OfflineImap
 

@@ -15,9 +15,15 @@ set signature        = ~/.config/mutt/.office365/sig			# my signature file
 # Mailboxes to show in the sidebar
 unmailboxes *
 mailboxes +INBOX \
-			+archive \
-			+sent \
-			+drafts \
+			+Archive \
+			+Sent \
+			+Drafts \
+			+Clutter \
+			+Newsletters \
+			+Newsletters.Basecamp \
+			+Newsletters.Dakota \
+			+Newsletters.ParaView \
+			+Newsletters.RED\ News \
 
 set from = "ccoutinho@a-hak.nl"
 set sendmail = "/usr/bin/msmtp -a work"

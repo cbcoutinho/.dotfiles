@@ -11,13 +11,25 @@ source accounts/personal
 #source accounts/work
 
 macro index <f2> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/personal<enter><change-folder>!<enter>'
-macro index <f2> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/work<enter><change-folder>!<enter>'
+macro index <f3> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/work<enter><change-folder>!<enter>'
 
 
 # Paths ----------------------------------------------
 set alias_file       = ~/.config/mutt/alias			# where to store aliases
 set mailcap_path     = ~/.config/mutt/mailcap		# entries for filetypes
 set tmpdir           = ~/.config/mutt/temp			# where to keep temp files
+
+# Generates aliases by reading all messages before they are displayed
+# on the screen and parses their contents. Essentially it should find
+# the sender via a regex (From: <name> <email>), but it currently
+# doesn't work if the screen is half width, which I normally use,
+# because the name and email are on separate lines. Sometimes the
+# email address is a bad format as well, which should be
+# corrected/sanitized.
+#	FIXME: Make regex work with name/email pairs over multiple (2)
+#	lines. Also do some email sanitization
+
+set display_filter = ~/.config/mutt/alias_generator.sh
 
 
 # Basic Options --------------------------------------
@@ -35,7 +47,7 @@ set pipe_decode          # strip headers and eval mimes when piping
 set thorough_search      # strip headers and eval mimes before searching
 
 
-##- Sidebar Patch --------------------------------------
+##- Sidebar (Pager) Patch --------------------------------------
 
 set sidebar_divider_char   = '  │'
 #set sidebar_divider_char   = '  |'
@@ -152,6 +164,8 @@ set reply_to                         # reply to Reply to: field
 set reverse_name                     # reply as whomever it was to
 set include                          # include message in replies
 set forward_quote                    # include message in forwards
+
+set text_flowed = yes				# Sets all plain text messages to properly use linebreaks
 
 set editor = 'nvim'
 

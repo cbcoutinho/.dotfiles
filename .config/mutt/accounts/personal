@@ -19,14 +19,14 @@ mailboxes +INBOX \
 			+Sent \
 			+Drafts \
 			+Important \
-			+Mailing\ Lists  \
-			+Mailing\ Lists.Github  \
-			+Mailing\ Lists.Pass  \
-			+Mailing\ Lists.Cinemacephale  \
-			+Categories  \
-			+Categories.Forums  \
-			+Categories.Promotions  \
-			+Categories.Social  \
+			+Mailing\ Lists \
+			+Mailing\ Lists.Github \
+			+Mailing\ Lists.Pass \
+			+Mailing\ Lists.Cinemacephale \
+			+Categories \
+			+Categories.Forums \
+			+Categories.Promotions \
+			+Categories.Social \
 			+Categories.Updates \
 
 set from = "chrisbcoutinho@gmail.com"
