@@ -3,7 +3,9 @@
 [general]
 ui = TTY.TTYUI
 #ui = syslog
+#ui = Curses.Blinkenlights
 accounts = ChrisCoutinho
+
 # NOTE: This is a python2 file
 pythonfile=~/.config/offlineimap/offlineimap.py
 fsync = False
@@ -18,34 +20,84 @@ postsynchook = ~/.config/offlineimap/postsync.sh
 type = GmailMaildir
 localfolders = ~/.mail/chrisbcoutinho@gmail.com
 nametrans = lambda folder: {'Drafts':  '[Gmail]/Drafts',
-                            'Sent':    '[Gmail]/Sent Mail',
-                            'Flagged': '[Gmail]/Starred',
-                            'Trash':   '[Gmail]/Trash',
-                            'Archive': '[Gmail]/All Mail',
-							'Mailing List/Github': '[Gmail]/Mailing List.Github',
-							'Mailing List/Pass': '[Gmail]/Mailing List.Pass',
-							'Mailing List/Cinemacephale': '[Gmail]/Mailing List.Cinemacephale',
+							'Sent':    '[Gmail]/Sent Mail',
+							'Flagged': '[Gmail]/Starred',
+							'Trash':   '[Gmail]/Trash',
+							'Archive': '[Gmail]/All Mail',
+							'Important': '[Gmail]/Important',
+							'Mailing List/Github': 'Mailing List.Github',
+							'Mailing List/Pass': 'Mailing List.Pass',
+							'Mailing List/Cinemacephale': 'Mailing List.Cinemacephale',
                             }.get(folder, folder)
 
 [Repository ChrisCoutinho-Remote]
-maxconnections = 1
+maxconnections = 4
 type = Gmail
 remoteuser = chrisbcoutinho@gmail.com
 remotepasseval = get_pass(account="Gmail")
 realdelete = no
+ssl = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 nametrans = lambda folder: {'[Gmail]/Drafts':    'Drafts',
-                            '[Gmail]/Sent Mail': 'Sent',
-                            '[Gmail]/Starred':   'Flagged',
-                            '[Gmail]/Trash':     'Trash',
-                            '[Gmail]/All Mail':  'Archive',
-							'[Gmail]/Mailing List.Github': 'Mailing List/Github',
-							'[Gmail]/Mailing List.Pass': 'Mailing List/Pass',
-							'[Gmail]/Mailing List.Cinemacephale': 'Mailing List/Cinemacephale',
+							'[Gmail]/Sent Mail': 'Sent',
+							'[Gmail]/Starred':   'Flagged',
+							'[Gmail]/Trash':     'Trash',
+							'[Gmail]/All Mail':  'Archive',
+							'[Gmail]/Important': 'Important',
+							'Mailing List.Github': 'Mailing List/Github',
+							'Mailing List.Pass': 'Mailing List/Pass',
+							'Mailing List.Cinemacephale': 'Mailing List/Cinemacephale',
                             }.get(folder, folder)
 folderfilter = lambda folder: folder not in ['[Gmail]/Trash',
-                                             '[Gmail]/Important',
-                                             '[Gmail]/Spam',
+											 '[Gmail]/Spam',
 											 '[Gmail]/Bin',
                                              ]
 
+
+## The following info was obtained from:
+#	https://ryanmcconville.com/blog/post/offlineimap-with-outlook365/
+[Account Work]
+localrepository = Work-Local
+remoterepository = Work-Remote
+status_backend = sqlite
+maxsyncaccounts = 4
+
+[Repository Work-Local]
+type = Maildir
+localfolders = ~/.mail/c.coutinho@redstack.nl
+#nametrans = lambda folder: {}.get(folder, folder)
+
+[Repository Work-Remote]
+type = IMAP
+remoteuser = ccoutinho@a-hak.nl
+remotepasseval = get_pass(account="Office365")
+remotehost = outlook.office365.com
+remoteport = 993
+realdelete = no
+ssl = yes
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+#nametrans = lambda folder: {}.get(folder, folder)
+folderfilter = lambda folder: folder not in [
+	'Calendar',
+	'Calendar/Birthdays',
+	'Calendar/Sub Folder 1',
+	'Calendar/Sub Folder 2',
+	'Calendar/United States holidays',
+	'Contacts',
+	'Contacts/Sub Folder 1',
+	'Contacts/Sub Folder 2',
+	'Contacts/Skype for Business Contacts',
+	'Deleted Items',
+	'Drafts',
+	'Journal',
+	'Junk Email',
+	'Notes',
+	'Outbox',
+	'Sync Issues',
+	'Sync Issues/Conflicts',
+	'Sync Issues/Local Failures',
+	'Sync Issues/Server Failures',
+	'Tasks',
+	'Tasks/Sub Folder 1',
+	'Tasks/Sub Folder 2'
+	]

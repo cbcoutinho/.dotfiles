@@ -4,7 +4,8 @@
 
 These websites were invaluable
 
-- [Granddaddy mutt/gmail/offlineimap guide](https://pbrisbin.com/posts/mutt_gmail_offlineimap)
+- [Blog: Granddaddy mutt/gmail/offlineimap guide](https://pbrisbin.com/posts/mutt_gmail_offlineimap)
+- [Blog: Offlineimap, Gmail, and Mutt tutorial](http://www.mdlerch.com/offlineimap-gmail-and-mutt-tutorial.html)
 
 ## Mutt
 
@@ -15,3 +16,4 @@ These websites were invaluable
 
 - [Docs: Offlineimap use cases](http://www.offlineimap.org/doc/use_cases.html)
 - [A simple offlineimap config gist](https://gist.github.com/dabrahams/3030332)
+- [Blog: Using Two-factor Auth for google apps](http://www.thelogicalgeek.com/?p=65)
