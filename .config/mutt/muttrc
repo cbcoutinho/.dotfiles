@@ -13,6 +13,7 @@ source accounts/personal
 macro index <f2> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/personal<enter><change-folder>!<enter>'
 macro index <f3> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/work<enter><change-folder>!<enter>'
 
+macro index ,sn "l ^a^k~(~N)\n"  "show only new messages"
 
 # Paths ----------------------------------------------
 set alias_file       = ~/.config/mutt/alias			# where to store aliases
@@ -83,13 +84,11 @@ hdr_order from: to: cc: date: subject:  # and in this order
 ##- Index View Options ---------------------------------
 
 set date_format = "%m/%d"
-set index_format = "[%Z]  %D  %-20.20F  %s"
-#set date_format = "%y-%b-%d %T"
-#set index_format = "%2C | %Z [%d] %-30.30F (%-4.4c) %s"
-set sort = threads                         # like gmail
-set sort_aux = reverse-last-date-received  # like gmail
-set uncollapse_jump                        # don't collapse on an unread message
-set sort_re                                # thread based on regex
+set index_format = "[%Z]  %D  %-20.20F (%-4.4c) %s"
+set sort = threads							# like gmail
+set sort_aux = reverse-last-date-received	# like gmail - Newest at top
+set uncollapse_jump							# don't collapse on an unread message
+set sort_re									# thread based on regex
 set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
 
 ##- Index Key Bindings ---------------------------------
@@ -163,11 +162,12 @@ set forward_quote                    # include message in forwards
 
 set text_flowed = yes				# Sets all plain text messages to properly use linebreaks
 
-set editor = 'nvim'
+set editor = 'nvim -c "set spell"'
 
 # Don't record sent mail in 'sent' box - let Google/Microsoft handle it
 unset record
 
 ##- Colors
 
-source colors/gruvbox-256
+#source colors/gruvbox-256
+source colors/non-geek
