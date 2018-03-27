@@ -23,8 +23,9 @@ mailboxes +INBOX \
 			+Newsletters \
 			+Newsletters.Basecamp \
 			+Newsletters.Dakota \
+			+Newsletters.MOOSE \
 			+Newsletters.ParaView \
-			+Newsletters.RED\ News \
+			+Newsletters.RED\ News
 
 set from = "ccoutinho@a-hak.nl"
 set sendmail = "/usr/bin/msmtp -a work"

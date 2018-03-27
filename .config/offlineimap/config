@@ -76,6 +76,7 @@ folderfilter = lambda folder: folder in [
 	'Newsletters',
 	'Newsletters/Basecamp',
 	'Newsletters/Dakota',
+	'Newsletters/MOOSE',
 	'Newsletters/ParaView',
 	'Newsletters/RED News',
 	'Sent Items',
