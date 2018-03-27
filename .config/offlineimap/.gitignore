@@ -6,5 +6,6 @@
 !config
 !offlineimap.py
 !postsync.sh
+!sync_offlineimap_all.sh
 
 #Or these directories
