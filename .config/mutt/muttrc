@@ -64,10 +64,10 @@ set sidebar_indent_string="  "
 set mail_check_stats
 set sidebar_format='%B%?F? [%F]?%* %?N?%N/?%S'
 
-#- Sidebar Navigation ---------------------------------
-bind index,pager <down>   sidebar-next
-bind index,pager <up>     sidebar-prev
-bind index,pager <right>  sidebar-open
+# Sidebar Navigation ---------------------------------
+bind index,pager J	sidebar-next
+bind index,pager K	sidebar-prev
+bind index,pager L	sidebar-open
 
 #- Status Bar -----------------------------------------
 set status_chars  = " *%A"
