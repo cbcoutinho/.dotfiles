@@ -8,7 +8,7 @@ if has('win32')
 	let g:python3_host_prog='C:/Development/anaconda3/envs/neovim3/python.exe'
 	let g:ruby_host_prog='C:/Users/ccoutinho/scoop/apps/ruby/current/gems/bin/neovim-ruby-host.bat'
 else
-	"set shell=/bin/bash			" Force shell to use bash
+	set shell=bash			" Force shell to use bash
 	let g:python_host_prog='/home/chris/.envs/neovim/bin/python'
 	let g:python3_host_prog='/home/chris/.envs/neovim3/bin/python3'
 	let g:ruby_host_prog=systemlist("which neovim-ruby-host")[0]
@@ -213,6 +213,8 @@ set showcmd					" Show command being typed on bottom right - useful for keymaps
 
 "set spell					" By default spelling is `OFF`
 set spelllang=en_us,nl		" Spelling language [en|nl]
+
+set autoread				" Automatically reloads files that were edited externally
 
 " Space/Tab options {{{
 "set expandtab               " Uses spaces instead of tabs
