@@ -33,6 +33,9 @@ set from = "chrisbcoutinho@gmail.com"
 set sendmail = "/usr/bin/msmtp -a personal"
 set sendmail_wait = 0
 
+# Don't record sent mail in 'sent' box - let Google/Microsoft handle it
+unset record
+
 set spoolfile = "+INBOX"
 set mbox = "+Archive"
 set postponed = "+Drafts"
