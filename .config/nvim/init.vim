@@ -109,6 +109,7 @@ endif
 
 Plug 'tpope/vim-fireplace'				" Connects to the nREPL for 'dynamic' clojure development
 Plug 'kien/rainbow_parentheses.vim'     " Rainbow parens for Lisps - see options below
+Plug 'jpalardy/vim-slime'				" Send text to another pane (ie. with a REPL)
 
 " Neovim node host was added in nvim-0.2.1
 if has('nvim-0.2.1') && has('unix')
@@ -281,7 +282,7 @@ let g:gruvbox_italic=1
 " }}}
 " Rainbow Parentheses {{{
 
-" Rainbow parens options for Lisps => defaults to `ON`
+" Rainbow parens options for all parentheses => defaults to `ON`
 au VimEnter * RainbowParenthesesToggle
 au Syntax   * RainbowParenthesesLoadRound
 au Syntax   * RainbowParenthesesLoadSquare
@@ -385,6 +386,18 @@ let g:tex_comment_nospell=1
 " Don't automatically open a rendered mardown doc in the browser
 let g:markdown_composer_open_browser=0
 
+" }}}
+" Clojure/SLIME {{{
+" SLIME sends data between vim and another pane
+if exists('$TMUX')
+	let g:slime_target = "tmux"
+	let g:slime_paste_file = "$HOME/.slime_paste"
+	let g:slime_python_ipython = 1
+	let g:slime_default_config = {
+				\ "socket_name": split($TMUX, ",")[0],
+				\ "target_pane": ":.2",
+				\ }
+endif
 " }}}
 " }}}
 " Keymaps {{{

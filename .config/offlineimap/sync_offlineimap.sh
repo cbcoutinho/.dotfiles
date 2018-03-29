@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # This script relies on the fact that a gpg-agent is running and has
-# output it's env-file in ~/.gnupg/gpg-agent.env
+# output its env-file in ~/.gnupg/gpg-agent.env
 # /etc/profile.d/gpg-agent.sh
 
 # # This file sets up a proper GPG daemon on login for all users except
@@ -20,10 +20,10 @@
 # fi
 
 
-source $HOME/.gnupg/gpg-agent.env
+#source $HOME/.gnupg/gpg-agent.env
 
 # The GPG_AGENT_INFO info isn't exported by gpg-agent above
-export GPG_AGENT_INFO
+#export GPG_AGENT_INFO
 
 # Throw away stdout, send stderr to shell/cron
 if [ $(hostname) = 'tumbleweed' ]; then
@@ -32,7 +32,7 @@ if [ $(hostname) = 'tumbleweed' ]; then
 
 	wait $pid1
 	wait $pid2
-	echo "Last execution: $(date)"
+	#echo "OfflineIMAP - Last execution: $(date)"
 else
 	offlineimap -a Work -u syslog >/dev/null
 fi
