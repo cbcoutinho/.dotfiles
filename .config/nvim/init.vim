@@ -203,7 +203,7 @@ vmap gx <Plug>(openbrowser-open)
 call plug#end()
 " }}}
 " Vim settings {{{
-
+"
 filetype plugin indent on
 set nocompatible			" Be iMproved, required for (n)vim
 set number					" Line numbers
@@ -211,13 +211,13 @@ set relativenumber			" Relative line numbers w.r.t the cursor
 set cursorline				" Highlight current line
 set wildmenu				" Visual autocomplete for command menu - shows options when :sp _, etc
 set showcmd					" Show command being typed on bottom right - useful for keymaps
+set autoread				" Automatically reloads files that were edited externally
 
 "set spell					" By default spelling is `OFF`
 set spelllang=en_us,nl		" Spelling language [en|nl]
 
-set autoread				" Automatically reloads files that were edited externally
-
 " Space/Tab options {{{
+"
 "set expandtab               " Uses spaces instead of tabs
 set tabstop     =4          " show existing tab with 4 spaces width
 set shiftwidth  =4          " when indenting with '>', use 4 spaces width
@@ -227,29 +227,15 @@ set shiftwidth  =4          " when indenting with '>', use 4 spaces width
 set list					" Replaces certain whitespace with characters
 set listchars=tab:>-		" Replaces <TAB> with >---
 set listchars+=trail:x		" Replaces trailing whitespace with 'x'
+"
 " }}}
-" Folding options {{{
-" Code folding options are:
-"	[marker, manual, expr, syntax, diff, indent]
-"set foldmethod=marker
-"set foldlevel=0
-set modelines=1				" This tells vim to look at the last line for the fold method
-" }}}
+" Formatting {{{
 
 set backspace   =indent,eol,start   " Make backspace work as expected (i.e. wraps around end of line)
 set ignorecase              " Ignore case in search results, using \C overrides this
 set smartcase               " Ignores 'set ignorecase' if search contains upper case letter
 set splitbelow				" Split new buffer below instead of above
 set splitright				" Split new buffer right instead of left
-
-" True Color options {{{
-if has('nvim-0.1.5')        " True color in neovim wasn't added until 0.1.5
-	set termguicolors
-elseif has('nvim')
-	let $NVIM_TUI_ENABLE_TRUE_COLORS=1
-endif
-" }}}
-
 set nowrap                  " Don't wrap long lines automatically
 set textwidth       =70     " Set textwidth to <n> chars, wrap after that
 
@@ -267,6 +253,25 @@ if executable('par')        " See 'par' vimcast for amazing text wrangler
 	set formatprg=par
 endif
 
+" }}}
+" Folding options {{{
+"
+" Code folding options are:
+"	[marker, manual, expr, syntax, diff, indent]
+"set foldmethod=marker
+"set foldlevel=0
+set modelines=1				" This tells vim to look at the last line for the fold method
+"
+" }}}
+" True Color options {{{
+"
+if has('nvim-0.1.5')        " True color in neovim wasn't added until 0.1.5
+	set termguicolors
+elseif has('nvim')
+	let $NVIM_TUI_ENABLE_TRUE_COLORS=1
+endif
+"
+" }}}
 " }}}
 " Colors {{{
 " Colorscheme {{{
@@ -348,47 +353,10 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 set updatetime=1000
 
 " }}}
-" Language-specific options {{{
-" Rust {{{
-
-" Options for vim-racer
-let g:racer_cmd = "~/.cargo/bin/racer"
-let g:racer_experimental_completer = 1
-au FileType rust nmap gd <Plug>(rust-def)
-au FileType rust nmap gs <Plug>(rust-def-split)
-au FileType rust nmap gx <Plug>(rust-def-vertical)
-au FileType rust nmap <leader>gd <Plug>(rust-doc)
-
-" For rusty-tags support in rust files using vim
-" Requires the `universal-ctags` package to be installed
-" NOTE: Format is set in ~/.rusty-tags/config.toml
-autocmd BufRead *.rs :setlocal tags+=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
-autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
-
-" Auto-rustfmt on save. Make sure to have rustfmt installed
-"	rustup component add rustfmt-preview
-let g:rustfmt_autosave = 1
-
-" }}}
-" Fortran {{{
-" Fortran specific spacing:
-let fortran_free_source=1
-let fortran_have_tabs=1
-let fortran_more_precise=1
-let fortran_do_enddo=1
-" }}}
-" LaTeX {{{
-" Turns off spell checking in TeX comments
-let g:tex_comment_nospell=1
-" }}}
-" Markdown {{{
-
-" Don't automatically open a rendered mardown doc in the browser
-let g:markdown_composer_open_browser=0
-
-" }}}
-" Clojure/SLIME {{{
-" SLIME sends data between vim and another pane
+" REPL/SLIME {{{
+" SLIME is a plugin that makes it possible to send data between
+" multiplexer (e.g. TMUX) panes using vim. This is useful for any
+" REPL-based workflow like Clojure (lein repl) and Python (IPython).
 if exists('$TMUX')
 	let g:slime_target = "tmux"
 	let g:slime_paste_file = "$HOME/.slime_paste"
@@ -398,7 +366,6 @@ if exists('$TMUX')
 				\ "target_pane": ":.2",
 				\ }
 endif
-" }}}
 " }}}
 " Keymaps {{{
 
