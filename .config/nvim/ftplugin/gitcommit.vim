@@ -1,3 +1,3 @@
 " Git commit settings
 
-set spell
+setlocal spell
