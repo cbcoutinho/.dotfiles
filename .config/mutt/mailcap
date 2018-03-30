@@ -18,3 +18,7 @@ image/pdf; ~/.config/mutt/view_attachment.sh %s pdf
 
 text/html; w3m -I %{charset} -T text/html; copiousoutput;
 #	https://unix.stackexchange.com/a/258911/171562<Paste>
+
+#	https://superuser.com/a/1263181/489498
+#text/html; firefox '%s' &; test=test -n "$DISPLAY"; needsterminal;
+#text/html; lynx -dump %s; nametemplate=%s.html; copiousoutput
