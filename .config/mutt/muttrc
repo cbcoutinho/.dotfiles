@@ -86,6 +86,9 @@ set sidebar_format='%B%?F? [%F]?%* %?N?%N/?%S'
 bind index,pager J	sidebar-next
 bind index,pager K	sidebar-prev
 bind index,pager L	sidebar-open
+bind index,pager <down>	sidebar-next
+bind index,pager <up>	sidebar-prev
+bind index,pager <right>	sidebar-open
 
 #- Status Bar -----------------------------------------
 set status_chars  = " *%A"
@@ -101,8 +104,11 @@ hdr_order from: to: cc: date: subject:  # and in this order
 
 ##- Index View Options ---------------------------------
 
-set date_format = "%m/%d"
+#set date_format = "%m/%d"
+set date_format = "%b-%d"
+#set date_format = "%b-%d %H:%m"
 set index_format = "[%Z]  %D  %-20.20F (%-4.4c) %s"
+#set index_format="%D %?X?%2X& ? %-18.18L [%4c] %s"
 set sort = threads							# like gmail
 set sort_aux = reverse-last-date-received	# like gmail - Newest at top
 set uncollapse_jump							# don't collapse on an unread message
@@ -181,7 +187,8 @@ set forward_quote                    # include message in forwards
 
 set text_flowed = yes				# Sets all plain text messages to properly use linebreaks
 
-set editor = 'nvim -c "set spell"'
+set editor = 'nvim'
+set text_flowed=yes
 
 ##- Colors
 

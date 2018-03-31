@@ -18,6 +18,7 @@ augroup mail_filetype
 	autocmd! VimEnter /tmp/mutt* :call IsReply()
 augroup END
 
+"setlocal wrapmargin=0 wrap linebreak nohlsearch
 setl tw=72
 setl fo=aw
 setl spell

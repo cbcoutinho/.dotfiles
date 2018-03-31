@@ -21,6 +21,7 @@ mailboxes +INBOX \
 			+Important \
 			+Mailing\ Lists \
 			+Mailing\ Lists.Github \
+			+Mailing\ Lists.GnuPG \
 			+Mailing\ Lists.Pass \
 			+Mailing\ Lists.Cinemacephale \
 			+Categories \
