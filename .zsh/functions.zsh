@@ -3,9 +3,7 @@ function ls {
 	command ls \
 		-F \
 		-h \
-		--color=always \
-		--author \
-		--time-style=long-iso \
+		-G \
 		-C "$@" \
 		| less
 }
@@ -46,11 +44,13 @@ function extract()
 #alias path="echo -e ${PATH//:/\\\n}"
 #alias libpath="echo -e ${LD_LIBRARY_PATH//:/\\\n}"
 function path () {
-	echo $PATH | sed 's/:/\n/g'
+	echo $PATH | sed 's/:/\
+/g'
 }
 
 function libpath () {
-	echo $LD_LIBRARY_PATH | sed 's/:/\n/g'
+	echo $LD_LIBRARY_PATH | sed 's/:/\
+/g'
 }
 
 # Terminal color scheme

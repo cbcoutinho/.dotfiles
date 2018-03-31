@@ -5,7 +5,6 @@ alias vi="nvim"
 alias vim="nvim"
 
 # ls aliases
-alias ls="ls --group-directories-first"
 alias ll="ls -l"
 alias la="ls -a"
 alias l="ls -la"
