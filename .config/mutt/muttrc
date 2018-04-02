@@ -38,6 +38,8 @@ set alias_file       = ~/.config/mutt/alias			# where to store aliases
 set mailcap_path     = ~/.config/mutt/mailcap		# entries for filetypes
 set tmpdir           = ~/.config/mutt/temp			# where to keep temp files
 
+source $alias_file
+
 # Generates aliases by reading all messages before they are displayed
 # on the screen and parses their contents. Essentially it should find
 # the sender via a regex (From: <name> <email>), but it currently
@@ -134,6 +136,9 @@ macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "ma
 macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
 macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
 
+# Turn markdown message to html
+macro compose \e5 "F pandoc -s -f markdown -t html \ny^T^Utext/html; charset=us-ascii\n"
+#set wait_key=no
 
 ##- Main message(pager) view
 

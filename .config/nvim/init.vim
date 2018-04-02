@@ -111,18 +111,11 @@ Plug 'tpope/vim-fireplace'				" Connects to the nREPL for 'dynamic' clojure deve
 Plug 'kien/rainbow_parentheses.vim'     " Rainbow parens for Lisps - see options below
 Plug 'jpalardy/vim-slime'				" Send text to another pane (ie. with a REPL)
 
-" Neovim node host was added in nvim-0.2.1
-if has('nvim-0.2.1') && has('unix')
-	" Parinfer implementation in Clojure
-	Plug 'snoe/nvim-parinfer.js', {
-				\ 'do': function('BuildParinferClojure') }
-else
-	" Parinfer re-implementation in Rust
-	Plug 'eraserhd/parinfer-rust', {
-				\ 'do': function('BuildParinferRust') }
-	"Plug 'file:///home/chris/Projects/parinfer-rust', {
-				"\ 'do': function('BuildParinferRust') }
-endif
+" Parinfer re-implementation in Rust
+Plug 'eraserhd/parinfer-rust', {
+			\ 'do': function('BuildParinferRust') }
+"Plug 'file:///home/chris/Projects/parinfer-rust', {
+			"\ 'do': function('BuildParinferRust') }
 
 " }}}
 " Golang {{{
