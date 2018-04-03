@@ -38,10 +38,10 @@ export LD_LIBRARY_PATH="$DAKOTA_INST_DIR/lib:$LD_LIBRARY_PATH"
 export PYTHONPATH="$DAKOTA_INST_DIR/share/dakota/Python:$PYTHONPATH"
 
 # PETSc
-#export PETSC_DIR=/home/chris/Software/petsc/install
-#export PETSC_ARCH=""
-export PETSC_DIR=/home/chris/Software/petsc/petsc-src
-export PETSC_ARCH=arch-linux2-c-debug
+export PETSC_DIR=/home/chris/Software/petsc/install
+export PETSC_ARCH=""
+#export PETSC_DIR=/home/chris/Software/petsc/petsc-src
+#export PETSC_ARCH=arch-linux2-c-debug
 
 # MOOSE
 export MOOSE_DIR="$HOME/Software/MOOSE"
