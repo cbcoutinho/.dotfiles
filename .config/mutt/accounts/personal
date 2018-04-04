@@ -20,10 +20,11 @@ mailboxes +INBOX \
 			+Drafts \
 			+Important \
 			+Mailing\ Lists \
+			+Mailing\ Lists.Cinemacephale \
 			+Mailing\ Lists.Github \
 			+Mailing\ Lists.GnuPG \
+			+Mailing\ Lists.OpenSUSE \
 			+Mailing\ Lists.Pass \
-			+Mailing\ Lists.Cinemacephale \
 			+Categories \
 			+Categories.Forums \
 			+Categories.Promotions \
