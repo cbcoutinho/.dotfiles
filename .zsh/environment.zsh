@@ -4,6 +4,10 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 export DIFFPROG='nvim -d'
 
+if command -v fd >/dev/null; then
+	export FZF_DEFAULT_COMMAND='fd --type f'
+fi
+
 # Pass configuration
 export PASSWORD_STORE_CHARACTER_SET='a-zA-Z0-9~!@#$%^&*()-_=+[]{};:,.<>?'
 export PASSWORD_STORE_GENERATED_LENGTH=40
