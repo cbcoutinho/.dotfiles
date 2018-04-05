@@ -399,6 +399,9 @@ nnoremap <esc> :noh<return><esc>
 " Toggle gundo with a keymap
 nnoremap <leader>u :GundoToggle<CR>
 
+" Toggle NERDTree with a keymap
+nnoremap <leader>nt :NERDTreeToggle<CR>
+
 " Revert git hunks in visual mode
 "	https://github.com/airblade/vim-gitgutter/issues/55#issuecomment-15113725
 vmap <silent> u <esc>:Gdiff<cr>gv:diffget<cr><c-w><c-w>ZZ
