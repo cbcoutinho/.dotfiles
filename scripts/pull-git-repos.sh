@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # A simple script to pull all software from git repositories in the
 # $HOME/Software directory

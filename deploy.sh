@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # This script replaces all dotfiles with symlinks to those in this directory
 
 set -e

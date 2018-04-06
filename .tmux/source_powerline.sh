@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [ -f /usr/share/tmux/powerline.conf ]; then
 	tmux source-file /usr/share/tmux/powerline.conf
