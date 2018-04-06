@@ -3,15 +3,6 @@
 
 # But not these files...
 !.gitignore
-!redshift.conf
+!gnome-keyring-ssh.desktop
 
 #Or these directories
-!matplotlib/
-!pip/
-!onedrive/
-!alacritty/
-!nvim/
-!htop/
-!offlineimap
-!mutt
-!autostart

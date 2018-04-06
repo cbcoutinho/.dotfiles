@@ -43,6 +43,11 @@ esac
 #       ssh-add < /dev/null
 # fi
 
+
+
+
+
+
 #
 # Add your own lines here...
 #
@@ -51,6 +56,10 @@ esac
 if [[ "$PATH" != *":$HOME/.local/bin:"* ]]; then
 	export PATH="$HOME/.local/bin:$PATH"
 fi
+
+export PINENTRY_USER_DATA="gtk"
+
+
 
 # day planer deamon
 # pland &
