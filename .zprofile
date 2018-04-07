@@ -16,16 +16,18 @@ unsetopt nonomatch
 #	https://github.com/robbyrussell/oh-my-zsh/issues/6106#issuecomment-309528254
 #
 # Enable gpg-agent if it is not running
-#GPG_AGENT_SOCKET="/run/user/1000/gnupg/S.gpg-agent.ssh"
+#GPG_AGENT_SOCKET=$(gpgconf --list-dirs agent-socket)
 #if [ ! -S "$GPG_AGENT_SOCKET" ]; then
-	#echo "inside loop"
-  #gpg-agent --daemon >/dev/null 2>&1
-  #export GPG_TTY=$(tty)
+#	gpg-agent --daemon --enable-ssh-support >/dev/null 2>&1
+#	export GPG_TTY=$(tty)
 #fi
 
 ## Set SSH to use gpg-agent if it is configured to do so
-#GNUPGCONFIG=${GNUPGHOME:-"$HOME/.gnupg/gpg-agent.conf"}
+#GNUPGCONFIG=${GNUPGHOME:-"$(gpgconf --list-dirs homedir)/gpg-agent.conf"}
 #if grep -q enable-ssh-support "$GNUPGCONFIG"; then
-  #unset SSH_AGENT_PID
-  #export SSH_AUTH_SOCK=$GPG_AGENT_SOCKET
+#	unset SSH_AGENT_PID
+#	export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 #fi
+
+#gpg-connect-agent /bye
+#export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
