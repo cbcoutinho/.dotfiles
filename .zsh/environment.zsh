@@ -5,7 +5,8 @@ export VISUAL='nvim'
 export DIFFPROG='nvim -d'
 
 if command -v fd >/dev/null; then
-	export FZF_DEFAULT_COMMAND='fd --type f'
+	#export FZF_DEFAULT_COMMAND='fd --type f'
+	export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 fi
 
 # Pass configuration
@@ -24,7 +25,8 @@ export FC=gfortran
 export CC=gcc
 export CXX=g++
 
-export PATH="/usr/sbin:/sbin:$PATH"
+#export PATH="/usr/sbin:/sbin:$PATH"
+export PATH="$HOME/bin:$PATH"
 # ~/.local/bin already added in ~/.xinitrc
 if [[ "$PATH" != *":$HOME/.local/bin:"* ]]; then
 	# Add ~/.local/bin to path if not already

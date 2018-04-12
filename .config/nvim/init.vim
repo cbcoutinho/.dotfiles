@@ -219,7 +219,7 @@ set shiftwidth  =4          " when indenting with '>', use 4 spaces width
 "	$VIMRUNTIME/ftplugin/python.vim
 set list					" Replaces certain whitespace with characters
 set listchars=tab:>-		" Replaces <TAB> with >---
-set listchars+=trail:x		" Replaces trailing whitespace with 'x'
+set listchars+=trail:·		" Replaces trailing whitespace with '·'
 "
 " }}}
 " Formatting {{{
@@ -405,6 +405,12 @@ nnoremap <leader>nt :NERDTreeToggle<CR>
 " Revert git hunks in visual mode
 "	https://github.com/airblade/vim-gitgutter/issues/55#issuecomment-15113725
 vmap <silent> u <esc>:Gdiff<cr>gv:diffget<cr><c-w><c-w>ZZ
+
+" Easily navigate git hunks (requires GitGutter plugin)
+"	https://kinbiko.com/vim/my-shiniest-vim-gems/
+nnoremap <c-N> :GitGutterNextHunk<CR>
+nnoremap <c-P> :GitGutterPrevHunk<CR>
+nnoremap <c-U> :GitGutterUndoHunk<CR><Paste>
 
 " Interleave Function {{{
 " Interleave similar sized blocks, from:
