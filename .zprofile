@@ -6,11 +6,15 @@ unsetopt nonomatch
 # put your own login shell specific configuration below
 # this line
 
-#if [ -x /usr/bin/fortune ] ; then
-#	echo
-#	/usr/bin/fortune
-#	echo
-#fi
+# Tmux has trouble accessing the gpg-agent otherwise
+#	https://unix.stackexchange.com/a/334326/171562
+export GPG_TTY=${TTY}
+
+if [ -x /usr/bin/fortune ] ; then
+	echo
+	/usr/bin/fortune
+	echo
+fi
 
 # From:
 #	https://github.com/robbyrussell/oh-my-zsh/issues/6106#issuecomment-309528254
@@ -31,4 +35,4 @@ unsetopt nonomatch
 
 #gpg-connect-agent /bye
 #export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-gpg-connect-agent updatestartuptty /bye
+#gpg-connect-agent reloadagent updatestartuptty /bye

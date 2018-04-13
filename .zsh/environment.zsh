@@ -50,9 +50,28 @@ export PETSC_ARCH=""
 # MOOSE
 export MOOSE_DIR="$HOME/Software/MOOSE"
 
+
+# This function tests version numbers
+#	https://stackoverflow.com/a/4024263/5536001
+#
+#	To call, just use verlt(e) to compare two strings '2.5' '2.6'
+# verlte() {
+# 	[  "$1" = "`echo -e "$1\n$2" | sort -V | head -n1`" ]
+# }
+#
+# verlt() {
+# 	[ "$1" = "$2" ] && return 1 || verlte $1 $2
+# }
+
 # User/System ruby gems
 if command -v ruby >/dev/null && command -v gem >/dev/null; then
-	PATH="$(command ruby -rrubygems -e 'puts Gem.user_dir')/bin:$PATH"
+	PATH="$(command ruby -e 'puts Gem.user_dir')/bin:$PATH"
+#	if verlt $(ruby -v | awk '{print $2}') '2.5'; then
+#		# Test whether ruby version is less than 2.5
+#		PATH="$(command ruby -rrubygems -e 'puts Gem.user_dir')/bin:$PATH"
+#	else
+#		PATH="$(command ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+#	fi
 fi
 
 # Haskell directory
