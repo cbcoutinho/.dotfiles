@@ -336,8 +336,6 @@ set noshowmode
 "let NERDTreeShowHidden=1
 let NERDTreeRespectWildIgnore=1
 let loaded_netrwPlugin=1
-" Toggle NERDTree
-noremap <C-n> :NERDTreeToggle<CR>
 
 " Close Vim if NERDTree is last window open
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -392,6 +390,8 @@ nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 au BufNewFile,BufRead *.cson set filetype=coffee
 au BufNewFile,BufRead .shrc set filetype=sh     " Sets .shrc files to use sh syntax
 au BufNewFile,BufRead *.cls set filetype=tex    " Sets .cls files to use latex syntax
+
+au BufRead * if search('\M-*- C++ -*-', 'n', 1) | setlocal ft=cpp | endif
 
 " Remove highlighted search text after search/sed/etc by hitting <esc>
 nnoremap <esc> :noh<return><esc>
