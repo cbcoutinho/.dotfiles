@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 # This script relies on the fact that a gpg-agent is running and has
 # output its env-file in ~/.gnupg/gpg-agent.env
@@ -7,7 +7,7 @@
 # # This file sets up a proper GPG daemon on login for all users except
 # # the root user. Originally found:
 # #	https://unix.stackexchange.com/q/131772/171562
-# 
+#
 # if [ $EUID -ne 0 ] ; then
 #     envfile="$HOME/.gnupg/gpg-agent.env"
 #     if [[ -e "$envfile" ]] && kill -0 $(grep GPG_AGENT_INFO "$envfile" | cut -d: -f 2) 2>/dev/null; then
@@ -43,4 +43,35 @@ if [ $(hostname) = 'tumbleweed' ]; then
 	#echo "OfflineIMAP - Last execution: $(date)"
 else
 	offlineimap -a Work -u syslog >/dev/null
+fi
+
+# Notify user
+#	Using `while read` instead of `for`:
+#	https://stackoverflow.com/a/9612560/5536001
+#	Using awk to total output:
+#	https://stackoverflow.com/a/13728129/5536001
+
+# Correctly turn off spaces and globbing in shell
+#	https://unix.stackexchange.com/a/9500/171562
+function myfun {
+	# This function expects to have an input of a mailbox name
+	IFS='
+	'
+	set -f
+	for dir in $(find $HOME/.mail/$1 -name 'new')
+	do
+		find $dir -type f | wc -l
+	done
+}
+
+# Calculate number of new messages using crazy one-liner
+#new=$(find $HOME/.mail -name 'new' -print0 | while read -d $'\0' dir; do; find $dir -type f | wc -l; done | awk '{total += $1} END {print total}')
+gmail=$(myfun 'gmail' | awk '{total += $1} END {print total}')
+office365=$(myfun 'office365' | awk '{total += $1} END {print total}')
+
+if [ $gmail -gt 0 ] || [ $office365 -gt 0 ]
+then
+	export DISPLAY=:0; export XAUTHORITY=~/.Xauthority;
+	notify-send -i info -a 'OfflineIMAP' \
+		'OfflineIMAP' "$(echo -e "New mail! Gmail: $gmail Office365: $office365")"
 fi
