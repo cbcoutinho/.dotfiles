@@ -52,18 +52,10 @@ export PETSC_ARCH=""
 # MOOSE
 export MOOSE_DIR="$HOME/Software/MOOSE"
 
+# Tmux has trouble accessing the gpg-agent otherwise
+#	https://unix.stackexchange.com/a/334326/171562
+export GPG_TTY=${TTY}
 
-# This function tests version numbers
-#	https://stackoverflow.com/a/4024263/5536001
-#
-#	To call, just use verlt(e) to compare two strings '2.5' '2.6'
-# verlte() {
-# 	[  "$1" = "`echo -e "$1\n$2" | sort -V | head -n1`" ]
-# }
-#
-# verlt() {
-# 	[ "$1" = "$2" ] && return 1 || verlte $1 $2
-# }
 
 # User/System ruby gems
 if command -v ruby >/dev/null && command -v gem >/dev/null; then
