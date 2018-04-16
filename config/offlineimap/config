@@ -7,7 +7,7 @@ ui = ttyui
 #ui = quiet
 #ui = machineui
 #ui = basic
-accounts = ChrisCoutinho,Work
+accounts = Work
 #maxsyncaccounts = 2
 
 # NOTE: This is a python2 file
@@ -18,48 +18,6 @@ fsync = False
 # Apply following settings for all accounts
 [DEFAULT]
 postsynchook = notmuch new
-
-
-[Account ChrisCoutinho]
-localrepository = ChrisCoutinho-Local
-remoterepository = ChrisCoutinho-Remote
-synclabels = yes
-
-[Repository ChrisCoutinho-Local]
-type = GmailMaildir
-localfolders = ~/.mail/gmail
-
-# Propogate deletes to remote (default yes)
-#sync_deletes = no
-
-nametrans = lambda folder: {'Drafts':  '[Gmail]/Drafts',
-							'Sent':    '[Gmail]/Sent Mail',
-							'Flagged': '[Gmail]/Starred',
-							'Trash':   '[Gmail]/Trash',
-							'Archive': '[Gmail]/All Mail',
-							'Important': '[Gmail]/Important',
-							'Starred': '[Gmail]/Starred',
-                            }.get(folder, folder)
-
-[Repository ChrisCoutinho-Remote]
-type = Gmail
-remoteuser = chrisbcoutinho@gmail.com
-remotepasseval = get_pass(account="Gmail-offlineimap")
-realdelete = no
-ssl = yes
-sslcacertfile = /var/lib/ca-certificates/ca-bundle.pem
-nametrans = lambda folder: {'[Gmail]/Drafts':    'Drafts',
-							'[Gmail]/Sent Mail': 'Sent',
-							'[Gmail]/Starred':   'Flagged',
-							'[Gmail]/Trash':     'Trash',
-							'[Gmail]/All Mail':  'Archive',
-							'[Gmail]/Important': 'Important',
-							'[Gmail]/Starred': 'Starred',
-                            }.get(folder, folder)
-folderfilter = lambda folder: folder not in ['[Gmail]/Trash',
-											 '[Gmail]/Spam',
-											 '[Gmail]/Bin',
-                                             ]
 
 
 ## The following info was obtained from:
