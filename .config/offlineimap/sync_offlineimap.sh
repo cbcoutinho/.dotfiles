@@ -34,7 +34,7 @@ function count_new_msgs {
 	IFS='
 	'
 	set -f
-	for dir in $(find $HOME/.mail/$1 -name 'new')
+	for dir in $(find $HOME/.mail/$1 -not \( -path "$HOME/.mail/$1/Drafts" -prune \) -name 'new')
 	do
 		find $dir -type f | wc -l
 	done | awk '{total += $1} END {print total}'
@@ -46,6 +46,6 @@ office365=$(count_new_msgs 'office365')
 if [ $gmail -gt 0 ] || [ $office365 -gt 0 ]
 then
 	export DISPLAY=:0; export XAUTHORITY=~/.Xauthority;
-	notify-send -i info -a 'OfflineIMAP' \
+	notify-send -i thunderbird -a 'OfflineIMAP' \
 		'OfflineIMAP' "$(echo -e "New mail! Gmail: $gmail Office365: $office365")"
 fi
