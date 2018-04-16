@@ -14,3 +14,10 @@
 # .zshrc: [[ -o interactive ]]
 # .zlogin: [[ -o login ]]
 export ZDOTDIR=$HOME/.config/zsh
+
+if [[ $(uname -r) =~ Microsoft$ ]]
+then
+	# To remove windows paths from Linux path:
+	#   https://github.com/Microsoft/WSL/issues/1493#issuecomment-266432827
+	export PATH=$(echo $PATH | tr ':' '\n' | grep -v /mnt/ | tr '\n' ':')
+fi

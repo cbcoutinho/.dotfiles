@@ -7,7 +7,7 @@ ui = blinkenlights
 #ui = quiet
 #ui = machineui
 #ui = basic
-accounts = ChrisCoutinho,Humboldt,Work
+accounts = Work
 #maxsyncaccounts = 2
 
 # NOTE: This is a python2 file
