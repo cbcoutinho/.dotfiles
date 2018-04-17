@@ -25,6 +25,7 @@ mailboxes +INBOX \
 			+Newsletters.Dakota \
 			+Newsletters.MOOSE \
 			+Newsletters.ParaView \
+			+Newsletters.PostgreSQL \
 			+Newsletters.RED\ News
 
 set from = "ccoutinho@a-hak.nl"

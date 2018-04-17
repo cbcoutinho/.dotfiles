@@ -4,7 +4,7 @@
 # $HOME/Software directory
 
 # Show lines being run
-set -x
+#set -x
 
 for ii in `find $HOME/Software -type d -execdir test -d {}/'.git' \; -prune -print`; do
 echo && echo $ii

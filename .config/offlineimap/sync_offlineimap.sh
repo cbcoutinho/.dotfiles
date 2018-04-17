@@ -16,34 +16,20 @@ else
 	offlineimap -a Work -u syslog >/dev/null
 fi
 
-# Using `while read` instead of `for`:
-#	https://stackoverflow.com/a/9612560/5536001
-# Using awk to total output:
-#	https://stackoverflow.com/a/13728129/5536001
-# Correctly turn off spaces and globing in shell
-#	https://unix.stackexchange.com/a/9500/171562
+#[ $(declare -f count_new_msgs >/dev/null) ] && unset -f count_new_msgs
+source $(dirname "$0")/count_new_msgs.sh
 
-function count_new_msgs {
-	# The function counts the number of new messages, which based on
-	# the 'Maildir' directory format are contained in a 'new'
-	# subdirectory.
-	# This function expects to have a mailbox name as input and
-	# returns the number of new messages.
+[ -d "$HOME/.mail/gmail" ] && gmail=$(count_new_msgs 'gmail')
+[ -d "$HOME/.mail/office365" ] && office365=$(count_new_msgs 'office365')
 
-	# IFS needs to be overridden
-	IFS='
-	'
-	set -f
-	for dir in $(find $HOME/.mail/$1 -not \( -path "$HOME/.mail/$1/Drafts" -prune \) -name 'new')
-	do
-		find $dir -type f | wc -l
-	done | awk '{total += $1} END {print total}'
-}
+#echo "gmail = $gmail"
+#echo "office365 = $office365"
 
-gmail=$(count_new_msgs 'gmail')
-office365=$(count_new_msgs 'office365')
-
-if [ $gmail -gt 0 ] || [ $office365 -gt 0 ]
+# NOTE: Unlike the ':-' operator that only compares and uses a default
+# value, the ':=' operator sets the variable to the default value if
+# missing
+#	https://unix.stackexchange.com/a/122848/171562
+if [ "${gmail:=0}" -gt 0 ] || [ "${office365:=0}" -gt 0 ]
 then
 	export DISPLAY=:0; export XAUTHORITY=~/.Xauthority;
 	notify-send -i thunderbird -a 'OfflineIMAP' \

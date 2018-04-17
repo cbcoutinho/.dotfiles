@@ -7,5 +7,6 @@
 !offlineimap.py
 !postsync.sh
 !sync_offlineimap.sh
+!count_new_msgs.sh
 
 #Or these directories

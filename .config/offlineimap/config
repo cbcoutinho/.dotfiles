@@ -79,11 +79,12 @@ folderfilter = lambda folder: folder in [
 	'Newsletters/Dakota',
 	'Newsletters/MOOSE',
 	'Newsletters/ParaView',
+	'Newsletters/PostgreSQL',
 	'Newsletters/RED News',
 	'Sent Items',
 	'Drafts',
 	'Scheduled',
-	'RSS Subscriptions',
+	#'RSS Subscriptions',
 	]
 #folderfilter = lambda folder: folder not in [
 	#'Calendar',
