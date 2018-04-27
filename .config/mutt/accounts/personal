@@ -26,11 +26,11 @@ mailboxes +INBOX \
 			+Mailing\ Lists.GnuPG \
 			+Mailing\ Lists.OpenSUSE \
 			+Mailing\ Lists.Pass \
-			+Categories \
-			+Categories.Forums \
-			+Categories.Promotions \
-			+Categories.Social \
-			+Categories.Updates \
+			#+Categories \
+			#+Categories.Forums \
+			#+Categories.Promotions \
+			#+Categories.Social \
+			#+Categories.Updates \
 
 set from = "chrisbcoutinho@gmail.com"
 set sendmail = "/usr/bin/msmtp -a personal"

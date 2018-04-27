@@ -209,8 +209,12 @@ set autoread				" Automatically reloads files that were edited externally
 "set spell					" By default spelling is `OFF`
 set spelllang=en_us,nl		" Spelling language [en|nl]
 
+" Encoding
+set encoding=utf-8
+set fileencoding=utf-8
+
 " Space/Tab options {{{
-"
+
 "set expandtab               " Uses spaces instead of tabs
 set tabstop     =4          " show existing tab with 4 spaces width
 set shiftwidth  =4          " when indenting with '>', use 4 spaces width
@@ -220,7 +224,9 @@ set shiftwidth  =4          " when indenting with '>', use 4 spaces width
 set list					" Replaces certain whitespace with characters
 set listchars=tab:>-		" Replaces <TAB> with >---
 set listchars+=trail:·		" Replaces trailing whitespace with '·'
-"
+set listchars+=extends:#
+set listchars+=nbsp:.
+
 " }}}
 " Formatting {{{
 
