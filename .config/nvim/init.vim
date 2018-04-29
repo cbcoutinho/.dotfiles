@@ -224,7 +224,7 @@ set shiftwidth  =4          " when indenting with '>', use 4 spaces width
 set list					" Replaces certain whitespace with characters
 set listchars=tab:>-		" Replaces <TAB> with >---
 set listchars+=trail:·		" Replaces trailing whitespace with '·'
-set listchars+=extends:#
+set listchars+=extends:#	" Shows in last column when characters extend past pane
 set listchars+=nbsp:.
 
 " }}}
