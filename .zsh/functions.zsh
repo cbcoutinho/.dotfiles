@@ -1,14 +1,22 @@
 # NOTE: cannot comment inside bash functions, so 'execute' them instead
 function ls {
 	command ls \
-		-F                      `# Append indicator (one of */=>@|) to entries` \
-		-h                      `# with -l and/or -s, print human readable sizes` \
-		--color=always          `# colorize the output` \
-		--author                `# with -l, print the author of each file` \
-		--time-style=long-iso   `# with -l, show times using style STYLE` \
-		-C "$@"                 `# list entries ($@) by columns` \
-		| less                  `# Pipe output into 'less' alias - see .zsh/aliases.zsh` \
+		-F \
+		-h \
+		--color=always \
+		--author \
+		--time-style=long-iso \
+		-C "$@" \
+		| less
 }
+
+# -F Append indicator {*,/,=,>,@,|}
+# -h With -l and/or -s, print human readable sizes
+# --color=always
+# --author with -l, print author name
+# --time-style=long-iso with -l, show times using ISO style
+# -C List entries ($@) in columns
+# | less pipe output into less (see .zsh/aliases.zsh for alias)
 
 # extract archives
 function extract()
