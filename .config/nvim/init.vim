@@ -82,6 +82,10 @@ function! BuildParinferClojure(info)
 	endif
 endfunction
 
+function! DoRemote(arg)
+	UpdateRemotePlugins
+endfunction
+
 " }}}
 " Language-specfic plugins {{{
 " Completions in neovim {{{
@@ -132,6 +136,11 @@ Plug 'euclio/vim-markdown-composer', {
 Plug 'nelstrom/vim-markdown-folding'	" Easily fold markdown files by section
 
 " }}}
+" Matlab {{{
+
+Plug 'daeyun/vim-matlab', { 'do': function('DoRemote') }
+
+" }}}
 " }}}
 " Color schemes {{{
 
@@ -139,7 +148,6 @@ Plug 'morhetz/gruvbox'                  " Gruvbox theme for vim
 Plug 'altercation/vim-colors-solarized' " Solarized theme for vim
 Plug 'joshdick/onedark.vim'             " Onedark theme from Atom ported to vim
 Plug 'sheerun/vim-polyglot'             " Syntax highlighting for different languages
-Plug 'tyrannicaltoucan/vim-deep-space'
 
 " }}}
 " Supercollider vim plugin {{{
@@ -276,12 +284,10 @@ endif
 " Colorscheme {{{
 
 set background=dark			" Options: [light/dark]
+"set background=light			" Options: [light/dark]
 
 colorscheme gruvbox
 let g:gruvbox_italic=1
-
-"colorscheme deep-space
-"let g:deepspace_italics=1
 
 " }}}
 " Rainbow Parentheses {{{
@@ -291,6 +297,28 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax   * RainbowParenthesesLoadRound
 au Syntax   * RainbowParenthesesLoadSquare
 au Syntax   * RainbowParenthesesLoadBraces
+
+" From here:
+"	http://thegreata.pe/notes-on-writing-clojure-in-vim
+"let g:rbpt_colorpairs = [
+"  \ ['blue',        '#FF6000'],
+"  \ ['cyan',        '#00FFFF'],
+"  \ ['darkgreen',   '#00FF00'],
+"  \ ['LightYellow', '#c0c0c0'],
+"  \ ['blue',        '#FF6000'],
+"  \ ['cyan',        '#00FFFF'],
+"  \ ['darkgreen',   '#00FF00'],
+"  \ ['LightYellow', '#c0c0c0'],
+"  \ ['blue',        '#FF6000'],
+"  \ ['cyan',        '#00FFFF'],
+"  \ ['darkgreen',   '#00FF00'],
+"  \ ['LightYellow', '#c0c0c0'],
+"  \ ['blue',        '#FF6000'],
+"  \ ['cyan',        '#00FFFF'],
+"  \ ['darkgreen',   '#00FF00'],
+"  \ ['LightYellow', '#c0c0c0'],
+"  \ ]
+"let g:rbpt_max = 16
 
 " }}}
 " Highlight keywords {{{
@@ -362,6 +390,9 @@ if exists('$TMUX')
 				\ "socket_name": split($TMUX, ",")[0],
 				\ "target_pane": ":.2",
 				\ }
+
+	" For vim-matlab plugin
+	let g:matlab_server_launcher = 'tmux'
 endif
 " }}}
 " Keymaps {{{

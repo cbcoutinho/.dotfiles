@@ -15,7 +15,6 @@ set signature        = ~/.config/mutt/.gmail/sig			# my signature file
 # Mailboxes to show in the sidebar
 unmailboxes *
 mailboxes +INBOX \
-			+Archive \
 			+Sent \
 			+Drafts \
 			+Important \
@@ -26,11 +25,14 @@ mailboxes +INBOX \
 			+Mailing\ Lists.GnuPG \
 			+Mailing\ Lists.OpenSUSE \
 			+Mailing\ Lists.Pass \
-			#+Categories \
-			#+Categories.Forums \
-			#+Categories.Promotions \
-			#+Categories.Social \
-			#+Categories.Updates \
+			+Mailing\ Lists.Python-dev \
+			+Mailing\ Lists.Rotaract \
+			+Categories \
+			+Categories.Forums \
+			+Categories.Promotions \
+			+Categories.Social \
+			+Categories.Updates \
+			#+Archive \
 
 set from = "chrisbcoutinho@gmail.com"
 set sendmail = "/usr/bin/msmtp -a personal"

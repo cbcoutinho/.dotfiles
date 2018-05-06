@@ -62,7 +62,7 @@ unset move               # gmail does that
 set delete               # don't ask, just do
 unset confirmappend      # don't ask, just do!
 set quit                 # don't ask, just do!!
-#unset mark_old           # read/new is good enough for me
+unset mark_old           # read/new is good enough for me
 set beep_new             # bell on new mails
 set pipe_decode          # strip headers and eval mimes when piping
 set thorough_search      # strip headers and eval mimes before searching
@@ -71,7 +71,6 @@ set thorough_search      # strip headers and eval mimes before searching
 ##- Sidebar (Pager) Patch --------------------------------------
 
 set sidebar_divider_char   = '  │'
-#set sidebar_divider_char   = '  |'
 set sidebar_visible = yes
 set sidebar_width   = 25
 
@@ -107,7 +106,7 @@ hdr_order from: to: cc: date: subject:  # and in this order
 ##- Index View Options ---------------------------------
 
 #set date_format = "%m/%d"
-set date_format = "%b-%d"
+set date_format = "%b-%d-%y"
 #set date_format = "%b-%d %H:%m"
 set index_format = "[%Z]  %D  %-20.20F (%-4.4c) %s"
 #set index_format="%D %?X?%2X& ? %-18.18L [%4c] %s"

@@ -171,6 +171,7 @@ color_schemes:
       white:   '0xebdbb2'
 
 colors: *dark
+#colors: *light
 
 # Visual Bell
 #
