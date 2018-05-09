@@ -114,6 +114,7 @@ endif
 Plug 'tpope/vim-fireplace'				" Connects to the nREPL for 'dynamic' clojure development
 Plug 'kien/rainbow_parentheses.vim'     " Rainbow parens for Lisps - see options below
 Plug 'jpalardy/vim-slime'				" Send text to another pane (ie. with a REPL)
+Plug 'venantius/vim-cljfmt'				" Format clojure files in vim - requires cljfmt
 
 " Parinfer re-implementation in Rust
 Plug 'eraserhd/parinfer-rust', {
