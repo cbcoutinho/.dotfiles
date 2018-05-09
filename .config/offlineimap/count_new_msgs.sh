@@ -20,7 +20,8 @@ function count_new_msgs {
 	set -f
 	for dir in $(find $HOME/.mail/$1 -not \( \
 		-path "$HOME/.mail/$1/Drafts" -prune -o \
-		-path "$HOME/.mail/gmail/Archive" -prune \) \
+		-path "$HOME/.mail/gmail/Archive" -prune -o \
+		-path "$HOME/.mail/gmail/Categories.Forums" -prune \) \
 		-name 'new')
 	do
 		find $dir -type f #| wc -l

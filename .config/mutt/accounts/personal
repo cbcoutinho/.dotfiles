@@ -28,11 +28,11 @@ mailboxes +INBOX \
 			+Mailing\ Lists.Python-dev \
 			+Mailing\ Lists.Rotaract \
 			+Categories \
-			+Categories.Forums \
 			+Categories.Promotions \
 			+Categories.Social \
 			+Categories.Updates \
 			#+Archive \
+			#+Categories.Forums \
 
 set from = "chrisbcoutinho@gmail.com"
 set sendmail = "/usr/bin/msmtp -a personal"
