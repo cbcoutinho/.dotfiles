@@ -189,10 +189,9 @@ set reverse_name                     # reply as whomever it was to
 set include                          # include message in replies
 set forward_quote                    # include message in forwards
 
-set text_flowed = yes				# Sets all plain text messages to properly use linebreaks
+set text_flowed                      # Sets all plain text messages to properly use linebreaks
 
 set editor = 'nvim'
-set text_flowed=yes
 
 ##- Colors
 

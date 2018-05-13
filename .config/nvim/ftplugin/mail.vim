@@ -20,7 +20,8 @@ augroup END
 
 "setlocal wrapmargin=0 wrap linebreak nohlsearch
 setl tw=72
-setl fo+=aw
+setl wrap
+setl fo=aw
 setl spell
 
 " Tip: Place the cursor in the optimal position, editing email messages.
