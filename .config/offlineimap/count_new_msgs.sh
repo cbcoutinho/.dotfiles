@@ -24,12 +24,6 @@ function count_new_msgs {
 		-path "$HOME/.mail/gmail/Categories.Forums" -prune \) \
 		-name 'new')
 	do
-		find $dir -type f #| wc -l
+		find $dir -type f
 	done | awk 'BEGIN {total=0} {total+=1} END {print total}'
 }
-
-#[ -d "$HOME/.mail/gmail" ] && gmail=$(count_new_msgs 'gmail')
-#[ -d "$HOME/.mail/office365" ] && office365=$(count_new_msgs 'office365')
-
-#echo "gmail = $gmail"
-#echo "office365 = $office365"

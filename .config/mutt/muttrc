@@ -111,6 +111,7 @@ set date_format = "%b-%d-%y"
 set index_format = "[%Z]  %D  %-20.20F (%-4.4c) %s"
 #set index_format="%D %?X?%2X& ? %-18.18L [%4c] %s"
 set sort = threads							# like gmail
+set strict_threads = yes
 set sort_aux = reverse-last-date-received	# like gmail - Newest at top
 set uncollapse_jump							# don't collapse on an unread message
 set sort_re									# thread based on regex

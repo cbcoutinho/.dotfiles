@@ -164,6 +164,7 @@ Plug 'tpope/vim-surround'				" Easily surround text with parens, quotes, etc.
 Plug 'itchyny/lightline.vim'			" Status line for vim
 Plug 'godlygeek/tabular'				" Easily align text based on a characher - see http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
 Plug 'sjl/gundo.vim'					" View vim 'undo' as a tree
+Plug 'majutsushi/tagbar'				" Code outliner using ctags output
 
 " }}}
 " Vim/git-related plugins {{{
@@ -439,6 +440,10 @@ nnoremap <leader>u :GundoToggle<CR>
 
 " Toggle NERDTree with a keymap
 nnoremap <leader>nt :NERDTreeToggle<CR>
+
+" Toggle Tagbar
+nnoremap <leader>tb :TagbarToggle<CR>
+
 
 " Revert git hunks in visual mode
 "	https://github.com/airblade/vim-gitgutter/issues/55#issuecomment-15113725
