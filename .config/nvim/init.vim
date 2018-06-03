@@ -72,7 +72,7 @@ endfunction
 
 function! BuildParinferRust(info)
 	if a:info.status != 'unchanged' || a:info.force
-		!cargo +stable build --release --manifest-path=cparinfer/Cargo.toml
+		!cargo +stable build --release
 	endif
 endfunction
 
