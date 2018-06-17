@@ -18,11 +18,11 @@ function count_new_msgs {
 	IFS='
 	'
 	set -f
-	for dir in $(find $HOME/.mail/$1 -not \( \
-		-path "$HOME/.mail/$1/Drafts" -prune -o \
-		-path "$HOME/.mail/gmail/Archive" -prune -o \
-		-path "$HOME/.mail/gmail/Categories.Forums" -prune \) \
-		-name 'new')
+	#for dir in $(find $HOME/.mail/$1 -not \( \
+		#-path "$HOME/.mail/$1/Drafts" -prune -o \
+		#-path "$HOME/.mail/gmail/Archive" -prune -o \
+		#-path "$HOME/.mail/gmail/Categories.Forums" -prune \) \
+	for dir in $(find $HOME/.mail/$1/INBOX -name 'new')
 	do
 		find $dir -type f
 	done | awk 'BEGIN {total=0} {total+=1} END {print total}'

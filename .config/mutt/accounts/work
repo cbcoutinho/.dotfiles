@@ -28,7 +28,7 @@ mailboxes +INBOX \
 			+Newsletters.PostgreSQL \
 			+Newsletters.RED\ News
 
-set from = "ccoutinho@a-hak.nl"
+set from = "c.coutinho@redstack.nl"
 set sendmail = "/usr/bin/msmtp -a work"
 set sendmail_wait = 0
 
