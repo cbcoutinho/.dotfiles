@@ -36,3 +36,5 @@
 	#                     └─ hash (abbreviated)
 [format]
 	pretty = custom
+[diff]
+	algorithm = patience
