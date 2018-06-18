@@ -1,0 +1,7 @@
+# Blacklist files/folders in same directory as the .gitignore file
+/*
+
+# But not these files...
+!.gitignore
+
+#Or these directories
