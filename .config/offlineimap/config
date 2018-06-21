@@ -14,7 +14,7 @@ fsync = False
 localrepository = ChrisCoutinho-Local
 remoterepository = ChrisCoutinho-Remote
 synclabels = yes
-postsynchook = ~/.config/offlineimap/postsync.sh
+#postsynchook = ~/.config/offlineimap/postsync.sh
 
 [Repository ChrisCoutinho-Local]
 type = GmailMaildir
@@ -52,7 +52,7 @@ folderfilter = lambda folder: folder not in ['[Gmail]/Trash',
 [Account Work]
 localrepository = Work-Local
 remoterepository = Work-Remote
-postsynchook = ~/.config/offlineimap/postsync.sh
+#postsynchook = ~/.config/offlineimap/postsync.sh
 
 [Repository Work-Local]
 type = Maildir
