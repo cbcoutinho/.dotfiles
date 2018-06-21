@@ -17,7 +17,7 @@ else
 fi
 
 # After syncing email using notmuch for indexing email
-./postsync.sh
+~/.config/offlineimap/postsync.sh
 
 #[ $(declare -f count_new_msgs >/dev/null) ] && unset -f count_new_msgs
 source $(dirname "$0")/count_new_msgs.sh
