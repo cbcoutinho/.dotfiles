@@ -455,6 +455,9 @@ nnoremap <c-N> :GitGutterNextHunk<CR>
 nnoremap <c-P> :GitGutterPrevHunk<CR>
 nnoremap <c-U> :GitGutterUndoHunk<CR><Paste>
 
+" Auto-selects the git diff when inspecting vim plugins via vim-plug
+autocmd! FileType vim-plug nmap <buffer> o <plug>(plug-preview)<c-w>P
+
 " Interleave Function {{{
 " Interleave similar sized blocks, from:
 "	https://vi.stackexchange.com/questions/4575
