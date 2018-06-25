@@ -146,8 +146,6 @@ Plug 'daeyun/vim-matlab', { 'do': function('DoRemote') }
 " Color schemes {{{
 
 Plug 'morhetz/gruvbox'                  " Gruvbox theme for vim
-Plug 'altercation/vim-colors-solarized' " Solarized theme for vim
-Plug 'joshdick/onedark.vim'             " Onedark theme from Atom ported to vim
 Plug 'sheerun/vim-polyglot'             " Syntax highlighting for different languages
 
 " }}}
