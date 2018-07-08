@@ -3,7 +3,6 @@
 
 # But not these files...
 !.gitignore
-!redshift.conf
 
 #Or these directories
 !matplotlib/
@@ -15,3 +14,4 @@
 !offlineimap
 !mutt
 !autostart
+!redshift
