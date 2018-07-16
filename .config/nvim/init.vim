@@ -163,6 +163,10 @@ Plug 'itchyny/lightline.vim'			" Status line for vim
 Plug 'godlygeek/tabular'				" Easily align text based on a characher - see http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
 Plug 'sjl/gundo.vim'					" View vim 'undo' as a tree
 Plug 'majutsushi/tagbar'				" Code outliner using ctags output
+Plug 'vimwiki/vimwiki', {
+			\ 'branch': 'dev' }			" Personal diary/wiki
+Plug 'mattn/calendar-vim'				" Places calendar into a pane
+Plug 'junegunn/goyo.vim'				" Distraction-free writing in vim
 
 " }}}
 " Vim/git-related plugins {{{
@@ -204,7 +208,7 @@ vmap gx <Plug>(openbrowser-open)
 call plug#end()
 " }}}
 " Vim settings {{{
-"
+" Basics {{{
 filetype plugin indent on
 set nocompatible			" Be iMproved, required for (n)vim
 set number					" Line numbers
@@ -221,6 +225,7 @@ set spelllang=en_us,nl		" Spelling language [en|nl]
 set encoding=utf-8
 set fileencoding=utf-8
 
+" }}}
 " Space/Tab options {{{
 
 "set expandtab               " Uses spaces instead of tabs
@@ -427,6 +432,7 @@ nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 au BufNewFile,BufRead *.cson set filetype=coffee
 au BufNewFile,BufRead .shrc set filetype=sh     " Sets .shrc files to use sh syntax
 au BufNewFile,BufRead *.cls set filetype=tex    " Sets .cls files to use latex syntax
+au BufNewFile,Bufread *.wiki set filetype=vimwiki
 
 au BufRead * if search('\M-*- C++ -*-', 'n', 1) | setlocal ft=cpp | endif
 
@@ -476,6 +482,25 @@ endfunction
 " Interleave ;)
 "	NOTE: <leader> is backslash '\' by default
 vnoremap <leader>it <esc>:call Interleave()<CR>
+" }}}
+" ToggleCalendar function {{{
+function! ToggleCalendar()
+	execute ":Calendar"
+	if exists("g:calendar_open")
+		if g:calendar_open == 1
+			execute "q"
+			unlet g:calendar_open
+		else
+			g:calendar_open = 1
+		end
+	else
+		let g:calendar_open = 1
+	end
+endfunction
+
+:autocmd FileType vimwiki map <leader>d :VimwikiMakeDiaryNote<CR>
+:autocmd FileType vimwiki map <leader>c :call ToggleCalendar()<CR>
+
 " }}}
 " }}}
 
