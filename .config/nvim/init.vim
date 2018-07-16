@@ -284,6 +284,12 @@ elseif has('nvim')
 endif
 "
 " }}}
+" VimWiki {{{
+
+" Some info for multiple vimwikis:
+"	https://vi.stackexchange.com/a/7911/15268
+
+" }}}
 " }}}
 " Colors {{{
 " Colorscheme {{{
