@@ -284,14 +284,6 @@ elseif has('nvim')
 endif
 "
 " }}}
-" {{{ autocmd to open file at last position
-"stolen from Gary Bernhart - open file at last position
-"
-autocmd BufReadPost *
-  \ if line("'\"") > 0 && line("'\"") <= line("$") |
-  \ exe "normal g`\"" |
-  \ endif
-" }}}
 " }}}
 " Colors {{{
 " Colorscheme {{{
