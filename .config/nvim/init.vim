@@ -284,11 +284,13 @@ elseif has('nvim')
 endif
 "
 " }}}
-" VimWiki {{{
-
-" Some info for multiple vimwikis:
-"	https://vi.stackexchange.com/a/7911/15268
-
+" {{{ autocmd to open file at last position
+"stolen from Gary Bernhart - open file at last position
+"
+autocmd BufReadPost *
+  \ if line("'\"") > 0 && line("'\"") <= line("$") |
+  \ exe "normal g`\"" |
+  \ endif
 " }}}
 " }}}
 " Colors {{{
@@ -406,6 +408,41 @@ if exists('$TMUX')
 	let g:matlab_server_launcher = 'tmux'
 endif
 " }}}
+" VimWiki {{{
+
+" Some info for multiple vimwikis:
+"	https://vi.stackexchange.com/a/7911/15268
+
+let g:vimwiki_list = [{
+			\ 'path': '~/vimwiki',
+			\ 'template_path': '~/vimwiki/templates/',
+			\ 'template_default': 'default',
+			\ 'template_ext': '.tpl',
+			\ 'path_html': '~/vimwiki/site_html'
+			\ }]
+
+" ToggleCalendar function {{{
+
+function! ToggleCalendar()
+	execute ":CalendarH"
+	if exists("g:calendar_open")
+		if g:calendar_open == 1
+			execute "q"
+			unlet g:calendar_open
+		else
+			g:calendar_open = 1
+		end
+	else
+		let g:calendar_open = 1
+	end
+endfunction
+
+:autocmd FileType vimwiki map <leader>d :VimwikiMakeDiaryNote<CR>
+:autocmd FileType vimwiki map <leader>c :call ToggleCalendar()<CR>
+
+" }}}
+
+" }}}
 " Keymaps {{{
 
 "let mapleader=","		" Sets <leader> to ','
@@ -488,25 +525,6 @@ endfunction
 " Interleave ;)
 "	NOTE: <leader> is backslash '\' by default
 vnoremap <leader>it <esc>:call Interleave()<CR>
-" }}}
-" ToggleCalendar function {{{
-function! ToggleCalendar()
-	execute ":Calendar"
-	if exists("g:calendar_open")
-		if g:calendar_open == 1
-			execute "q"
-			unlet g:calendar_open
-		else
-			g:calendar_open = 1
-		end
-	else
-		let g:calendar_open = 1
-	end
-endfunction
-
-:autocmd FileType vimwiki map <leader>d :VimwikiMakeDiaryNote<CR>
-:autocmd FileType vimwiki map <leader>c :call ToggleCalendar()<CR>
-
 " }}}
 " }}}
 
