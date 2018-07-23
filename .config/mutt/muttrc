@@ -172,6 +172,11 @@ auto_view text/html
 # still, prefer text if available
 alternative_order text/plain text/enriched text/html
 
+# Handle html emails gracefully in a browser
+bind index,pager V  noop        ## Unbinds V from version
+macro index,pager V "<view-attachments><search>html<enter><view-mailcap><exit>"
+
+
 # Handle url's gracefully using `urlview`
 macro pager \Cu "|urlview<enter>" "call urlview to open links"
 
