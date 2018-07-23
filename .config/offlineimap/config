@@ -30,7 +30,7 @@ nametrans = lambda folder: {'Drafts':  '[Gmail]/Drafts',
 [Repository ChrisCoutinho-Remote]
 type = Gmail
 remoteuser = chrisbcoutinho@gmail.com
-remotepasseval = get_pass(account="Gmail")
+remotepasseval = get_pass(account="Gmail-offlineimap")
 realdelete = no
 ssl = yes
 sslcacertfile = /var/lib/ca-certificates/ca-bundle.pem

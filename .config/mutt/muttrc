@@ -53,7 +53,7 @@ source $alias_file
 #	FIXME: Make regex work with name/email pairs over multiple (2)
 #	lines. Also do some email sanitization
 
-set display_filter = ~/.config/mutt/alias_generator.sh
+#set display_filter = ~/.config/mutt/alias_generator.sh
 
 
 # Basic Options --------------------------------------
