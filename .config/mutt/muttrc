@@ -5,11 +5,7 @@ folder-hook 'personal' 'source ~/.config/mutt/accounts/personal'
 folder-hook 'personal-full' 'source ~/.config/mutt/accounts/personal-full'
 folder-hook 'work' 'source ~/.config/mutt/accounts/work'
 
-# chrisbcoutinho@gmail.com
 source accounts/personal
-
-# ccoutinho@a-hak.nl
-#source accounts/work
 
 # GnuPG
 source .gpg.rc
@@ -18,8 +14,21 @@ set pgp_replysign = yes
 set pgp_use_gpg_agent = yes
 set pgp_sign_as = 0xACC5190D2F6F160F
 set pgp_timeout = 300 # Number of seconds to keep password in memory
-set crypt_autosign = yes
-set crypt_replyencrypt = yes
+
+set crypt_use_gpgme=yes
+
+# Automatically sign all outgoing messages
+set crypt_autosign=yes
+
+# Automatically verify the sig of a message when opened
+set crypt_verify_sig=yes
+
+# Automatically sign replies to messages which are signed
+# Automatically encrypt replies to messages which are encrypted
+# Automatically sign replies to messages which are encrypted
+set crypt_replysign=yes
+set crypt_replyencrypt=yes
+set crypt_replysignencrypted=yes
 
 
 # Macros

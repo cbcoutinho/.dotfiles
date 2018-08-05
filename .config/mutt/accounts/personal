@@ -47,21 +47,6 @@ set spoolfile = "+INBOX"
 set mbox = "+Archive"
 set postponed = "+Drafts"
 
-set crypt_use_gpgme = yes
-
-# Automatically sign all outgoing messages
-set crypt_autosign=no
-
-# Automatically verify the sig of a message when opened
-set crypt_verify_sig=yes
-
-# Automatically sign replies to messages which are signed
-# Automatically encrypt replies to messages which are encrypted
-# Automatically sign replies to messages which are encrypted
-set crypt_replysign=yes
-set crypt_replyencrypt=yes
-set crypt_replysignencrypted=yes
-
 # Sync email
 macro index O "<shell-escape>offlineimap -a ChrisCoutinho -s<enter>"           "run offlineimap to sync all mail"
 macro index o "<shell-escape>offlineimap -a ChrisCoutinho -s -qf INBOX<enter>" "run offlineimap to sync inbox"
