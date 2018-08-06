@@ -5,16 +5,8 @@
 # /etc/profile.d/gpg-agent.sh
 
 
-# Throw away stdout, send stderr to shell/cron
-if [ $(hostname) = 'tumbleweed' ]; then
-	offlineimap -a ChrisCoutinho -u syslog >/dev/null & pid1=$!
-	offlineimap -a Work -u syslog >/dev/null & pid2=$!
-
-	wait $pid1
-	wait $pid2
-else
-	offlineimap -a Work -u syslog >/dev/null
-fi
+# Log to syslog, throw away stdout, send stderr to shell/cron
+offlineimap -u syslog >/dev/null
 
 # After syncing email using notmuch for indexing email
 ~/.config/offlineimap/postsync.sh
