@@ -90,9 +90,18 @@ endfunction
 " Language-specfic plugins {{{
 " Completions in neovim {{{
 
-if has('nvim')
-	Plug 'roxma/nvim-completion-manager'
-endif
+Plug 'roxma/nvim-yarp'	" Requirement of ncm2
+Plug 'ncm2/ncm2'
+
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+
+" IMPORTANTE: :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect
+
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-tmux'
+Plug 'ncm2/ncm2-path'
 
 " }}}
 " Rust {{{
