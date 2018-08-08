@@ -2,7 +2,6 @@
 
 # Folder hooks
 folder-hook 'personal' 'source ~/.config/mutt/accounts/personal'
-folder-hook 'personal-full' 'source ~/.config/mutt/accounts/personal-full'
 folder-hook 'work' 'source ~/.config/mutt/accounts/work'
 
 source accounts/personal
@@ -33,7 +32,6 @@ set crypt_replysignencrypted=yes
 
 # Macros
 macro index <f2> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/personal<enter><change-folder>!<enter>'
-macro index \e<f2> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/personal-full<enter><change-folder>!<enter>'
 macro index <f3> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/work<enter><change-folder>!<enter>'
 
 macro index ,sn "l ^a^k~(~N)\n"  "show only new messages"

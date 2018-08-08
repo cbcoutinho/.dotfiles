@@ -32,8 +32,8 @@ mailboxes +INBOX \
 			+Mailing\ Lists.Pass \
 			+Mailing\ Lists.Python-dev \
 			+Mailing\ Lists.Rotaract \
-			#+Archive \
-			#+Important \
+			+Archive \
+			+Important \
 			#+Categories.Forums \
 
 set from = "chrisbcoutinho@gmail.com"
