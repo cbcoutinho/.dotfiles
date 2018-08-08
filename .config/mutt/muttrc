@@ -118,7 +118,7 @@ hdr_order from: to: cc: date: subject:  # and in this order
 #set date_format = "%m/%d"
 set date_format = "%b-%d-%y"
 #set date_format = "%b-%d %H:%m"
-set index_format = "[%Z]  %D  %-20.20F (%-4.4c) %s"
+set index_format = "[%Z]  %D  %-20.20F (%4.4c) %s"
 #set index_format="%D %?X?%2X& ? %-18.18L [%4c] %s"
 set sort = threads							# like gmail
 set strict_threads = yes
