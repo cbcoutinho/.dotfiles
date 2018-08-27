@@ -124,6 +124,8 @@ Plug 'tpope/vim-fireplace'				" Connects to the nREPL for 'dynamic' clojure deve
 Plug 'kien/rainbow_parentheses.vim'     " Rainbow parens for Lisps - see options below
 Plug 'jpalardy/vim-slime'				" Send text to another pane (ie. with a REPL)
 Plug 'venantius/vim-cljfmt'				" Format clojure files in vim - requires cljfmt
+Plug 'l04m33/vlime', {
+			\ 'rtp': 'vim' }			" Common lisp dev environment for (neo)vim
 
 " Parinfer re-implementation in Rust
 Plug 'eraserhd/parinfer-rust', {
@@ -408,6 +410,17 @@ if exists('$TMUX')
 	" For vim-matlab plugin
 	let g:matlab_server_launcher = 'tmux'
 endif
+" }}}
+" Vlime {{{
+"
+" Originally from:
+"	https://asciinema.org/a/129756
+
+let g:vlime_leader = ','
+
+let g:vlime_enable_autodoc = v:true
+let g:vlime_window_settings = {'sldb': {'pos': 'belowright', 'vertical': v:true}, 'inspector': {'pos': 'belowright', 'vertical': v:true}, 'preview': {'pos': 'belowright', 'size': v:null, 'vertical': v:true}}
+
 " }}}
 " VimWiki {{{
 
