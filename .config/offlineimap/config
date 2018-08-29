@@ -5,6 +5,7 @@
 #ui = syslog
 ui = blinkenlights
 accounts = ChrisCoutinho,Work
+#maxsyncaccounts = 2
 
 # NOTE: This is a python2 file
 pythonfile=~/.config/offlineimap/offlineimap.py
@@ -84,29 +85,4 @@ folderfilter = lambda folder: folder in [
 	'Sent Items',
 	'Drafts',
 	'Scheduled',
-	#'RSS Subscriptions',
 	]
-#folderfilter = lambda folder: folder not in [
-	#'Calendar',
-	#'Calendar/Birthdays',
-	#'Calendar/Sub Folder 1',
-	#'Calendar/Sub Folder 2',
-	#'Calendar/United States holidays',
-	#'Contacts',
-	#'Contacts/Sub Folder 1',
-	#'Contacts/Sub Folder 2',
-	#'Contacts/Skype for Business Contacts',
-	#'Deleted Items',
-	#'Drafts',
-	#'Journal',
-	#'Junk Email',
-	#'Notes',
-	#'Outbox',
-	#'Sync Issues',
-	#'Sync Issues/Conflicts',
-	#'Sync Issues/Local Failures',
-	#'Sync Issues/Server Failures',
-	#'Tasks',
-	#'Tasks/Sub Folder 1',
-	#'Tasks/Sub Folder 2'
-	#]
