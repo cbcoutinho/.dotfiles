@@ -26,6 +26,9 @@ mailboxes +INBOX \
 			+Newsletters.MOOSE \
 			+Newsletters.ParaView \
 			+Newsletters.PostgreSQL \
+			+Newsletters.PostgreSQL.General \
+			+Newsletters.PostgreSQL.Hackers \
+			+Newsletters.PostgreSQL.Novice \
 			+Newsletters.RED\ News
 
 set from = "c.coutinho@redstack.nl"
