@@ -3,15 +3,5 @@
 
 # But not these files...
 !.gitignore
-!offlineimap.py
-!muttrc
-!mailcap
-!view_attachment.sh
-!README.md
-!alias_generator.sh
-!.gpg.rc
 
 #Or these directories
-!accounts/
-!colors/
-!cache/
