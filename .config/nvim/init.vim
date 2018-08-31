@@ -179,6 +179,9 @@ Plug 'vimwiki/vimwiki', {
 Plug 'mattn/calendar-vim'				" Places calendar into a pane
 Plug 'junegunn/goyo.vim'				" Distraction-free writing in vim
 
+Plug 'Konfekt/FastFold'					" Recommended by SimpylFold
+Plug 'tmhedberg/SimpylFold'				" Fold python source files
+
 " }}}
 " Vim/git-related plugins {{{
 
@@ -278,13 +281,19 @@ endif
 
 " }}}
 " Folding options {{{
-"
+
 " Code folding options are:
 "	[marker, manual, expr, syntax, diff, indent]
 "set foldmethod=marker
 "set foldlevel=0
 set modelines=1				" This tells vim to look at the last line for the fold method
-"
+
+let g:SimpylFold_docstring_preview = 1 " Preview docstring in fold text
+let g:SimpylFold_fold_docstring = 0
+let b:SimpylFold_fold_docstring = 0
+"let g:SimpylFold_fold_import = 0
+"let b:SimpylFold_fold_import = 0
+
 " }}}
 " True Color options {{{
 "
