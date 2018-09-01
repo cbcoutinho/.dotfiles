@@ -27,6 +27,7 @@ mailboxes +INBOX \
 			+Mailing\ Lists.FreeBSD \
 			+Mailing\ Lists.Github \
 			+Mailing\ Lists.GnuPG \
+			+Mailing\ Lists.Notmuch \
 			+Mailing\ Lists.OfflineIMAP \
 			+Mailing\ Lists.OpenSUSE \
 			+Mailing\ Lists.Pass \
