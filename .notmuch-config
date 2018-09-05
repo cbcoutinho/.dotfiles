@@ -52,7 +52,7 @@ other_email=c.coutinho@redstack.nl;cc162@humboldt.edu;ccoutinho@a-hak.nl;
 
 [new]
 tags=unread;inbox;
-ignore=
+ignore=/.*/Drafts$/
 
 # Search configuration
 #
