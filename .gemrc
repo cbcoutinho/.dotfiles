@@ -1,0 +1,2 @@
+install: --no-format-executable
+update: --no-format-executable
