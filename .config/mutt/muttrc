@@ -149,6 +149,9 @@ bind index <space>  collapse-thread
 
 bind index b		sidebar-toggle-visible
 
+# The `n` key searches next, `p` should be previous like vim
+bind index p		search-opposite
+
 # Ctrl-R to mark all as read
 macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
 
@@ -218,6 +221,13 @@ set forward_quote                    # include message in forwards
 set text_flowed                      # Sets all plain text messages to properly use linebreaks
 
 set editor = 'nvim'
+
+# Sets the default autocompletion to use notmuch instead, no longer
+# needing notmuch-abook
+set query_command = "notmuch address from:%s"
+bind editor <Tab> complete-query
+bind editor ^T complete
+set query_format="%4c %t %-70.70a %-70.70n %?e?(%e)?"
 
 ##- Colors
 
