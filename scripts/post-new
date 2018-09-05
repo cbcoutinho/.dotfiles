@@ -1,0 +1,11 @@
+#!/bin/sh
+#
+# notmuch-abook needs to play nicely with offlineimap and notmuch,
+# therefore this hook should be placed into the notmuch data
+# directory, specifically:
+#	$HOME/.mail/.notmuch/hooks/post-new
+
+# first update notmuch-abook
+for file in $(notmuch search --output=files tag:new) ; do
+    cat "$file" | $HOME/bin/notmuch-abook update
+done

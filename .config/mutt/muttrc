@@ -37,11 +37,18 @@ macro index <f3> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/wo
 macro index ,sn "l ^a^k~(~N)\n"  "show only new messages"
 
 macro index <F8> \
-	"<enter-command>unset wait_key<enter><shell-escape>~/bin/mutt-notmuch --prompt search<enter><change-folder-readonly>~/.cache/mutt_results<enter>" \
-	"search mail (using notmuch)"
+	  "<enter-command>unset wait_key<enter><shell-escape>~/bin/notmuch-mutt --prompt search<enter><change-folder-readonly>~/.cache/notmuch/mutt/results<enter>" \
+	  "search mail (using notmuch)"
 macro index <F9> \
-	"<enter-command>unset wait_key<enter><pipe-message>~/bin/mutt-notmuch thread<enter><change-folder-readonly>~/.cache/mutt_results<enter><enter-command>set wait_key<enter>" \
-	"search and reconstruct owning thread (using notmuch)"
+	  "<enter-command>unset wait_key<enter><pipe-message>~/bin/notmuch-mutt thread<enter><change-folder-readonly>~/.cache/notmuch/mutt/results<enter><enter-command>set wait_key<enter>" \
+	  "search and reconstruct owning thread (using notmuch)"
+
+#set virtual_spoolfile=yes
+#virtual-mailboxes "inbox" "notmuch://?query=tag:inbox"
+#virtual-mailboxes "archive" "notmuch://?query=tag:archive"
+#virtual-mailboxes "sent" "notmuch://?query=tag:sent"
+#virtual-mailboxes "newsletters" "notmuch://?query=tag:newsletters"
+
 
 # Paths ----------------------------------------------
 set alias_file       = ~/.config/mutt/alias			# where to store aliases

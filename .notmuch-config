@@ -52,7 +52,7 @@ other_email=c.coutinho@redstack.nl;cc162@humboldt.edu;ccoutinho@a-hak.nl;
 
 [new]
 tags=unread;inbox;
-ignore=
+ignore=/.*/Drafts$/
 
 # Search configuration
 #
@@ -91,3 +91,21 @@ exclude_tags=deleted;spam;
 
 [maildir]
 synchronize_flags=true
+
+# Cryptography related configuration
+#
+# The following option is supported here:
+#
+#	gpg_path
+#		binary name or full path to invoke gpg.
+#
+
+[crypto]
+gpg_path=gpg
+
+# Address book via python2 package:
+# 	https://github.com/guyzmo/notmuch-abook
+
+[addressbook]
+path=/home/chris/.notmuch-abook.db
+backend=sqlite3
