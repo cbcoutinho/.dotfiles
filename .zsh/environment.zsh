@@ -44,7 +44,7 @@ export LD_LIBRARY_PATH="$DAKOTA_INST_DIR/lib:$LD_LIBRARY_PATH"
 export PYTHONPATH="$DAKOTA_INST_DIR/share/dakota/Python:$PYTHONPATH"
 
 # PETSc
-export PETSC_DIR=/home/chris/Software/petsc/install
+export PETSC_DIR=/usr/local/lib64/petsc/petsc-3.9
 export PETSC_ARCH=""
 #export PETSC_DIR=/home/chris/Software/petsc/petsc-src
 #export PETSC_ARCH=arch-linux2-c-debug
