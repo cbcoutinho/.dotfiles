@@ -51,6 +51,8 @@ if [[ -d $HOME/OpenFOAM ]]; then
 	alias of4x="source $OF_DIR/OpenFOAM-4.x/etc/bashrc $FOAM_SETTINGS"
 	alias of30x="source $OF_DIR/OpenFOAM-3.0.x/etc/bashrc $FOAM_SETTINGS"
 	alias of1712="source $OF_DIR/OpenFOAM-v1712/etc/bashrc $FOAM_SETTINGS"
+	alias of1806="source $OF_DIR/OpenFOAM-v1806/etc/bashrc $FOAM_SETTINGS"
+	alias ofplus="source $OF_DIR/OpenFOAM-plus/etc/bashrc $FOAM_SETTINGS"
 
 	alias fe40="source $HOME/foam/foam-extend-4.0/etc/bashrc"
 fi
