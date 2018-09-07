@@ -175,6 +175,8 @@ bind pager R  group-reply
 
 # View attachments properly.
 bind attach <return> view-mailcap
+bind attach s noop
+macro attach s "<save-entry><bol>~/Downloads/<eol>" "Save attachments to Downloads directory"
 
 # automatically view html mail using mailcap
 auto_view text/html
