@@ -65,6 +65,10 @@ bindkey -v
 #zle -N zle-keymap-select
 #export KEYTIMEOUT=1
 
+# string comparison in bash doesn't work in zsh if EQUALS is set
+# 	https://www.zsh.org/mla/users/2011/msg00161.html
+unsetopt EQUALS
+
 
 # colours from neovim/gruvbox - assumes nvim has installed gruvbox
 # package

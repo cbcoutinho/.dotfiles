@@ -14,20 +14,13 @@ set pgp_use_gpg_agent = yes
 set pgp_sign_as = 0xACC5190D2F6F160F
 set pgp_timeout = 300 # Number of seconds to keep password in memory
 
+
 set crypt_use_gpgme=yes
-
-# Automatically sign all outgoing messages
-set crypt_autosign=yes
-
-# Automatically verify the sig of a message when opened
-set crypt_verify_sig=yes
-
-# Automatically sign replies to messages which are signed
-# Automatically encrypt replies to messages which are encrypted
-# Automatically sign replies to messages which are encrypted
-set crypt_replysign=yes
-set crypt_replyencrypt=yes
-set crypt_replysignencrypted=yes
+set crypt_autosign=yes           # Automatically sign all outgoing messages
+set crypt_verify_sig=yes         # Automatically verify the sig of a message when opened
+set crypt_replysign=yes          # Automatically sign replies to messages which are signed
+set crypt_replyencrypt=yes       # Automatically encrypt replies to messages which are encrypted
+set crypt_replysignencrypted=yes # Automatically sign replies to messages which are encrypted
 
 
 # Macros
@@ -36,18 +29,13 @@ macro index <f3> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/wo
 
 macro index ,sn "l ^a^k~(~N)\n"  "show only new messages"
 
-macro index <F8> \
-	  "<enter-command>unset wait_key<enter><shell-escape>~/bin/notmuch-mutt --prompt search<enter><change-folder-readonly>~/.cache/notmuch/mutt/results<enter>" \
-	  "search mail (using notmuch)"
-macro index <F9> \
-	  "<enter-command>unset wait_key<enter><pipe-message>~/bin/notmuch-mutt thread<enter><change-folder-readonly>~/.cache/notmuch/mutt/results<enter><enter-command>set wait_key<enter>" \
-	  "search and reconstruct owning thread (using notmuch)"
+#macro index <F8> \
+	  #"<enter-command>unset wait_key<enter><shell-escape>~/bin/notmuch-mutt --prompt search<enter><change-folder-readonly>~/.cache/notmuch/mutt/results<enter>" \
+	  #"search mail (using notmuch)"
+#macro index <F9> \
+	  #"<enter-command>unset wait_key<enter><pipe-message>~/bin/notmuch-mutt thread<enter><change-folder-readonly>~/.cache/notmuch/mutt/results<enter><enter-command>set wait_key<enter>" \
+	  #"search and reconstruct owning thread (using notmuch)"
 
-#set virtual_spoolfile=yes
-#virtual-mailboxes "inbox" "notmuch://?query=tag:inbox"
-#virtual-mailboxes "archive" "notmuch://?query=tag:archive"
-#virtual-mailboxes "sent" "notmuch://?query=tag:sent"
-#virtual-mailboxes "newsletters" "notmuch://?query=tag:newsletters"
 
 
 # Paths ----------------------------------------------
@@ -163,6 +151,8 @@ macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
 macro compose \e5 "F pandoc -s -f markdown -t html \ny^T^Utext/html; charset=us-ascii\n"
 #set wait_key=no
 
+macro index / "<vfolder-from-query>"
+
 ##- Main message(pager) view
 
 # Pager View Options ---------------------------------
@@ -193,7 +183,7 @@ auto_view text/html
 alternative_order text/plain text/enriched text/html
 
 # Handle html emails gracefully in a browser
-bind index,pager V  noop        ## Unbinds V from version
+bind index,pager V  noop        # Unbinds V from version
 macro index,pager V "<view-attachments><search>html<enter><view-mailcap><exit>"
 
 
@@ -222,14 +212,26 @@ set text_flowed                      # Sets all plain text messages to properly 
 
 set editor = 'nvim'
 
-# Sets the default autocompletion to use notmuch instead, no longer
-# needing notmuch-abook
-set query_command = "notmuch address from:%s"
-bind editor <Tab> complete-query
-bind editor ^T complete
-set query_format="%4c %t %-70.70a %-70.70n %?e?(%e)?"
-
 ##- Colors
 
 #source colors/gruvbox-256
 source colors/non-geek
+
+##- Notmuch
+
+set nm_default_uri = "notmuch:///home/chris/.mail"
+
+# Sets the default autocompletion to use notmuch instead, but also
+# sets the first line as blank to have minimal 1 result:
+# 	https://github.com/neomutt/neomutt/issues/1333#issuecomment-419177317
+set query_command = "echo '' && notmuch address from:%s"
+bind editor <Tab> complete-query
+bind editor ^T complete
+set query_format="%4c %t %-70.70a %-70.70n %?e?(%e)?"
+
+#set virtual_spoolfile=yes
+#virtual-mailboxes \
+	#"INBOX" "notmuch://?query=tag:inbox"\
+	#"Archive" "notmuch://?query=tag:archive"\
+	#"Sent" "notmuch://?query=tag:sent"\
+	#"Newsletters" "notmuch://?query=tag:newsletters"
