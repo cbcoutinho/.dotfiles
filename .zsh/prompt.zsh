@@ -51,7 +51,7 @@ prompt_end() {
 # needs to be shown Context: user@hostname (who am I and where am I)
 prompt_context() {
 	if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-		prompt_segment 246 235 "%(!.%{%F{yellow}%}.)$USER@%m"
+		prompt_segment 246 235 "%(!.%{%F{yellow}%}.)$USER@%M"
 	fi
 }
 
