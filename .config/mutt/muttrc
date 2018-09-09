@@ -151,7 +151,6 @@ macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
 macro compose \e5 "F pandoc -s -f markdown -t html \ny^T^Utext/html; charset=us-ascii\n"
 #set wait_key=no
 
-macro index / "<vfolder-from-query>"
 
 ##- Main message(pager) view
 
@@ -235,3 +234,5 @@ set query_format="%4c %t %-70.70a %-70.70n %?e?(%e)?"
 	#"Archive" "notmuch://?query=tag:archive"\
 	#"Sent" "notmuch://?query=tag:sent"\
 	#"Newsletters" "notmuch://?query=tag:newsletters"
+
+macro index n/ "<vfolder-from-query>"

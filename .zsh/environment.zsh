@@ -96,7 +96,7 @@ export PIP_WHEEL_DIR="${WHEELHOUSE}"
 
 # Python virtualenvwrapper
 export WORKON_HOME=~/.envs
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export VIRTUALENVWRAPPER_PYTHON=$(which python3)
 export VIRTUALENVWRAPPER_SCRIPT="$HOME/.local/bin/virtualenvwrapper.sh"
 source "$HOME/.local/bin/virtualenvwrapper_lazy.sh"
 
