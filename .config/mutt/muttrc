@@ -24,8 +24,8 @@ set crypt_replysignencrypted=yes # Automatically sign replies to messages which 
 
 
 # Macros
-macro index <f2> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/personal<enter><change-folder>!<enter>'
-macro index <f3> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/work<enter><change-folder>!<enter>'
+macro index,pager <f2> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/personal<enter><change-folder>!<enter>'
+macro index,pager <f3> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/work<enter><change-folder>!<enter>'
 
 macro index ,sn "l ^a^k~(~N)\n"  "show only new messages"
 
