@@ -43,7 +43,7 @@ set alias_file       = ~/.config/mutt/alias			# where to store aliases
 set mailcap_path     = ~/.config/mutt/mailcap		# entries for filetypes
 set tmpdir           = ~/.config/mutt/temp			# where to keep temp files
 
-source $alias_file
+#source $alias_file
 
 # Generates aliases by reading all messages before they are displayed
 # on the screen and parses their contents. Essentially it should find
