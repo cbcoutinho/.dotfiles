@@ -53,9 +53,11 @@ esac
 #
 
 # Add ~/.local/bin to path if not already
-if [[ "$PATH" != *":$HOME/.local/bin:"* ]]; then
-	export PATH="$HOME/.local/bin:$PATH"
-fi
+for mypath in "$HOME/.local/bin" "/usr/local/bin"; do
+	if [[ "$PATH" != *":$mypath:"* ]]; then
+		export PATH="$mypath:$PATH"
+	fi
+done
 
 # This is for switching between pinentry_tty and pinentry_gtk
 export PINENTRY_USER_DATA="gtk"

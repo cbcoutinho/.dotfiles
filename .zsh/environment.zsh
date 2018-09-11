@@ -20,10 +20,6 @@ if command -v nproc >/dev/null; then
 	export MOOSE_JOBS=`nproc`
 fi
 
-# Compiler defaults to gcc
-export FC=gfortran
-export CC=gcc
-export CXX=g++
 
 #export PATH="/usr/sbin:/sbin:$PATH"
 export PATH="$HOME/bin:$PATH"
