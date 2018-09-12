@@ -1,13 +1,11 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 #
-# This function returns my Google password from my local password-store
-# in my home directory. It is called by `offlineimap`, which can be
-# insatlled in a virtualenv or by the system. On Tumbleweed, this was
-# available in the main repositories
+# This function returns an account password using the `pass` command.
+# An account must be provided as input
 
 from subprocess import check_output, STDOUT
 
-def get_pass(account=None):
+def get_pass(account):
     command = "pass Mail/" + account
 
     output = check_output(

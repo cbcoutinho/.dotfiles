@@ -11,11 +11,16 @@ accounts = ChrisCoutinho,Work
 pythonfile=~/.config/offlineimap/offlineimap.py
 fsync = False
 
+
+# Apply following settings for all accounts
+[DEFAULT]
+postsynchook = notmuch new
+
+
 [Account ChrisCoutinho]
 localrepository = ChrisCoutinho-Local
 remoterepository = ChrisCoutinho-Remote
 synclabels = yes
-#postsynchook = ~/.config/offlineimap/postsync.sh
 
 [Repository ChrisCoutinho-Local]
 type = GmailMaildir
@@ -53,7 +58,6 @@ folderfilter = lambda folder: folder not in ['[Gmail]/Trash',
 [Account Work]
 localrepository = Work-Local
 remoterepository = Work-Remote
-#postsynchook = ~/.config/offlineimap/postsync.sh
 
 [Repository Work-Local]
 type = Maildir
