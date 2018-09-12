@@ -7,7 +7,7 @@ folder-hook 'work' 'source ~/.config/mutt/accounts/work'
 source accounts/personal
 
 # GnuPG
-source .gpg.rc
+source ~/.config/mutt/gpg.rc
 set pgp_autosign = yes
 set pgp_replysign = yes
 set pgp_use_gpg_agent = yes
