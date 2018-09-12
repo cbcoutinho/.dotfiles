@@ -138,7 +138,7 @@ bind index <space>  collapse-thread
 bind index b		sidebar-toggle-visible
 
 # The `n` key searches next, `p` should be previous like vim
-bind index p		search-opposite
+bind index,query p		search-opposite
 
 # Ctrl-R to mark all as read
 macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"

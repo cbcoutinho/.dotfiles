@@ -49,5 +49,5 @@ set mbox = "+Archive"
 set postponed = "+Drafts"
 
 # Sync email
-macro index O "<shell-escape>offlineimap -a ChrisCoutinho -s<enter>"           "run offlineimap to sync all mail"
-macro index o "<shell-escape>offlineimap -a ChrisCoutinho -s -qf INBOX<enter>" "run offlineimap to sync inbox"
+macro index O "<shell-escape>offlineimap -u blinkenlights -a ChrisCoutinho -s<enter>"           "run offlineimap to sync all mail"
+macro index o "<shell-escape>offlineimap -u blinkenlights -a ChrisCoutinho -s -qf INBOX<enter>" "run offlineimap to sync inbox"

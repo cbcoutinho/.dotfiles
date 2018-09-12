@@ -183,7 +183,7 @@ Plug 'junegunn/goyo.vim'				" Distraction-free writing in vim
 Plug 'Konfekt/FastFold'					" Recommended by SimpylFold
 Plug 'tmhedberg/SimpylFold'				" Fold python source files
 
-Plug 'guyzmo/notmuch-abook'				" Able to use notmuch address book from within vim
+"Plug 'guyzmo/notmuch-abook'				" Able to use notmuch address book from within vim
 
 " }}}
 " Vim/git-related plugins {{{
@@ -529,7 +529,7 @@ nnoremap <c-P> :GitGutterPrevHunk<CR>
 nnoremap <c-U> :GitGutterUndoHunk<CR><Paste>
 
 " GitGutter and notmuch-abook don't play well together
-autocmd FileType mail :GitGutterDisable
+"autocmd FileType mail :GitGutterDisable
 
 " Auto-selects the git diff when inspecting vim plugins via vim-plug
 autocmd! FileType vim-plug nmap <buffer> o <plug>(plug-preview)<c-w>P
