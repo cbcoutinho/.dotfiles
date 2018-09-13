@@ -25,6 +25,10 @@ synclabels = yes
 [Repository ChrisCoutinho-Local]
 type = GmailMaildir
 localfolders = ~/.mail/gmail
+
+# Propogate deletes to remote
+#sync_deletes = yes
+
 nametrans = lambda folder: {'Drafts':  '[Gmail]/Drafts',
 							'Sent':    '[Gmail]/Sent Mail',
 							'Flagged': '[Gmail]/Starred',
@@ -62,6 +66,10 @@ remoterepository = Work-Remote
 [Repository Work-Local]
 type = Maildir
 localfolders = ~/.mail/office365
+
+# Propogate deletes to remote
+sync_deletes = no
+
 nametrans = lambda folder: {'Sent': 'Sent Items'}.get(folder, folder)
 
 [Repository Work-Remote]
