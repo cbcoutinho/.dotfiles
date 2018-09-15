@@ -75,7 +75,7 @@ set thorough_search      # strip headers and eval mimes before searching
 
 ##- Sidebar (Pager) Patch --------------------------------------
 
-set sidebar_divider_char   = '  │'
+set sidebar_divider_char   = ' │ '
 set sidebar_visible = yes
 set sidebar_width   = 25
 
