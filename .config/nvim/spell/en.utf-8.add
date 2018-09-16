@@ -48,3 +48,6 @@ Matlab
 OpenFOAM
 Electrodialysis
 exchanger
+exchanger
+semi-permeable
+perm-selectivity

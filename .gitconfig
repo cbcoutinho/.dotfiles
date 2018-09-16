@@ -5,12 +5,17 @@
 [commit]
 	verbose = true
 	gpgsign = true
-
 [core]
 	excludesfile = /home/chris/.gitignore_global
 	pager = less -x1,5
 	# This sets `git {diff,show} tabs as 4 spaces
 	#	https://stackoverflow.com/a/10584237
+[diff]
+	algorithm = patience
+[sendemail]
+	smtpencryption = tls
+	smtpserver = /usr/bin/msmtp
+
 
 [color]
 	ui = true
@@ -36,5 +41,3 @@
 	#                     └─ hash (abbreviated)
 [format]
 	pretty = custom
-[diff]
-	algorithm = patience
