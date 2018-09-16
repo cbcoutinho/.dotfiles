@@ -102,12 +102,12 @@ if [ -d ~/Software/zsh-autosuggestions ]; then
 fi
 
 # Shell completions (rust, cargo, and hub)
-fpath+=~/.zfunc
 if [ -d ~/Software/zsh-completions ]; then
-	fpath+=~/Software/zsh-completions/src
+	fpath=(~/Software/zsh-completions/src $fpath)
 else
 	echo "	The 'zsh-completions' package was not found"
 fi
+fpath=(~/.zfunc $fpath)
 
 # completions
 autoload -Uz compinit && compinit
