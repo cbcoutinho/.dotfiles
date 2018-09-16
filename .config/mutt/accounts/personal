@@ -26,6 +26,7 @@ mailboxes +INBOX \
 			+Mailing\ Lists.DragonFlyBSD \
 			+Mailing\ Lists.FreeBSD \
 			+Mailing\ Lists.Github \
+			+Mailing\ Lists.Gitlab \
 			+Mailing\ Lists.GnuPG \
 			+Mailing\ Lists.Notmuch \
 			+Mailing\ Lists.OfflineIMAP \

@@ -1,13 +1,36 @@
+# vim:filetype=neomuttrc
 ##- Mutt basic settings
+#- Basic Options --------------------------------------
 
-# Folder hooks
+set wait_key = no        # shut up, mutt
+set mbox_type = Maildir  # mailbox type
+set timeout = 3          # idle time before scanning
+set mail_check = 0       # minimum time between scans
+unset move               # gmail does that
+set delete               # don't ask, just do
+unset confirmappend      # don't ask, just do!
+set quit                 # don't ask, just do!!
+#unset mark_old           # read/new is good enough for me
+set beep_new             # bell on new mails
+set pipe_decode          # strip headers and eval mimes when piping
+set thorough_search      # strip headers and eval mimes before searching
+
+#- Folder hooks
+
 folder-hook 'personal' 'source ~/.config/mutt/accounts/personal'
 folder-hook 'work' 'source ~/.config/mutt/accounts/work'
 
 source accounts/personal
 
-# GnuPG
+macro index,pager <f2> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/personal<enter><change-folder>!<enter>'
+macro index,pager <f3> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/work<enter><change-folder>!<enter>'
+
+macro index ,sn "l ^a^k~(~N)\n"  "show only new messages"
+
+#- GnuPG
+
 source ~/.config/mutt/gpg.rc
+
 set pgp_autosign = yes
 set pgp_replysign = yes
 set pgp_use_gpg_agent = yes
@@ -22,56 +45,18 @@ set crypt_replysign=yes          # Automatically sign replies to messages which 
 set crypt_replyencrypt=yes       # Automatically encrypt replies to messages which are encrypted
 set crypt_replysignencrypted=yes # Automatically sign replies to messages which are encrypted
 
+#- Paths ----------------------------------------------
 
-# Macros
-macro index,pager <f2> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/personal<enter><change-folder>!<enter>'
-macro index,pager <f3> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/work<enter><change-folder>!<enter>'
-
-macro index ,sn "l ^a^k~(~N)\n"  "show only new messages"
-
-#macro index <F8> \
-	  #"<enter-command>unset wait_key<enter><shell-escape>~/bin/notmuch-mutt --prompt search<enter><change-folder-readonly>~/.cache/notmuch/mutt/results<enter>" \
-	  #"search mail (using notmuch)"
-#macro index <F9> \
-	  #"<enter-command>unset wait_key<enter><pipe-message>~/bin/notmuch-mutt thread<enter><change-folder-readonly>~/.cache/notmuch/mutt/results<enter><enter-command>set wait_key<enter>" \
-	  #"search and reconstruct owning thread (using notmuch)"
-
-
-
-# Paths ----------------------------------------------
 set alias_file       = ~/.config/mutt/alias			# where to store aliases
 set mailcap_path     = ~/.config/mutt/mailcap		# entries for filetypes
 set tmpdir           = ~/.config/mutt/temp			# where to keep temp files
 
 #source $alias_file
 
-# Generates aliases by reading all messages before they are displayed
-# on the screen and parses their contents. Essentially it should find
-# the sender via a regex (From: <name> <email>), but it currently
-# doesn't work if the screen is half width, which I normally use,
-# because the name and email are on separate lines. Sometimes the
-# email address is a bad format as well, which should be
-# corrected/sanitized.
-#	FIXME: Make regex work with name/email pairs over multiple (2)
-#	lines. Also do some email sanitization
+#- Colors
 
-#set display_filter = ~/.config/mutt/alias_generator.sh
-
-
-# Basic Options --------------------------------------
-set wait_key = no        # shut up, mutt
-set mbox_type = Maildir  # mailbox type
-set timeout = 3          # idle time before scanning
-set mail_check = 0       # minimum time between scans
-unset move               # gmail does that
-set delete               # don't ask, just do
-unset confirmappend      # don't ask, just do!
-set quit                 # don't ask, just do!!
-#unset mark_old           # read/new is good enough for me
-set beep_new             # bell on new mails
-set pipe_decode          # strip headers and eval mimes when piping
-set thorough_search      # strip headers and eval mimes before searching
-
+source colors/non-geek
+source colors/git-diff
 
 ##- Sidebar (Pager) Patch --------------------------------------
 
@@ -96,26 +81,16 @@ bind index,pager <down>	sidebar-next
 bind index,pager <up>	sidebar-prev
 bind index,pager <right>	sidebar-open
 
-#- Status Bar -----------------------------------------
+# Status Bar -----------------------------------------
+
 set status_chars  = " *%A"
 set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
 
-
-##- Header Options -------------------------------------
-
-ignore *                                # ignore all headers
-unignore from: to: cc: date: subject:   # show only these
-unhdr_order *                           # some distros order things by default
-hdr_order from: to: cc: date: subject:  # and in this order
-
 ##- Index View Options ---------------------------------
 
-#set date_format = "%m/%d"
 set date_format = "%b-%d-%y"
-#set date_format = "%b-%d %H:%m"
 
-# The '%?X?A&-?' part is conditional showing whether attachment exists
-# in message
+# If attachment exists, show `A`, otherwise show `-`
 set index_format = "[%Z] %?X?A&-? %D  %-20.20F (%4.4c) %s"
 
 set sort = threads							# like gmail
@@ -151,10 +126,9 @@ macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
 macro compose \e5 "F pandoc -s -f markdown -t html \ny^T^Utext/html; charset=us-ascii\n"
 #set wait_key=no
 
+##- Main message (pager) view
+#- Pager View Options ---------------------------------
 
-##- Main message(pager) view
-
-# Pager View Options ---------------------------------
 set pager_index_lines = 10 # number of index lines to show
 set pager_context = 3      # number of context lines to show
 set pager_stop             # don't go to next message automatically
@@ -164,7 +138,8 @@ unset markers              # no ugly plus signs
 
 set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
 
-# Pager Key Bindings ---------------------------------
+#- Pager Key Bindings ---------------------------------
+
 bind pager k  previous-line
 bind pager j  next-line
 bind pager g  noop # https://www.neomutt.org/guide/configuration.html#bind-warnings
@@ -173,7 +148,8 @@ bind pager G  bottom
 
 bind pager R  group-reply
 
-# View attachments properly.
+#- View attachments properly.
+
 bind attach <return> view-mailcap
 bind attach s noop
 macro attach s "<save-entry><bol>~/Downloads/<eol>" "Save attachments to Downloads directory"
@@ -187,11 +163,10 @@ alternative_order text/plain text/enriched text/html
 bind index,pager V  noop        # Unbinds V from version
 macro index,pager V "<view-attachments><search>html<enter><view-mailcap><exit>"
 
-
 # Handle url's gracefully using `urlview`
 macro pager \Cu "|urlview<enter>" "call urlview to open links"
 
-##- Send Options -------------------------------
+##- Send (body) Options -------------------------------
 
 set realname = "Chris Coutinho"      # who am i?
 set envelope_from                    # which from?
@@ -211,12 +186,14 @@ set forward_quote                    # include message in forwards
 
 set text_flowed                      # Sets all plain text messages to properly use linebreaks
 
-set editor = 'nvim'
+set editor = "nvim -c 'set tw=72' -c 'set wrap' -c 'set fo=aw' -c 'set spell'"
 
-##- Colors
+#- Header Options -------------------------------------
 
-#source colors/gruvbox-256
-source colors/non-geek
+ignore *                                # ignore all headers
+unignore from: to: cc: date: subject:   # show only these
+unhdr_order *                           # some distros order things by default
+hdr_order from: to: cc: date: subject:  # and in this order
 
 ##- Notmuch
 

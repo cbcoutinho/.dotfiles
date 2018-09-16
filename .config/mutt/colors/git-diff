@@ -1,0 +1,17 @@
+# vim: filetype=neomuttrc
+#
+# http://karelzak.blogspot.com/2010/02/highlighted-patches-inside-mutt.html
+# https://github.com/neomutt/neomutt/issues/394#issuecomment-279238744
+
+# Attempt to match only the `+` or `-` chars in the diff header
+# FIXME: This still collects `+` and `-` signs in random text
+#color body brightred default "[\-]+$"
+#color body brightgreen default " [\+]+"
+
+color body yellow default "^diff \-.*"
+color body yellow default "^index [a-f0-9].*"
+color body yellow default "^[\+]{3} .*"				# Three consecutive `+`, followed by a single space and then text
+color body yellow default "^\-{3} .*"				# Three consecutive `-`, followed by a single space and then text
+color body brightgreen default "^[\+]([^\+]+.*)?$"	# Either a single `+` with some text after it, or EOL
+color body brightred  default "^\-([^\-]+.*)?$"		# Either a single `-` with some text after it, or EOL
+color body brightmagenta default "^@@ .*"
