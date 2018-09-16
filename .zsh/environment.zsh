@@ -34,10 +34,9 @@ export MANPATH="$HOME/.local/share/man:$MANPATH"
 export CPATH="$HOME/.local/include:$CPATH"
 
 # Dakota directories
-DAKOTA_INST_DIR=$HOME/Software/dakota/install
-export PATH="$DAKOTA_INST_DIR/bin:$DAKOTA_INST_DIR/share/example/test:$PATH"
+DAKOTA_INST_DIR=/opt/dakota
+export PATH="$DAKOTA_INST_DIR/bin:$PATH"
 export LD_LIBRARY_PATH="$DAKOTA_INST_DIR/lib:$LD_LIBRARY_PATH"
-export PYTHONPATH="$DAKOTA_INST_DIR/share/dakota/Python:$PYTHONPATH"
 
 # PETSc
 export PETSC_DIR=/opt/petsc/petsc-3.9

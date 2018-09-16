@@ -8,7 +8,7 @@ if has('win32')
 	let g:python3_host_prog='C:/Development/anaconda3/envs/neovim3/python.exe'
 	let g:ruby_host_prog='C:/Users/ccoutinho/scoop/apps/ruby/current/gems/bin/neovim-ruby-host.bat'
 else
-	set shell=bash			" Force shell to use bash
+	set shell=sh			" Force shell to use bash
 	let g:python_host_prog='/home/chris/.envs/neovim/bin/python'
 	let g:python3_host_prog='/home/chris/.envs/neovim3/bin/python3'
 	let g:ruby_host_prog=systemlist("which neovim-ruby-host")[0]
@@ -179,11 +179,9 @@ Plug 'vimwiki/vimwiki', {
 Plug 'mattn/calendar-vim'				" Places calendar into a pane
 Plug 'junegunn/goyo.vim'				" Distraction-free writing in vim
 
-
 Plug 'Konfekt/FastFold'					" Recommended by SimpylFold
 Plug 'tmhedberg/SimpylFold'				" Fold python source files
 
-"Plug 'guyzmo/notmuch-abook'				" Able to use notmuch address book from within vim
 Plug 'neomutt/neomutt.vim'				" Vim syntax for neomutt
 
 " }}}
@@ -194,10 +192,7 @@ Plug 'tpope/vim-rhubarb'                " Git plugin for vim - extension for Git
 Plug 'shumphrey/fugitive-gitlab.vim'    " Git plugin for vim - extension for Gitlab
 Plug 'Xuyuanp/nerdtree-git-plugin'      " Git plugin for vim - extension for NERDTree
 Plug 'octref/RootIgnore'                " Git Plugin for Vim - ignore files in .gitignore
-if has('nvim-0.2.0')
-	" On debian (nvim-0.1.7), there is an api bug
-	Plug 'airblade/vim-gitgutter'		" Git status in gutter (next to line numbers)
-endif
+Plug 'airblade/vim-gitgutter'			" Git status in gutter (next to line numbers)
 
 " }}}
 " Fuzzy search {{{
@@ -215,18 +210,21 @@ endif
 
 " Normal `gx` doesn't work, so we remap it
 "	https://github.com/neovim/neovim/issues/4612
-Plug 'tyru/open-browser.vim' "{
-" Disable netrw gx mapping.
+Plug 'tyru/open-browser.vim'
+" {{{ Enable netrw gx mapping.
+
 let g:netrw_nogx = get(g:, 'netrw_nogx', 1)
 nmap gx <Plug>(openbrowser-open)
 vmap gx <Plug>(openbrowser-open)
-"}
+
+" }}}
 
 " }}}
 call plug#end()
 " }}}
 " Vim settings {{{
 " Basics {{{
+
 filetype plugin indent on
 set nocompatible			" Be iMproved, required for (n)vim
 set number					" Line numbers
@@ -292,6 +290,7 @@ endif
 "set foldlevel=0
 set modelines=1				" This tells vim to look at the last line for the fold method
 
+" Options for SimpyFold (python folding plugin)
 let g:SimpylFold_docstring_preview = 1 " Preview docstring in fold text
 let g:SimpylFold_fold_docstring = 0
 let b:SimpylFold_fold_docstring = 0
@@ -300,13 +299,9 @@ let b:SimpylFold_fold_docstring = 0
 
 " }}}
 " True Color options {{{
-"
-if has('nvim-0.1.5')        " True color in neovim wasn't added until 0.1.5
-	set termguicolors
-elseif has('nvim')
-	let $NVIM_TUI_ENABLE_TRUE_COLORS=1
-endif
-"
+
+set termguicolors
+
 " }}}
 " }}}
 " Colors {{{
@@ -351,15 +346,14 @@ au Syntax   * RainbowParenthesesLoadBraces
 
 " }}}
 " Highlight keywords {{{
-" From https://stackoverflow.com/questions/6577579/task-tags-in-vim
-if has("autocmd")
+" 	https://stackoverflow.com/questions/6577579/task-tags-in-vim
+
+if has("nvim")
 	" Highlight TODO, FIXME, NOTE, BUG, etc.
-	if v:version > 701
-		autocmd Syntax * call matchadd('Todo',
-					\ '\W\zs\(TODO\|FIXME\|CHANGED\|XXX\|BUG\|HACK\)')
-		autocmd Syntax * call matchadd('Debug',
-					\ '\W\zs\(NOTE\|INFO\|IDEA\)')
-	endif
+	autocmd Syntax * call matchadd('Todo',
+				\ '\W\zs\(TODO\|FIXME\|CHANGED\|XXX\|BUG\|HACK\)')
+	autocmd Syntax * call matchadd('Debug',
+				\ '\W\zs\(NOTE\|INFO\|IDEA\)')
 endif
 
 " }}}
@@ -411,6 +405,7 @@ set updatetime=1000
 " SLIME is a plugin that makes it possible to send data between
 " multiplexer (e.g. TMUX) panes using vim. This is useful for any
 " REPL-based workflow like Clojure (lein repl) and Python (IPython).
+
 if exists('$TMUX')
 	let g:slime_target = "tmux"
 	let g:slime_paste_file = "$HOME/.slime_paste"
@@ -423,6 +418,7 @@ if exists('$TMUX')
 	" For vim-matlab plugin
 	let g:matlab_server_launcher = 'tmux'
 endif
+
 " }}}
 " Vlime {{{
 "
@@ -481,9 +477,6 @@ nnoremap k gk
 " Highlights last insert text
 nnoremap gV `[v`]
 
-" jk is escape
-"inoremap jk <esc>
-
 " Make opening and closing folds easier
 nnoremap <Space> za
 
@@ -491,12 +484,8 @@ nnoremap <Space> za
 "	http://vim.wikia.com/wiki/Keep_your_cursor_centered_vertically_on_the_screen
 nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
 
-
 "Remove all trailing whitespace by pressing F5
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
-
-" Close a fold when arrow keys
-"nnoremap <Left> zm
 
 " Filetype associations
 au BufNewFile,BufRead *.cson set filetype=coffee
@@ -504,6 +493,7 @@ au BufNewFile,BufRead .shrc set filetype=sh     " Sets .shrc files to use sh syn
 au BufNewFile,BufRead *.cls set filetype=tex    " Sets .cls files to use latex syntax
 au BufNewFile,Bufread *.wiki set filetype=vimwiki
 
+" Usually for OpenFOAM/foam files
 au BufRead * if search('\M-*- C++ -*-', 'n', 1) | setlocal ft=cpp | endif
 
 " Remove highlighted search text after search/sed/etc by hitting <esc>
@@ -529,15 +519,13 @@ nnoremap <c-N> :GitGutterNextHunk<CR>
 nnoremap <c-P> :GitGutterPrevHunk<CR>
 nnoremap <c-U> :GitGutterUndoHunk<CR><Paste>
 
-" GitGutter and notmuch-abook don't play well together
-"autocmd FileType mail :GitGutterDisable
-
 " Auto-selects the git diff when inspecting vim plugins via vim-plug
 autocmd! FileType vim-plug nmap <buffer> o <plug>(plug-preview)<c-w>P
 
 " Interleave Function {{{
 " Interleave similar sized blocks, from:
 "	https://vi.stackexchange.com/questions/4575
+
 function! Interleave()
 	" retrieve last selected area position and size
 	let start = line(".")
@@ -555,6 +543,7 @@ endfunction
 " Interleave ;)
 "	NOTE: <leader> is backslash '\' by default
 vnoremap <leader>it <esc>:call Interleave()<CR>
+
 " }}}
 " }}}
 
