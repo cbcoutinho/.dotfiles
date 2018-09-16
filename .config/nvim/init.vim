@@ -124,6 +124,7 @@ Plug 'tpope/vim-fireplace'				" Connects to the nREPL for 'dynamic' clojure deve
 Plug 'kien/rainbow_parentheses.vim'     " Rainbow parens for Lisps - see options below
 Plug 'jpalardy/vim-slime'				" Send text to another pane (ie. with a REPL)
 Plug 'venantius/vim-cljfmt'				" Format clojure files in vim - requires cljfmt
+Plug 'guns/vim-slamhound'				" Reconstruct/simplify namespaces
 Plug 'l04m33/vlime', {
 			\ 'rtp': 'vim' }			" Common lisp dev environment for (neo)vim
 
@@ -360,7 +361,8 @@ endif
 " }}}
 " Lightline {{{
 
-" Extra `lightline` options found here: http://newbilityvery.github.io/2017/08/04/switch-to-lightline/
+" Extra `lightline` options found here:
+" 	http://newbilityvery.github.io/2017/08/04/switch-to-lightline/
 let g:lightline = {
 			\	'colorscheme':'gruvbox',
 			\	'active': {
@@ -522,6 +524,9 @@ nnoremap <c-U> :GitGutterUndoHunk<CR><Paste>
 " Auto-selects the git diff when inspecting vim plugins via vim-plug
 autocmd! FileType vim-plug nmap <buffer> o <plug>(plug-preview)<c-w>P
 
+" }}}
+" Functions {{{
+
 " Interleave Function {{{
 " Interleave similar sized blocks, from:
 "	https://vi.stackexchange.com/questions/4575
@@ -545,6 +550,38 @@ endfunction
 vnoremap <leader>it <esc>:call Interleave()<CR>
 
 " }}}
+" Check Fireplace (clojure) connection {{{
+
+function! IsFireplaceConnected()
+  try
+    return has_key(fireplace#platform(), 'connection')
+  catch /Fireplace: :Connect to a REPL or install classpath.vim/
+    return 0 " false
+  endtry
+endfunction
+
+function! NreplStatusLine()
+  if IsFireplaceConnected()
+    return 'nREPL Connected'
+  else
+    return 'No nREPL Connection'
+  endif
+endfunction
+
+function! SetBasicStatusLine()
+  set statusline=%f   " path to file
+  set statusline+=\   " separator
+  set statusline+=%m  " modified flag
+  set statusline+=%=  " switch to right side
+  set statusline+=%y  " filetype of file
+endfunction
+
+autocmd Filetype clojure call SetBasicStatusLine()
+autocmd Filetype clojure set statusline+=\ [%{NreplStatusLine()}]  " REPL connection status
+autocmd BufLeave *.cljs,*.clj,*.cljs.hl  call SetBasicStatusLine()
+
+" }}}
+
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0
