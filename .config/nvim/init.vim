@@ -184,6 +184,7 @@ Plug 'Konfekt/FastFold'					" Recommended by SimpylFold
 Plug 'tmhedberg/SimpylFold'				" Fold python source files
 
 "Plug 'guyzmo/notmuch-abook'				" Able to use notmuch address book from within vim
+Plug 'neomutt/neomutt.vim'				" Vim syntax for neomutt
 
 " }}}
 " Vim/git-related plugins {{{

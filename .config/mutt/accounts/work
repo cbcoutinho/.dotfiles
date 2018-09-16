@@ -29,7 +29,8 @@ mailboxes +INBOX \
 			+Newsletters.PostgreSQL.General \
 			+Newsletters.PostgreSQL.Hackers \
 			+Newsletters.PostgreSQL.Novice \
-			+Newsletters.RED\ News
+			+Newsletters.RED_News \
+			#+Conversation_History
 
 set from = "c.coutinho@redstack.nl"
 set sendmail = "/usr/bin/msmtp -a work"

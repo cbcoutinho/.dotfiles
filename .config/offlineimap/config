@@ -26,8 +26,8 @@ synclabels = yes
 type = GmailMaildir
 localfolders = ~/.mail/gmail
 
-# Propogate deletes to remote
-#sync_deletes = yes
+# Propogate deletes to remote (default yes)
+#sync_deletes = no
 
 nametrans = lambda folder: {'Drafts':  '[Gmail]/Drafts',
 							'Sent':    '[Gmail]/Sent Mail',
@@ -68,9 +68,11 @@ type = Maildir
 localfolders = ~/.mail/office365
 
 # Propogate deletes to remote
-sync_deletes = no
+#sync_deletes = no
 
-nametrans = lambda folder: {'Sent': 'Sent Items'}.get(folder, folder)
+nametrans = lambda folder: {'Sent': 'Sent Items',
+							'Conversation_History': 'Conversation History',
+							'Newsletters/RED_News': 'Newsletters/RED News'}.get(folder, folder)
 
 [Repository Work-Remote]
 type = IMAP
@@ -81,7 +83,9 @@ remoteport = 993
 realdelete = no
 ssl = yes
 sslcacertfile = /var/lib/ca-certificates/ca-bundle.pem
-nametrans = lambda folder: {'Sent Items': 'Sent'}.get(folder, folder)
+nametrans = lambda folder: {'Sent Items': 'Sent',
+							'Conversation History': 'Conversation_History',
+							'Newsletters/RED News': 'Newsletters/RED_News'}.get(folder, folder)
 folderfilter = lambda folder: folder in [
 	'INBOX',
 	'Archive',
