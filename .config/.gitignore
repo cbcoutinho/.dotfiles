@@ -11,7 +11,8 @@
 !alacritty/
 !nvim/
 !htop/
-!offlineimap
-!mutt
-!autostart
-!redshift
+!offlineimap/
+!mutt/
+!autostart/
+!redshift/
+!notmuch/

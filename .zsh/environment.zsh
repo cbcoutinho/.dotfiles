@@ -109,6 +109,8 @@ export LIBRARY_PATH=${LIBRARY_PATH:-$LD_LIBRARY_PATH}
 # CMake repository build (need v3.7+ for learn_dg and Fortran submodules)
 export CMAKE_PREFIX_PATH="$LD_LIBRARY_PATH"
 
+export NOTMUCH_CONFIG=~/.config/notmuch/config
+
 # RVM configuration
 sandbox_init_rvm() {
 	if [ -f ~/.rvm/scripts/rvm ]; then

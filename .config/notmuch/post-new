@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+# Use notmuch hook to index the notmuch database using queries
+
+notmuch tag --input=/home/chris/.config/notmuch/tags-list
