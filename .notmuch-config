@@ -105,7 +105,3 @@ gpg_path=gpg
 
 # Address book via python2 package:
 # 	https://github.com/guyzmo/notmuch-abook
-
-[addressbook]
-path=/home/chris/.notmuch-abook.db
-backend=sqlite3
