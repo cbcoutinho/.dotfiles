@@ -11,14 +11,15 @@
 -inbox +dragonflybsd dragonflybsd.org
 -inbox +freebsd freebsd.org
 -inbox +github from:github.com or to:github.com
--inbox +paraview gitlab.kitware.com or paraview@public.kitware.com or paraview.org
 -inbox +gitlab gitlab.com
 -inbox +gnupg gnupg.org
 -inbox +opensuse suse.org
 -inbox +pass password-store
 -inbox +python python.org
 -inbox +rotaract rotaract
+-inbox +notmuch notmuchmail.org or notmuch
 
 -inbox +dakota dakota-users@software.sandia.gov
+-inbox +paraview gitlab.kitware.com or paraview@public.kitware.com or paraview.org
 
 -inbox +promotions unsubscribe
