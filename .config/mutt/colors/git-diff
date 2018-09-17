@@ -5,8 +5,8 @@
 
 # Attempt to match only the `+` or `-` chars in the diff header
 # FIXME: This still collects `+` and `-` signs in random text
-#color body brightred default "[\-]+$"
-#color body brightgreen default " [\+]+"
+color body brightred default "[\-]+$"
+color body brightgreen default " [\+]+"
 
 color body yellow default "^diff \-.*"
 color body yellow default "^index [a-f0-9].*"

@@ -462,7 +462,6 @@ function! ToggleCalendar()
 	end
 endfunction
 
-:autocmd FileType vimwiki map <leader>d :VimwikiMakeDiaryNote<CR>
 :autocmd FileType vimwiki map <leader>c :call ToggleCalendar()<CR>
 
 " }}}

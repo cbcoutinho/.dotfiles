@@ -19,7 +19,11 @@
 -inbox +rotaract rotaract
 -inbox +notmuch notmuchmail.org or notmuch
 
--inbox +dakota dakota-users@software.sandia.gov
+-inbox +dakota dakota-users@software.sandia.gov or '[Dakota-users]' or '[Dakota-announce]'
 -inbox +paraview gitlab.kitware.com or paraview@public.kitware.com or paraview.org
+-inbox +postgres postgresql.org
 
 -inbox +promotions unsubscribe
+
+# Reapply inbox tag if message remains in inbox
++inbox folder:gmail/INBOX XOR folder:office365/INBOX

@@ -56,7 +56,7 @@ set tmpdir           = ~/.config/mutt/temp			# where to keep temp files
 #- Colors
 
 source colors/non-geek
-source colors/git-diff
+macro index,pager ,k "<enter-command>source ~/.config/mutt/colors/git-diff<enter>"
 
 ##- Sidebar (Pager) Patch --------------------------------------
 
@@ -207,6 +207,9 @@ bind editor <Tab> complete-query
 bind editor ^T complete
 set query_format="%4c %t %-70.70a %-70.70n %?e?(%e)?"
 
+# Show entire threads in search results
+set nm_query_type = "threads"
+
 #set virtual_spoolfile=yes
 #virtual-mailboxes \
 	#"INBOX" "notmuch://?query=tag:inbox"\
@@ -215,3 +218,4 @@ set query_format="%4c %t %-70.70a %-70.70n %?e?(%e)?"
 	#"Newsletters" "notmuch://?query=tag:newsletters"
 
 macro index n/ "<vfolder-from-query>"
+bind index,pager x entire-thread
