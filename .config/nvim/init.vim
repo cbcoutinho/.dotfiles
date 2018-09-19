@@ -442,7 +442,7 @@ let g:vimwiki_list = [{
 			\ 'path': '~/vimwiki',
 			\ 'template_path': '~/vimwiki/templates/',
 			\ 'template_default': 'default',
-			\ 'template_ext': '.tpl',
+			\ 'template_ext': '.html',
 			\ 'path_html': '~/vimwiki/site_html'
 			\ }]
 

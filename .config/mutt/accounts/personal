@@ -21,19 +21,19 @@ mailboxes +INBOX \
 			+Categories.Promotions \
 			+Categories.Social \
 			+Categories.Updates \
-			+Mailing\ Lists \
-			+Mailing\ Lists.Cinemacephale \
-			+Mailing\ Lists.DragonFlyBSD \
-			+Mailing\ Lists.FreeBSD \
-			+Mailing\ Lists.Github \
-			+Mailing\ Lists.Gitlab \
-			+Mailing\ Lists.GnuPG \
-			+Mailing\ Lists.Notmuch \
-			+Mailing\ Lists.OfflineIMAP \
-			+Mailing\ Lists.OpenSUSE \
-			+Mailing\ Lists.Pass \
-			+Mailing\ Lists.Python-dev \
-			+Mailing\ Lists.Rotaract \
+			+Mailing-Lists \
+			+Mailing-Lists.Cinemacephale \
+			+Mailing-Lists.DragonFlyBSD \
+			+Mailing-Lists.FreeBSD \
+			+Mailing-Lists.Github \
+			+Mailing-Lists.Gitlab \
+			+Mailing-Lists.GnuPG \
+			+Mailing-Lists.Notmuch \
+			+Mailing-Lists.OfflineIMAP \
+			+Mailing-Lists.OpenSUSE \
+			+Mailing-Lists.Pass \
+			+Mailing-Lists.Python-dev \
+			+Mailing-Lists.Rotaract \
 			+Archive \
 			+Important \
 			#+Categories.Forums \

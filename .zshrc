@@ -128,8 +128,4 @@ SAVEHIST=1000
 setopt HIST_IGNORE_DUPS
 
 
-# Log commands to rsyslog for future reference
-#	To use system-wide, copy the following to /etc/zshrc
-#precmd() { eval 'RETRN_VAL=$?;logger -p local6.debug "$(whoami) [$$]: $(history | tail -n1 | sed "s/^[ ]*[0-9]\+[ ]*//" ) [$RETRN_VAL]"' }
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

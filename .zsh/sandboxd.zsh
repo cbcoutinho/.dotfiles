@@ -42,3 +42,48 @@ function sandbox_hook() {
 
 	eval "$hook(){ sandbox $cmd; $hook \$@ }"
 }
+
+
+# RVM configuration
+sandbox_init_rvm() {
+	if [ -f ~/.rvm/scripts/rvm ]; then
+		# Load `rvm`
+		source ~/.rvm/scripts/rvm
+	else
+		echo 'To get `rvm` first softlink .rvmrc to $HOME, then'
+		echo 'Execute the following to download `rvm`:'
+		echo '	curl -sSL https://get.rvm.io | bash -s stable'
+	fi
+}
+
+# Node Version Manager (NVM)
+sandbox_init_nvm() {
+	export NVM_DIR=~/Software/nvm
+	if [ -d $NVM_DIR ]; then
+		[ -s $NVM_DIR/nvm.sh ] && source $NVM_DIR/nvm.sh
+	else
+		echo "You're trying to use 'nvm', but it's not installed"
+	fi
+}
+
+sandbox_init_conda() {
+	if [ -d $HOME/Software/anaconda3 ]; then
+		export PATH=$HOME/Software/anaconda3/bin:$PATH
+	else
+		echo "You're trying to use 'anaconda', but it's not installed"
+	fi
+}
+
+# Don't load modules unless used
+sandbox_hook rvm rvm
+
+sandbox_hook nvm nvm
+sandbox_hook nvm npm
+sandbox_hook nvm node
+sandbox_hook nvm yarn
+
+# Anaconda
+sandbox_hook conda conda
+sandbox_hook conda conda-build
+sandbox_hook conda conda-index
+sandbox_hook conda conda-convert

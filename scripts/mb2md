@@ -1,0 +1,51 @@
+#!/bin/sh
+
+# Convert an mbox mail file to a maildir.
+# Requires formail (from procmail) or reformail (from maildrop)
+# and my addtomaildir script.
+# Idea stolen from
+#   http://www.nb.net/~lbudney/linux/software/safecat/one-liners.html
+#
+# by Greg Ward, 2002/01/22
+#
+# Usage:
+#   mb2md mbox maildir
+# where mbox must exist, and maildir must not exist. 
+#
+# https://www.gerg.ca/hacks/mb2md/
+
+if [ "$#" -ne 2 ] ; then
+  echo "usage: $0 mbox maildir" >&2
+  exit 1
+fi
+
+mbox=$1
+maildir=$2
+
+if [ -e "$maildir" ] ; then
+  echo "error: $maildir already exists" >&2
+  exit 1
+fi
+
+if [ ! -e "$mbox" ] ; then
+  echo "error: $mbox does not exist" >&2
+  exit 1
+fi
+
+for p in formail reformail ; do
+  pp=`which $p`
+  if [ -n "$pp" -a -x $pp ] ; then
+    helper=$pp
+    break
+  fi
+done
+if [ -z "$helper" ]; then
+  echo "error: either formail or reformail is required" >&2
+  exit 1
+fi
+
+for d in cur new tmp ; do
+    mkdir -p "$maildir/$d"
+done
+$helper -s python ~/bin/addtomaildir "$maildir" < $mbox
+

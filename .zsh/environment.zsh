@@ -5,7 +5,6 @@ export VISUAL='nvim'
 export DIFFPROG='nvim -d'
 
 if command -v fd >/dev/null; then
-	#export FZF_DEFAULT_COMMAND='fd --type f'
 	export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 fi
 
@@ -41,8 +40,6 @@ export LD_LIBRARY_PATH="$DAKOTA_INST_DIR/lib:$LD_LIBRARY_PATH"
 # PETSc
 export PETSC_DIR=/opt/petsc/petsc-3.9
 export PETSC_ARCH=""
-#export PETSC_DIR=/home/chris/Software/petsc/petsc-src
-#export PETSC_ARCH=arch-linux2-c-debug
 
 # MOOSE
 export MOOSE_DIR="$HOME/Software/MOOSE"
@@ -55,12 +52,6 @@ export GPG_TTY=${TTY}
 # User/System ruby gems
 if command -v ruby >/dev/null && command -v gem >/dev/null; then
 	PATH="$(command ruby -e 'puts Gem.user_dir')/bin:$PATH"
-#	if verlt $(ruby -v | awk '{print $2}') '2.5'; then
-#		# Test whether ruby version is less than 2.5
-#		PATH="$(command ruby -rrubygems -e 'puts Gem.user_dir')/bin:$PATH"
-#	else
-#		PATH="$(command ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
-#	fi
 fi
 
 # Haskell directory
@@ -77,7 +68,6 @@ if command -v $HOME/.cargo/bin/rustc > /dev/null 2>&1; then
 	export LD_LIBRARY_PATH="$(rustc --print sysroot)/lib":$LD_LIBRARY_PATH # For rustfmt
 	export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src" # For racer
 fi
-
 
 # added by travis gem
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
@@ -110,47 +100,3 @@ export LIBRARY_PATH=${LIBRARY_PATH:-$LD_LIBRARY_PATH}
 export CMAKE_PREFIX_PATH="$LD_LIBRARY_PATH"
 
 export NOTMUCH_CONFIG=~/.config/notmuch/config
-
-# RVM configuration
-sandbox_init_rvm() {
-	if [ -f ~/.rvm/scripts/rvm ]; then
-		# Load `rvm`
-		source ~/.rvm/scripts/rvm
-	else
-		echo 'To get `rvm` first softlink .rvmrc to $HOME, then'
-		echo 'Execute the following to download `rvm`:'
-		echo '	curl -sSL https://get.rvm.io | bash -s stable'
-	fi
-}
-
-# Node Version Manager (NVM)
-sandbox_init_nvm() {
-	export NVM_DIR=~/Software/nvm
-	if [ -d $NVM_DIR ]; then
-		[ -s $NVM_DIR/nvm.sh ] && source $NVM_DIR/nvm.sh
-	else
-		echo "You're trying to use 'nvm', but it's not installed"
-	fi
-}
-
-sandbox_init_conda() {
-	if [ -d $HOME/Software/anaconda3 ]; then
-		export PATH=$HOME/Software/anaconda3/bin:$PATH
-	else
-		echo "You're trying to use 'anaconda', but it's not installed"
-	fi
-}
-
-# Don't load modules unless used
-sandbox_hook rvm rvm
-
-sandbox_hook nvm nvm
-sandbox_hook nvm npm
-sandbox_hook nvm node
-sandbox_hook nvm yarn
-
-# Anaconda
-sandbox_hook conda conda
-sandbox_hook conda conda-build
-sandbox_hook conda conda-index
-sandbox_hook conda conda-convert
