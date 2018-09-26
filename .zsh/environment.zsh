@@ -51,6 +51,12 @@ export MOOSE_DIR="$HOME/Software/MOOSE"
 #	https://unix.stackexchange.com/a/334326/171562
 export GPG_TTY=${TTY}
 
+# CUDA libraries on workstation
+export CUDA_DIR=/usr/local/cuda-10.0
+if [[ -d $CUDA_DIR ]]; then
+	export PATH="$CUDA_DIR/bin:$PATH"
+	export LD_LIBRARY_PATH="$CUDA_DIR/lib64:$LD_LIBRARY_PATH"
+fi
 
 # User/System ruby gems
 if command -v ruby >/dev/null && command -v gem >/dev/null; then

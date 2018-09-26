@@ -31,8 +31,6 @@ macro index ,sn "l ^a^k~(~N)\n"  "show only new messages"
 
 source ~/.config/mutt/gpg.rc
 
-set pgp_autosign = yes
-set pgp_replysign = yes
 set pgp_use_gpg_agent = yes
 set pgp_sign_as = 0xACC5190D2F6F160F
 set pgp_timeout = 300 # Number of seconds to keep password in memory
@@ -98,7 +96,7 @@ set strict_threads = yes
 set sort_aux = reverse-last-date-received	# like gmail - Newest at top
 set uncollapse_jump							# don't collapse on an unread message
 set sort_re									# thread based on regex
-set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+set reply_regex = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
 
 ##- Index Key Bindings ---------------------------------
 
@@ -136,7 +134,7 @@ set menu_scroll            # scroll in menus
 set tilde                  # show tildes like in vim
 unset markers              # no ugly plus signs
 
-set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+set quote_regex = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
 
 #- Pager Key Bindings ---------------------------------
 
@@ -169,7 +167,7 @@ macro pager \Cu "|urlview<enter>" "call urlview to open links"
 ##- Send (body) Options -------------------------------
 
 set realname = "Chris Coutinho"      # who am i?
-set envelope_from                    # which from?
+set use_envelope_from                # which from?
 set sig_dashes                       # dashes before sig
 set edit_headers                     # show headers when composing
 set fast_reply                       # skip to compose when replying
