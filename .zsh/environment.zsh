@@ -33,13 +33,16 @@ export MANPATH="$HOME/.local/share/man:$MANPATH"
 export CPATH="$HOME/.local/include:$CPATH"
 
 # Dakota directories
-DAKOTA_INST_DIR=/opt/dakota
-export PATH="$DAKOTA_INST_DIR/bin:$PATH"
-export LD_LIBRARY_PATH="$DAKOTA_INST_DIR/lib:$LD_LIBRARY_PATH"
+export DAKOTA_DIR=/opt/dakota
+export PATH="$DAKOTA_DIR/bin:$PATH"
+export LD_LIBRARY_PATH="$DAKOTA_DIR/lib:$LD_LIBRARY_PATH"
 
 # PETSc
-export PETSC_DIR=/opt/petsc/petsc-3.9
+export PETSC_DIR=/opt/petsc
 export PETSC_ARCH=""
+
+# P4EST
+export P4EST_DIR=/opt/p4est
 
 # MOOSE
 export MOOSE_DIR="$HOME/Software/MOOSE"

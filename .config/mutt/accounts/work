@@ -16,21 +16,21 @@ set message_cachedir = ~/.config/mutt/cache/bodies	# where to store bodies
 # Mailboxes to show in the sidebar
 unmailboxes *
 mailboxes +INBOX \
-			+Archive \
-			+Sent \
-			+Drafts \
-			+Clutter \
-			+Newsletters \
-			+Newsletters.Basecamp \
-			+Newsletters.Dakota \
-			+Newsletters.MOOSE \
-			+Newsletters.ParaView \
-			+Newsletters.PostgreSQL \
-			+Newsletters.PostgreSQL.General \
-			+Newsletters.PostgreSQL.Hackers \
-			+Newsletters.PostgreSQL.Novice \
-			+Newsletters.RED_News \
-			#+Conversation_History
+	+Archive \
+	+Sent \
+	+Drafts \
+	+Clutter \
+	+Newsletters \
+	+Newsletters.Basecamp \
+	+Newsletters.Dakota \
+	+Newsletters.MOOSE \
+	+Newsletters.ParaView \
+	+Newsletters.PostgreSQL \
+	+Newsletters.PostgreSQL.General \
+	+Newsletters.PostgreSQL.Hackers \
+	+Newsletters.PostgreSQL.Novice \
+	+Newsletters.RED_News \
+	#+Conversation_History
 
 set from = "c.coutinho@redstack.nl"
 set sendmail = "/usr/bin/msmtp -a work"
