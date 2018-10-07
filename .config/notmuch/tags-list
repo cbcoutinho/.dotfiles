@@ -10,9 +10,9 @@
 -inbox +cinemacephale cinema@acephale.eu
 -inbox +dragonflybsd dragonflybsd.org
 -inbox +freebsd freebsd.org
--inbox +github from:github.com or to:github.com
+-inbox +github github.com
 -inbox +gitlab gitlab.com
--inbox +gnupg gnupg.org
+-inbox +gnupg gpg or gnupg
 -inbox +opensuse suse.org
 -inbox +pass password-store
 -inbox +python python.org
