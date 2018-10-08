@@ -103,6 +103,10 @@ Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-tmux'
 Plug 'ncm2/ncm2-path'
 
+" Language specific completions
+Plug 'ncm2/ncm2-jedi'  " Python
+Plug 'ncm2/ncm2-racer' " Rust
+
 " }}}
 " Rust {{{
 
