@@ -36,7 +36,6 @@ mailboxes +INBOX \
 			+Mailing-Lists.Rotaract \
 			+Archive \
 			+Important \
-			#+Categories.Forums \
 
 set from = "chrisbcoutinho@gmail.com"
 set sendmail = "/usr/bin/msmtp -a personal"
