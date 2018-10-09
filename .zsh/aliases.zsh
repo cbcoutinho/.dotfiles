@@ -16,7 +16,6 @@ alias rm="rm -iv"
 alias cp="cp -iv"
 alias mv="mv -iv"
 alias tree="tree -a -F -C"
-#alias grep="grep --color=always"
 alias less="less -R -X -F"
 # -R -> Output 'raw' ASCII control characters
 # -X -> Do not use termcap init/deinit strings

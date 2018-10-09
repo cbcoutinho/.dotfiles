@@ -303,13 +303,13 @@ let b:SimpylFold_fold_docstring = 0
 "let b:SimpylFold_fold_import = 0
 
 " }}}
+" }}}
+" Colors {{{
 " True Color options {{{
 
 set termguicolors
 
 " }}}
-" }}}
-" Colors {{{
 " Colorscheme {{{
 
 set background=dark			" Options: [light/dark]
