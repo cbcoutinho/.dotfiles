@@ -121,6 +121,8 @@ if has('unix')
 	Plug 'direnv/direnv.vim'
 endif
 
+Plug 'davidhalter/jedi-vim'
+
 " }}}
 " Lisp-like (e.g. Clojure) {{{
 
