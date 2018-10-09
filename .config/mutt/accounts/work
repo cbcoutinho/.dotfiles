@@ -3,7 +3,7 @@
 ## Account Settings -----------------------------------
 # Default inbox
 
-set folder           = ~/.mail/office365						# mailbox location
+set folder           = ~/.mail/redstack365						# mailbox location
 set header_cache     = ~/.config/mutt/cache/headers	# where to store headers
 set message_cachedir = ~/.config/mutt/cache/bodies	# where to store bodies
 #set certificate_file = ~/.config/mutt/.office365/certificates	# where to store certs
@@ -29,8 +29,7 @@ mailboxes +INBOX \
 	+Newsletters.PostgreSQL.General \
 	+Newsletters.PostgreSQL.Hackers \
 	+Newsletters.PostgreSQL.Novice \
-	+Newsletters.RED_News \
-	#+Conversation_History
+	+Newsletters.RED-News \
 
 set from = "c.coutinho@redstack.nl"
 set sendmail = "/usr/bin/msmtp -a work"

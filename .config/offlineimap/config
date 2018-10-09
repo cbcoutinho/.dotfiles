@@ -65,32 +65,29 @@ remoterepository = Work-Remote
 
 [Repository Work-Local]
 type = Maildir
-localfolders = ~/.mail/office365
+localfolders = ~/.mail/redstack365
 
 # Propogate deletes to remote
 #sync_deletes = no
 
-nametrans = lambda folder: {'Sent': 'Sent Items',
-							'Conversation_History': 'Conversation History',
-							'Newsletters/RED_News': 'Newsletters/RED News'}.get(folder, folder)
+nametrans = lambda folder: {'Sent': 'Sent Items'}.get(folder, folder)
 
 [Repository Work-Remote]
 type = IMAP
-remoteuser = ccoutinho@a-hak.nl
-remotepasseval = get_pass(account="Office365")
+remoteuser = c.coutinho@redstack365.nl
+remotepasseval = get_pass(account="Redstack365")
 remotehost = outlook.office365.com
 remoteport = 993
 realdelete = no
 ssl = yes
 sslcacertfile = /var/lib/ca-certificates/ca-bundle.pem
-nametrans = lambda folder: {'Sent Items': 'Sent',
-							'Conversation History': 'Conversation_History',
-							'Newsletters/RED News': 'Newsletters/RED_News'}.get(folder, folder)
+nametrans = lambda folder: {'Sent Items': 'Sent'}.get(folder, folder)
 folderfilter = lambda folder: folder in [
 	'INBOX',
+	'Sent Items',
+	'Drafts',
 	'Archive',
 	'Clutter',
-	'Conversation History',
 	'Newsletters',
 	'Newsletters/Basecamp',
 	'Newsletters/Dakota',
@@ -101,7 +98,4 @@ folderfilter = lambda folder: folder in [
 	'Newsletters/PostgreSQL/Hackers',
 	'Newsletters/PostgreSQL/Novice',
 	'Newsletters/RED News',
-	'Sent Items',
-	'Drafts',
-	'Scheduled',
 	]
