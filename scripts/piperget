@@ -2,6 +2,13 @@
 # automated retrieval of pipermail archives & conversion to mbox file
 # Last edit: 2012/10/09 Tue 23:16 PDT
 
+# This scripts downloads a pipermail archive and converts it into a
+# mbox file to be read by neomutt.
+#
+# NOTE: Remember the final slash!
+# Usage: 
+# 	piperget https://link/to/pipermail/archive/
+
 set -x
 
 listname=$(echo "$1" | sed 's:^\(http.*\)/\([^/]*\)/$:\2:')
