@@ -90,22 +90,22 @@ endfunction
 " Language-specfic plugins {{{
 " Completions in neovim {{{
 
-Plug 'roxma/nvim-yarp'	" Requirement of ncm2
-Plug 'ncm2/ncm2'
+"Plug 'roxma/nvim-yarp'	" Requirement of ncm2
+"Plug 'ncm2/ncm2'
 
 " enable ncm2 for all buffers
-autocmd BufEnter * call ncm2#enable_for_buffer()
+"autocmd BufEnter * call ncm2#enable_for_buffer()
 
 " IMPORTANTE: :help Ncm2PopupOpen for more information
-set completeopt=noinsert,menuone,noselect
+"set completeopt=noinsert,menuone,noselect
 
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-tmux'
-Plug 'ncm2/ncm2-path'
+"Plug 'ncm2/ncm2-bufword'
+"Plug 'ncm2/ncm2-tmux'
+"Plug 'ncm2/ncm2-path'
 
 " Language specific completions
-Plug 'ncm2/ncm2-jedi'  " Python
-Plug 'ncm2/ncm2-racer' " Rust
+"Plug 'ncm2/ncm2-jedi'  " Python
+"Plug 'ncm2/ncm2-racer' " Rust
 
 " }}}
 " Rust {{{
@@ -122,7 +122,7 @@ if has('unix')
 	Plug 'direnv/direnv.vim'
 endif
 
-Plug 'davidhalter/jedi-vim'
+"Plug 'davidhalter/jedi-vim'
 
 " }}}
 " Lisp-like (e.g. Clojure) {{{
