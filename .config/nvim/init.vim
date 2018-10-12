@@ -110,9 +110,10 @@ Plug 'ncm2/ncm2-racer' " Rust
 " }}}
 " Rust {{{
 
-Plug 'rust-lang/rust.vim',				" Rust stuff
-Plug 'racer-rust/vim-racer',			" Racer in vim
-Plug 'roxma/nvim-cm-racer', 			" Neovim/vim8 completion for Rust
+Plug 'rust-lang/rust.vim',		" Rust stuff
+Plug 'racer-rust/vim-racer',	" Racer in vim
+Plug 'roxma/nvim-cm-racer', 	" Neovim/vim8 completion for Rust
+Plug 'w0rp/ale'					" Language server support
 
 " }}}
 " Python {{{

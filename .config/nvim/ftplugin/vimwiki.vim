@@ -21,3 +21,5 @@ function! VimwikiLinkHandler(link)
     return 1
   endif
 endfunction
+
+setlocal spell
