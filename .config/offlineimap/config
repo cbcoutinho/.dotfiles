@@ -97,5 +97,5 @@ folderfilter = lambda folder: folder in [
 	'Newsletters/PostgreSQL/General',
 	'Newsletters/PostgreSQL/Hackers',
 	'Newsletters/PostgreSQL/Novice',
-	'Newsletters/RED News',
+	'Newsletters/RED-News',
 	]
