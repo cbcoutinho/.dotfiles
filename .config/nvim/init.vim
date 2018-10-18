@@ -82,10 +82,6 @@ function! BuildParinferClojure(info)
 	endif
 endfunction
 
-function! DoRemote(arg)
-	UpdateRemotePlugins
-endfunction
-
 " }}}
 " Language-specfic plugins {{{
 " Completions in neovim {{{
@@ -106,6 +102,11 @@ endfunction
 " Language specific completions
 "Plug 'ncm2/ncm2-jedi'  " Python
 "Plug 'ncm2/ncm2-racer' " Rust
+
+Plug 'zchee/deoplete-jedi' " Python
+
+Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+let g:deoplete#enable_at_startup = 1
 
 " }}}
 " Rust {{{
@@ -128,7 +129,6 @@ endif
 " Lisp-like (e.g. Clojure) {{{
 
 Plug 'tpope/vim-fireplace'				" Connects to the nREPL for 'dynamic' clojure development
-Plug 'kien/rainbow_parentheses.vim'     " Rainbow parens for Lisps - see options below
 Plug 'jpalardy/vim-slime'				" Send text to another pane (ie. with a REPL)
 Plug 'venantius/vim-cljfmt'				" Format clojure files in vim - requires cljfmt
 Plug 'guns/vim-slamhound'				" Reconstruct/simplify namespaces
@@ -145,7 +145,7 @@ Plug 'eraserhd/parinfer-rust', {
 " Golang {{{
 
 " Only use a tagged release of vim-go
-"Plug 'fatih/vim-go', { 'tag': '*' }
+Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoInstallBinaries'}
 
 " }}}
 " Markdown {{{
@@ -156,16 +156,12 @@ Plug 'euclio/vim-markdown-composer', {
 Plug 'nelstrom/vim-markdown-folding'	" Easily fold markdown files by section
 
 " }}}
-" Matlab {{{
-
-Plug 'daeyun/vim-matlab', { 'do': function('DoRemote') }
-
 " }}}
-" }}}
-" Color schemes {{{
+" Color {{{
 
 Plug 'morhetz/gruvbox'                  " Gruvbox theme for vim
 Plug 'sheerun/vim-polyglot'             " Syntax highlighting for different languages
+Plug 'kien/rainbow_parentheses.vim'     " Rainbow parens for Lisps - see options below
 
 " }}}
 " Supercollider vim plugin {{{
@@ -329,28 +325,6 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax   * RainbowParenthesesLoadRound
 au Syntax   * RainbowParenthesesLoadSquare
 au Syntax   * RainbowParenthesesLoadBraces
-
-" From here:
-"	http://thegreata.pe/notes-on-writing-clojure-in-vim
-"let g:rbpt_colorpairs = [
-"  \ ['blue',        '#FF6000'],
-"  \ ['cyan',        '#00FFFF'],
-"  \ ['darkgreen',   '#00FF00'],
-"  \ ['LightYellow', '#c0c0c0'],
-"  \ ['blue',        '#FF6000'],
-"  \ ['cyan',        '#00FFFF'],
-"  \ ['darkgreen',   '#00FF00'],
-"  \ ['LightYellow', '#c0c0c0'],
-"  \ ['blue',        '#FF6000'],
-"  \ ['cyan',        '#00FFFF'],
-"  \ ['darkgreen',   '#00FF00'],
-"  \ ['LightYellow', '#c0c0c0'],
-"  \ ['blue',        '#FF6000'],
-"  \ ['cyan',        '#00FFFF'],
-"  \ ['darkgreen',   '#00FF00'],
-"  \ ['LightYellow', '#c0c0c0'],
-"  \ ]
-"let g:rbpt_max = 16
 
 " }}}
 " Highlight keywords {{{
