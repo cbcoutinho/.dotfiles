@@ -30,7 +30,7 @@ if [[ "$PATH" != *":$HOME/.local/bin:"* ]]; then
 fi
 
 export LD_LIBRARY_PATH="$HOME/.local/lib:$HOME/.local/lib64:$LD_LIBRARY_PATH"
-export MANPATH="$HOME/.local/share/man:$MANPATH"
+export MANPATH="$HOME/.local/share/man:/usr/local/share/man:$MANPATH"
 export CPATH="$HOME/.local/include:$CPATH"
 
 # Dakota directories
