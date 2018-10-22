@@ -9,8 +9,8 @@ if has('win32')
 	let g:ruby_host_prog='C:/Users/ccoutinho/scoop/apps/ruby/current/gems/bin/neovim-ruby-host.bat'
 else
 	set shell=sh			" Force shell to use bash
-	let g:python_host_prog='/home/chris/.envs/neovim/bin/python'
-	let g:python3_host_prog='/home/chris/.envs/neovim3/bin/python3'
+	let g:python_host_prog='/home/chris/.local/share/virtualenvs/neovim/bin/python'
+	let g:python3_host_prog='/home/chris/.local/share/virtualenvs/neovim3/bin/python3'
 	let g:ruby_host_prog=systemlist("which neovim-ruby-host")[0]
 	let g:npm_host_prog=system("which npm | sed 's/npm/neovim-node-host/'")
 endif
@@ -477,6 +477,7 @@ au BufNewFile,BufRead *.cson set filetype=coffee
 au BufNewFile,BufRead .shrc set filetype=sh     " Sets .shrc files to use sh syntax
 au BufNewFile,BufRead *.cls set filetype=tex    " Sets .cls files to use latex syntax
 au BufNewFile,Bufread *.wiki set filetype=vimwiki
+au BufNewFile,Bufread Pipfile.lock set filetype=json
 
 " Usually for OpenFOAM/foam files
 au BufRead * if search('\M-*- C++ -*-', 'n', 1) | setlocal ft=cpp | endif

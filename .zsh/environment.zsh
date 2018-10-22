@@ -65,7 +65,7 @@ if command -v ruby >/dev/null && command -v gem >/dev/null; then
 fi
 
 # Haskell directory
-PATH="$HOME/.cabal/bin":$PATH
+[[ -d "$HOME/.cabal" ]] && PATH="$HOME/.cabal/bin":$PATH
 
 # Go-related paths
 export GOPATH="$HOME/.go"
@@ -90,7 +90,7 @@ export PIP_FIND_LINKS="file://${WHEELHOUSE}"
 export PIP_WHEEL_DIR="${WHEELHOUSE}"
 
 # Python virtualenvwrapper
-export WORKON_HOME=~/.envs
+export WORKON_HOME=~/.local/share/virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=$(which python3)
 export VIRTUALENVWRAPPER_SCRIPT="$HOME/.local/bin/virtualenvwrapper.sh"
 source "$HOME/.local/bin/virtualenvwrapper_lazy.sh"
