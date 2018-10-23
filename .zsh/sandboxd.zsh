@@ -67,8 +67,11 @@ sandbox_init_nvm() {
 }
 
 sandbox_init_conda() {
-	if [ -d $HOME/Software/anaconda3 ]; then
-		export PATH=$HOME/Software/anaconda3/bin:$PATH
+	CONDA_ROOT=$HOME/Software/anaconda3
+	if [ -d $CONDA_ROOT ]; then
+		source $CONDA_ROOT/etc/profile.d/conda.sh
+		conda activate
+		#export PATH=$HOME/Software/anaconda3/bin:$PATH
 	else
 		echo "You're trying to use 'anaconda', but it's not installed"
 	fi
