@@ -22,6 +22,7 @@
 -inbox +dakota dakota-users@software.sandia.gov or '[Dakota-users]' or '[Dakota-announce]'
 -inbox +paraview gitlab.kitware.com or paraview@public.kitware.com or paraview.org
 -inbox +postgres postgresql.org
+-inbox +moose moose-users or moose-announce
 -inbox +cron "Cron Daemon"
 
 -inbox +promotions unsubscribe
