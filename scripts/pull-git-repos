@@ -6,7 +6,10 @@
 # Show lines being run
 #set -x
 
-for ii in `find $HOME/Software -type d -execdir test -d {}/'.git' \; -prune -print`; do
+gitdirs=$( fd '\.git$' --absolute-path --hidden --type directory $HOME/Software --exec=dirname)
+#gitdirs=$(find $HOME/Software -type d -execdir test -d {}/'.git' \; -prune -print)
+
+for ii in $gitdirs; do
 echo && echo $ii
 git -C $ii fetch --all --tags
 git -C $ii submodule update --init --recursive
