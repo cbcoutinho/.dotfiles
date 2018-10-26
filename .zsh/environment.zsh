@@ -41,6 +41,7 @@ export LD_LIBRARY_PATH="$DAKOTA_DIR/lib:$LD_LIBRARY_PATH"
 # PETSc
 export PETSC_DIR=/opt/petsc
 export PETSC_ARCH=""
+export SLEPC_DIR=$PETSC_DIR
 
 # P4EST
 export P4EST_DIR=/opt/p4est
