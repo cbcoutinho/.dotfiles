@@ -6,7 +6,10 @@
 # Show lines being run
 #set -x
 
-gitdirs=$( fd '\.git$' --absolute-path --hidden --type directory --max-depth 2 $HOME/Software --exec=dirname)
+# If no input is supplied, use the software directory
+input=${1:-$HOME/Software}
+
+gitdirs=$( fd '\.git$' --absolute-path --hidden --type directory --max-depth 2 $input --exec=dirname)
 #gitdirs=$(find $HOME/Software -type d -execdir test -d {}/'.git' \; -prune -print)
 
 for ii in $gitdirs; do
