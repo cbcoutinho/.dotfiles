@@ -1,8 +1,6 @@
 # ayy lmao
 alias qutebrowser="qutebrowser --backend webengine"
 alias chromium="chromium --disk-cache-dir=/tmp/cache"
-alias vi="nvim"
-alias vim="nvim"
 
 # ls aliases
 alias ls="ls --group-directories-first"
@@ -15,7 +13,12 @@ alias exa="exa --group-directories-first"
 alias rm="rm -iv"
 alias cp="cp -iv"
 alias mv="mv -iv"
+
 alias tree="tree -a -F -C"
+# -a -> Show all files, including hidden ones
+# -F -> Appends '/', '=', '*', '@', '|' or '>' as per `ls -F`
+# -C -> Turn colorize on
+
 alias less="less -R -X -F"
 # -R -> Output 'raw' ASCII control characters
 # -X -> Do not use termcap init/deinit strings
