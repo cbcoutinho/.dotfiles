@@ -1,8 +1,10 @@
 # Based on github.com/maximbaz/dotfiles/.zsh/environment.zsh
 
-export EDITOR='nvim'
-export VISUAL='nvim'
-export DIFFPROG='nvim -d'
+if command -v nvim >/dev/null; then
+	export EDITOR=$(which nvim)
+	export VISUAL=$EDITOR
+	export DIFFPROG='nvim -d'
+fi
 
 if command -v fd >/dev/null; then
 	export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'

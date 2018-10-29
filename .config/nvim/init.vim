@@ -433,6 +433,7 @@ let g:vimwiki_list = [{
 			\ 'template_path': '~/vimwiki/templates/',
 			\ 'template_default': 'default',
 			\ 'template_ext': '.html',
+			\ 'nested_syntaxes': {'xml': 'xml', 'sh': 'sh', 'python': 'python', 'systemd': 'systemd'},
 			\ 'path_html': '~/vimwiki/site_html'
 			\ }]
 
