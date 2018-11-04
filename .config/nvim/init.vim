@@ -157,6 +157,11 @@ Plug 'euclio/vim-markdown-composer', {
 Plug 'nelstrom/vim-markdown-folding'	" Easily fold markdown files by section
 
 " }}}
+" MOOSE{{{
+
+Plug 'elementx54/moosefw_vim'
+
+" }}}
 " }}}
 " Color {{{
 
