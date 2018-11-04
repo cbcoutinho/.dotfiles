@@ -132,6 +132,7 @@ Plug 'tpope/vim-fireplace'				" Connects to the nREPL for 'dynamic' clojure deve
 Plug 'jpalardy/vim-slime'				" Send text to another pane (ie. with a REPL)
 Plug 'venantius/vim-cljfmt'				" Format clojure files in vim - requires cljfmt
 Plug 'guns/vim-slamhound'				" Reconstruct/simplify namespaces
+Plug 'guns/vim-clojure-highlight'		" Better clojure syntax highlighting
 Plug 'l04m33/vlime', {
 			\ 'rtp': 'vim' }			" Common lisp dev environment for (neo)vim
 

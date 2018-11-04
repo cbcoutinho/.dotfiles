@@ -4,7 +4,8 @@
                   [lein-cljfmt "0.5.7"]
                   [lein-midje "3.2.1"]]
 
-        :dependencies [[cljfmt "RELEASE"]
+        :dependencies [[org.clojure/tools.trace "RELEASE"]
+                       [cljfmt "RELEASE"]
                        [midje "RELEASE"]
                        [slamhound "RELEASE"]]
 
