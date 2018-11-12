@@ -53,7 +53,7 @@ esac
 #
 
 # Add ~/.local/bin to path if not already
-for mypath in "$HOME/.local/bin" "/usr/local/bin"; do
+for mypath in "$HOME/.local/bin" "/usr/local/bin" "$HOME/.cargo/bin"; do
 	if [[ "$PATH" != *":$mypath:"* ]]; then
 		export PATH="$mypath:$PATH"
 	fi
