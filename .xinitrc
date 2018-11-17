@@ -66,7 +66,6 @@ export PINENTRY_USER_DATA="gtk"
 gpg-connect-agent updatestartuptty /bye
 
 
-
 # day planer deamon
 # pland &
 
