@@ -103,10 +103,9 @@ endfunction
 "Plug 'ncm2/ncm2-jedi'  " Python
 "Plug 'ncm2/ncm2-racer' " Rust
 
-Plug 'zchee/deoplete-jedi' " Python
 
+Plug 'zchee/deoplete-jedi' " Python
 Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-let g:deoplete#enable_at_startup = 1
 
 " }}}
 " Rust {{{
@@ -231,6 +230,10 @@ vmap gx <Plug>(openbrowser-open)
 
 " }}}
 call plug#end()
+
+" Activate deoplete after vim-plug is done
+let g:deoplete#enable_at_startup = 1
+
 " }}}
 " Vim settings {{{
 " Basics {{{
