@@ -187,11 +187,13 @@ Plug 'vimwiki/vimwiki', {
 			\ 'branch': 'dev' }			" Personal diary/wiki
 Plug 'mattn/calendar-vim'				" Places calendar into a pane
 Plug 'junegunn/goyo.vim'				" Distraction-free writing in vim
+Plug 'junegunn/limelight.vim'			" Highlight current paragraph in Goyo-mode
 
 Plug 'Konfekt/FastFold'					" Recommended by SimpylFold
 Plug 'tmhedberg/SimpylFold'				" Fold python source files
 
 Plug 'neomutt/neomutt.vim'				" Vim syntax for neomutt
+
 
 " }}}
 " Vim/git-related plugins {{{
@@ -220,13 +222,10 @@ endif
 " Normal `gx` doesn't work, so we remap it
 "	https://github.com/neovim/neovim/issues/4612
 Plug 'tyru/open-browser.vim'
-" {{{ Enable netrw gx mapping.
 
 let g:netrw_nogx = get(g:, 'netrw_nogx', 1)
 nmap gx <Plug>(openbrowser-open)
 vmap gx <Plug>(openbrowser-open)
-
-" }}}
 
 " }}}
 call plug#end()
@@ -517,6 +516,15 @@ nnoremap <c-U> :GitGutterUndoHunk<CR><Paste>
 
 " Auto-selects the git diff when inspecting vim plugins via vim-plug
 autocmd! FileType vim-plug nmap <buffer> o <plug>(plug-preview)<c-w>P
+
+" fzf plugins
+" 	https://statico.github.io/vim3.html
+nmap ; :Buffers<CR>
+nmap <Leader>t :Files<CR>
+nmap <Leader>r :Tags<CR>
+
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
 
 " }}}
 " Functions {{{
