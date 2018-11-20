@@ -11,7 +11,7 @@
 	# This sets `git {diff,show} tabs as 4 spaces
 	#	https://stackoverflow.com/a/10584237
 [diff]
-	algorithm = patience
+	algorithm = minimal
 [sendemail]
 	smtpencryption = tls
 	smtpserver = /usr/bin/msmtp
