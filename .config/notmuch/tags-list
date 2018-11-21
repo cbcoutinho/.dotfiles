@@ -19,7 +19,7 @@
 -inbox +rotaract rotaract
 -inbox +notmuch notmuchmail.org or notmuch
 
--inbox +dakota dakota-users@software.sandia.gov or '[Dakota-users]' or '[Dakota-announce]'
+-inbox +dakota dakota-users@software.sandia.gov or 'subject:"/\[Dakota(-users|-announce)?\]/"'
 -inbox +paraview gitlab.kitware.com or paraview@public.kitware.com or paraview.org
 -inbox +postgres postgresql.org
 -inbox +moose moose-users or moose-announce
