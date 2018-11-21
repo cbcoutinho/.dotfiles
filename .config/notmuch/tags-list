@@ -13,7 +13,7 @@
 -inbox +github github.com
 -inbox +gitlab gitlab.com
 -inbox +gnupg gpg or gnupg
--inbox +opensuse suse.org
+-inbox +opensuse 'subject:"/\[opensuse(-factory|-announce)?\]/"'
 -inbox +pass password-store
 -inbox +python python.org
 -inbox +rotaract rotaract
