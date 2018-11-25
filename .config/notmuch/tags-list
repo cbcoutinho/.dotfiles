@@ -12,17 +12,17 @@
 -inbox +freebsd freebsd.org
 -inbox +github github.com
 -inbox +gitlab gitlab.com
--inbox +gnupg gpg or gnupg
+-inbox +gnupg gpg OR gnupg
 -inbox +opensuse 'subject:"/\[opensuse(-factory|-announce)?\]/"'
 -inbox +pass password-store
 -inbox +python python.org
 -inbox +rotaract rotaract
--inbox +notmuch notmuchmail.org or notmuch
+-inbox +notmuch notmuchmail.org OR notmuch
 
--inbox +dakota dakota-users@software.sandia.gov or 'subject:"/\[Dakota(-users|-announce)?\]/"'
--inbox +paraview gitlab.kitware.com or paraview@public.kitware.com or paraview.org
+-inbox +dakota dakota-users@software.sandia.gov OR 'subject:"/\[Dakota(-users|-announce)?\]/"'
+-inbox +paraview gitlab.kitware.com OR paraview@public.kitware.com OR paraview.org
 -inbox +postgres postgresql.org
--inbox +moose moose-users or moose-announce
+-inbox +moose moose-users OR moose-announce
 -inbox +cron "Cron Daemon"
 
 -inbox +promotions unsubscribe
