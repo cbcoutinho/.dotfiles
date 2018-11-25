@@ -13,4 +13,4 @@
 # .zprofile: [[ -o login ]]
 # .zshrc: [[ -o interactive ]]
 # .zlogin: [[ -o login ]]
-#export ZDOTDIR=$HOME/.zsh
+export ZDOTDIR=$HOME/.config/zsh

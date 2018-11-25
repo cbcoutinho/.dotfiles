@@ -2,17 +2,17 @@
 #	https://github.com/maximbaz/dotfiles
 
 # Lazy-loading
-source ~/.zsh/sandboxd.zsh
+source $ZDOTDIR/sandboxd.zsh
 
 # My environment
-source ~/.zsh/environment.zsh
-source ~/.zsh/aliases.zsh
+source $ZDOTDIR/environment.zsh
+source $ZDOTDIR/aliases.zsh
 
 # `ls` function needs `less` alias
-source ~/.zsh/functions.zsh
+source $ZDOTDIR/functions.zsh
 
 # The user prompt (PS1)
-source ~/.zsh/prompt.zsh
+source $ZDOTDIR/prompt.zsh
 
 #-------------------------------------------------------------
 # options

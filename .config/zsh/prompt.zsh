@@ -1,4 +1,3 @@
-
 # Uncomment the following line to hide user@host in prompt_context
 #	NOTE: See below
 DEFAULT_USER=$USER
