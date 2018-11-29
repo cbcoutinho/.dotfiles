@@ -107,7 +107,7 @@ if [ -d ~/Software/zsh-completions ]; then
 else
 	echo "	The 'zsh-completions' package was not found"
 fi
-fpath=(~/.zfunc $fpath)
+fpath=($ZDOTDIR/.zfunc $fpath)
 
 # completions
 autoload -Uz compinit && compinit
