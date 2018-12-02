@@ -1,16 +1,12 @@
 #!/usr/bin/env bash
 
-# A simple script to pull all software from git repositories in the
-# $HOME/Software directory
+# A simple script to pull all software from git repositories in a
+# specified directory
 
-# Show lines being run
-#set -x
-
-# If no input is supplied, use the software directory
+# If no input is supplied, use the Software directory
 input=${1:-$HOME/Software}
 
-gitdirs=$( fd '\.git$' --absolute-path --hidden --type directory --max-depth 2 $input --exec=dirname)
-#gitdirs=$(find $HOME/Software -type d -execdir test -d {}/'.git' \; -prune -print)
+gitdirs=$( fd '\.git$' --absolute-path --hidden --type directory --max-depth 2 $input --exec dirname | sort)
 
 for ii in $gitdirs; do
 echo && echo $ii
