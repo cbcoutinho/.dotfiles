@@ -62,9 +62,6 @@ done
 # This is for switching between pinentry_tty and pinentry_gtk
 export PINENTRY_USER_DATA="gtk"
 
-# Make sure gpg-agent is aware of new tty
-gpg-connect-agent updatestartuptty /bye
-
 
 # day planer deamon
 # pland &
