@@ -513,7 +513,7 @@ vmap <silent> u <esc>:Gdiff<cr>gv:diffget<cr><c-w><c-w>ZZ
 "	https://kinbiko.com/vim/my-shiniest-vim-gems/
 nnoremap <c-N> :GitGutterNextHunk<CR>
 nnoremap <c-P> :GitGutterPrevHunk<CR>
-nnoremap <c-U> :GitGutterUndoHunk<CR><Paste>
+nnoremap <c-U> :GitGutterUndoHunk<CR>
 
 " Auto-selects the git diff when inspecting vim plugins via vim-plug
 autocmd! FileType vim-plug nmap <buffer> o <plug>(plug-preview)<c-w>P
