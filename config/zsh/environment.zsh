@@ -97,6 +97,9 @@ export VIRTUALENVWRAPPER_PYTHON=$(which python3)
 export VIRTUALENVWRAPPER_SCRIPT="$HOME/.local/bin/virtualenvwrapper.sh"
 source "$HOME/.local/bin/virtualenvwrapper_lazy.sh"
 
+# IPython directory
+export IPYTHONDIR=$HOME/.config/ipython
+
 # Fix PATH, LD_LIBRARY_PATH due to possible 'blanks'
 #	https://github.com/google/pulldown-cmark/issues/122
 export PATH=$(echo $PATH | sed -E -e 's/^:*//' -e 's/:*$//' -e 's/:+/:/g')
