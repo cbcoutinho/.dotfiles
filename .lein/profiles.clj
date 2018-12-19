@@ -1,13 +1,11 @@
-{:user {:plugins [[venantius/ultra "0.5.2"]
-                  [cider/cider-nrepl "0.17.0"]
-                  [lein-gorilla "0.4.0"]
-                  [lein-cljfmt "0.5.7"]
-                  [lein-midje "3.2.1"]]
-
-        :dependencies [[org.clojure/tools.trace "RELEASE"]
+{:user {:dependencies [[org.clojure/tools.trace "RELEASE"]
                        [cljfmt "RELEASE"]
                        [midje "RELEASE"]
                        [slamhound "RELEASE"]]
+
+        :plugins [;[venantius/ultra "0.5.2"]
+                  [lein-cljfmt "0.5.7"]
+                  [lein-midje "3.2.1"]]
 
         :aliases {"slamhound" ["run" "-m" "slam.hound"]}
 
