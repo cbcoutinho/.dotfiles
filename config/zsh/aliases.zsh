@@ -14,8 +14,7 @@ alias rm="rm -iv"
 alias cp="cp -iv"
 alias mv="mv -iv"
 
-alias tree="tree -a -F -C"
-# -a -> Show all files, including hidden ones
+alias tree="tree -F -C"
 # -F -> Appends '/', '=', '*', '@', '|' or '>' as per `ls -F`
 # -C -> Turn colorize on
 
