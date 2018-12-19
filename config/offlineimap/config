@@ -35,6 +35,7 @@ nametrans = lambda folder: {'Drafts':  '[Gmail]/Drafts',
 							'Trash':   '[Gmail]/Trash',
 							'Archive': '[Gmail]/All Mail',
 							'Important': '[Gmail]/Important',
+							'Starred': '[Gmail]/Starred',
                             }.get(folder, folder)
 
 [Repository ChrisCoutinho-Remote]
@@ -50,6 +51,7 @@ nametrans = lambda folder: {'[Gmail]/Drafts':    'Drafts',
 							'[Gmail]/Trash':     'Trash',
 							'[Gmail]/All Mail':  'Archive',
 							'[Gmail]/Important': 'Important',
+							'[Gmail]/Starred': 'Starred',
                             }.get(folder, folder)
 folderfilter = lambda folder: folder not in ['[Gmail]/Trash',
 											 '[Gmail]/Spam',

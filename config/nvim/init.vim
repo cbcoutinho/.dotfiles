@@ -128,6 +128,7 @@ endif
 " Lisp-like (e.g. Clojure) {{{
 
 Plug 'tpope/vim-fireplace'				" Connects to the nREPL for 'dynamic' clojure development
+Plug 'tpope/vim-classpath'				" Sets a classpath for lein commands in vim
 Plug 'jpalardy/vim-slime'				" Send text to another pane (ie. with a REPL)
 Plug 'venantius/vim-cljfmt'				" Format clojure files in vim - requires cljfmt
 Plug 'guns/vim-slamhound'				" Reconstruct/simplify namespaces
