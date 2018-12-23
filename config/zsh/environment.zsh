@@ -113,3 +113,6 @@ export LIBRARY_PATH=${LIBRARY_PATH:-$LD_LIBRARY_PATH}
 export CMAKE_PREFIX_PATH="$LD_LIBRARY_PATH"
 
 export NOTMUCH_CONFIG=~/.config/notmuch/config
+
+# For clojure/clj CLI tools
+export CLJ_CONFIG=~/.config/clojure/
