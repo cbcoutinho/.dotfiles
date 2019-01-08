@@ -104,8 +104,10 @@ endfunction
 "Plug 'ncm2/ncm2-racer' " Rust
 
 
-Plug 'zchee/deoplete-jedi' " Python
-Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+if has('nvim-0.3')
+	Plug 'zchee/deoplete-jedi' " Python
+	Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+endif
 
 " }}}
 " Rust {{{
@@ -145,8 +147,10 @@ Plug 'eraserhd/parinfer-rust', {
 " }}}
 " Golang {{{
 
-" Only use a tagged release of vim-go
-Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoInstallBinaries'}
+if has('nvim-0.3.1')
+	" Only use a tagged release of vim-go
+	Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoInstallBinaries'}
+endif
 
 " }}}
 " Markdown {{{
@@ -232,6 +236,7 @@ vmap gx <Plug>(openbrowser-open)
 call plug#end()
 
 " Activate deoplete after vim-plug is done
+" NOTE: Deoplete is not installed for nvim<0.3
 let g:deoplete#enable_at_startup = 1
 
 " }}}
