@@ -23,12 +23,12 @@ if command -v nproc >/dev/null; then
 fi
 
 
-#export PATH="/usr/sbin:/sbin:$PATH"
-export PATH="$HOME/bin:$PATH"
-# ~/.local/bin already added in ~/.xinitrc
-if [[ "$PATH" != *":$HOME/.local/bin:"* ]]; then
-	# Add ~/.local/bin to path if not already
-	export PATH="$HOME/.local/bin:$PATH"
+# Add bin and sudo commands to path
+export PATH="/sbin:/usr/sbin:$HOME/bin:$HOME/.local/bin:$PATH"
+
+# Add mssql-tools to path if exists
+if [[ "$PATH" != *":/opt/mssql-tools/bin:"* ]]; then
+	export PATH="/opt/mssql-tools/bin":$PATH
 fi
 
 export LD_LIBRARY_PATH="$HOME/.local/lib:$HOME/.local/lib64:$LD_LIBRARY_PATH"
