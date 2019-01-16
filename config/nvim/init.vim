@@ -103,6 +103,7 @@ endfunction
 "Plug 'ncm2/ncm2-jedi'  " Python
 "Plug 'ncm2/ncm2-racer' " Rust
 
+Plug 'w0rp/ale'					" Async linting/fixing using LSP
 
 if has('nvim-0.3')
 	Plug 'zchee/deoplete-jedi' " Python
@@ -115,7 +116,6 @@ endif
 Plug 'rust-lang/rust.vim',		" Rust stuff
 Plug 'racer-rust/vim-racer',	" Racer in vim
 Plug 'roxma/nvim-cm-racer', 	" Neovim/vim8 completion for Rust
-Plug 'w0rp/ale'					" Language server support
 
 " }}}
 " Python {{{
