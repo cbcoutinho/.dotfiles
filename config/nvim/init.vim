@@ -187,7 +187,6 @@ Plug 'tpope/vim-surround'				" Easily surround text with parens, quotes, etc.
 Plug 'itchyny/lightline.vim'			" Status line for vim
 Plug 'godlygeek/tabular'				" Easily align text based on a characher - see http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
 Plug 'sjl/gundo.vim'					" View vim 'undo' as a tree
-Plug 'majutsushi/tagbar'				" Code outliner using ctags output
 Plug 'vimwiki/vimwiki', {
 			\ 'branch': 'dev' }			" Personal diary/wiki
 Plug 'mattn/calendar-vim'				" Places calendar into a pane
@@ -506,10 +505,6 @@ nnoremap <leader>u :GundoToggle<CR>
 " Toggle NERDTree with a keymap
 nnoremap <leader>nt :NERDTreeToggle<CR>
 
-" Toggle Tagbar
-nnoremap <leader>tb :TagbarToggle<CR>
-
-
 " Revert git hunks in visual mode
 "	https://github.com/airblade/vim-gitgutter/issues/55#issuecomment-15113725
 vmap <silent> u <esc>:Gdiff<cr>gv:diffget<cr><c-w><c-w>ZZ
@@ -525,9 +520,9 @@ autocmd! FileType vim-plug nmap <buffer> o <plug>(plug-preview)<c-w>P
 
 " fzf plugins
 " 	https://statico.github.io/vim3.html
-nmap ; :Buffers<CR>
-nmap <Leader>t :Files<CR>
-nmap <Leader>r :Tags<CR>
+nnoremap ; :Buffers<CR>
+nnoremap <Leader>t :Files<CR>
+nnoremap <Leader>r :Tags<CR>
 
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
