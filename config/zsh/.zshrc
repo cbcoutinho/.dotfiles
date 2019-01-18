@@ -127,5 +127,6 @@ HISTSIZE=1000
 SAVEHIST=1000
 setopt HIST_IGNORE_DUPS
 
+unsetopt beep
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
