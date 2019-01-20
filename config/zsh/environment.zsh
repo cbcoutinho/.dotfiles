@@ -100,6 +100,9 @@ source "$HOME/.local/bin/virtualenvwrapper_lazy.sh"
 # IPython directory
 export IPYTHONDIR=$HOME/.config/ipython
 
+# Leiningen directory
+export LEIN_HOME=$HOME/.config/lein
+
 # Fix PATH, LD_LIBRARY_PATH due to possible 'blanks'
 #	https://github.com/google/pulldown-cmark/issues/122
 export PATH=$(echo $PATH | sed -E -e 's/^:*//' -e 's/:*$//' -e 's/:+/:/g')
