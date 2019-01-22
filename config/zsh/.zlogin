@@ -1,4 +1,5 @@
-if pgrep -x "gpg-agent" >/dev/null
+# If Current shell is an SSH connection, update gpg-agent tty
+if [[ ! -z "$SSH_CONNECTION" ]]
 then
 	# Update gpg tty whenever I login
 	gpg-connect-agent updatestartuptty /bye
