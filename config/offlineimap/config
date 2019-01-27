@@ -94,6 +94,7 @@ folderfilter = lambda folder: folder in [
 	'Newsletters/Basecamp',
 	'Newsletters/Dakota',
 	'Newsletters/MOOSE',
+	'Newsletters/Official',
 	'Newsletters/ParaView',
 	'Newsletters/PostgreSQL',
 	'Newsletters/PostgreSQL/General',
