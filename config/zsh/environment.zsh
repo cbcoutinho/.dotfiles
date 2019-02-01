@@ -1,34 +1,18 @@
 # Based on github.com/maximbaz/dotfiles/.zsh/environment.zsh
 
-if command -v nvim >/dev/null; then
-	export EDITOR=$(which nvim)
-	export VISUAL=$EDITOR
-	export DIFFPROG='nvim -d'
-fi
-
-if command -v fd >/dev/null; then
-	export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
-	export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-fi
-
-# Pass configuration
-export PASSWORD_STORE_CHARACTER_SET='a-zA-Z0-9~!@#$%^&*()-_=+[]{};:,.<>?'
-export PASSWORD_STORE_GENERATED_LENGTH=40
-
-# Flags using `nproc`
-if command -v nproc >/dev/null; then
-	export MAKEFLAGS="$MAKEFLAGS -j`nproc`"
-	export OMP_NUM_THREADS=`nproc`
-	export MOOSE_JOBS=`nproc`
-fi
-
-
-# Add bin and sudo commands to path
+# Prepend bin and sudo commands to path
 export PATH="/sbin:/usr/sbin:$HOME/bin:$HOME/.local/bin:$PATH"
 
 # Add mssql-tools to path if exists
 if [[ "$PATH" != *":/opt/mssql-tools/bin:"* ]]; then
 	export PATH="/opt/mssql-tools/bin":$PATH
+fi
+
+# CUDA libraries on workstation
+export CUDA_DIR=/usr/local/cuda-10.0
+if [[ -d $CUDA_DIR ]]; then
+	export PATH="$CUDA_DIR/bin:$PATH"
+	export LD_LIBRARY_PATH="$CUDA_DIR/lib64:$LD_LIBRARY_PATH"
 fi
 
 export LD_LIBRARY_PATH="$HOME/.local/lib:$HOME/.local/lib64:$LD_LIBRARY_PATH"
@@ -47,19 +31,16 @@ export SLEPC_DIR=$PETSC_DIR
 # P4EST
 export P4EST_DIR=/opt/p4est
 
+# Pass configuration
+export PASSWORD_STORE_CHARACTER_SET='a-zA-Z0-9~!@#$%^&*()-_=+[]{};:,.<>?'
+export PASSWORD_STORE_GENERATED_LENGTH=40
+
 # MOOSE
 export MOOSE_DIR="$HOME/Software/MOOSE"
 
 # Tmux has trouble accessing the gpg-agent otherwise
 #	https://unix.stackexchange.com/a/334326/171562
 export GPG_TTY=${TTY}
-
-# CUDA libraries on workstation
-export CUDA_DIR=/usr/local/cuda-10.0
-if [[ -d $CUDA_DIR ]]; then
-	export PATH="$CUDA_DIR/bin:$PATH"
-	export LD_LIBRARY_PATH="$CUDA_DIR/lib64:$LD_LIBRARY_PATH"
-fi
 
 # User/System ruby gems
 if command -v ruby >/dev/null && command -v gem >/dev/null; then
@@ -79,6 +60,26 @@ if command -v $HOME/.cargo/bin/rustc > /dev/null 2>&1; then
 	# Rust directory
 	export LD_LIBRARY_PATH="$(rustc --print sysroot)/lib":$LD_LIBRARY_PATH # For rustfmt
 	export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src" # For racer
+fi
+
+# If `fd` avaiable, set env vars
+if command -v fd >/dev/null; then
+	export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+	export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+fi
+
+# Set default editor to `nvim`
+if command -v nvim >/dev/null; then
+	export EDITOR=$(which nvim)
+	export VISUAL=$EDITOR
+	export DIFFPROG='nvim -d'
+fi
+
+# Flags using `nproc`
+if command -v nproc >/dev/null; then
+	export MAKEFLAGS="$MAKEFLAGS -j`nproc`"
+	export OMP_NUM_THREADS=`nproc`
+	export MOOSE_JOBS=`nproc`
 fi
 
 # added by travis gem
