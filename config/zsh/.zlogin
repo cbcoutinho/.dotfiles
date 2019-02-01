@@ -8,3 +8,8 @@ then
 	# Assuming SSH is handled by GPG
 	export SSH_AUTH_SOCK=$(gpgconf --list-dir agent-ssh-socket)
 fi
+
+sudo systemd-tmpfiles --create >/dev/null 2>&1 && echo Created systemd-tmpfiles
+
+# Connecting network drives
+/home/chris/bin/connect-drives

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+sudo mount -t drvfs U: /mnt/u-drive && echo 'Connect U-drive success'
+sudo mount -t drvfs H: /mnt/h-drive && echo 'Connect H-drive success'
+sudo mount -t drvfs K: /mnt/k-drive && echo 'Connect K-drive success'
+sudo mount -t drvfs R: /mnt/r-drive && echo 'Connect R-drive success'
+sudo mount -t drvfs P: /mnt/p-drive && echo 'Connect P-drive success'
