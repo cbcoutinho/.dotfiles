@@ -8,6 +8,3 @@ then
 	# Assuming SSH is handled by GPG
 	export SSH_AUTH_SOCK=$(gpgconf --list-dir agent-ssh-socket)
 fi
-
-echo Creating systemd-tmpfiles
-sudo systemd-tmpfiles --create >/dev/null 2>&1
