@@ -30,6 +30,7 @@ mailboxes +INBOX \
 			+Mailing-Lists.GnuPG \
 			+Mailing-Lists.Notmuch \
 			+Mailing-Lists.OfflineIMAP \
+			+Mailing-Lists.OpenSSH \
 			+Mailing-Lists.OpenSUSE \
 			+Mailing-Lists.Pass \
 			+Mailing-Lists.Python-dev \
