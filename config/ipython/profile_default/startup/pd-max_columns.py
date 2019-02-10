@@ -1,15 +1,14 @@
-import os
+from __future__ import print_function
+import sys, os
 
-print()
 try:
     import pandas as pd
 
     pd.set_option("display.max_columns", None)
-    print(
-        "-- pd.get_option('display.max_columns') = "
-        f"{pd.get_option('display.max_columns')}"
-    )
-except ModuleNotFoundError:
-    print("-- Pandas not found - the pd.set_option will not be set")
+    print("\n-- pd.get_option('display.max_columns') = None")
 
-print(f"-- See {os.path.abspath(__file__)}")
+except ModuleNotFoundError:
+    print("\n-- Pandas not found - the pd.set_option will not be set")
+
+filename = os.path.abspath(__file__)
+print("-- See " + filename)
