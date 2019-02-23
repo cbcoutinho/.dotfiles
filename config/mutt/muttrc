@@ -19,11 +19,13 @@ set thorough_search      # strip headers and eval mimes before searching
 
 folder-hook 'personal' 'source ~/.config/mutt/accounts/personal'
 folder-hook 'work' 'source ~/.config/mutt/accounts/work'
+folder-hook 'humboldt' 'source ~/.config/mutt/accounts/humboldt'
 
 source accounts/personal
 
 macro index,pager <f2> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/personal<enter><change-folder>!<enter>'
 macro index,pager <f3> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/work<enter><change-folder>!<enter>'
+macro index,pager <f4> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/humboldt<enter><change-folder>!<enter>'
 
 macro index ,sn "l ^a^k~(~N)\n"  "show only new messages"
 
@@ -88,8 +90,15 @@ set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)
 
 set date_format = "%b-%d-%y"
 
-# If attachment exists, show `A`, otherwise show `-`
+# https://neomutt.org/guide/reference.html#index-format
 set index_format = "[%Z] %?X?A&-? %D  %-20.20F (%4.4c) %s"
+#                    │     │      │     │         │     │
+#                    │     │      │     │         │     └─ Subject
+#                    │     │      │     │         └─ Size
+#                    │     │      │     └─ Sender
+#                    │     │      └─ Date
+#                    │     └─ If attachment exists, show `A`, otherwise show `-`
+#                    └─ Status flags
 
 set sort = threads							# like gmail
 set strict_threads = yes

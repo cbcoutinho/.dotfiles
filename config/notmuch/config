@@ -33,7 +33,7 @@ path=/home/chris/.mail
 [user]
 name=Chris Coutinho
 primary_email=chrisbcoutinho@gmail.com
-other_email=c.coutinho@redstack.nl;cc162@humboldt.edu;ccoutinho@a-hak.nl;
+other_email=c.coutinho@redstack365.nl;c.coutinho@redstack.nl;cc162@humboldt.edu;ccoutinho@a-hak.nl;
 
 # Configuration for "notmuch new"
 #
@@ -51,7 +51,7 @@ other_email=c.coutinho@redstack.nl;cc162@humboldt.edu;ccoutinho@a-hak.nl;
 #
 
 [new]
-tags=unread;inbox;
+tags=unread;
 ignore=/.*/Drafts$/
 
 # Search configuration

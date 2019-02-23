@@ -28,4 +28,4 @@
 -inbox +promotions unsubscribe
 
 # Reapply inbox tag if message remains in inbox
-+inbox folder:gmail/INBOX XOR folder:office365/INBOX
++inbox folder:gmail/INBOX XOR folder:redstack365/INBOX

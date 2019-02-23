@@ -36,8 +36,6 @@ mailboxes +INBOX \
 			+Mailing-Lists.Python-dev \
 			+Mailing-Lists.Rotaract \
 			+Archive \
-			+Flagged \
-			+Important \
 
 set from = "chrisbcoutinho@gmail.com"
 set sendmail = "/usr/bin/msmtp -a personal"

@@ -1,0 +1,37 @@
+# vim: filetype=muttrc
+
+## Account Settings -----------------------------------
+# Default inbox
+
+set folder           = ~/.mail/humboldt						# mailbox location
+set header_cache     = ~/.config/mutt/cache/headers			# where to store headers
+set message_cachedir = ~/.config/mutt/cache/bodies			# where to store bodies
+
+# Alternate email addresses
+
+# Mailboxes to show in the sidebar
+unmailboxes *
+mailboxes +INBOX \
+			+INBOX.Nepal \
+			+Sent \
+			+Drafts \
+			+Priority \
+			+Archive \
+			+Starred \
+			+Misc \
+			+Important \
+
+set from = "cc162@humboldt.edu"
+set sendmail = "/usr/bin/msmtp -a humboldt"
+set sendmail_wait = 0
+
+# Don't record sent mail in 'sent' box - let Google/Microsoft handle it
+unset record
+
+set spoolfile = "+INBOX"
+set mbox = "+Archive"
+set postponed = "+Drafts"
+
+# Sync email
+macro index O "<shell-escape>offlineimap -u blinkenlights -a Humboldt -s<enter>"           "run offlineimap to sync all mail"
+macro index o "<shell-escape>offlineimap -u blinkenlights -a Humboldt -s -qf INBOX<enter>" "run offlineimap to sync inbox"
