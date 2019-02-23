@@ -77,7 +77,7 @@ fi
 
 # Flags using `nproc`
 if command -v nproc >/dev/null; then
-	export MAKEFLAGS="$MAKEFLAGS -j`nproc`"
+	#export MAKEFLAGS="$MAKEFLAGS -j`nproc`"
 	export OMP_NUM_THREADS=`nproc`
 	export MOOSE_JOBS=`nproc`
 fi
