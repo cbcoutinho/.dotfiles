@@ -1,6 +1,6 @@
 # Based on github.com/maximbaz/dotfiles/.zsh/environment.zsh
 
-# Prepend bin and sudo commands to path
+# Prepend bin and sudo bin to PATH
 export PATH="/sbin:/usr/sbin:$HOME/bin:$HOME/.local/bin:$PATH"
 
 # Add mssql-tools to path if exists
@@ -18,11 +18,6 @@ fi
 export LD_LIBRARY_PATH="$HOME/.local/lib:$HOME/.local/lib64:$LD_LIBRARY_PATH"
 export MANPATH="$HOME/.local/share/man:/usr/local/share/man:$MANPATH"
 export CPATH="$HOME/.local/include:$CPATH"
-
-# Dakota directories
-export DAKOTA_DIR=/opt/dakota
-export PATH="$DAKOTA_DIR/bin:$PATH"
-export LD_LIBRARY_PATH="$DAKOTA_DIR/lib:$LD_LIBRARY_PATH"
 
 # PETSc
 export PETSC_DIR=/opt/petsc
