@@ -1,9 +1,9 @@
 # vim: filetype=conf
 
 [general]
-ui = ttyui
+#ui = ttyui
 #ui = syslog
-#ui = blinkenlights
+ui = blinkenlights
 #ui = quiet
 #ui = machineui
 #ui = basic

@@ -3,7 +3,7 @@ function ls {
 	command ls \
 		-F \
 		-h \
-		--color=always \
+		--color \
 		--author \
 		--time-style=long-iso \
 		-C "$@" \
