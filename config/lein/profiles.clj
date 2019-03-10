@@ -3,8 +3,8 @@
                        [midje "RELEASE"]
                        [slamhound "RELEASE"]]
 
-        :plugins [;[venantius/ultra "0.5.2"]
-                  [lein-cljfmt "0.5.7"]
+        :plugins [[venantius/ultra "0.6.0"]
+                  [lein-cljfmt "0.6.4"]
                   [lein-midje "3.2.1"]]
 
         :aliases {"slamhound" ["run" "-m" "slam.hound"]}
