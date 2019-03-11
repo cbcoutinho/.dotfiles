@@ -10,6 +10,7 @@
 # 	piperget https://link/to/pipermail/archive/
 
 set -x
+mkdir -p /tmp/pipermail
 
 listname=$(echo "$1" | sed 's:^\(http.*\)/\([^/]*\)/$:\2:')
 cd /tmp
