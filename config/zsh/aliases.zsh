@@ -47,17 +47,21 @@ if [[ -d $HOME/OpenFOAM ]]; then
 		# then OpenFOAM is probably in /opt
 		OF_DIR=/opt/OpenFOAM
 	fi
-	alias ofdev="source $OF_DIR/OpenFOAM-dev/etc/bashrc $FOAM_SETTINGS"
-	alias of5x="source $OF_DIR/OpenFOAM-5.x/etc/bashrc $FOAM_SETTINGS"
-	alias of4x="source $OF_DIR/OpenFOAM-4.x/etc/bashrc $FOAM_SETTINGS"
-	alias of30x="source $OF_DIR/OpenFOAM-3.0.x/etc/bashrc $FOAM_SETTINGS"
-	alias of1712="source $OF_DIR/OpenFOAM-v1712/etc/bashrc $FOAM_SETTINGS"
-	alias of1806="source $OF_DIR/OpenFOAM-v1806/etc/bashrc $FOAM_SETTINGS"
-	alias of1812="source $OF_DIR/OpenFOAM-v1812/etc/bashrc $FOAM_SETTINGS"
-	alias ofplus="source $OF_DIR/OpenFOAM-plus/etc/bashrc $FOAM_SETTINGS"
+	alias ofdev="source $OF_DIR/OpenFOAM-dev/etc/bashrc"
+	alias ofdevDebug="source $OF_DIR/OpenFOAM-dev/etc/bashrc WM_COMPILE_OPTION=Debug"
+	alias of5x="source $OF_DIR/OpenFOAM-5.x/etc/bashrc"
+	alias of5xDebug="source $OF_DIR/OpenFOAM-5.x/etc/bashrc WM_COMPILE_OPTION=Debug"
+	alias of1806="source $OF_DIR/OpenFOAM-v1806/etc/bashrc"
+	alias of1806Debug="source $OF_DIR/OpenFOAM-v1806/etc/bashrc WM_COMPILE_OPTION=Debug"
+	alias of1812="source $OF_DIR/OpenFOAM-v1812/etc/bashrc"
+	alias of1812Debug="source $OF_DIR/OpenFOAM-v1812/etc/bashrc WM_COMPILE_OPTION=Debug"
+	alias ofplus="source $OF_DIR/OpenFOAM-plus/etc/bashrc"
+	alias ofplusDebug="source $OF_DIR/OpenFOAM-plus/etc/bashrc WM_COMPILE_OPTION=Debug"
 fi
 
 if [[ -d $HOME/foam ]]; then
 	alias fe40="source $HOME/foam/foam-extend-4.0/etc/bashrc"
+	alias fe40Debug="source $HOME/foam/foam-extend-4.0/etc/bashrc WM_COMPILE_OPTION=Debug"
 	alias fe41="source $HOME/foam/foam-extend-4.1/etc/bashrc"
+	alias fe41Debug="source $HOME/foam/foam-extend-4.1/etc/bashrc WM_COMPILE_OPTION=Debug"
 fi
