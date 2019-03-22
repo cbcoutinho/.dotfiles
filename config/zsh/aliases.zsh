@@ -53,6 +53,8 @@ if [[ -d $HOME/OpenFOAM ]]; then
 	alias of6Debug="source $OF_DIR/OpenFOAM-6/etc/bashrc WM_COMPILE_OPTION=Debug"
 	alias of5x="source $OF_DIR/OpenFOAM-5.x/etc/bashrc"
 	alias of5xDebug="source $OF_DIR/OpenFOAM-5.x/etc/bashrc WM_COMPILE_OPTION=Debug"
+	alias of6="source $OF_DIR/OpenFOAM-6/etc/bashrc"
+	alias of6Debug="source $OF_DIR/OpenFOAM-6/etc/bashrc WM_COMPILE_OPTION=Debug"
 	alias of1806="source $OF_DIR/OpenFOAM-v1806/etc/bashrc"
 	alias of1806Debug="source $OF_DIR/OpenFOAM-v1806/etc/bashrc WM_COMPILE_OPTION=Debug"
 	alias of1812="source $OF_DIR/OpenFOAM-v1812/etc/bashrc"
