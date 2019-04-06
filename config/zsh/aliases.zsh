@@ -14,7 +14,7 @@ alias rm="rm -iv"
 alias cp="cp -iv"
 alias mv="mv -iv"
 
-alias tree="tree -F -C"
+alias tree="tree -F -C --dirsfirst"
 # -F -> Appends '/', '=', '*', '@', '|' or '>' as per `ls -F`
 # -C -> Turn colorize on
 
