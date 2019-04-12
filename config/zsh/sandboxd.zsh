@@ -71,6 +71,7 @@ sandbox_init_conda() {
 	if [ -d $CONDA_ROOT ]; then
 		source $CONDA_ROOT/etc/profile.d/conda.sh
 		conda activate
+		eval "$(register-python-argcomplete conda)"
 	else
 		echo "You're trying to use 'anaconda', but it's not installed"
 	fi
