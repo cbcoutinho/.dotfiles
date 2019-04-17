@@ -149,7 +149,7 @@ Plug 'eraserhd/parinfer-rust', {
 
 if has('nvim-0.3.1')
 	" Only use a tagged release of vim-go
-	Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoInstallBinaries'}
+	"Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoInstallBinaries'}
 endif
 
 " }}}

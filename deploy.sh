@@ -1,36 +1,35 @@
-#!/usr/bin/env bash
-# This script replaces all dotfiles with symlinks to those in this directory
+#!/bin/bash
+# This script installs dependencies, replaces all dotfiles with symlinks to
+# those in this directory
 
 set -e
 
-# Find all files and are not in the .git directory, and do not include the
-# README or the deploy.sh script
-files="$(find -type f | grep -v '.git' | grep -v 'README.md' | grep -v 'deploy.sh')"
+dotfiles=~/Projects/.dotfiles
 
-for file in $files
-do
-  localfile="$(pwd)/$file"
-  target="$HOME/$file"
-  # echo $localfile
-  # echo $target
+# Install rust
+if [ ! -d ~/.cargo ]; then
+	curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path
+fi
 
-  # If target file already exists, delete or move it...
-  if [ -f "$target" ]; then
+# Move all contents of current ~/.config directory into config, and set link to
+# config directory
+if find ~/.config -mindepth 1 -print -quit 2>/dev/null | grep -q .; then
+	mv ~/.config/* $dotfiles/config
+	rm -rf ~/.config
+fi
+ln -s $dotfiles/config ~/.config
 
-    # If file is a symlink, delete it, otherwise move it
-    if [ -L "$target" ]; then
-      # echo "Is a link! Destroy: $target"
-      rm "$target"
-    else
-      # echo "Is not a link! Move: $target"
-      mv "$target" "$target.orig"
-    fi
-  # else
-    # echo "File doesn't exist: $target"
-  fi
+# Create link zsh env file to homedir
+ln -s $dotfiles/.zshenv ~/.zshenv
 
-  echo "Creating link: $target -> $localfile"
-  ln -s $localfile $target
+# Create link gpg config files to homedir
+ln -s $dotfiles/.gnupg/gpg.conf ~/.gnupg/gpg.conf
+ln -s $dotfiles/.gnupg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
 
-done
-# fi
+# Git config and ignore files
+ln -s $dotfiles/.gitconfig ~/.gitconfig
+ln -s $dotfiles/.gitignore_global ~/.gitignore_global
+
+# Tmux
+ln -s $dotfiles/.tmux.conf ~/.tmux.conf
+ln -s $dotfiles/.tmux ~/.tmux
