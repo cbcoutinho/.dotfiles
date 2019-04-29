@@ -25,6 +25,7 @@ ln -s $dotfiles/.zshenv ~/.zshenv
 # Create link gpg config files to homedir
 ln -s $dotfiles/.gnupg/gpg.conf ~/.gnupg/gpg.conf
 ln -s $dotfiles/.gnupg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
+ln -s $dotfiles/.gnupg/sshcontrol ~/.gnupg/sshcontrol
 
 # Git config and ignore files
 ln -s $dotfiles/.gitconfig ~/.gitconfig
@@ -33,3 +34,10 @@ ln -s $dotfiles/.gitignore_global ~/.gitignore_global
 # Tmux
 ln -s $dotfiles/.tmux.conf ~/.tmux.conf
 ln -s $dotfiles/.tmux ~/.tmux
+
+# Python
+pip install --user -U virtualenvwrapper
+
+# Clojure
+curl -L https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > ~/bin/lein
+chmod +x ~/bin/lein
