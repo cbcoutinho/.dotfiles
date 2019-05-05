@@ -38,6 +38,9 @@ ln -s $dotfiles/.tmux ~/.tmux
 # Python
 pip install --user -U virtualenvwrapper
 
+# Xorg
+ln -s $dotfiles/.xinitrc ~/.xinitrc
+
 # Clojure
 curl -L https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > ~/bin/lein
 chmod +x ~/bin/lein
