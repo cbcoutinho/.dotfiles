@@ -77,6 +77,12 @@ if command -v nproc >/dev/null; then
 	export MOOSE_JOBS=`nproc`
 fi
 
+# PYENV
+[[ -d "$HOME/Software/pyenv" ]] && export PYENV_ROOT=$HOME/Software/pyenv && PATH="$PYENV_ROOT/bin":$PATH
+if command -v pyenv >/dev/null; then
+	eval "$(pyenv init -)"
+fi
+
 # added by travis gem
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 
@@ -112,6 +118,7 @@ export LIBRARY_PATH=${LIBRARY_PATH:-$LD_LIBRARY_PATH}
 # CMake repository build (need v3.7+ for learn_dg and Fortran submodules)
 export CMAKE_PREFIX_PATH="$LD_LIBRARY_PATH"
 
+# Notmuch
 export NOTMUCH_CONFIG=~/.config/notmuch/config
 
 # For clojure/clj CLI tools
