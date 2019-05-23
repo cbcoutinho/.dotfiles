@@ -47,6 +47,12 @@ remoteuser = chrisbcoutinho@gmail.com
 remotepasseval = get_pass(account="Gmail-offlineimap")
 realdelete = no
 ssl = yes
+
+# See these github issues regarding forcing this issue for gmail:
+# 	https://github.com/OfflineIMAP/offlineimap/issues/573
+# 	https://github.com/imaplib2/imaplib2/issues/5
+ssl_version = tls1_2
+
 sslcacertfile = /var/lib/ca-certificates/ca-bundle.pem
 nametrans = lambda folder: {'[Gmail]/Drafts':    'Drafts',
 							'[Gmail]/Sent Mail': 'Sent',
@@ -89,6 +95,12 @@ remotepasseval = get_pass(account="HSU")
 realdelete = no
 ssl = yes
 sslcacertfile = /var/lib/ca-certificates/ca-bundle.pem
+
+# See these github issues regarding forcing this issue for gmail:
+# 	https://github.com/OfflineIMAP/offlineimap/issues/573
+# 	https://github.com/imaplib2/imaplib2/issues/5
+ssl_version = tls1_2
+
 nametrans = lambda folder: {'[Gmail]/Drafts':    'Drafts',
 							'[Gmail]/Sent Mail': 'Sent',
 							'[Gmail]/Starred':   'Flagged',
