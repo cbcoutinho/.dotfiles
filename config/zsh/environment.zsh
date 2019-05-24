@@ -9,7 +9,7 @@ if [[ "$PATH" != *":/opt/mssql-tools/bin:"* ]]; then
 fi
 
 # CUDA libraries on workstation
-export CUDA_DIR=/usr/local/cuda-10.0
+export CUDA_DIR=/usr/local/cuda
 if [[ -d $CUDA_DIR ]]; then
 	export PATH="$CUDA_DIR/bin:$PATH"
 	export LD_LIBRARY_PATH="$CUDA_DIR/lib64:$LD_LIBRARY_PATH"
