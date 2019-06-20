@@ -6,7 +6,7 @@ if has('win32')
 	set shell=powershell.exe
 	let g:python_host_prog='C:/Development/anaconda3/envs/neovim/python.exe'
 	let g:python3_host_prog='C:/Development/anaconda3/envs/neovim3/python.exe'
-	let g:ruby_host_prog='C:/Users/ccoutinho/scoop/apps/ruby/current/gems/bin/neovim-ruby-host.bat'
+	let g:ruby_host_prog='C:/Users/c.coutinho/scoop/apps/ruby/current/gems/bin/neovim-ruby-host.bat'
 else
 	set shell=sh			" Force shell to use bash
 	let g:python_host_prog='/home/chris/.local/share/virtualenvs/neovim/bin/python'

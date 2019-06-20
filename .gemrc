@@ -1,2 +1,6 @@
+# Don't append version number to executable
+:verbose: true
+:install: --no-format-executable
 install: --no-format-executable
+:update: --no-format-executable
 update: --no-format-executable

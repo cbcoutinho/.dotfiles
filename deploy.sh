@@ -44,3 +44,6 @@ ln -s $dotfiles/.xinitrc ~/.xinitrc
 # Clojure
 curl -L https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > ~/bin/lein
 chmod +x ~/bin/lein
+
+# Ruby
+ln -s $dotfiles/.gemrc ~/.gemrc
