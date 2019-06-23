@@ -51,7 +51,7 @@ other_email=c.coutinho@redstack365.nl;c.coutinho@redstack.nl;cc162@humboldt.edu;
 #
 
 [new]
-tags=unread;
+tags=unread;inbox
 ignore=/.*/Drafts$/
 
 # Search configuration
