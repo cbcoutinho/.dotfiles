@@ -3,6 +3,7 @@
 
 # But not these files...
 !.gitignore
+!tmux.conf
 !source_powerline.sh
 !tmux-gruvbox-dark.conf
 

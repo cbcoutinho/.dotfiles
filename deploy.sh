@@ -31,10 +31,6 @@ ln -s $dotfiles/.gnupg/sshcontrol ~/.gnupg/sshcontrol
 ln -s $dotfiles/.gitconfig ~/.gitconfig
 ln -s $dotfiles/.gitignore_global ~/.gitignore_global
 
-# Tmux
-ln -s $dotfiles/.tmux.conf ~/.tmux.conf
-ln -s $dotfiles/.tmux ~/.tmux
-
 # Python
 pip install --user -U virtualenvwrapper
 
