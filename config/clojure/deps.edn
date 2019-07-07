@@ -34,10 +34,15 @@
   ;;   :deps {:extra-deps {org.clojure/tools.deps.alpha {:mvn/version "0.5.460"}}}
   ;;   :test {:extra-paths ["test"]}
   ;; }
-  :aliases {:rebel {:extra-deps {com.bhauman/rebel-readline {:mvn/version "0.1.4"}}
-                    :main-opts ["-m" "rebel-readline.main"]}}}
-  
+  :aliases {; Rebel is a readline library providing great auto-completion
+            :rebel {:extra-deps {com.bhauman/rebel-readline {:mvn/version "0.1.4"}}
+                    :main-opts ["-m" "rebel-readline.main"]}
 
+            ; A test alias adds the test directory to the path and
+            ; adds a dep for test.check
+            :test {:extra-paths ["test"]
+                   :extra-deps {org.clojure/test.check {:mvn/version "RELEASE"}}}}}
+  
   ;; Provider attributes
 
   ;; :mvn/repos {
