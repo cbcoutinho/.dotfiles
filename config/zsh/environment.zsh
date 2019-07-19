@@ -33,6 +33,12 @@ export PASSWORD_STORE_GENERATED_LENGTH=40
 # MOOSE
 export MOOSE_DIR="$HOME/Software/MOOSE"
 
+# ParaView
+if [[ -d /opt/paraview ]]; then
+	PATH="/opt/paraview/bin:$PATH"
+	LD_LIBRARY_PATH="/opt/paraview/lib:$LD_LIBRARY_PATH"
+fi
+
 # Tmux has trouble accessing the gpg-agent otherwise
 #	https://unix.stackexchange.com/a/334326/171562
 export GPG_TTY=${TTY}
