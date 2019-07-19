@@ -15,7 +15,7 @@ if [[ -d $CUDA_DIR ]]; then
 	export LD_LIBRARY_PATH="$CUDA_DIR/lib64:$LD_LIBRARY_PATH"
 fi
 
-export LD_LIBRARY_PATH="$HOME/.local/lib:$HOME/.local/lib64:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="$HOME/.local/lib64:$HOME/.local/lib:$LD_LIBRARY_PATH"
 export MANPATH="$HOME/.local/share/man:/usr/local/share/man:$MANPATH"
 export CPATH="$HOME/.local/include:$CPATH"
 
