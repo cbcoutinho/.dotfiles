@@ -16,7 +16,7 @@
   ;; :paths ["src"]
 
   ;; External dependencies
- 
+
   ;; :deps {
   ;;   org.clojure/clojure {:mvn/version "1.9.0"}
   ;; }
@@ -41,8 +41,29 @@
             ; A test alias adds the test directory to the path and
             ; adds a dep for test.check
             :test {:extra-paths ["test"]
-                   :extra-deps {org.clojure/test.check {:mvn/version "RELEASE"}}}}}
-  
+                   :extra-deps {org.clojure/test.check {:mvn/version "RELEASE"}}}
+
+            ;; Eastwood is a clojure lint tool
+            ;; see https://github.com/jonase/eastwood#running-eastwood-in-a-repl
+            :eastwood {:extra-deps {jonase/eastwood {:mvn/version "RELEASE"}}
+                       :main-opts ["-m" "eastwood.lint" {:source-paths ["src"] :test-paths ["test"]}]}
+
+            ;; Complement is a clojure completion library
+            ;; - see https://github.com/bbatsov/compliment
+            :comp {:extra-deps {compliment {:mvn/version "RELEASE"}}}
+
+            ;; - start a Socket REPL on port 50505:
+            :socket {:jvm-opts ["-Dclojure.server.repl={:port,50505,:accept,clojure.core.server/repl}"]}
+
+            ;; - start a modern nREPL server on a random available port:
+            :nrepl {:extra-deps {nrepl {:mvn/version "RELEASE"}} 
+                    :main-opts ["-m" "nrepl.cmdline"]}
+
+
+            ;; Easily create new clojure projects
+            :new {:extra-deps {seancorfield/clj-new {:mvn/version "RELEASE"}}
+                  :main-opts ["-m" "clj-new.create"]}}}
+
   ;; Provider attributes
 
   ;; :mvn/repos {
