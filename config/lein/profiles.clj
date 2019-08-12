@@ -6,7 +6,8 @@
 
         :plugins [[venantius/ultra "0.6.0"]
                   [lein-cljfmt "0.6.4"]
-                  [lein-midje "3.2.1"]]
+                  [lein-midje "3.2.1"]
+                  [lein-jupyter "0.1.16"]]
 
         :aliases {"slamhound" ["run" "-m" "slam.hound"]
                   "rebl" ["trampoline" "run" "-m" "rebel-readline.main"]}

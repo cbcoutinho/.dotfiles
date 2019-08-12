@@ -13,6 +13,8 @@ export CUDA_DIR=/usr/local/cuda
 if [[ -d $CUDA_DIR ]]; then
 	export PATH="$CUDA_DIR/bin:$PATH"
 	export LD_LIBRARY_PATH="$CUDA_DIR/lib64:$LD_LIBRARY_PATH"
+else
+	unset CUDA_DIR
 fi
 
 export LD_LIBRARY_PATH="$HOME/.local/lib64:$HOME/.local/lib:$LD_LIBRARY_PATH"
@@ -21,7 +23,11 @@ export CPATH="$HOME/.local/include:$CPATH"
 
 # PETSc
 export PETSC_DIR=/opt/petsc
-export SLEPC_DIR=$PETSC_DIR
+if [[ -d $PETSC_DIR ]]; then
+	export SLEPC_DIR=$PETSC_DIR
+else
+	unset PETSC_DIR
+fi
 
 # P4EST
 export P4EST_DIR=/opt/p4est
