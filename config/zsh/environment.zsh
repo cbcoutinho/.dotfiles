@@ -106,6 +106,7 @@ export PIP_FIND_LINKS="file://${WHEELHOUSE}"
 export PIP_WHEEL_DIR="${WHEELHOUSE}"
 
 # Python virtualenvwrapper
+[ -d "$HOME/.poetry/bin" ] && export PATH=$HOME/.poetry/bin:$PATH
 export WORKON_HOME=~/.local/share/virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=$(which python3)
 export VIRTUALENVWRAPPER_SCRIPT="$HOME/.local/bin/virtualenvwrapper.sh"
