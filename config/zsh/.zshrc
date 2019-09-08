@@ -109,6 +109,11 @@ else
 fi
 fpath=($ZDOTDIR/.zfunc $fpath)
 
+# Sources aws completion if exists
+if [ -f /usr/bin/aws_zsh_completer.sh ]; then
+	source /usr/bin/aws_zsh_completer.sh
+fi
+
 # completions
 autoload -Uz compinit && compinit
 compinit

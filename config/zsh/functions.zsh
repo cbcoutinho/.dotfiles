@@ -36,6 +36,7 @@ function extract()
 			*.zip)       unzip $1 -d `echo $1 | sed 's/\.zip//g'` ;;
 			*.Z)         uncompress $1   ;;
 			*.7z)        7z x $1         ;;
+			*.xz)        xz -d -v $1     ;;
 			*)           echo "'$1' cannot be extracted via >extract<" ;;
 		esac
 	else

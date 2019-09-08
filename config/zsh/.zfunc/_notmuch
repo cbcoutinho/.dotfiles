@@ -1,5 +1,8 @@
 #compdef notmuch -p notmuch-*
 
+# ZSH completion for `notmuch`
+# Copyright © 2018 Vincent Breitmoser <look@my.amazin.horse>
+
 _notmuch_command() {
   local -a notmuch_commands
   notmuch_commands=(
@@ -13,6 +16,7 @@ _notmuch_command() {
     'dump:creates a plain-text dump of the tags of each message'
     'insert:add a message to the maildir and notmuch database'
     'new:incorporate new mail into the notmuch database'
+    'reindex:re-index a set of messages'
     'reply:constructs a reply template for a set of messages'
     'restore:restores the tags from the given file (see notmuch dump)'
     'search:search for messages matching the given search terms'
@@ -33,7 +37,7 @@ _notmuch_command() {
   fi
 }
 
-_notmuch_term_tag() {
+_notmuch_term_tag _notmuch_term_is () {
   local ret=1 expl
   local -a notmuch_tags
 
@@ -108,7 +112,7 @@ _notmuch_search_term() {
     'from' 'to' 'subject' 'attachment' 'mimetype' 'tag' 'id' 'thread' 'path' 'folder' 'date' 'lastmod' 'query' 'property'
   )
 
-  if compset -P '(#b)(*):'; then
+  if compset -P '(#b)([^:]#):'; then
     if (( $+functions[_notmuch_term_$match[1]] )); then
       _notmuch_term_$match[1] && ret=0
       return $ret
@@ -217,7 +221,7 @@ _notmuch_new() {
 
 _notmuch_reindex() {
   _arguments \
-    '--decrypt=[decrypt messages]:decryption setting:((false\:"never decrypt" auto\:"decrypt if session key is known (default)" true\:"decrypt using secret keys" stash\:"decrypt, and store session keys"))'
+    '--decrypt=[decrypt messages]:decryption setting:((false\:"never decrypt" auto\:"decrypt if session key is known (default)" true\:"decrypt using secret keys" stash\:"decrypt, and store session keys"))' \
     '*::search term:_notmuch_search_term'
 }
 
@@ -225,7 +229,7 @@ _notmuch_search() {
   _arguments -S \
     '--max-threads=[display only the first x threads from the search results]:number of threads to show: ' \
     '--first=[omit the first x threads from the search results]:number of threads to omit: ' \
-    '--sort=[sort results]:sorting:(newest-first\:"reverse chronological order" oldest-first\:"chronological order") ' \
+    '--sort=[sort results]:sorting:((newest-first\:"reverse chronological order" oldest-first\:"chronological order"))' \
     '--output=[select what to output]:output:(summary threads messages files tags)' \
     '*::search term:_notmuch_search_term'
 }
