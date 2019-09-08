@@ -27,5 +27,7 @@
 
 -inbox +promotions unsubscribe
 
+-inbox +official from:noreply@psonline.unit4saas.com OR from:sandra@hetservicepunt.nl OR from:cm.chan@hetservicepunt.nl
+
 # Reapply inbox tag if message remains in inbox
 #+inbox folder:gmail/INBOX XOR folder:redstack365/INBOX
