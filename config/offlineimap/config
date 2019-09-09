@@ -12,7 +12,8 @@ accounts = ChrisCoutinho,Humboldt,Work
 
 # NOTE: This is a python2 file
 pythonfile=~/.config/offlineimap/offlineimap.py
-fsync = False
+#fsync = False
+sockettimeout = 60
 
 
 # Apply following settings for all accounts
