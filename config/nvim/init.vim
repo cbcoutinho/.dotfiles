@@ -103,7 +103,7 @@ endfunction
 "Plug 'ncm2/ncm2-jedi'  " Python
 "Plug 'ncm2/ncm2-racer' " Rust
 
-Plug 'w0rp/ale'					" Async linting/fixing using LSP
+Plug 'dense-analysis/ale'					" Async linting/fixing using LSP
 
 if has('nvim-0.3')
 	Plug 'zchee/deoplete-jedi' " Python
@@ -198,6 +198,9 @@ Plug 'tmhedberg/SimpylFold'				" Fold python source files
 
 Plug 'neomutt/neomutt.vim'				" Vim syntax for neomutt
 
+" Snippets in neovim
+Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
 
 " }}}
 " Vim/git-related plugins {{{
@@ -526,6 +529,18 @@ nnoremap <Leader>r :Tags<CR>
 
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
+
+" Snippets {{{
+" Trigger configuration. Do not use <tab> if you use
+" https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger='<tab>'
+
+" shortcut to go to next position
+let g:UltiSnipsJumpForwardTrigger='<c-j>'
+
+" shortcut to go to previous position
+let g:UltiSnipsJumpBackwardTrigger='<c-k>'
+" }}}
 
 " }}}
 " Functions {{{
