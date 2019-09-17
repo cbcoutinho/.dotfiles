@@ -1,5 +1,6 @@
 from __future__ import print_function
-import sys, os
+
+import pathlib
 
 try:
     import pandas as pd
@@ -10,5 +11,5 @@ try:
 except ImportError:
     print("\n-- Pandas not found - the pd.set_option will not be set")
 
-filename = os.path.abspath(__file__)
+filename = pathlib.Path(__file__).resolve()
 print("-- See " + filename)
