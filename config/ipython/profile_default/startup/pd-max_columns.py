@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 import pathlib
 
 try:
@@ -12,4 +10,4 @@ except ImportError:
     print("\n-- Pandas not found - the pd.set_option will not be set")
 
 filename = pathlib.Path(__file__).resolve()
-print("-- See " + filename)
+print(f"-- See {filename}")
