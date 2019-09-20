@@ -2,32 +2,32 @@
 #
 # Use notmuch hook to index the notmuch database using queries
 
--inbox +sent from:chrisbcoutinho@gmail.com
--inbox +sent from:cc162@humboldt.edu
--inbox +sent from:c.coutinho@redstack.nl
--inbox +sent from:ccoutinho@a-hak.nl
+-inbox +sent tag:new and from:chrisbcoutinho@gmail.com
+-inbox +sent tag:new and from:cc162@humboldt.edu
+-inbox +sent tag:new and from:c.coutinho@redstack.nl
+-inbox +sent tag:new and from:ccoutinho@a-hak.nl
 
--inbox +cinemacephale cinema@acephale.eu
--inbox +dragonflybsd dragonflybsd.org
--inbox +freebsd freebsd.org
--inbox +github github.com
--inbox +gitlab gitlab.com
--inbox +gnupg gpg OR gnupg
--inbox +opensuse 'subject:"/\[opensuse(-factory|-announce)?\]/"'
--inbox +pass password-store
--inbox +python python.org
--inbox +rotaract rotaract
--inbox +notmuch notmuchmail.org OR notmuch
+-inbox +cinemacephale tag:new and cinema@acephale.eu
+-inbox +dragonflybsd tag:new and dragonflybsd.org
+-inbox +freebsd tag:new and freebsd.org
+-inbox +github tag:new and github.com
+-inbox +gitlab tag:new and gitlab.com
+-inbox +gnupg tag:new and ( gpg OR gnupg )
+-inbox +opensuse tag:new and 'subject:"/\[opensuse(-factory|-announce)?\]/"'
+-inbox +pass tag:new and password-store
+-inbox +python tag:new and python.org
+-inbox +rotaract tag:new and rotaract
+-inbox +notmuch tag:new and ( notmuchmail.org OR notmuch )
 
--inbox +dakota dakota-users@software.sandia.gov OR 'subject:"/\[Dakota(-users|-announce)?\]/"'
--inbox +paraview gitlab.kitware.com OR paraview@public.kitware.com OR paraview.org
--inbox +postgres postgresql.org
--inbox +moose moose-users OR moose-announce
--inbox +cron "Cron Daemon"
+-inbox +dakota tag:new and ( dakota-users@software.sandia.gov OR 'subject:"/\[Dakota(-users|-announce)?\]/"' )
+-inbox +paraview tag:new and ( gitlab.kitware.com OR paraview@public.kitware.com OR paraview.org )
+-inbox +postgres tag:new and postgresql.org
+-inbox +moose tag:new and ( moose-users OR moose-announce )
+-inbox +cron tag:new and "Cron Daemon"
 
 -inbox +promotions unsubscribe
 
--inbox +official from:noreply@psonline.unit4saas.com OR from:sandra@hetservicepunt.nl OR from:cm.chan@hetservicepunt.nl
+-inbox +official tag:new and ( from:noreply@psonline.unit4saas.com OR from:sandra@hetservicepunt.nl OR from:cm.chan@hetservicepunt.nl )
 
 # Reapply inbox tag if message remains in inbox
 #+inbox folder:gmail/INBOX XOR folder:redstack365/INBOX
