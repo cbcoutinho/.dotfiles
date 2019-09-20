@@ -89,8 +89,6 @@ if command -v nproc >/dev/null; then
 	export MOOSE_JOBS=`nproc`
 fi
 
-# PYENV
-[[ -d "$HOME/Software/pyenv" ]] && export PYENV_ROOT=$HOME/Software/pyenv && PATH="$PYENV_ROOT/bin":$PATH
 if command -v pyenv >/dev/null; then
 	eval "$(pyenv init -)"
 fi
