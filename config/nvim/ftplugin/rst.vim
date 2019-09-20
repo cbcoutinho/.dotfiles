@@ -1,0 +1,3 @@
+" reStructuredText (rst)
+
+setlocal spell
