@@ -89,32 +89,20 @@ if command -v nproc >/dev/null; then
 	export MOOSE_JOBS=`nproc`
 fi
 
-if command -v pyenv >/dev/null; then
-	eval "$(pyenv init -)"
-fi
-
 # added by travis gem
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 
-# Pip save wheels cache
-[ -d "$HOME/.cache/pip/wheelhouse" ] || mkdir -p $HOME/.cache/pip/wheelhouse
-export STANDARD_CACHE_DIR="${XDG_CACHE_HOME:-${HOME}/.cache}/pip"
-export WHEELHOUSE="${STANDARD_CACHE_DIR}/wheelhouse"
-export PIP_FIND_LINKS="file://${WHEELHOUSE}"
-export PIP_WHEEL_DIR="${WHEELHOUSE}"
+# Notmuch
+export NOTMUCH_CONFIG=~/.config/notmuch/config
 
-# Python virtualenvwrapper
-[ -d "$HOME/.poetry/bin" ] && export PATH=$HOME/.poetry/bin:$PATH
-export WORKON_HOME=~/.local/share/virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=$(which python3)
-export VIRTUALENVWRAPPER_SCRIPT="$HOME/.local/bin/virtualenvwrapper.sh"
-source "$HOME/.local/bin/virtualenvwrapper_lazy.sh"
-
-# IPython directory
-export IPYTHONDIR=$HOME/.config/ipython
+# For clojure/clj CLI tools
+export CLJ_CONFIG=~/.config/clojure/
 
 # Leiningen directory
 export LEIN_HOME=$HOME/.config/lein
+
+source $ZDOTDIR/python_env.zsh
+
 
 # Fix PATH, LD_LIBRARY_PATH due to possible 'blanks'
 #	https://github.com/google/pulldown-cmark/issues/122
@@ -128,9 +116,3 @@ export LIBRARY_PATH=${LIBRARY_PATH:-$LD_LIBRARY_PATH}
 
 # CMake repository build (need v3.7+ for learn_dg and Fortran submodules)
 export CMAKE_PREFIX_PATH="$LD_LIBRARY_PATH"
-
-# Notmuch
-export NOTMUCH_CONFIG=~/.config/notmuch/config
-
-# For clojure/clj CLI tools
-export CLJ_CONFIG=~/.config/clojure/
