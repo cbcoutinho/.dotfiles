@@ -4,40 +4,43 @@
 export PATH="/sbin:/usr/sbin:$HOME/bin:$HOME/.local/bin:$PATH"
 
 # Add mssql-tools to path if exists
-if [[ "$PATH" != *":/opt/mssql-tools/bin:"* ]]; then
+if [[ -d /opt/mssql-tools/bin ]]; then
 	export PATH="/opt/mssql-tools/bin":$PATH
 fi
 
-# CUDA libraries on workstation
-export CUDA_DIR=/usr/local/cuda
+# Add CUDA to path if exists
+CUDA_DIR=/usr/local/cuda
 if [[ -d $CUDA_DIR ]]; then
 	export PATH="$CUDA_DIR/bin:$PATH"
 	export LD_LIBRARY_PATH="$CUDA_DIR/lib64:$LD_LIBRARY_PATH"
-else
-	unset CUDA_DIR
 fi
 
 export LD_LIBRARY_PATH="$HOME/.local/lib64:$HOME/.local/lib:$LD_LIBRARY_PATH"
 export MANPATH="$HOME/.local/share/man:/usr/local/share/man:$MANPATH"
 export CPATH="$HOME/.local/include:$CPATH"
 
-# PETSc
-export PETSC_DIR=/opt/petsc
+# Add PETSc to path if exists
+PETSC_DIR=/opt/petsc
 if [[ -d $PETSC_DIR ]]; then
+	export PETSC_DIR
 	export SLEPC_DIR=$PETSC_DIR
-else
-	unset PETSC_DIR
 fi
 
 # P4EST
-export P4EST_DIR=/opt/p4est
+P4EST_DIR=/opt/p4est
+if [[ -d $P4EST_DIR ]]; then
+	export P4EST_DIR
+fi
 
 # Pass configuration
 export PASSWORD_STORE_CHARACTER_SET='a-zA-Z0-9~!@#$%^&*()-_=+[]{};:,.<>?'
 export PASSWORD_STORE_GENERATED_LENGTH=40
 
 # MOOSE
-export MOOSE_DIR="$HOME/Software/moose"
+MOOSE_DIR="$HOME/Software/moose"
+if [[ -d $MOOSE_DIR ]]; then
+	export MOOSE_DIR
+fi
 
 # ParaView
 if [[ -d /opt/paraview ]]; then
@@ -62,9 +65,8 @@ export GOPATH="$HOME/.go"
 PATH="$GOPATH/bin":$PATH
 
 # Rust-related env vars
-if command -v $HOME/.cargo/bin/rustc > /dev/null 2>&1; then
+if [[ -d $HOME/.cargo ]]; then
 	export PATH="$HOME/.cargo/bin":$PATH
-	# Rust directory
 	export LD_LIBRARY_PATH="$(rustc --print sysroot)/lib":$LD_LIBRARY_PATH # For rustfmt
 	export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src" # For racer
 fi
@@ -92,17 +94,8 @@ fi
 # added by travis gem
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 
-# Notmuch
-export NOTMUCH_CONFIG=~/.config/notmuch/config
-
-# For clojure/clj CLI tools
-export CLJ_CONFIG=~/.config/clojure/
-
-# Leiningen directory
-export LEIN_HOME=$HOME/.config/lein
-
+# Python-related vars
 source $ZDOTDIR/python_env.zsh
-
 
 # Fix PATH, LD_LIBRARY_PATH due to possible 'blanks'
 #	https://github.com/google/pulldown-cmark/issues/122
@@ -110,8 +103,7 @@ export PATH=$(echo $PATH | sed -E -e 's/^:*//' -e 's/:*$//' -e 's/:+/:/g')
 export LD_LIBRARY_PATH=$(echo $LD_LIBRARY_PATH | sed -E -e 's/^:*//' -e 's/:*$//' -e 's/:+/:/g')
 export CPATH=$(echo $CPATH | sed -E -e 's/^:*//' -e 's/:*$//' -e 's/:+/:/g')
 
-# Set LIBRARY_PATH to LD_LIBRARY_PATH if unset (related to issue
-# above)
+# Set LIBRARY_PATH to LD_LIBRARY_PATH if unset (related to issue above)
 export LIBRARY_PATH=${LIBRARY_PATH:-$LD_LIBRARY_PATH}
 
 # CMake repository build (need v3.7+ for learn_dg and Fortran submodules)

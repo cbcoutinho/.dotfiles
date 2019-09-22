@@ -11,3 +11,12 @@ if [ -x /usr/bin/fortune ] ; then
 	/usr/bin/fortune
 	echo
 fi
+
+# Notmuch
+export NOTMUCH_CONFIG=~/.config/notmuch/config
+
+# For clojure/clj CLI tools
+export CLJ_CONFIG=~/.config/clojure/
+
+# Leiningen directory
+export LEIN_HOME=$HOME/.config/lein
