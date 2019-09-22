@@ -101,12 +101,7 @@ if [ -d ~/Software/zsh-autosuggestions ]; then
 	source ~/Software/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
-# Shell completions (rust, cargo, and hub)
-if [ -d ~/Software/zsh-completions ]; then
-	fpath=(~/Software/zsh-completions/src $fpath)
-else
-	echo "	The 'zsh-completions' package was not found"
-fi
+# Append personal zsh-completions to fpath
 fpath=($ZDOTDIR/.zfunc $fpath)
 
 # Sources aws completion if exists
