@@ -49,7 +49,7 @@ set crypt_replysignencrypted=yes # Automatically sign replies to messages which 
 
 set alias_file       = ~/.config/mutt/alias			# where to store aliases
 set mailcap_path     = ~/.config/mutt/mailcap		# entries for filetypes
-set tmpdir           = ~/.config/mutt/temp			# where to keep temp files
+set tmpdir           = /tmp/mutt			# where to keep temp files
 
 #source $alias_file
 
