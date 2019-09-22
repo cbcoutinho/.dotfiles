@@ -77,11 +77,11 @@ if command -v fd >/dev/null; then
 	export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 fi
 
-# Set default editor to `nvim`
-if command -v nvim >/dev/null; then
-	export EDITOR=$(which nvim)
+# Set default editor to `vim`
+if command -v vim >/dev/null; then
+	export EDITOR=$(which vim)
 	export VISUAL=$EDITOR
-	export DIFFPROG='nvim -d'
+	export DIFFPROG='vim -d'
 fi
 
 # Flags using `nproc`
