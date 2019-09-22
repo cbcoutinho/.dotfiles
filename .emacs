@@ -1,8 +1,11 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 (package-initialize)
 
 (require 'notmuch)
+(require 'evil)
+(evil-mode 1)
 
 (use-package parinfer
   :ensure t
@@ -35,20 +38,12 @@
    ["black" "red3" "ForestGreen" "yellow3" "blue" "magenta3" "DeepSkyBlue" "gray50"])
  '(custom-enabled-themes (quote (deeper-blue)))
  '(delete-selection-mode nil)
- '(package-selected-packages (quote (evil clojure-mode rainbow-delimiters parinfer))))
-(custom-set-faces)
+ '(package-selected-packages
+   (quote
+    (org evil clojure-mode rainbow-delimiters parinfer))))
+(custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- 
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- 
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- 
+ )
