@@ -12,7 +12,7 @@
 #
 
 [database]
-path=/home/chris/.cache/evolution/mail
+path=/Users/chris/.mail
 
 # User configuration
 #

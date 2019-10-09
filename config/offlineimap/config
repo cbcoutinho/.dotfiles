@@ -7,7 +7,7 @@
 #ui = quiet
 #ui = machineui
 ui = basic
-accounts = ChrisCoutinho,Humboldt,FocusCura
+accounts = FocusCura
 
 # NOTE: This is a python2 file
 pythonfile=~/.config/offlineimap/offlineimap.py
@@ -17,8 +17,9 @@ sockettimeout = 60
 
 # Apply following settings for all accounts
 [DEFAULT]
+postsynchook = notmuch new
 ssl = yes
-sslcacertfile = /var/lib/ca-certificates/ca-bundle.pem
+sslcacertfile = /usr/local/etc/openssl/cert.pem
 
 
 [Account ChrisCoutinho]

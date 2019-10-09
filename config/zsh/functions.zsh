@@ -11,7 +11,7 @@ function ls {
 			-C "$@" \
 			| less
 	elif [[ $(uname -s) == "Darwin" ]]; then
-		export CLICOLOR_FORCE=1
+		CLICOLOR_FORCE=1
 		command ls \
 			-F \
 			-h \

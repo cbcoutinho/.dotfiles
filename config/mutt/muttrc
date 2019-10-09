@@ -209,7 +209,7 @@ hdr_order from: to: cc: date: subject:  # and in this order
 
 ##- Notmuch
 
-set nm_default_uri = "notmuch:///home/chris/.mail"
+set nm_default_uri = "notmuch:///Users/chris/.mail"
 
 # Sets the default autocompletion to use notmuch instead, but also
 # sets the first line as blank to have minimal 1 result:

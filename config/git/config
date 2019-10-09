@@ -1,7 +1,7 @@
 ; vim: filetype=gitconfig
 [user]
 	name = Chris Coutinho
-	email = chrisbcoutinho@gmail.com
+	email = chris@datachef.co
 	signingKey = C31AD5CE0DB152360CBB78D3ACC5190D2F6F160F
 [commit]
 	verbose = true

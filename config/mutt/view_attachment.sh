@@ -121,7 +121,7 @@ fi
 # Otherwise we've been told what to use.  So do an open -a.
 
 if [ -z $open_with ]; then
-    xdg-open $newfile >/dev/null
+    open $newfile >/dev/null
 else
-    xdg-open -a "$open_with" $newfile >/dev/null
+    open -a "$open_with" $newfile >/dev/null
 fi

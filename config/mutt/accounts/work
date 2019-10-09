@@ -15,7 +15,7 @@ mailboxes +INBOX \
 	+SalesforceErrors \
 
 set from = "c.coutinho@focuscura.nl"
-set sendmail = "/usr/bin/msmtp -a work"
+set sendmail = "/usr/local/bin/msmtp -a work"
 set sendmail_wait = 0
 
 # Don't record sent mail in 'sent' box - let Google/Microsoft handle it
