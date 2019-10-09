@@ -7,7 +7,8 @@ ui = blinkenlights
 #ui = quiet
 #ui = machineui
 #ui = basic
-accounts = ChrisCoutinho,Humboldt
+accounts = ChrisCoutinho,Humboldt,Work
+#accounts = Work
 #maxsyncaccounts = 2
 
 # NOTE: This is a python2 file
@@ -18,7 +19,9 @@ sockettimeout = 60
 
 # Apply following settings for all accounts
 [DEFAULT]
-#postsynchook = notmuch new
+ssl = yes
+sslcacertfile = /var/lib/ca-certificates/ca-bundle.pem
+#sslcacertfile = /usr/local/etc/openssl/cert.pem
 
 
 [Account ChrisCoutinho]
@@ -47,14 +50,12 @@ type = Gmail
 remoteuser = chrisbcoutinho@gmail.com
 remotepasseval = get_pass(account="Gmail-offlineimap")
 realdelete = no
-ssl = yes
 
 # See these github issues regarding forcing this issue for gmail:
 # 	https://github.com/OfflineIMAP/offlineimap/issues/573
 # 	https://github.com/imaplib2/imaplib2/issues/5
 ssl_version = tls1_2
 
-sslcacertfile = /var/lib/ca-certificates/ca-bundle.pem
 nametrans = lambda folder: {'[Gmail]/Drafts':    'Drafts',
 							'[Gmail]/Sent Mail': 'Sent',
 							'[Gmail]/Starred':   'Flagged',
@@ -94,8 +95,6 @@ type = Gmail
 remoteuser = cc162@humboldt.edu
 remotepasseval = get_pass(account="HSU")
 realdelete = no
-ssl = yes
-sslcacertfile = /var/lib/ca-certificates/ca-bundle.pem
 
 # See these github issues regarding forcing this issue for gmail:
 # 	https://github.com/OfflineIMAP/offlineimap/issues/573
@@ -124,7 +123,7 @@ remoterepository = Work-Remote
 
 [Repository Work-Local]
 type = Maildir
-localfolders = ~/.mail/redstack365
+localfolders = ~/.mail/focuscura
 
 # Propogate deletes to remote
 #sync_deletes = no
@@ -133,13 +132,11 @@ nametrans = lambda folder: {'Sent': 'Sent Items'}.get(folder, folder)
 
 [Repository Work-Remote]
 type = IMAP
-remoteuser = c.coutinho@redstack365.nl
-remotepasseval = get_pass(account="Redstack365")
+remoteuser = c.coutinho@focuscura.nl
+remotepasseval = get_pass(account="FocusCura")
 remotehost = outlook.office365.com
 remoteport = 993
 realdelete = no
-ssl = yes
-sslcacertfile = /var/lib/ca-certificates/ca-bundle.pem
 nametrans = lambda folder: {'Sent Items': 'Sent'}.get(folder, folder)
 folderfilter = lambda folder: folder in [
 	'INBOX',
@@ -147,15 +144,4 @@ folderfilter = lambda folder: folder in [
 	'Drafts',
 	'Archive',
 	'Clutter',
-	'Newsletters',
-	'Newsletters/Basecamp',
-	'Newsletters/Dakota',
-	'Newsletters/MOOSE',
-	'Newsletters/Official',
-	'Newsletters/ParaView',
-	'Newsletters/PostgreSQL',
-	'Newsletters/PostgreSQL/General',
-	'Newsletters/PostgreSQL/Hackers',
-	'Newsletters/PostgreSQL/Novice',
-	'Newsletters/RED-News',
 	]

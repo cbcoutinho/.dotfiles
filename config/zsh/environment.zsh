@@ -78,10 +78,10 @@ if command -v fd >/dev/null; then
 fi
 
 # Set default editor to `vim`
-if command -v vim >/dev/null; then
-	export EDITOR=$(which vim)
+if command -v nvim >/dev/null; then
+	export EDITOR=$(which nvim)
 	export VISUAL=$EDITOR
-	export DIFFPROG='vim -d'
+	export DIFFPROG='nvim -d'
 fi
 
 # Flags using `nproc`
