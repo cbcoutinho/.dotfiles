@@ -3,7 +3,7 @@
 ## Account Settings -----------------------------------
 # Default inbox
 
-set folder           = ~/.mail/redstack365						# mailbox location
+set folder           = ~/.mail/focuscura						# mailbox location
 set header_cache     = ~/.config/mutt/cache/headers	# where to store headers
 set message_cachedir = ~/.config/mutt/cache/bodies	# where to store bodies
 #set certificate_file = ~/.config/mutt/.office365/certificates	# where to store certs
@@ -20,19 +20,19 @@ mailboxes +INBOX \
 	+Sent \
 	+Drafts \
 	+Clutter \
-	+Newsletters \
-	+Newsletters.Basecamp \
-	+Newsletters.Dakota \
-	+Newsletters.MOOSE \
-	+Newsletters.Official \
-	+Newsletters.ParaView \
-	+Newsletters.PostgreSQL \
-	+Newsletters.PostgreSQL.General \
-	+Newsletters.PostgreSQL.Hackers \
-	+Newsletters.PostgreSQL.Novice \
-	+Newsletters.RED-News \
+	#+Newsletters \
+	#+Newsletters.Basecamp \
+	#+Newsletters.Dakota \
+	#+Newsletters.MOOSE \
+	#+Newsletters.Official \
+	#+Newsletters.ParaView \
+	#+Newsletters.PostgreSQL \
+	#+Newsletters.PostgreSQL.General \
+	#+Newsletters.PostgreSQL.Hackers \
+	#+Newsletters.PostgreSQL.Novice \
+	#+Newsletters.RED-News \
 
-set from = "c.coutinho@redstack.nl"
+set from = "c.coutinho@focuscura.nl"
 set sendmail = "/usr/bin/msmtp -a work"
 set sendmail_wait = 0
 
