@@ -35,7 +35,7 @@ ln -s $dotfiles/.gitignore_global ~/.gitignore_global
 ln -s $dotfiles/.nvmrc ~/.nvmrc
 
 # Python
-pip install --user -U virtualenvwrapper
+pip3 install --user -U virtualenvwrapper
 
 # Xorg
 ln -s $dotfiles/.xinitrc ~/.xinitrc
