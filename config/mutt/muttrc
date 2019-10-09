@@ -195,7 +195,7 @@ set forward_quote                    # include message in forwards
 
 set text_flowed                      # Sets all plain text messages to properly use linebreaks
 
-set editor = "vim"
+set editor = "nvim"
 
 #- Header Options -------------------------------------
 
