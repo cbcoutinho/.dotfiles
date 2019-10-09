@@ -91,6 +91,12 @@ if command -v nproc >/dev/null; then
 	export MOOSE_JOBS=`nproc`
 fi
 
+# Jenv is like pyenv for java (on mac osx)
+if command -v jenv >/dev/null; then
+	export PATH="$HOME/.jenv/bin:$PATH"
+	eval "$(jenv init -)"
+fi
+
 # added by travis gem
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 

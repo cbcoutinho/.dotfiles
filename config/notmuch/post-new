@@ -2,4 +2,4 @@
 #
 # Use notmuch hook to index the notmuch database using queries
 
-notmuch tag --input=/home/chris/.config/notmuch/tag-list
+notmuch tag --input=$HOME/.config/notmuch/tag-list
