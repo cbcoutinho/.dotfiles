@@ -18,8 +18,8 @@ window:
   # Specified in number of columns/lines, not pixels.
   # If both are `0`, this setting is ignored.
   dimensions:
-    columns: 80
-    lines: 24
+    columns: 120
+    lines: 36
 
   # Window position (changes require restart)
   #
@@ -109,10 +109,10 @@ font:
     #   - (macOS) Menlo
     #   - (Linux) monospace
     #   - (Windows) Consolas
-    family: FiraCode
+    family: Fira Code
 
     # The `style` can be specified to pick a specific face.
-    #style: Regular
+    style: Retina
 
   # Bold font face
   bold:
@@ -120,7 +120,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: FiraCode
+    family: Fira Code
 
     # The `style` can be specified to pick a specific face.
     #style: Bold
@@ -131,7 +131,7 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: FiraCode
+    family: Fira Code
 
     # The `style` can be specified to pick a specific face.
     #style: Italic
@@ -148,7 +148,7 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 11.0
+  size: 14.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.

@@ -37,7 +37,7 @@ export LESS_TERMCAP_us=$'\e[0;35m'
 #-------------------------------------------------------------
 
 export COLUMNS  # Remember columns for subprocesses.
-eval "$(dircolors)"
+#eval "$(dircolors)"
 
 #-------------------------------------------------------------
 # zsh options
@@ -84,8 +84,9 @@ fi
 # Fish shell like syntax highlighting for Zsh
 #
 # @link: http://github.com/zsh-users/zsh-syntax-highlighting
-if [ -d ~/Software/zsh-syntax-highlighting ]; then
-	source ~/Software/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [ -d /usr/local/share/zsh-syntax-highlighting/ ]; then
+	source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+	export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
 	ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
 	# To have commands starting with `rm -rf /` in red:
@@ -97,8 +98,8 @@ fi
 # Fish-like fast/unobtrusive autosuggestions for zsh.
 #
 # @link: http://github.com/zsh-users/zsh-autosuggestions
-if [ -d ~/Software/zsh-autosuggestions ]; then 
-	source ~/Software/zsh-autosuggestions/zsh-autosuggestions.zsh
+if [ -d /usr/local/share/zsh-autosuggestions ]; then
+	source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
 # Append personal zsh-completions to fpath

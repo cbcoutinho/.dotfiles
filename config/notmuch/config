@@ -12,7 +12,7 @@
 #
 
 [database]
-path=/home/chris/.mail
+path=/Users/chris/.mail
 
 # User configuration
 #

@@ -3,7 +3,7 @@ alias qutebrowser="qutebrowser --backend webengine"
 alias chromium="chromium --disk-cache-dir=/tmp/cache"
 
 # ls aliases
-alias ls="ls --group-directories-first"
+#alias ls="ls --group-directories-first"
 alias ll="ls -l"
 alias la="ls -a"
 alias l="ls -la"

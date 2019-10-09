@@ -70,7 +70,7 @@ sandbox_init_nvm() {
 }
 
 sandbox_init_conda() {
-	CONDA_ROOT=$HOME/Software/anaconda3
+	CONDA_ROOT=$HOME/anaconda3
 	if [ -d $CONDA_ROOT ]; then
 		source $CONDA_ROOT/etc/profile.d/conda.sh
 		conda activate

@@ -21,7 +21,7 @@ folder-hook 'personal' 'source ~/.config/mutt/accounts/personal'
 folder-hook 'work' 'source ~/.config/mutt/accounts/work'
 folder-hook 'humboldt' 'source ~/.config/mutt/accounts/humboldt'
 
-source accounts/personal
+source accounts/work
 
 macro index,pager <f2> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/personal<enter><change-folder>!<enter>'
 macro index,pager <f3> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/work<enter><change-folder>!<enter>'
@@ -206,7 +206,7 @@ hdr_order from: to: cc: date: subject:  # and in this order
 
 ##- Notmuch
 
-set nm_default_uri = "notmuch:///home/chris/.mail"
+set nm_default_uri = "notmuch:///Users/chris/.mail"
 
 # Sets the default autocompletion to use notmuch instead, but also
 # sets the first line as blank to have minimal 1 result:
