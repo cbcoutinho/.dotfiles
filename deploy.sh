@@ -8,7 +8,14 @@ dotfiles=~/Projects/.dotfiles
 
 # Install rust
 if [ ! -d ~/.cargo ]; then
-	curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path
+	curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path -v -y
+fi
+
+# Install homebrew on mac
+if [[ $(uname -s) == "Darwin" ]]
+then
+	/usr/bin/ruby -e \
+		"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
 # Move all contents of current ~/.config directory into config, and set link to
