@@ -9,10 +9,14 @@ export PIP_WHEEL_DIR="${WHEELHOUSE}"
 [ -d "$HOME/.poetry/bin" ] && export PATH=$HOME/.poetry/bin:$PATH
 
 # Python virtualenvwrapper
+USER_BASE=$(python3 -c 'import site; print(site.USER_BASE)')
 export WORKON_HOME=~/.local/share/virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=$(which python3)
-export VIRTUALENVWRAPPER_SCRIPT="$HOME/.local/bin/virtualenvwrapper.sh"
-source "$HOME/.local/bin/virtualenvwrapper_lazy.sh"
+export VIRTUALENVWRAPPER_SCRIPT="$USER_BASE/bin/virtualenvwrapper.sh"
+export PATH="$USER_BASE/bin:$PATH"
+
+# NOTE: This assumes that virtualenvwrapper is installed
+source "$USER_BASE/bin/virtualenvwrapper_lazy.sh"
 
 # IPython directory
 export IPYTHONDIR=$HOME/.config/ipython
