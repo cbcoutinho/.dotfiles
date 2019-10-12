@@ -3,10 +3,10 @@
 [general]
 #ui = ttyui
 #ui = syslog
-ui = blinkenlights
+#ui = blinkenlights
 #ui = quiet
 #ui = machineui
-#ui = basic
+ui = basic
 accounts = ChrisCoutinho,Humboldt,Work
 #accounts = Work
 #maxsyncaccounts = 2
