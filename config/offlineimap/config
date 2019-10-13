@@ -7,7 +7,7 @@
 #ui = quiet
 #ui = machineui
 ui = basic
-accounts = ChrisCoutinho,Humboldt,Work
+accounts = ChrisCoutinho,Humboldt,FocusCura
 
 # NOTE: This is a python2 file
 pythonfile=~/.config/offlineimap/offlineimap.py
@@ -114,11 +114,11 @@ folderfilter = lambda folder: folder not in ['[Gmail]/Trash',
 
 ## The following info was obtained from:
 #	https://ryanmcconville.com/blog/post/offlineimap-with-outlook365/
-[Account Work]
-localrepository = Work-Local
-remoterepository = Work-Remote
+[Account FocusCura]
+localrepository = FocusCura-Local
+remoterepository = FocusCura-Remote
 
-[Repository Work-Local]
+[Repository FocusCura-Local]
 type = Maildir
 localfolders = ~/.mail/focuscura
 
@@ -127,7 +127,7 @@ localfolders = ~/.mail/focuscura
 
 nametrans = lambda folder: {'Sent': 'Sent Items'}.get(folder, folder)
 
-[Repository Work-Remote]
+[Repository FocusCura-Remote]
 type = IMAP
 remoteuser = c.coutinho@focuscura.nl
 remotepasseval = get_pass(account="FocusCura")
