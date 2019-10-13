@@ -102,7 +102,10 @@ if [ -d ~/Software/zsh-autosuggestions ]; then
 fi
 
 # Append personal zsh-completions to fpath
-fpath=($ZDOTDIR/.zfunc $fpath)
+fpath=(
+	$ZDOTDIR/.zfunc
+	$fpath
+)
 
 # Sources aws completion if exists
 if [ -f /usr/bin/aws_zsh_completer.sh ]; then
