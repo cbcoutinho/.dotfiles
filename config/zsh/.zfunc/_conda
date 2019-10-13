@@ -5,26 +5,44 @@
 #
 # Author: Valentin Haenel <valentin@haenel.co>  (https://github.com/esc/)
 # Licence: WTFPL (http://sam.zoy.org/wtfpl/)
-# Version: 0.6-dev
+# Version: 0.9-dev
 # Homepage: https://github.com/esc/conda-zsh-completion
 # Demo: https://asciinema.org/a/16516
 #
 # This completion depends on Python for a json parser, sorry. Unfortunately
 # there is no such thing in zsh (yet).
 #
-# To use this completion drop it somewhere in you '$fpath', e.g.:
+# To use this completion, install it somewhere on your hard drive:
 #
-#     $ git clone $CLONEURL
-#     $ fpath+=$PWD/conda-zsh-completion
-#     $ compinit conda
+#     $ git clone https://github.com/esc/conda-zsh-completion
+#
+# And then add it to your $fpath in ~/.zshrc before you call compinit:
+#
+#     fpath+=/path/to/where/you/installed/conda-zsh-completion
+#     compinit
+#
+# If you're using oh-my-zsh or Prezto, they will call compinit for you, so
+# just add it to your $fpath before calling the OMZ or Prezto initialization
+# functions. For example:
+#
+#     git clone https://github.com/esc/conda-zsh-completion ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
+#
+# And add lines in `.zshrc`
+#     plugins=(… conda-zsh-completion)
+#     autoload -U compinit && compinit
 #
 # To activate the completion cache for packages, add the following to your
 # '.zshrc':
 #
 #     zstyle ':completion::complete:*' use-cache 1
 #
+# To display subcommand completion in groups, please add the following to your
+# '.zshrc':
+#
+#    zstyle ":conda_zsh_completion:*" use-groups true
+#
 # To forcefully clean the completion cache, look in '~/.zcompcache' and remove
-# file starting with 'conda_'.
+# file starting with 'conda_'. And/or do 'rm ~/.zcompdump*'.
 #
 # When developing, you can use the following to reload the completion after
 # having modified it:
@@ -36,10 +54,23 @@
 #
 # CHANGELOG
 # ---------
+# * v0.9
+#
+#   * XXX
+#
+# * v0.8
+#
+#   * Updated installation instructions and added a license file, thanks to
+#     Andrew Janke
+#
+# * v0.7
+#
+#   * Fix alignment during menu-completion
 #
 # * v0.6
 #
-#   * 
+#   * conda activate and conda deactivate can now be completed, thanks to
+#     Taylor Kang Beck
 #
 # * v0.5
 #
@@ -272,7 +303,7 @@ except KeyError:
 }
 
 __conda_commands(){
-    local -a package maint environment help config special
+    local -a package maint environment help config special tmp
     package=(
         search:'Search for packages and display their information.'
         install:'Install a list of packages into a specified conda environment.'
@@ -287,6 +318,8 @@ __conda_commands(){
         list:'List linked packages in a conda environment.'
         remove:'Remove a list of packages from a specified conda environment.'
         uninstall:'Alias for conda remove'
+        activate:'Activate an environment; alias for source activate'
+        deactivate:'Deactivate an environment; alias for source deactivate'
     )
     help=(
         help:'Displays a list of available conda commands and their help strings.'
@@ -304,13 +337,21 @@ __conda_commands(){
         env:'Manage environments.'
         build:'tool for building conda packages'
         )
-    _describe -t package_commands "package commands" package
-    _describe -t maint_commands "maint commands" maint
-    _describe -t environment_commands "environment commands" environment
-    _describe -t help_commands "help commands"  help
-    _describe -t config_commands "config commands"  config
-    _describe -t special_commands "special commands"  special
-    _describe -t external_commands "external commands"  external
+
+    # This takes care of alignment if the user wanted the subcommand completion
+    # to be split into groups.
+    zstyle -s ":conda_zsh_completion:*" use-groups tmp
+    if [[ -n $tmp ]] ; then
+        _describe -t package_commands "package commands" package
+        _describe -t maint_commands "maint commands" maint
+        _describe -t environment_commands "environment commands" environment
+        _describe -t help_commands "help commands"  help
+        _describe -t config_commands "config commands"  config
+        _describe -t special_commands "special commands"  special
+        _describe -t external_commands "external commands"  external
+    else
+        _describe "conda commands" package -- maint -- environment -- help -- config -- special -- external
+    fi
 }
 
 __conda_caching_policy() {
@@ -481,7 +522,7 @@ case $state in
                       '*:packages:{__conda_packages_installed $specifier $environment}' \
         ;;
     (config)
-        # this allows completing multiple keys whet --get is given
+        # this allows completing multiple keys when --get is given
         local -a last_item get_opts
         last_item=$line[$CURRENT-1]
         if (( ${line[(I)--get]} ))  && (( ${__conda_config_keys[(I)$last_item]} )) ; then
@@ -609,6 +650,14 @@ case $state in
             ;;
         esac
         ;;
+    (activate)
+            _arguments -C $help_opts \
+                          '--stack[activate this environment on top of the previous environment]' \
+                          '*:environment:__conda_envs'
+                    ;;
+    (deactivate)
+            _arguments -C $help_opts \
+                    ;;
     esac
     ;;
 esac
