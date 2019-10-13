@@ -8,8 +8,6 @@
 #ui = machineui
 ui = basic
 accounts = ChrisCoutinho,Humboldt,Work
-#accounts = Work
-#maxsyncaccounts = 2
 
 # NOTE: This is a python2 file
 pythonfile=~/.config/offlineimap/offlineimap.py
@@ -21,7 +19,6 @@ sockettimeout = 60
 [DEFAULT]
 ssl = yes
 sslcacertfile = /var/lib/ca-certificates/ca-bundle.pem
-#sslcacertfile = /usr/local/etc/openssl/cert.pem
 
 
 [Account ChrisCoutinho]
