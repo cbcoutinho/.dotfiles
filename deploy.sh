@@ -34,10 +34,6 @@ ln -s $dotfiles/.gnupg/gpg.conf ~/.gnupg/gpg.conf
 ln -s $dotfiles/.gnupg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
 ln -s $dotfiles/.gnupg/sshcontrol ~/.gnupg/sshcontrol
 
-# Git config and ignore files
-ln -s $dotfiles/.gitconfig ~/.gitconfig
-ln -s $dotfiles/.gitignore_global ~/.gitignore_global
-
 # Node/npm/nvm dot files
 ln -s $dotfiles/.nvmrc ~/.nvmrc
 

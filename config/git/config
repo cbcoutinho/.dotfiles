@@ -1,3 +1,4 @@
+# vim: filetype=gitconfig
 [user]
 	name = Chris Coutinho
 	email = chrisbcoutinho@gmail.com
@@ -6,15 +7,25 @@
 	verbose = true
 	gpgsign = true
 [core]
-	excludesfile = ~/.gitignore_global
+	excludesfile = ~/.config/git/gitignore_global
 	pager = less -x1,5
 	# This sets `git {diff,show} tabs as 4 spaces
 	#	https://stackoverflow.com/a/10584237
-[diff]
-	algorithm = minimal
 [sendemail]
 	smtpencryption = tls
 	smtpserver = /usr/bin/msmtp
+[diff]
+	algorithm = minimal
+	tool = vimdiff
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+[mergetool]
+	prompt = true
+[mergetool "vimdiff"]
+	cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[difftool]
+	prompt = false
 
 
 [color]
