@@ -58,9 +58,12 @@ sandbox_init_rvm() {
 
 # Node Version Manager (NVM)
 sandbox_init_nvm() {
-	export NVM_DIR=~/Software/nvm
-	if [ -d $NVM_DIR ]; then
-		[ -s $NVM_DIR/nvm.sh ] && source $NVM_DIR/nvm.sh
+	if [[ $(uname -s) == "Darwin" ]]; then
+		# This assumes 'nvm' is already installed via brew
+		source $(brew --prefix nvm)/nvm.sh
+		export NVM_DIR=$HOME/.nvm
+	elif [ -d "${NVM_DIR:-$HOME/Software/nvm}" ]; then
+		[ -s $NVM_DIR/nvm.sh ] && source $NVM_DIR/nvm.sh && export NVM_DIR
 	else
 		echo "You're trying to use 'nvm', but it's not installed"
 	fi
