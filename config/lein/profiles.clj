@@ -4,7 +4,7 @@
                        [slamhound "RELEASE"]
                        [com.bhauman/rebel-readline "0.1.4"]]
 
-        :plugins [[venantius/ultra "0.6.0"]
+        :plugins [;[venantius/ultra "0.6.0"]
                   [lein-cljfmt "0.6.4"]
                   [lein-midje "3.2.1"]
                   [lein-jupyter "0.1.16"]]
