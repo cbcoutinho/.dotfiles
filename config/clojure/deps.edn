@@ -43,6 +43,10 @@
             :test {:extra-paths ["test"]
                    :extra-deps {org.clojure/test.check {:mvn/version "RELEASE"}}}
 
+            :check {:extra-deps {athos/clj-check {:git/url "https://github.com/athos/clj-check.git"
+                                                  :sha "b48d4e7000586529f81c1e29069b503b57259514"}}
+                    :main-opts ["-m" "clj-check.check"]}
+
             ;; Eastwood is a clojure lint tool
             ;; see https://github.com/jonase/eastwood#running-eastwood-in-a-repl
             :eastwood {:extra-deps {jonase/eastwood {:mvn/version "RELEASE"}}
@@ -56,13 +60,25 @@
             :socket {:jvm-opts ["-Dclojure.server.repl={:port,50505,:accept,clojure.core.server/repl}"]}
 
             ;; - start a modern nREPL server on a random available port:
-            :nrepl {:extra-deps {nrepl {:mvn/version "RELEASE"}} 
+            :nrepl {:extra-deps {nrepl {:mvn/version "RELEASE"}}
                     :main-opts ["-m" "nrepl.cmdline"]}
-
 
             ;; Easily create new clojure projects
             :new {:extra-deps {seancorfield/clj-new {:mvn/version "RELEASE"}}
-                  :main-opts ["-m" "clj-new.create"]}}}
+                  :main-opts ["-m" "clj-new.create"]}
+
+            :rebl {:extra-deps
+                   {org.clojure/clojure {:mvn/version "1.10.1"}
+                    org.clojure/core.async {:mvn/version "0.4.490"}
+                    com.cognitect/rebl {:local/root 
+                                        "/Users/chris/Downloads/REBL-0.9.220/REBL-0.9.220.jar"}
+                    org.openjfx/javafx-fxml     {:mvn/version "11.0.2"}
+                    org.openjfx/javafx-controls {:mvn/version "11.0.2"}
+                    org.openjfx/javafx-swing    {:mvn/version "11.0.2"}
+                    org.openjfx/javafx-base     {:mvn/version "11.0.2"}
+                    org.openjfx/javafx-web      {:mvn/version "11.0.2"}}}}}
+                  ;:main-opts ["-m" "cognitect.rebl"]}}
+
 
   ;; Provider attributes
 
