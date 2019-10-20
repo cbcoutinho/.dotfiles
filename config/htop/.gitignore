@@ -3,7 +3,6 @@
 
 # But not these files...
 !.gitignore
-!htoprc-tumbleweed
-!htoprc-leap
+!htoprc
 
 #Or these directories
