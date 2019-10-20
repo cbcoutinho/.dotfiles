@@ -103,6 +103,11 @@ fi
 # Python-related vars
 source $ZDOTDIR/python_env.zsh
 
+# MacTex doesn't update PATH
+if [[ $(uname -s) == "Darwin" ]] then
+	export PATH="/Library/Tex/texbin:$PATH"
+fi
+
 # Fix PATH, LD_LIBRARY_PATH due to possible 'blanks'
 #	https://github.com/google/pulldown-cmark/issues/122
 export PATH=$(echo $PATH | sed -E -e 's/^:*//' -e 's/:*$//' -e 's/:+/:/g')
