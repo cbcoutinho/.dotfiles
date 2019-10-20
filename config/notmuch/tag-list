@@ -13,8 +13,8 @@
 -inbox +freebsd freebsd.org
 -inbox +github github.com
 -inbox +gitlab gitlab.com
--inbox +gnupg gpg OR gnupg
--inbox +opensuse 'subject:"/\[opensuse(-factory|-announce)?\]/"'
+-inbox +gnupg gnupg-users@gnupg.org
+-inbox +opensuse 'subject:"/\[opensuse(-factory|-announce|-science)?\]/"'
 -inbox +pass password-store
 -inbox +python python.org
 -inbox +rotaract rotaract
