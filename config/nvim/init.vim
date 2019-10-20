@@ -2,60 +2,20 @@
 
 " Shell settings {{{
 
-if has('win32')
-	set shell=powershell.exe
-	let g:python_host_prog='C:/Development/anaconda3/envs/neovim/python.exe'
-	let g:python3_host_prog='C:/Development/anaconda3/envs/neovim3/python.exe'
-	let g:ruby_host_prog='C:/Users/c.coutinho/scoop/apps/ruby/current/gems/bin/neovim-ruby-host.bat'
-else
-	set shell=sh			" Force shell to use bash
-	let g:python_host_prog='/home/chris/.local/share/virtualenvs/neovim/bin/python'
-	let g:python3_host_prog='/home/chris/.local/share/virtualenvs/neovim3/bin/python3'
-	let g:ruby_host_prog=systemlist("which neovim-ruby-host")[0]
-	let g:npm_host_prog=system("which npm | sed 's/npm/neovim-node-host/'")
-endif
+set shell=sh			" Force shell to use bash
+let g:python_host_prog = "/Users/chris/.local/share/virtualenvs/neovim/bin/python"
+let g:python3_host_prog = "/Users/chris/.local/share/virtualenvs/neovim3/bin/python3"
+"let g:ruby_host_prog=systemlist("which neovim-ruby-host")[0]
+"let g:npm_host_prog=system("which npm | sed 's/npm/neovim-node-host/'")
 
 " }}}
 " Plugins {{{
-" Download and install `plug-vim` {{{
-if has('win32')
-	let plugfile = 'C:/Users/ccoutinho/AppData/Local/nvim/autoload/plug.vim'
-	let plugin_dir = 'C:/Users/ccoutinho/AppData/Local/nvim/plugged'
 
-	" https://github.com/equalsraf/neovim-qt/issues/327
-	source $VIMRUNTIME/mswin.vim
-else
-	if has('nvim')
-		let plugfile = '~/.local/share/nvim/site/autoload/plug.vim'
-		let plugin_dir = '~/.local/share/nvim/plugged'
-	else
-		let plugfile = '~/.vim/autoload/plug.vim'
-		let plugin_dir = '~/.vim/plugged'
-	endif
+let plugin_dir = "/Users/chris/.local/share/nvim/plugged"
+if !isdirectory(plugin_dir)
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-if empty(glob(plugfile))
-	let plug_url = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-	function GetPlugVim(plugfile, plug_url)
-		if has('win32')
-			"execute "!echo `plug.vim` not found, first download it manually."
-			execute "!md -Force ~/AppData/Local/nvim/autoload;"
-						\ "$url = '" a:plug_url "'; $url = $url.replace(' ','');"
-						\ "$file = '" a:plugfile "'; $file = $file.replace(' ','');"
-						\ "(New-Object Net.WebClient).DownloadFile( $url, "
-						\ " $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath( $file ))"
-		else
-			" Unix world
-			execute '!curl -fLo'
-						\ a:plugfile
-						\ '--create-dirs'
-						\ 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-		endif
-		autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-	endfunction
-	call GetPlugVim(plugfile,plug_url)
-endif
-" }}}
 call plug#begin(plugin_dir)
 " Build Function(s) {{{
 
