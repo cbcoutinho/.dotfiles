@@ -20,6 +20,7 @@ mailboxes +INBOX \
 	+Sent \
 	+Drafts \
 	+Clutter \
+	+SalesforceErrors \
 	#+Newsletters \
 	#+Newsletters.Basecamp \
 	#+Newsletters.Dakota \

@@ -139,6 +139,7 @@ folderfilter = lambda folder: folder in [
 	'INBOX',
 	'Sent Items',
 	'Drafts',
+	'SalesforceErrors',
 	'Archive',
 	'Clutter',
 	]
