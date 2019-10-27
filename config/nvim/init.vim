@@ -105,6 +105,12 @@ Plug 'eraserhd/parinfer-rust', {
 			"\ 'do': function('BuildParinferRust') }
 
 " }}}
+" Scala {{{
+
+Plug 'derekwyatt/vim-scala'
+Plug 'ktvoelker/sbt-vim'
+
+" }}}
 " Golang {{{
 
 if has('nvim-0.3.1')
@@ -124,6 +130,11 @@ Plug 'nelstrom/vim-markdown-folding'	" Easily fold markdown files by section
 " MOOSE{{{
 
 Plug 'elementx54/moosefw_vim'
+
+" }}}
+" Apex/Salesforce {{{
+
+"Plug 'neowit/vim-force.com'
 
 " }}}
 " }}}
@@ -486,6 +497,10 @@ autocmd! FileType vim-plug nmap <buffer> o <plug>(plug-preview)<c-w>P
 nnoremap ; :Buffers<CR>
 nnoremap <Leader>t :Files<CR>
 nnoremap <Leader>r :Tags<CR>
+nnoremap <leader>v :FzfFiles<cr>
+nnoremap <leader>u :FzfTags<cr>
+nnoremap <leader>j :call fzf#vim#tags("'".expand('<cword>'))<cr>
+
 
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
