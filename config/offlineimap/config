@@ -137,6 +137,7 @@ realdelete = no
 nametrans = lambda folder: {'Sent Items': 'Sent'}.get(folder, folder)
 folderfilter = lambda folder: folder in [
 	'INBOX',
+	'INBOX/JIRA',
 	'Sent Items',
 	'Drafts',
 	'SalesforceErrors',
