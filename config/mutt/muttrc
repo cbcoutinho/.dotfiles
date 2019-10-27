@@ -62,7 +62,7 @@ macro index,pager ,k "<enter-command>source ~/.config/mutt/colors/git-diff<enter
 
 set sidebar_divider_char   = ' │ '
 set sidebar_visible = yes
-set sidebar_width   = 25
+set sidebar_width   = 30
 
 #color sidebar_new color221 color233
 color sidebar_new green black
