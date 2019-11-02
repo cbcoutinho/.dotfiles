@@ -103,7 +103,7 @@ fi
 
 # Append personal zsh-completions to fpath
 fpath=(
-	$ZDOTDIR/functions
+	$ZDOTDIR/completions
 	$fpath
 )
 
