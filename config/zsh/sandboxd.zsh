@@ -44,18 +44,6 @@ function sandbox_hook() {
 }
 
 
-# RVM configuration
-sandbox_init_rvm() {
-	if [ -f ~/.rvm/scripts/rvm ]; then
-		# Load `rvm`
-		source ~/.rvm/scripts/rvm
-	else
-		echo 'To get `rvm` first softlink .rvmrc to $HOME, then'
-		echo 'Execute the following to download `rvm`:'
-		echo '	curl -sSL https://get.rvm.io | bash -s stable'
-	fi
-}
-
 # Node Version Manager (NVM)
 sandbox_init_nvm() {
 	if [[ $(uname -s) == "Darwin" ]]; then
@@ -87,6 +75,7 @@ sandbox_hook nvm nvm
 sandbox_hook nvm npm
 sandbox_hook nvm node
 sandbox_hook nvm yarn
+nvm use
 
 # Anaconda
 sandbox_hook conda conda

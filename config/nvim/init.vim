@@ -65,10 +65,10 @@ endfunction
 
 Plug 'dense-analysis/ale'					" Async linting/fixing using LSP
 
-if has('nvim-0.3')
-	Plug 'zchee/deoplete-jedi' " Python
-	Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-endif
+Plug 'zchee/deoplete-jedi' " Python
+Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " }}}
 " Rust {{{
@@ -172,6 +172,8 @@ Plug 'neomutt/neomutt.vim'				" Vim syntax for neomutt
 " Snippets in neovim
 Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
+
+Plug 'neomake/neomake'
 
 " }}}
 " Vim/git-related plugins {{{
@@ -326,6 +328,7 @@ if has("nvim")
 				\ '\W\zs\(TODO\|FIXME\|CHANGED\|XXX\|BUG\|HACK\)')
 	autocmd Syntax * call matchadd('Debug',
 				\ '\W\zs\(NOTE\|INFO\|IDEA\)')
+	autocmd FileType json syntax match Comment +\/\/.\+$+
 endif
 
 " }}}
@@ -338,7 +341,7 @@ let g:lightline = {
 			\	'colorscheme':'gruvbox',
 			\	'active': {
 			\		'left': [ ['mode', 'paste'],
-			\			['gitbranch', 'readonly', 'filename', 'modified']
+			\			['cocstatus', 'gitbranch', 'readonly', 'filename', 'modified']
 			\		],
 			\	},
 			\	'component': {
@@ -346,6 +349,7 @@ let g:lightline = {
 			\	},
 			\	'component_function': {
 			\		'gitbranch': 'fugitive#head',
+			\		'cocstatus': 'coc#status'
 			\	},
 			\	}
 let g:lightline.separator = {
@@ -466,6 +470,7 @@ au BufNewFile,BufRead .shrc set filetype=sh     " Sets .shrc files to use sh syn
 au BufNewFile,BufRead *.cls set filetype=tex    " Sets .cls files to use latex syntax
 au BufNewFile,Bufread *.wiki set filetype=vimwiki
 au BufNewFile,Bufread Pipfile.lock set filetype=json
+au BufNewFile,BufRead *.sbt set filetype=scala
 
 " Usually for OpenFOAM/foam files
 au BufRead * if search('\M-*- C++ -*-', 'n', 1) | setlocal ft=cpp | endif
