@@ -1,11 +1,7 @@
 # Organizing this file drew inspiration from:
 #	https://github.com/maximbaz/dotfiles
 
-# Lazy-loading
-source $ZDOTDIR/sandboxd.zsh
-
-# My environment
-source $ZDOTDIR/environment.zsh
+# Aliases used in shell
 source $ZDOTDIR/aliases.zsh
 
 # `ls` function needs `less` alias

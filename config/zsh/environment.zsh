@@ -9,8 +9,7 @@ if [[ -d /opt/mssql-tools/bin ]]; then
 fi
 
 # Add CUDA to path if exists
-CUDA_DIR=/usr/local/cuda
-if [[ -d $CUDA_DIR ]]; then
+if [[ -d ${CUDA_DIR:-/usr/local/cuda} ]]; then
 	export PATH="$CUDA_DIR/bin:$PATH"
 	export LD_LIBRARY_PATH="$CUDA_DIR/lib64:$LD_LIBRARY_PATH"
 fi
