@@ -11,7 +11,7 @@ let g:python3_host_prog = "/Users/chris/.local/share/virtualenvs/neovim3/bin/pyt
 " }}}
 " Plugins {{{
 
-let plugin_dir = "/Users/chris/.local/share/nvim/plugged"
+let plugin_dir = stdpath('data') . "/plugged"
 if !isdirectory(plugin_dir)
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
@@ -63,6 +63,9 @@ endfunction
 "Plug 'ncm2/ncm2-jedi'  " Python
 "Plug 'ncm2/ncm2-racer' " Rust
 
+" Float completions
+Plug 'ncm2/float-preview.nvim'
+
 Plug 'dense-analysis/ale'					" Async linting/fixing using LSP
 
 Plug 'zchee/deoplete-jedi' " Python
@@ -89,6 +92,7 @@ endif
 " }}}
 " Lisp-like (e.g. Clojure) {{{
 
+Plug 'clojure-vim/async-clj-omni'		" Completion engine for clojure
 Plug 'tpope/vim-fireplace'				" Connects to the nREPL for 'dynamic' clojure development
 Plug 'tpope/vim-classpath'				" Sets a classpath for lein commands in vim
 Plug 'jpalardy/vim-slime'				" Send text to another pane (ie. with a REPL)
@@ -103,6 +107,8 @@ Plug 'eraserhd/parinfer-rust', {
 			\ 'do': function('BuildParinferRust') }
 "Plug 'file:///home/chris/Projects/parinfer-rust', {
 			"\ 'do': function('BuildParinferRust') }
+
+Plug 'Olical/conjure', { 'tag': '*', 'do': 'bin/compile' }
 
 " }}}
 " Scala {{{
@@ -213,6 +219,24 @@ call plug#end()
 " Activate deoplete after vim-plug is done
 " NOTE: Deoplete is not installed for nvim<0.3
 let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option('keyword_patterns', {'clojure': '[\w!$%&*+/:<=>?@\^_~\-\.#]*'})
+set completeopt-=preview
+
+
+let g:ale_linters = {
+			\ 'python': ['flake8'],
+			\ 'clojure': ['clj-kondo', 'joker'],
+			\ 'rust': ['rls', 'cargo', 'rustc']
+			\}
+let g:ale_fixers = {
+			\ 'rust': ['rustfmt'],
+			\ 'python': ['black']
+			\}
+let g:ale_completion_enabled = 1
+
+let g:float_preview#docked = 0
+let g:float_preview#max_width = 80
+let g:float_preview#max_height = 40
 
 " }}}
 " Vim settings {{{
