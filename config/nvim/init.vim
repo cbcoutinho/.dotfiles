@@ -1,26 +1,18 @@
 " Make sure to slink this to ~/.vimrc (for vim) and ~/.config/nvim/init.vim (for neovim)
 
+let g:config_file_list = [
+			\  'shell.vim',
+			\  'plugins.vim',
+			\  'settings.vim',
+			\  'colors.vim',
+			\  'lightline.vim',
+			\  'slime.vim',
+			\  'vlime.vim',
+			\  'vimwiki.vim',
+			\  'functions.vim',
+			\  'keymaps.vim'
+			\]
 
-" Shell specific settings
-exec 'source' stdpath('config') . '/shell.vim'
-
-" Plugins
-exec 'source' stdpath('config') . '/plugins.vim'
-
-exec 'source' stdpath('config') . '/settings.vim'
-
-exec 'source' stdpath('config') . '/colors.vim'
-
-exec 'source' stdpath('config') . '/lightline.vim'
-
-exec 'source' stdpath('config') . '/slime.vim'
-
-exec 'source' stdpath('config') . '/vlime.vim'
-
-exec 'source' stdpath('config') . '/vimwiki.vim'
-
-exec 'source' stdpath('config') . '/functions.vim'
-
-exec 'source' stdpath('config') . '/keymaps.vim'
-
-
+for file in g:config_file_list
+	exec 'source' . stdpath('config') . '/' . file
+endfor
