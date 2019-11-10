@@ -17,8 +17,3 @@ silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | red
 " Auto-rustfmt on save. Make sure to have rustfmt installed
 "	rustup component add rustfmt-preview
 let g:rustfmt_autosave = 1
-
-" related to w0rp/ale plugin
-let b:ale_linters = {'rust': ['rls', 'cargo', 'rustc']}
-let g:ale_fixers = {'rust': ['rustfmt']}
-let g:ale_completion_enabled = 1
