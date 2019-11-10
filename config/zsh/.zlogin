@@ -11,8 +11,5 @@ fi
 # Assuming SSH is handled by GPG
 export SSH_AUTH_SOCK=$(gpgconf --list-dir agent-ssh-socket)
 
-# Lazy-loading
-source $ZDOTDIR/sandboxd.zsh
-
 # My environment
 source $ZDOTDIR/environment.zsh

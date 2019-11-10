@@ -50,8 +50,10 @@ sandbox_init_nvm() {
 		# This assumes 'nvm' is already installed via brew
 		source $(brew --prefix nvm)/nvm.sh
 		export NVM_DIR=$HOME/.nvm
+		nvm use
 	elif [ -d "${NVM_DIR:-$HOME/Software/nvm}" ]; then
 		[ -s $NVM_DIR/nvm.sh ] && source $NVM_DIR/nvm.sh && export NVM_DIR
+		nvm use
 	else
 		echo "You're trying to use 'nvm', but it's not installed"
 	fi
@@ -75,7 +77,6 @@ sandbox_hook nvm nvm
 sandbox_hook nvm npm
 sandbox_hook nvm node
 sandbox_hook nvm yarn
-nvm use
 
 # Anaconda
 sandbox_hook conda conda
