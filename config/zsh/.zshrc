@@ -7,6 +7,9 @@ source $ZDOTDIR/aliases.zsh
 # `ls` function needs `less` alias
 source $ZDOTDIR/functions.zsh
 
+# Lazy-loading of commands
+source $ZDOTDIR/sandboxd.zsh
+
 # The user prompt (PS1)
 source $ZDOTDIR/prompt.zsh
 
@@ -123,8 +126,8 @@ setopt COMPLETE_ALIASES
 
 # history
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=100000
 setopt HIST_IGNORE_DUPS
 
 unsetopt beep
