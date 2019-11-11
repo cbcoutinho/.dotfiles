@@ -1,5 +1,4 @@
-
-" Plugins {{{
+" vim:foldmethod=marker
 
 let plugin_dir = stdpath('data') . "/plugged"
 if !isdirectory(plugin_dir)
@@ -10,51 +9,15 @@ call plug#begin(plugin_dir)
 " Build Function(s) {{{
 
 " For vim/nvim compatibility, see 'euclio/vim-markdown-composer'
-function! BuildComposer(info)
-	if a:info.status != 'unchanged' || a:info.force
-		if has('nvim')
-			!cargo +stable build --release
-		else
-			!cargo +stable build --release --no-default-features --features json-rpc
-		endif
-	endif
-endfunction
-
-function! BuildParinferRust(info)
+function! BuildRust(info)
 	if a:info.status != 'unchanged' || a:info.force
 		!cargo +stable build --release
-	endif
-endfunction
-
-function! BuildParinferClojure(info)
-	if a:info.status != 'unchanged' || a:info.force
-		!lein npm install
 	endif
 endfunction
 
 " }}}
 " Language-specfic plugins {{{
 " Completions in neovim {{{
-
-"Plug 'roxma/nvim-yarp'	" Requirement of ncm2
-"Plug 'ncm2/ncm2'
-
-" enable ncm2 for all buffers
-"autocmd BufEnter * call ncm2#enable_for_buffer()
-
-" IMPORTANTE: :help Ncm2PopupOpen for more information
-"set completeopt=noinsert,menuone,noselect
-
-"Plug 'ncm2/ncm2-bufword'
-"Plug 'ncm2/ncm2-tmux'
-"Plug 'ncm2/ncm2-path'
-
-" Language specific completions
-"Plug 'ncm2/ncm2-jedi'  " Python
-"Plug 'ncm2/ncm2-racer' " Rust
-
-" Float completions
-Plug 'ncm2/float-preview.nvim'
 
 Plug 'dense-analysis/ale'					" Async linting/fixing using LSP
 
@@ -89,14 +52,10 @@ Plug 'jpalardy/vim-slime'				" Send text to another pane (ie. with a REPL)
 Plug 'venantius/vim-cljfmt'				" Format clojure files in vim - requires cljfmt
 Plug 'guns/vim-slamhound'				" Reconstruct/simplify namespaces
 Plug 'guns/vim-clojure-highlight'		" Better clojure syntax highlighting
-Plug 'l04m33/vlime', {
-			\ 'rtp': 'vim' }			" Common lisp dev environment for (neo)vim
 
 " Parinfer re-implementation in Rust
 Plug 'eraserhd/parinfer-rust', {
-			\ 'do': function('BuildParinferRust') }
-"Plug 'file:///home/chris/Projects/parinfer-rust', {
-			"\ 'do': function('BuildParinferRust') }
+			\ 'do': function('BuildRust') }
 
 Plug 'Olical/conjure', { 'tag': '*', 'do': 'bin/compile' }
 
@@ -107,30 +66,17 @@ Plug 'derekwyatt/vim-scala'
 Plug 'ktvoelker/sbt-vim'
 
 " }}}
-" Golang {{{
-
-if has('nvim-0.3.1')
-	" Only use a tagged release of vim-go
-	"Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoInstallBinaries'}
-endif
-
-" }}}
 " Markdown {{{
 
 " View rendered markdown in vim
 Plug 'euclio/vim-markdown-composer', {
-			\ 'do': function('BuildComposer') }
+			\ 'do': function('BuildRust') }
 Plug 'nelstrom/vim-markdown-folding'	" Easily fold markdown files by section
-
-" }}}
-" MOOSE{{{
-
-Plug 'elementx54/moosefw_vim'
 
 " }}}
 " Apex/Salesforce {{{
 
-"Plug 'neowit/vim-force.com'
+Plug 'neowit/vim-force.com'
 
 " }}}
 " }}}
@@ -209,7 +155,9 @@ call plug#end()
 " Activate deoplete after vim-plug is done
 " NOTE: Deoplete is not installed for nvim<0.3
 let g:deoplete#enable_at_startup = 1
-call deoplete#custom#option('keyword_patterns', {'clojure': '[\w!$%&*+/:<=>?@\^_~\-\.#]*'})
+call deoplete#custom#option('keyword_patterns', {
+			\ 'clojure': '[\w!$%&*+/:<=>?@\^_~\-\.#]*'}
+			\)
 set completeopt-=preview
 
 
@@ -228,4 +176,9 @@ let g:float_preview#docked = 0
 let g:float_preview#max_width = 80
 let g:float_preview#max_height = 40
 
-" }}}
+
+
+let g:apex_backup_folder = '/tmp/apex/backup'
+let g:apex_temp_folder = '/tmp/apex/tmp'
+"let g:apex_properties_folder =
+let g:apex_tooling_force_dot_com_path = expand('~/Downloads/tooling-force.com-0.4.4.0.jar')
