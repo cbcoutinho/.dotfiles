@@ -7,7 +7,6 @@ let g:config_file_list = [
 			\  'colors.vim',
 			\  'lightline.vim',
 			\  'slime.vim',
-			\  'vlime.vim',
 			\  'vimwiki.vim',
 			\  'functions.vim',
 			\  'keymaps.vim'
