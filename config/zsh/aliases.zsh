@@ -1,7 +1,3 @@
-# ayy lmao
-alias qutebrowser="qutebrowser --backend webengine"
-alias chromium="chromium --disk-cache-dir=/tmp/cache"
-
 # ls aliases
 alias ls="ls --group-directories-first"
 alias ll="ls -l"

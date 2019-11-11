@@ -19,15 +19,13 @@ export MANPATH="$HOME/.local/share/man:/usr/local/share/man:$MANPATH"
 export CPATH="$HOME/.local/include:$CPATH"
 
 # Add PETSc to path if exists
-PETSC_DIR=/opt/petsc
-if [[ -d $PETSC_DIR ]]; then
+if [[ -d ${PETSC_DIR:-/opt/petsc} ]]; then
 	export PETSC_DIR
 	export SLEPC_DIR=$PETSC_DIR
 fi
 
 # P4EST
-P4EST_DIR=/opt/p4est
-if [[ -d $P4EST_DIR ]]; then
+if [[ -d ${P4EST_DIR:-/opt/p4est} ]]; then
 	export P4EST_DIR
 fi
 
@@ -36,8 +34,7 @@ export PASSWORD_STORE_CHARACTER_SET='a-zA-Z0-9~!@#$%^&*()-_=+[]{};:,.<>?'
 export PASSWORD_STORE_GENERATED_LENGTH=40
 
 # MOOSE
-MOOSE_DIR="$HOME/Software/moose"
-if [[ -d $MOOSE_DIR ]]; then
+if [[ -d ${MOOSE_DIR:-$HOME/Software/moose} ]]; then
 	export MOOSE_DIR
 fi
 
@@ -61,7 +58,7 @@ fi
 
 # Go-related paths
 export GOPATH="$HOME/.go"
-PATH="$GOPATH/bin":$PATH
+export PATH="$GOPATH/bin":$PATH
 
 # Rust-related env vars
 if [[ -d $HOME/.cargo ]]; then
@@ -90,12 +87,6 @@ if command -v nproc >/dev/null; then
 	export MOOSE_JOBS=`nproc`
 fi
 
-# Jenv is like pyenv for java (on mac osx)
-if command -v jenv >/dev/null; then
-	export PATH="$HOME/.jenv/bin:$PATH"
-	eval "$(jenv init -)"
-fi
-
 # added by travis gem
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 
@@ -118,3 +109,12 @@ export LIBRARY_PATH=${LIBRARY_PATH:-$LD_LIBRARY_PATH}
 
 # CMake repository build (need v3.7+ for learn_dg and Fortran submodules)
 export CMAKE_PREFIX_PATH="$LD_LIBRARY_PATH"
+
+# Notmuch
+export NOTMUCH_CONFIG=~/.config/notmuch/config
+
+# For clojure/clj CLI tools
+export CLJ_CONFIG=~/.config/clojure/
+
+# Leiningen directory
+export LEIN_HOME=$HOME/.config/lein

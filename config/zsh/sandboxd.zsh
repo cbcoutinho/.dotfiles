@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 # Based on
 #	https://github.com/maximbaz/dotfiles/.zsh/sandboxd.zsh
 # which was originally adapted from:

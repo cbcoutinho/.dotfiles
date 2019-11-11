@@ -12,11 +12,5 @@ if [ -x /usr/bin/fortune ] ; then
 	echo
 fi
 
-# Notmuch
-export NOTMUCH_CONFIG=~/.config/notmuch/config
-
-# For clojure/clj CLI tools
-export CLJ_CONFIG=~/.config/clojure/
-
-# Leiningen directory
-export LEIN_HOME=$HOME/.config/lein
+# My environment
+source $ZDOTDIR/environment.zsh

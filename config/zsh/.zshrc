@@ -13,6 +13,23 @@ source $ZDOTDIR/sandboxd.zsh
 # The user prompt (PS1)
 source $ZDOTDIR/prompt.zsh
 
+# Use pyenv to handle python in interactive shells
+if command -v pyenv >/dev/null; then
+	eval "$(pyenv init -)"
+fi
+
+# Jenv is like pyenv for java (on mac osx)
+if command -v jenv >/dev/null; then
+	export PATH="$HOME/.jenv/bin:$PATH"
+	eval "$(jenv init -)"
+fi
+
+# Pip zsh completions are already saved in $ZDOTDIR/.zfunc/_pip
+# This line associates the completions with pip3 as well if available
+if command -v pip3 >/dev/null; then
+	compctl -K _pip_completion pip3
+fi
+
 #-------------------------------------------------------------
 # options
 #-------------------------------------------------------------

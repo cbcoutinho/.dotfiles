@@ -20,14 +20,3 @@ source "$USER_BASE/bin/virtualenvwrapper_lazy.sh"
 
 # IPython directory
 export IPYTHONDIR=$HOME/.config/ipython
-
-# Pip zsh completions are already saved in $ZDOTDIR/.zfunc/_pip
-# This line associates the completions with pip3 as well if available
-if command -v pip3 >/dev/null; then
-	compctl -K _pip_completion pip3
-fi
-
-# Use pyenv to handle python in interactive shells
-if command -v pyenv >/dev/null; then
-	eval "$(pyenv init -)"
-fi
