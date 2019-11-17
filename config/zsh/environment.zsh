@@ -1,7 +1,7 @@
 # Based on github.com/maximbaz/dotfiles/.zsh/environment.zsh
 
 # Prepend bin and sudo bin to PATH
-export PATH="/sbin:/usr/sbin:$HOME/bin:$HOME/.local/bin:$PATH"
+export PATH="/sbin:/usr/sbin:/usr/local/sbin/:$HOME/bin:$HOME/.local/bin:$PATH"
 
 # Add mssql-tools to path if exists
 if [[ -d /opt/mssql-tools/bin ]]; then
@@ -48,17 +48,17 @@ fi
 #	https://unix.stackexchange.com/a/334326/171562
 export GPG_TTY=${TTY}
 
-# User/System ruby gems
-if command -v ruby >/dev/null && command -v gem >/dev/null; then
-	PATH="$(command ruby -e 'puts Gem.user_dir')/bin:$PATH"
-fi
-
 # Haskell directory
 [[ -d "$HOME/.cabal" ]] && PATH="$HOME/.cabal/bin":$PATH
 
 # Go-related paths
 export GOPATH="$HOME/.go"
 export PATH="$GOPATH/bin":$PATH
+
+# .Net-related path
+if [[ -d $HOME/.dotnet ]]; then
+	export PATH="$HOME/.dotnet/tools":$PATH
+fi
 
 # Rust-related env vars
 if [[ -d $HOME/.cargo ]]; then

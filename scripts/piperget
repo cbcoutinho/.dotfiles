@@ -19,7 +19,7 @@ touch /tmp/pipermail/$listname/$listname.mbox
 chmod 600 /tmp/pipermail/$listname/$listname.mbox
 cd /tmp/pipermail/$listname
 for f in $(ls |sort)
-do zcat $f | iconv -f iso8859-15 -t utf-8 | sed 's/\(^From.*\)\ at\ /\1@/' >> "$listname.mbox"
+do zcat < $f | iconv -f iso8859-15 -t utf-8 | sed 's/\(^From.*\)\ at\ /\1@/' >> "$listname.mbox"
 done
 rm /tmp/pipermail/$listname/*.gz
 neomutt -f /tmp/pipermail/$listname/$listname.mbox

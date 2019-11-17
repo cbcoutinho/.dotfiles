@@ -24,6 +24,11 @@ if command -v jenv >/dev/null; then
 	eval "$(jenv init -)"
 fi
 
+if command -v rbenv >/dev/null; then
+	export PATH="$HOME/.rbenv/bin:$PATH"
+	eval "$(rbenv init -)"
+fi
+
 # Pip zsh completions are already saved in $ZDOTDIR/.zfunc/_pip
 # This line associates the completions with pip3 as well if available
 if command -v pip3 >/dev/null; then
