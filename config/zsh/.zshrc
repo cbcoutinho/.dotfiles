@@ -125,17 +125,28 @@ fi
 # Append personal zsh-completions to fpath
 fpath=(
 	$ZDOTDIR/completions
+	/usr/local/share/zsh-completions
 	$fpath
 )
 
+# completions
+autoload -Uz compinit && compinit -i
+compinit -i
+
 # Sources aws completion if exists
-if [ -f /usr/bin/aws_zsh_completer.sh ]; then
-	source /usr/bin/aws_zsh_completer.sh
+file=$(find /usr/local/share -name 'aws_zsh_completer.sh')
+if [ -f $file ]; then
+	source $file
 fi
 
-# completions
-autoload -Uz compinit && compinit
-compinit
+for file in $(find -E /usr/local/etc -regex '.*(nvm|az)$')
+do
+	if [ -f $file ]; then
+		# Add bash completion for some bash-only completion scripts
+		autoload -U +X bashcompinit && bashcompinit
+		source $file
+	fi
+done
 
 # Allow dot files to match on tab completion
 #	https://unix.stackexchange.com/a/308322/171562

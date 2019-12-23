@@ -60,3 +60,9 @@ function terminal-scheme() {
     config_file=~/.config/alacritty/alacritty.yml
     sed -i "s/\(^colors: \*\).*/\1$1/g" $config_file
 }
+
+workdir() {
+    dir="$HOME/datedwork/"$(date "+%Y.%m.%d")"-$1"
+    mkdir -p $dir
+    cd $dir
+}

@@ -14,9 +14,12 @@ if [[ -d ${CUDA_DIR:-/usr/local/cuda} ]]; then
 	export LD_LIBRARY_PATH="$CUDA_DIR/lib64:$LD_LIBRARY_PATH"
 fi
 
-export LD_LIBRARY_PATH="$HOME/.local/lib64:$HOME/.local/lib:$LD_LIBRARY_PATH"
-export MANPATH="$HOME/.local/share/man:/usr/local/share/man:$MANPATH"
-export CPATH="$HOME/.local/include:$CPATH"
+[[ -d "$HOME/.local/lib" ]] && export LD_LIBRARY_PATH="$HOME/.local/lib:$LD_LIBRARY_PATH"
+[[ -d "$HOME/.local/lib64" ]] && export LD_LIBRARY_PATH="$HOME/.local/lib64:$LD_LIBRARY_PATH"
+
+[[ -d "/usr/local/share/man:$MANPATH" ]] && export MANPATH="/usr/local/share/man:$MANPATH"
+[[ -d "$HOME/.local/share/man" ]] && export MANPATH="$HOME/.local/share/man:$MANPATH"
+[[ -d "$HOME/.local/include" ]] && export CPATH="$HOME/.local/include:$CPATH"
 
 # Add PETSc to path if exists
 if [[ -d ${PETSC_DIR:-/opt/petsc} ]]; then
@@ -117,4 +120,4 @@ export NOTMUCH_CONFIG=~/.config/notmuch/config
 export CLJ_CONFIG=~/.config/clojure/
 
 # Leiningen directory
-export LEIN_HOME=$HOME/.config/lein
+export LEIN_HOME=$HOME/.config/lein/

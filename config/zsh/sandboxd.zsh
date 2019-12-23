@@ -48,12 +48,10 @@ function sandbox_hook() {
 sandbox_init_nvm() {
 	if [[ $(uname -s) == "Darwin" ]]; then
 		# This assumes 'nvm' is already installed via brew
-		source $(brew --prefix nvm)/nvm.sh
 		export NVM_DIR=$HOME/.nvm
-		nvm use
+		source $(brew --prefix nvm)/nvm.sh
 	elif [ -d "${NVM_DIR:-$HOME/Software/nvm}" ]; then
 		[ -s $NVM_DIR/nvm.sh ] && source $NVM_DIR/nvm.sh && export NVM_DIR
-		nvm use
 	else
 		echo "You're trying to use 'nvm', but it's not installed"
 	fi
