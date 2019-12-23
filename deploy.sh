@@ -49,3 +49,6 @@ chmod +x ~/bin/lein
 
 # Ruby
 ln -s $dotfiles/.gemrc ~/.gemrc
+
+# Sqlite
+ln -s $dotfiles/.sqliterc ~/.sqliterc
