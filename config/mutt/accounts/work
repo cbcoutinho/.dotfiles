@@ -16,7 +16,6 @@ set message_cachedir = ~/.config/mutt/cache/bodies	# where to store bodies
 # Mailboxes to show in the sidebar
 unmailboxes *
 mailboxes +INBOX \
-	+INBOX.JIRA \
 	+Archive \
 	+Sent \
 	+Drafts \
