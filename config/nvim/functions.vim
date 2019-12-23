@@ -92,6 +92,6 @@ function! ToggleKeywordHighlight()
     let g:highlight_current_keyword = 0
   endif
 endfunction
-call ToggleKeywordHighlight()
+"call ToggleKeywordHighlight()
 
 " }}}

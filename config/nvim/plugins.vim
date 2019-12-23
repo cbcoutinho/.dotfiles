@@ -24,7 +24,14 @@ Plug 'dense-analysis/ale'					" Async linting/fixing using LSP
 Plug 'zchee/deoplete-jedi' " Python
 Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'ncm2/float-preview.nvim'
+
+" Language server in Rust
+"Plug 'autozimu/LanguageClient-neovim', {
+    "\ 'branch': 'next',
+    "\ 'do': 'bash install.sh',
+    "\ }
 
 " }}}
 " Rust {{{
@@ -57,7 +64,7 @@ Plug 'guns/vim-clojure-highlight'		" Better clojure syntax highlighting
 Plug 'eraserhd/parinfer-rust', {
 			\ 'do': function('BuildRust') }
 
-Plug 'Olical/conjure', { 'tag': '*', 'do': 'bin/compile' }
+"Plug 'Olical/conjure', { 'tag': '*', 'do': 'bin/compile' }
 
 " }}}
 " Scala {{{
@@ -76,7 +83,7 @@ Plug 'nelstrom/vim-markdown-folding'	" Easily fold markdown files by section
 " }}}
 " Apex/Salesforce {{{
 
-Plug 'neowit/vim-force.com'
+"Plug 'neowit/vim-force.com'
 
 " }}}
 " }}}
@@ -115,7 +122,7 @@ Plug 'neomutt/neomutt.vim'				" Vim syntax for neomutt
 Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
 
-Plug 'neomake/neomake'
+"Plug 'neomake/neomake'
 
 " }}}
 " Vim/git-related plugins {{{
@@ -164,11 +171,13 @@ set completeopt-=preview
 let g:ale_linters = {
 			\ 'python': ['flake8'],
 			\ 'clojure': ['clj-kondo', 'joker'],
-			\ 'rust': ['rls', 'cargo', 'rustc']
+			\ 'rust': ['rls', 'cargo', 'rustc'],
+			\ 'scala': ['metals' ]
 			\}
 let g:ale_fixers = {
 			\ 'rust': ['rustfmt'],
-			\ 'python': ['black']
+			\ 'python': ['black'],
+			\ 'scala': ['scalafmt']
 			\}
 let g:ale_completion_enabled = 1
 
@@ -181,4 +190,4 @@ let g:float_preview#max_height = 40
 let g:apex_backup_folder = '/tmp/apex/backup'
 let g:apex_temp_folder = '/tmp/apex/tmp'
 "let g:apex_properties_folder =
-let g:apex_tooling_force_dot_com_path = expand('~/Downloads/tooling-force.com-0.4.4.0.jar')
+"let g:apex_tooling_force_dot_com_path = expand('~/Downloads/tooling-force.com-0.4.4.0.jar')
