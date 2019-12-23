@@ -4,3 +4,10 @@
 
 # For rust ctags files
 rusty-tags.vi
+
+# Language server cache
+.lsp
+
+# Clojure/deps
+.rebel_readline_history
+.rebl/
