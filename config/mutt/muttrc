@@ -15,6 +15,9 @@ set beep_new             # bell on new mails
 set pipe_decode          # strip headers and eval mimes when piping
 set thorough_search      # strip headers and eval mimes before searching
 
+set header_cache     = ~/.config/mutt/cache/headers			# where to store headers
+set message_cachedir = ~/.config/mutt/cache/bodies			# where to store bodies
+
 #- Folder hooks
 
 folder-hook 'personal' 'source ~/.config/mutt/accounts/personal'
@@ -136,7 +139,7 @@ macro compose \e5 "F pandoc -s -f markdown -t html \ny^T^Utext/html; charset=us-
 #set wait_key=no
 
 ##- Main message (pager) view
-#- Pager View Options ---------------------------------
+# Pager View Options ---------------------------------
 
 set pager_index_lines = 10 # number of index lines to show
 set pager_context = 3      # number of context lines to show
@@ -147,7 +150,7 @@ unset markers              # no ugly plus signs
 
 set quote_regex = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
 
-#- Pager Key Bindings ---------------------------------
+# Pager Key Bindings ---------------------------------
 
 bind pager k  previous-line
 bind pager j  next-line

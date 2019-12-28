@@ -1,0 +1,46 @@
+# vim: filetype=muttrc
+
+set imap_user="chrisbcoutinho@gmail.com"
+set imap_pass=`pass Mail/Gmail-offlineimap`
+
+# Don't cache the body of messages 
+unset message_cachedir
+
+set folder="imaps://imap.gmail.com:993"
+set spoolfile=+INBOX
+unset record
+set postponed="+[Gmail]/Draft"
+
+unmailboxes *
+mailboxes +INBOX \
+			+[Gmail]/Sent\ Mail \
+			+[Gmail]/Drafts \
+			+[Gmail]/Spam \
+			+[Gmail]/Trash \
+			+[Gmail]/Important \
+			+[Gmail]/All\ Mail \
+			+Mailing-Lists \
+			+Mailing-Lists.Cinemacephale \
+			+Mailing-Lists.DragonFlyBSD \
+			+Mailing-Lists.FreeBSD \
+			+Mailing-Lists.Github \
+			+Mailing-Lists.Gitlab \
+			+Mailing-Lists.GnuPG \
+			+Mailing-Lists.Notmuch \
+			+Mailing-Lists.OfflineIMAP \
+			+Mailing-Lists.OpenSSH \
+			+Mailing-Lists.OpenSUSE \
+			+Mailing-Lists.Pass \
+			+Mailing-Lists.Python-dev \
+			+Mailing-Lists.Rotaract \
+
+
+set realname="Chris Coutinho"
+set from="chrisbcoutinho@gmail.com"
+
+set smtp_url="smtps://chrisbcoutinho@gmail.com@smtp.gmail.com:587"
+set imap_pass=`pass Mail/Gmail-offlineimap`
+set smtp_authenticators="plain"
+
+set ssl_starttls = yes
+set ssl_force_tls = yes

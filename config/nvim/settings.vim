@@ -83,7 +83,7 @@ au BufNewFile,BufRead .shrc set filetype=sh     " Sets .shrc files to use sh syn
 au BufNewFile,Bufread *.wiki set filetype=vimwiki
 au BufNewFile,Bufread Pipfile.lock set filetype=json
 au BufNewFile,BufRead *.sbt set filetype=scala
-"au BufNewFile,BufRead *.cls set filetype=java    " Sets .cls files to use java syntax (Salesforce)
+au BufNewFile,BufRead *.cls set filetype=java    " Sets .cls files to use java syntax (Salesforce)
 
 " Usually for OpenFOAM/foam files
 au BufRead * if search('\M-*- C++ -*-', 'n', 1) | setlocal ft=cpp | endif
