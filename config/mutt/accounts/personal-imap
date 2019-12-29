@@ -17,6 +17,7 @@ mailboxes +INBOX \
 			+[Gmail]/Drafts \
 			+[Gmail]/Spam \
 			+[Gmail]/Trash \
+			+[Gmail]/Starred \
 			+[Gmail]/Important \
 			+[Gmail]/All\ Mail \
 			+Mailing-Lists \
@@ -26,11 +27,13 @@ mailboxes +INBOX \
 			+Mailing-Lists.Github \
 			+Mailing-Lists.Gitlab \
 			+Mailing-Lists.GnuPG \
+			+Mailing-Lists.Neomutt \
 			+Mailing-Lists.Notmuch \
 			+Mailing-Lists.OfflineIMAP \
 			+Mailing-Lists.OpenSSH \
 			+Mailing-Lists.OpenSUSE \
 			+Mailing-Lists.Pass \
+			+Mailing-Lists.PostgreSQL \
 			+Mailing-Lists.Python-dev \
 			+Mailing-Lists.Rotaract \
 
