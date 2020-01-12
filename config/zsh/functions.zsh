@@ -19,8 +19,7 @@ function ls {
 # | less pipe output into less (see .zsh/aliases.zsh for alias)
 
 # extract archives
-function extract()
-{
+function extract {
 	set -x
 	if [ -f $1 ] ; then
 		case $1 in
@@ -45,23 +44,30 @@ function extract()
 }
 
 # pretty-print of some PATH variables
-#alias path="echo -e ${PATH//:/\\\n}"
-#alias libpath="echo -e ${LD_LIBRARY_PATH//:/\\\n}"
-function path () {
-	echo $PATH | sed 's/:/\n/g'
+function path {
+	echo $PATH | sed 's/:/\
+/g'
 }
 
-function libpath () {
-	echo $LD_LIBRARY_PATH | sed 's/:/\n/g'
+function libpath {
+	echo $LD_LIBRARY_PATH | sed 's/:/\
+/g'
 }
 
-# Terminal color scheme
-function terminal-scheme() {
+function terminal-scheme {
+	# Change the Alacritty color-scheme, options are:
+	# 	gruvbox-dark
+	# 	gruvbox-light
+
+	# Return with message if no input specified
+	readonly color=${1:?"The color scheme must be specified"}
+
     config_file=~/.config/alacritty/alacritty.yml
-    sed -i "s/\(^colors: \*\).*/\1$1/g" $config_file
+    sed -i '' "s/\(^colors: \*\).*/\1$color/g" $config_file
 }
 
-workdir() {
+function workdir {
+	# Create a directory based on $1 and current date
     dir="$HOME/datedwork/"$(date "+%Y.%m.%d")"-$1"
     mkdir -p $dir
     cd $dir
