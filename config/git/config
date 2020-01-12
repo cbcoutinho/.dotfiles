@@ -25,6 +25,11 @@
 	cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 [difftool]
 	prompt = false
+[alias]
+	co = checkout
+	st = status
+	ci = commit
+	br = branch
 
 
 [color]
