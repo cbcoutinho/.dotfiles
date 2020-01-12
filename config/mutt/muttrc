@@ -24,7 +24,7 @@ folder-hook 'personal' 'source ~/.config/mutt/accounts/personal'
 folder-hook 'work' 'source ~/.config/mutt/accounts/work'
 folder-hook 'humboldt' 'source ~/.config/mutt/accounts/humboldt'
 
-source accounts/personal
+source accounts/personal-imap
 
 macro index,pager <f2> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/personal<enter><change-folder>!<enter>'
 macro index,pager <f3> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/work<enter><change-folder>!<enter>'
