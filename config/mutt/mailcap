@@ -35,3 +35,5 @@ text/html;	w3m -v -F -T text/html -dump %s;			copiousoutput
 
 # Microsoft office documents
 application/vnd.openxmlformats-officedocument.wordprocessingml.document; ~/.config/mutt/view_attachment.sh %s docx
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; ~/.config/mutt/view_attachment.sh %s xlsx
+application/vnd.openxmlformats-officedocument.presentationml.presentation; ~/.config/mutt/view_attachment.sh %s pptx
