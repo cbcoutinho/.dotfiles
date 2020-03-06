@@ -28,9 +28,6 @@ alias testpl='echo "\ue0b0 \u00b1 \ue0a0 \u27a6 \u2718 \u26a1 \u2699"'
 # Tmux
 command -v tmux >/dev/null && alias tmux="tmux -f $HOME/.config/tmux/tmux.conf"
 
-# Alias hub to git
-command -v hub >/dev/null && eval "$(hub alias -s)"
-
 # Hook direnv into the shell
 command -v direnv >/dev/null && eval "$(direnv hook zsh)"
 
