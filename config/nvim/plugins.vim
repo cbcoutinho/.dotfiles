@@ -86,6 +86,12 @@ Plug 'nelstrom/vim-markdown-folding'	" Easily fold markdown files by section
 "Plug 'neowit/vim-force.com'
 
 " }}}
+" C# {{{
+
+"Plug 'OrangeT/vim-csharp', {'for':['cs','csx','cshtml.html','csproj','solution']}
+Plug 'OmniSharp/omnisharp-vim', {'for':['cs','csx','cshtml.html','csproj','solution'], 'on': ['OmniSharpInstall']}
+
+" }}}
 " }}}
 " Color {{{
 
@@ -101,7 +107,7 @@ Plug 'supercollider/scvim'
 " }}}
 " Vim-related plugins {{{
 
-Plug 'scrooloose/nerdtree'				" Project tree directory
+Plug 'preservim/nerdtree'				" Project tree directory
 Plug 'scrooloose/nerdcommenter'			" Easily comment lines
 Plug 'tpope/vim-surround'				" Easily surround text with parens, quotes, etc.
 Plug 'itchyny/lightline.vim'			" Status line for vim
@@ -172,7 +178,8 @@ let g:ale_linters = {
 			\ 'python': ['flake8'],
 			\ 'clojure': ['clj-kondo', 'joker'],
 			\ 'rust': ['rls', 'cargo', 'rustc'],
-			\ 'scala': ['metals' ]
+			\ 'scala': ['metals' ],
+			\ 'cs': ['OmniSharp']
 			\}
 let g:ale_fixers = {
 			\ 'rust': ['rustfmt'],

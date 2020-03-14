@@ -1,7 +1,7 @@
 # Based on github.com/maximbaz/dotfiles/.zsh/environment.zsh
 
 # Prepend bin and sudo bin to PATH
-export PATH="/sbin:/usr/sbin:/usr/local/sbin/:$HOME/bin:$HOME/.local/bin:$PATH"
+export PATH="/sbin:/usr/sbin:/usr/local/sbin:$HOME/bin:$HOME/.local/bin:$PATH"
 
 # Add mssql-tools to path if exists
 if [[ -d /opt/mssql-tools/bin ]]; then

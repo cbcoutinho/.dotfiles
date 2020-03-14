@@ -25,7 +25,9 @@ export VIRTUALENVWRAPPER_SCRIPT="$USER_BASE/bin/virtualenvwrapper.sh"
 export PATH="$USER_BASE/bin:$PATH"
 
 # NOTE: This assumes that virtualenvwrapper is installed
-source "$USER_BASE/bin/virtualenvwrapper_lazy.sh"
+if command -v pyenv >/dev/null && grep -q system <(pyenv version); then
+	source "$USER_BASE/bin/virtualenvwrapper_lazy.sh"
+fi
 
 # Jenv is like pyenv for java (on mac osx)
 if command -v jenv >/dev/null; then
