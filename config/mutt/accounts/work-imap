@@ -1,0 +1,29 @@
+# vim: filetype=muttrc
+
+set imap_user="c.coutinho@focuscura.nl	"
+set imap_pass=`pass Mail/FocusCura-offlineimap`
+
+# Don't cache the body of messages 
+unset message_cachedir
+
+set folder="imaps://outlook.office365.com:993"
+set spoolfile=+INBOX
+unset record
+set postponed="+Drafts"
+
+unmailboxes *
+mailboxes +INBOX \
+	+Archive \
+	+Sent \
+	+Drafts \
+	+Clutter \
+	+SalesforceErrors \
+
+set from="c.coutinho@focuscura"
+set realname="Chris Coutinho"
+
+set smtp_url="smtps://c.coutinho@focuscura.nl@smtp.office365.com:587"
+set smtp_authenticators="plain"
+
+set ssl_starttls = yes
+set ssl_force_tls = yes

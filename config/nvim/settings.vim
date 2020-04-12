@@ -84,6 +84,7 @@ au BufNewFile,BufRead *.cson set filetype=coffee
 au BufNewFile,BufRead .shrc set filetype=sh     " Sets .shrc files to use sh syntax
 au BufNewFile,Bufread *.wiki set filetype=vimwiki
 au BufNewFile,Bufread Pipfile.lock set filetype=json
+au BufNewFile,Bufread poetry.lock set filetype=toml
 au BufNewFile,BufRead *.sbt set filetype=scala
 au BufNewFile,BufRead *.cls set filetype=java    " Sets .cls files to use java syntax (Salesforce)
 

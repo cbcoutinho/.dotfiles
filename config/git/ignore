@@ -11,3 +11,6 @@ rusty-tags.vi
 # Clojure/deps
 .rebel_readline_history
 .rebl/
+
+# Scala LSP
+.metals/

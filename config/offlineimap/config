@@ -130,7 +130,7 @@ nametrans = lambda folder: {'Sent': 'Sent Items'}.get(folder, folder)
 [Repository FocusCura-Remote]
 type = IMAP
 remoteuser = c.coutinho@focuscura.nl
-remotepasseval = get_pass(account="FocusCura")
+remotepasseval = get_pass(account="FocusCura-offlineimap")
 remotehost = outlook.office365.com
 remoteport = 993
 realdelete = no

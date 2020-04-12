@@ -31,6 +31,8 @@ command -v tmux >/dev/null && alias tmux="tmux -f $HOME/.config/tmux/tmux.conf"
 # Hook direnv into the shell
 command -v direnv >/dev/null && eval "$(direnv hook zsh)"
 
+# Quickly check my public ip address
+alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
 
 # OpenFOAM Aliases
 if [[ -d $HOME/OpenFOAM ]]; then
