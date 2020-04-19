@@ -11,7 +11,7 @@ gitdirs=$( find $input -maxdepth 2 -type d -name '.git' -exec dirname {} \; | so
 
 for ii in $gitdirs; do
 	echo && echo $ii
-	git -C $ii fetch --all --tags
+	git -C $ii fetch --all --tags --prune
 	git -C $ii submodule update --init --recursive
 	git -C $ii pull --ff-only --recurse-submodules
 done
