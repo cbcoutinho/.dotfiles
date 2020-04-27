@@ -14,3 +14,13 @@ rusty-tags.vi
 
 # Scala LSP
 .metals/
+
+# Azurite
+__azurite_db*.json
+
+# (n)vim
+.vim/
+
+# Python
+.venv
+__pycache__/
