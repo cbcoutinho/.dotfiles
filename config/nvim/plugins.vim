@@ -113,12 +113,6 @@ Plug 'tmhedberg/SimpylFold'				" Fold python source files
 
 Plug 'neomutt/neomutt.vim'				" Vim syntax for neomutt
 
-" Snippets in neovim
-Plug 'honza/vim-snippets'
-Plug 'SirVer/ultisnips'
-
-"Plug 'neomake/neomake'
-
 " }}}
 " Vim/git-related plugins {{{
 
@@ -171,8 +165,6 @@ let g:ale_completion_enabled = 1
 let g:float_preview#docked = 0
 let g:float_preview#max_width = 80
 let g:float_preview#max_height = 40
-
-
 
 let g:apex_backup_folder = '/tmp/apex/backup'
 let g:apex_temp_folder = '/tmp/apex/tmp'

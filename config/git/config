@@ -1,4 +1,4 @@
-# vim: filetype=gitconfig
+; vim: filetype=gitconfig
 [user]
 	name = Chris Coutinho
 	email = chrisbcoutinho@gmail.com
@@ -7,9 +7,14 @@
 	verbose = true
 	gpgsign = true
 [core]
+	; This sets `git {diff,show} tabs as 4 spaces
+	;	https://stackoverflow.com/a/10584237
 	pager = less -x1,5
-	# This sets `git {diff,show} tabs as 4 spaces
-	#	https://stackoverflow.com/a/10584237
+	;pager = delta --dark --plus-color="#012800" --minus-color="#340001" --theme="gruvbox (Dark) (Medium)"
+
+[interactive]
+    diffFilter = delta --color-only
+
 [sendemail]
 	smtpencryption = tls
 	smtpserver = /usr/bin/msmtp
@@ -47,12 +52,12 @@
 	new = green bold
 	whitespace = red reverse
 [pretty]
-	# From https://github.com/nicksp/dotfiles
+	; From https://github.com/nicksp/dotfiles
 	custom = "%C(magenta)%h%C(red)%d %C(yellow)%ar %C(green)%s %C(yellow)(%an)"
-	#                     │        │            │            │             └─ author name
-	#                     │        │            │            └─ message
-	#                     │        │            └─ date (relative)
-	#                     │        └─ decorations (branch, heads or tags)
-	#                     └─ hash (abbreviated)
+	;                     │        │            │            │             └─ author name
+	;                     │        │            │            └─ message
+	;                     │        │            └─ date (relative)
+	;                     │        └─ decorations (branch, heads or tags)
+	;                     └─ hash (abbreviated)
 [format]
 	pretty = custom
