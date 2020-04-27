@@ -20,18 +20,7 @@ endfunction
 " Completions in neovim {{{
 
 Plug 'dense-analysis/ale'					" Async linting/fixing using LSP
-
-Plug 'zchee/deoplete-jedi' " Python
-Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'ncm2/float-preview.nvim'
-
-" Language server in Rust
-"Plug 'autozimu/LanguageClient-neovim', {
-    "\ 'branch': 'next',
-    "\ 'do': 'bash install.sh',
-    "\ }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " }}}
 " Rust {{{
@@ -164,15 +153,6 @@ vmap gx <Plug>(openbrowser-open)
 
 " }}}
 call plug#end()
-
-" Activate deoplete after vim-plug is done
-" NOTE: Deoplete is not installed for nvim<0.3
-let g:deoplete#enable_at_startup = 1
-call deoplete#custom#option('keyword_patterns', {
-			\ 'clojure': '[\w!$%&*+/:<=>?@\^_~\-\.#]*'}
-			\)
-set completeopt-=preview
-
 
 let g:ale_linters = {
 			\ 'python': ['flake8'],

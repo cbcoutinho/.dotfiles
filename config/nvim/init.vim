@@ -4,6 +4,7 @@ let g:config_file_list = [
 			\  'shell.vim',
 			\  'plugins.vim',
 			\  'settings.vim',
+			\  'coc-settings.vim',
 			\  'colors.vim',
 			\  'lightline.vim',
 			\  'slime.vim',
