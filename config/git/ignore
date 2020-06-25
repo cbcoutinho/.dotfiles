@@ -23,4 +23,3 @@ __azurite_db*.json
 
 # Python
 .venv
-__pycache__/

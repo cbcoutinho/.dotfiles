@@ -140,6 +140,7 @@ folderfilter = lambda folder: folder in [
 	'Sent Items',
 	'Drafts',
 	'SalesforceErrors',
+	'RSMErrors',
 	'Archive',
 	'Clutter',
 	]

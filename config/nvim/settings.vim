@@ -47,7 +47,7 @@ set smartcase               " Ignores 'set ignorecase' if search contains upper 
 set splitbelow				" Split new buffer below instead of above
 set splitright				" Split new buffer right instead of left
 set nowrap                  " Don't wrap long lines automatically
-set textwidth       =70     " Set textwidth to <n> chars, wrap after that
+set textwidth       =79     " Set textwidth to <n> chars, wrap after that
 
 " Default format options: tcqj (in vimrc: jcroql)
 set formatoptions   +=t     " Automatically wrap lines after <textwidth> chars
@@ -86,7 +86,13 @@ au BufNewFile,Bufread *.wiki set filetype=vimwiki
 au BufNewFile,Bufread Pipfile.lock set filetype=json
 au BufNewFile,Bufread poetry.lock set filetype=toml
 au BufNewFile,BufRead *.sbt set filetype=scala
-au BufNewFile,BufRead *.cls set filetype=java    " Sets .cls files to use java syntax (Salesforce)
+
+" Use 'apex' as the syntax and set our style information
+au BufEnter *.cls set syntax=apex tabstop=4 shiftwidth=4 softtabstop=4 nowrap
+"au BufEnter *.cls exec 'match Todo /\%>80v.\+/'
+au BufEnter *.trigger set syntax=apex tabstop=4 shiftwidth=4 softtabstop=4 nowrap
+"au BufEnter *.trigger exec 'match Todo /\%>80v.\+/'
+"au BufEnter *.page set tabstop=4 shiftwidth=4 softtabstop=4 nowrap
 
 " Usually for OpenFOAM/foam files
 au BufRead * if search('\M-*- C++ -*-', 'n', 1) | setlocal ft=cpp | endif

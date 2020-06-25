@@ -12,8 +12,8 @@
 	pager = less -x1,5
 	;pager = delta --dark --plus-color="#012800" --minus-color="#340001" --theme="gruvbox (Dark) (Medium)"
 
-[interactive]
-    diffFilter = delta --color-only
+;[interactive]
+    ;diffFilter = delta --color-only
 
 [sendemail]
 	smtpencryption = tls

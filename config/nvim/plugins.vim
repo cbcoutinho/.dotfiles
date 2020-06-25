@@ -89,11 +89,6 @@ Plug 'sheerun/vim-polyglot'             " Syntax highlighting for different lang
 Plug 'kien/rainbow_parentheses.vim'     " Rainbow parens for Lisps - see options below
 
 " }}}
-" Supercollider vim plugin {{{
-
-Plug 'supercollider/scvim'
-
-" }}}
 " Vim-related plugins {{{
 
 Plug 'preservim/nerdtree'				" Project tree directory
@@ -112,6 +107,7 @@ Plug 'Konfekt/FastFold'					" Recommended by SimpylFold
 Plug 'tmhedberg/SimpylFold'				" Fold python source files
 
 Plug 'neomutt/neomutt.vim'				" Vim syntax for neomutt
+Plug 'vito-c/jq.vim' 					" Vim syntax for jq
 
 " }}}
 " Vim/git-related plugins {{{
@@ -149,7 +145,7 @@ vmap gx <Plug>(openbrowser-open)
 call plug#end()
 
 let g:ale_linters = {
-			\ 'python': ['flake8'],
+			\ 'python': ['flake8', 'pylint'],
 			\ 'clojure': ['clj-kondo', 'joker'],
 			\ 'rust': ['rls', 'cargo', 'rustc'],
 			\ 'scala': ['metals' ],

@@ -4,13 +4,13 @@ let g:config_file_list = [
 			\  'shell.vim',
 			\  'plugins.vim',
 			\  'settings.vim',
-			\  'coc-settings.vim',
 			\  'colors.vim',
 			\  'lightline.vim',
 			\  'slime.vim',
 			\  'vimwiki.vim',
 			\  'functions.vim',
-			\  'keymaps.vim'
+			\  'keymaps.vim',
+			\  'coc-settings.vim'
 			\]
 
 for file in g:config_file_list
