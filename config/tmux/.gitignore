@@ -5,6 +5,6 @@
 !.gitignore
 !tmux.conf
 !source_powerline.sh
-!tmux-gruvbox-dark.conf
+!gruvbox-dark.conf
 
 #Or these directories
