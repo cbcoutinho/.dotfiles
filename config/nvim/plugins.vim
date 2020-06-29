@@ -20,18 +20,7 @@ endfunction
 " Completions in neovim {{{
 
 Plug 'dense-analysis/ale'					" Async linting/fixing using LSP
-
-Plug 'zchee/deoplete-jedi' " Python
-Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'ncm2/float-preview.nvim'
-
-" Language server in Rust
-"Plug 'autozimu/LanguageClient-neovim', {
-    "\ 'branch': 'next',
-    "\ 'do': 'bash install.sh',
-    "\ }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " }}}
 " Rust {{{
@@ -86,6 +75,12 @@ Plug 'nelstrom/vim-markdown-folding'	" Easily fold markdown files by section
 "Plug 'neowit/vim-force.com'
 
 " }}}
+" C# {{{
+
+"Plug 'OrangeT/vim-csharp', {'for':['cs','csx','cshtml.html','csproj','solution']}
+Plug 'OmniSharp/omnisharp-vim', {'for':['cs','csx','cshtml.html','csproj','solution'], 'on': ['OmniSharpInstall']}
+
+" }}}
 " }}}
 " Color {{{
 
@@ -94,14 +89,9 @@ Plug 'sheerun/vim-polyglot'             " Syntax highlighting for different lang
 Plug 'kien/rainbow_parentheses.vim'     " Rainbow parens for Lisps - see options below
 
 " }}}
-" Supercollider vim plugin {{{
-
-Plug 'supercollider/scvim'
-
-" }}}
 " Vim-related plugins {{{
 
-Plug 'scrooloose/nerdtree'				" Project tree directory
+Plug 'preservim/nerdtree'				" Project tree directory
 Plug 'scrooloose/nerdcommenter'			" Easily comment lines
 Plug 'tpope/vim-surround'				" Easily surround text with parens, quotes, etc.
 Plug 'itchyny/lightline.vim'			" Status line for vim
@@ -117,12 +107,7 @@ Plug 'Konfekt/FastFold'					" Recommended by SimpylFold
 Plug 'tmhedberg/SimpylFold'				" Fold python source files
 
 Plug 'neomutt/neomutt.vim'				" Vim syntax for neomutt
-
-" Snippets in neovim
-Plug 'honza/vim-snippets'
-Plug 'SirVer/ultisnips'
-
-"Plug 'neomake/neomake'
+Plug 'vito-c/jq.vim' 					" Vim syntax for jq
 
 " }}}
 " Vim/git-related plugins {{{
@@ -159,20 +144,12 @@ vmap gx <Plug>(openbrowser-open)
 " }}}
 call plug#end()
 
-" Activate deoplete after vim-plug is done
-" NOTE: Deoplete is not installed for nvim<0.3
-let g:deoplete#enable_at_startup = 1
-call deoplete#custom#option('keyword_patterns', {
-			\ 'clojure': '[\w!$%&*+/:<=>?@\^_~\-\.#]*'}
-			\)
-set completeopt-=preview
-
-
 let g:ale_linters = {
-			\ 'python': ['flake8'],
+			\ 'python': ['flake8', 'pylint'],
 			\ 'clojure': ['clj-kondo', 'joker'],
 			\ 'rust': ['rls', 'cargo', 'rustc'],
-			\ 'scala': ['metals' ]
+			\ 'scala': ['metals' ],
+			\ 'cs': ['OmniSharp']
 			\}
 let g:ale_fixers = {
 			\ 'rust': ['rustfmt'],
@@ -184,8 +161,6 @@ let g:ale_completion_enabled = 1
 let g:float_preview#docked = 0
 let g:float_preview#max_width = 80
 let g:float_preview#max_height = 40
-
-
 
 let g:apex_backup_folder = '/tmp/apex/backup'
 let g:apex_temp_folder = '/tmp/apex/tmp'

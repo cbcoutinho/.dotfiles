@@ -9,7 +9,8 @@ let g:config_file_list = [
 			\  'slime.vim',
 			\  'vimwiki.vim',
 			\  'functions.vim',
-			\  'keymaps.vim'
+			\  'keymaps.vim',
+			\  'coc-settings.vim'
 			\]
 
 for file in g:config_file_list

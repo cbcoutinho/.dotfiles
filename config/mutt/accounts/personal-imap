@@ -9,7 +9,7 @@ unset message_cachedir
 set folder="imaps://imap.gmail.com:993"
 set spoolfile=+INBOX
 unset record
-set postponed="+[Gmail]/Draft"
+set postponed="+[Gmail]/Drafts"
 
 unmailboxes *
 mailboxes +INBOX \
@@ -41,7 +41,7 @@ mailboxes +INBOX \
 set realname="Chris Coutinho"
 set from="chrisbcoutinho@gmail.com"
 
-set smtp_url="smtps://chrisbcoutinho@gmail.com@smtp.gmail.com:587"
+set smtp_url="smtps://chrisbcoutinho@gmail.com@smtp.gmail.com:465"
 set imap_pass=`pass Mail/Gmail-offlineimap`
 set smtp_authenticators="plain"
 

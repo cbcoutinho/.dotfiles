@@ -11,3 +11,15 @@ rusty-tags.vi
 # Clojure/deps
 .rebel_readline_history
 .rebl/
+
+# Scala LSP
+.metals/
+
+# Azurite
+__azurite_db*.json
+
+# (n)vim
+.vim/
+
+# Python
+.venv

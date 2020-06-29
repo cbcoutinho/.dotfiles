@@ -11,7 +11,7 @@ set delete               # don't ask, just do
 unset confirmappend      # don't ask, just do!
 set quit                 # don't ask, just do!!
 #unset mark_old           # read/new is good enough for me
-set beep_new             # bell on new mails
+#set beep_new             # bell on new mails
 set pipe_decode          # strip headers and eval mimes when piping
 set thorough_search      # strip headers and eval mimes before searching
 
@@ -24,7 +24,7 @@ folder-hook 'personal' 'source ~/.config/mutt/accounts/personal'
 folder-hook 'work' 'source ~/.config/mutt/accounts/work'
 folder-hook 'humboldt' 'source ~/.config/mutt/accounts/humboldt'
 
-source accounts/personal
+source accounts/work
 
 macro index,pager <f2> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/personal<enter><change-folder>!<enter>'
 macro index,pager <f3> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/work<enter><change-folder>!<enter>'

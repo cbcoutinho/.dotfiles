@@ -10,6 +10,7 @@ local -a _1st_arguments
 _1st_arguments=(
 	"force\:alias\:list":"list username aliases for the Salesforce CLI"
 	"force\:alias\:set":"set username aliases for the Salesforce CLI"
+	"force\:analytics\:template\:create":"add an Analytics template to your workspace"
 	"force\:apex\:class\:create":"create an Apex class"
 	"force\:apex\:execute":"execute anonymous Apex code"
 	"force\:apex\:log\:get":"fetch the last debug log"
@@ -142,15 +143,23 @@ case "$words[1]" in
  '(--loglevel)--loglevel=[logging level for this command invocation]:' \
  )
  ;;
+ force:analytics:template:create)
+ _command_args=(
+ '(--json)--json[format output as json]' \
+ '(--loglevel)--loglevel=[logging level for this command invocation]:' \
+ '(-d|--outputdir)'{-d=,--outputdir=}'[folder for saving the created files]:' \
+ '(--apiversion)--apiversion=[override the api version used for api requests made by this command]:' \
+ '(-n|--templatename)'{-n=,--templatename=}'[name of the Analytics template]:' \
+ )
+ ;;
  force:apex:class:create)
  _command_args=(
- '(--json)--json[JSON output]' \
+ '(--json)--json[format output as json]' \
  '(--loglevel)--loglevel=[logging level for this command invocation]:' \
  '(-n|--classname)'{-n=,--classname=}'[name of the generated Apex class]:' \
  '(-t|--template)'{-t=,--template=}'[template to use for file creation]:' \
  '(-d|--outputdir)'{-d=,--outputdir=}'[folder for saving the created files]:' \
- '(-r|--reflect)'{-r,--reflect}'[switch to return flag detailed information]' \
- '(-a|--apiversion)'{-a=,--apiversion=}'[API version number]:' \
+ '(--apiversion)--apiversion=[override the api version used for api requests made by this command]:' \
  )
  ;;
  force:apex:execute)
@@ -227,15 +236,14 @@ case "$words[1]" in
  ;;
  force:apex:trigger:create)
  _command_args=(
- '(--json)--json[JSON output]' \
+ '(--json)--json[format output as json]' \
  '(--loglevel)--loglevel=[logging level for this command invocation]:' \
  '(-n|--triggername)'{-n=,--triggername=}'[name of the generated Apex trigger]:' \
  '(-t|--template)'{-t=,--template=}'[template to use for file creation]:' \
  '(-d|--outputdir)'{-d=,--outputdir=}'[folder for saving the created files]:' \
- '(-r|--reflect)'{-r,--reflect}'[switch to return flag detailed information]' \
- '(-a|--apiversion)'{-a=,--apiversion=}'[API version number]:' \
+ '(--apiversion)--apiversion=[override the api version used for api requests made by this command]:' \
  '(-s|--sobject)'{-s=,--sobject=}'[sObject to create a trigger on]:' \
- '(-e|--triggerevents)'{-e=,--triggerevents=}'[events that fire the trigger (before insert|before update|before delete|after insert|after update|after delete|after undelete)]:' \
+ '(-e|--triggerevents)'{-e=,--triggerevents=}'[events that fire the trigger]:' \
  )
  ;;
  force:auth:device:login)
@@ -459,51 +467,47 @@ case "$words[1]" in
  ;;
  force:lightning:app:create)
  _command_args=(
- '(--json)--json[JSON output]' \
+ '(--json)--json[format output as json]' \
  '(--loglevel)--loglevel=[logging level for this command invocation]:' \
  '(-n|--appname)'{-n=,--appname=}'[name of the generated Lightning app]:' \
  '(-t|--template)'{-t=,--template=}'[template to use for file creation]:' \
  '(-d|--outputdir)'{-d=,--outputdir=}'[folder for saving the created files]:' \
- '(-r|--reflect)'{-r,--reflect}'[switch to return flag detailed information]' \
- '(-a|--apiversion)'{-a=,--apiversion=}'[API version number]:' \
- '(-x|--internal)'{-x,--internal}'[create the Lightning component for internal use]' \
+ '(--apiversion)--apiversion=[override the api version used for api requests made by this command]:' \
+ '(-i|--internal)'{-i,--internal}'[create lightning bundles without creating a -meta.xml file]' \
  )
  ;;
  force:lightning:component:create)
  _command_args=(
- '(--json)--json[JSON output]' \
+ '(--json)--json[format output as json]' \
  '(--loglevel)--loglevel=[logging level for this command invocation]:' \
  '(-n|--componentname)'{-n=,--componentname=}'[name of the generated Lightning component]:' \
  '(-t|--template)'{-t=,--template=}'[template to use for file creation]:' \
  '(-d|--outputdir)'{-d=,--outputdir=}'[folder for saving the created files]:' \
- '(-r|--reflect)'{-r,--reflect}'[switch to return flag detailed information]' \
- '(-a|--apiversion)'{-a=,--apiversion=}'[API version number]:' \
+ '(--apiversion)--apiversion=[override the api version used for api requests made by this command]:' \
  '(--type)--type=[type of the Lightning component]:' \
- '(-x|--internal)'{-x,--internal}'[create the Lightning component for internal use]' \
+ '(-i|--internal)'{-i,--internal}'[create lightning bundles without creating a -meta.xml file]' \
  )
  ;;
  force:lightning:event:create)
  _command_args=(
- '(--json)--json[JSON output]' \
+ '(--json)--json[format output as json]' \
  '(--loglevel)--loglevel=[logging level for this command invocation]:' \
  '(-n|--eventname)'{-n=,--eventname=}'[name of the generated Lightning event]:' \
  '(-t|--template)'{-t=,--template=}'[template to use for file creation]:' \
  '(-d|--outputdir)'{-d=,--outputdir=}'[folder for saving the created files]:' \
- '(-r|--reflect)'{-r,--reflect}'[switch to return flag detailed information]' \
- '(-a|--apiversion)'{-a=,--apiversion=}'[API version number]:' \
- '(-x|--internal)'{-x,--internal}'[create the Lightning component for internal use]' \
+ '(--apiversion)--apiversion=[override the api version used for api requests made by this command]:' \
+ '(-i|--internal)'{-i,--internal}'[create lightning bundles without creating a -meta.xml file]' \
  )
  ;;
  force:lightning:interface:create)
  _command_args=(
- '(--json)--json[JSON output]' \
+ '(--json)--json[format output as json]' \
  '(--loglevel)--loglevel=[logging level for this command invocation]:' \
  '(-n|--interfacename)'{-n=,--interfacename=}'[name of the generated Lightning interface]:' \
  '(-t|--template)'{-t=,--template=}'[template to use for file creation]:' \
  '(-d|--outputdir)'{-d=,--outputdir=}'[folder for saving the created files]:' \
- '(-r|--reflect)'{-r,--reflect}'[switch to return flag detailed information]' \
- '(-a|--apiversion)'{-a=,--apiversion=}'[API version number]:' \
- '(-x|--internal)'{-x,--internal}'[create the Lightning component for internal use]' \
+ '(--apiversion)--apiversion=[override the api version used for api requests made by this command]:' \
+ '(-i|--internal)'{-i,--internal}'[create lightning bundles without creating a -meta.xml file]' \
  )
  ;;
  force:lightning:lint)
@@ -519,13 +523,12 @@ case "$words[1]" in
  ;;
  force:lightning:test:create)
  _command_args=(
- '(--json)--json[JSON output]' \
+ '(--json)--json[format output as json]' \
  '(--loglevel)--loglevel=[logging level for this command invocation]:' \
  '(-n|--testname)'{-n=,--testname=}'[name of the generated Lightning test]:' \
  '(-t|--template)'{-t=,--template=}'[template to use for file creation]:' \
  '(-d|--outputdir)'{-d=,--outputdir=}'[folder for saving the created files]:' \
- '(-r|--reflect)'{-r,--reflect}'[switch to return flag detailed information]' \
- '(-x|--internal)'{-x,--internal}'[create the Lightning component for internal use]' \
+ '(-i|--internal)'{-i,--internal}'[create lightning bundles without creating a -meta.xml file]' \
  )
  ;;
  force:lightning:test:install)
@@ -567,6 +570,9 @@ case "$words[1]" in
  '(--loglevel)--loglevel=[logging level for this command invocation]:' \
  '(-r|--rootdir)'{-r=,--rootdir=}'[the root directory containing the Metadata API–formatted metadata]:file:_files' \
  '(-d|--outputdir)'{-d=,--outputdir=}'[the output directory to store the source–formatted files]:file:_files' \
+ '(-x|--manifest)'{-x=,--manifest=}'[file path to manifest (package.xml) of metadata types to convert.]:' \
+ '(-m|--metadata)'{-m=,--metadata=}'[comma-separated list of metadata component names to convert]:' \
+ '(-p|--metadatapath)'{-p=,--metadatapath=}'[comma-separated list of paths to the local source files to convert]:' \
  )
  ;;
  force:mdapi:deploy)
@@ -1063,17 +1069,15 @@ case "$words[1]" in
  ;;
  force:project:create)
  _command_args=(
- '(--json)--json[JSON output]' \
+ '(--json)--json[format output as json]' \
  '(--loglevel)--loglevel=[logging level for this command invocation]:' \
  '(-n|--projectname)'{-n=,--projectname=}'[name of the generated project]:' \
  '(-t|--template)'{-t=,--template=}'[template to use for project creation]:' \
  '(-d|--outputdir)'{-d=,--outputdir=}'[folder for saving the created files]:' \
- '(-r|--reflect)'{-r,--reflect}'[switch to return flag detailed information]' \
- '(-l|--loginurl)'{-l=,--loginurl=}'[Salesforce instance login URL]:' \
- '(--sourceapiversion)--sourceapiversion[source API version number]' \
  '(-s|--namespace)'{-s=,--namespace=}'[project associated namespace]:' \
  '(-p|--defaultpackagedir)'{-p=,--defaultpackagedir=}'[default package directory name]:' \
- '(-x|--manifest)'{-x,--manifest}'[generate a manifest (package.xml) for change-set-based development]' \
+ '(-x|--manifest)'{-x,--manifest}'[generate a manifest (package.xml) for change-set based development]' \
+ '(-l|--loginurl)'{-l=,--loginurl=}'[Salesforce instance login URL]:' \
  )
  ;;
  force:project:upgrade)
@@ -1109,6 +1113,9 @@ case "$words[1]" in
  '(-r|--rootdir)'{-r=,--rootdir=}'[a source directory other than the default package to convert]:file:_files' \
  '(-d|--outputdir)'{-d=,--outputdir=}'[output directory to store the Metadata API–formatted files in]:file:_files' \
  '(-n|--packagename)'{-n=,--packagename=}'[name of the package to associate with the metadata-formatted files]:' \
+ '(-x|--manifest)'{-x=,--manifest=}'[file path to manifest (package.xml) of metadata types to convert.]:' \
+ '(-p|--sourcepath)'{-p=,--sourcepath=}'[comma-separated list of paths to the local source files to convert]:' \
+ '(-m|--metadata)'{-m=,--metadata=}'[comma-separated list of metadata component names to convert]:' \
  )
  ;;
  force:source:delete)
@@ -1117,6 +1124,7 @@ case "$words[1]" in
  '(--loglevel)--loglevel=[logging level for this command invocation]:' \
  '(-u|--targetusername)'{-u=,--targetusername=}'[username or alias for the target org; overrides default target org]:' \
  '(--apiversion)--apiversion=[override the api version used for api requests made by this command]:' \
+ '(-c|--checkonly)'{-c,--checkonly}'[validate delete command but do not delete from the org or delete files locally]' \
  '(-r|--noprompt)'{-r,--noprompt}'[do not prompt for delete confirmation]' \
  '(-w|--wait)'{-w=,--wait=}'[wait time for command to finish in minutes 33]:' \
  '(-p|--sourcepath)'{-p=,--sourcepath=}'[comma-separated list of paths to the local metadata to delete]:' \
@@ -1270,25 +1278,23 @@ case "$words[1]" in
  ;;
  force:visualforce:component:create)
  _command_args=(
- '(--json)--json[JSON output]' \
+ '(--json)--json[format output as json]' \
  '(--loglevel)--loglevel=[logging level for this command invocation]:' \
  '(-t|--template)'{-t=,--template=}'[template to use for file creation]:' \
  '(-d|--outputdir)'{-d=,--outputdir=}'[folder for saving the created files]:' \
- '(-r|--reflect)'{-r,--reflect}'[switch to return flag detailed information]' \
  '(-n|--componentname)'{-n=,--componentname=}'[name of the generated Visualforce component]:' \
- '(-a|--apiversion)'{-a=,--apiversion=}'[API version number]:' \
+ '(--apiversion)--apiversion=[override the api version used for api requests made by this command]:' \
  '(-l|--label)'{-l=,--label=}'[Visualforce component label]:' \
  )
  ;;
  force:visualforce:page:create)
  _command_args=(
- '(--json)--json[JSON output]' \
+ '(--json)--json[format output as json]' \
  '(--loglevel)--loglevel=[logging level for this command invocation]:' \
  '(-t|--template)'{-t=,--template=}'[template to use for file creation]:' \
  '(-d|--outputdir)'{-d=,--outputdir=}'[folder for saving the created files]:' \
- '(-r|--reflect)'{-r,--reflect}'[switch to return flag detailed information]' \
  '(-n|--pagename)'{-n=,--pagename=}'[name of the generated Visualforce page]:' \
- '(-a|--apiversion)'{-a=,--apiversion=}'[API version number]:' \
+ '(--apiversion)--apiversion=[override the api version used for api requests made by this command]:' \
  '(-l|--label)'{-l=,--label=}'[Visualforce page label]:' \
  )
  ;;

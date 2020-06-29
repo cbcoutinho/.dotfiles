@@ -5,7 +5,6 @@ set termguicolors
 " Colorscheme
 
 set background=dark			" Options: [light/dark]
-"set background=light			" Options: [light/dark]
 
 colorscheme gruvbox
 let g:gruvbox_italic=1

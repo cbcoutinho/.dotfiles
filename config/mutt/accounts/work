@@ -26,5 +26,8 @@ set mbox = "+Archive"
 set postponed = "+Drafts"
 
 # Sync email
-macro index O "<shell-escape>offlineimap -a Work -s<enter>"           "run offlineimap to sync all mail"
-macro index o "<shell-escape>offlineimap -a Work -s -qf INBOX<enter>" "run offlineimap to sync inbox"
+macro index O "<shell-escape>offlineimap -a FocusCura<enter>"           "run offlineimap to sync all mail"
+macro index o "<shell-escape>offlineimap -a FocusCura -qf INBOX<enter>" "run offlineimap to sync inbox"
+
+# Prefer html messages (for salesforce errors)
+alternative_order text/html text/plain text/enriched

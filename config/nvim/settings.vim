@@ -30,8 +30,10 @@ set shiftwidth  =4          " when indenting with '>', use 4 spaces width
 set list					" Replaces certain whitespace with characters
 "set listchars=tab:>-		" Replace <TAB> with >---
 set listchars+=trail:·		" Replace trailing whitespace with '·'
-set listchars+=extends:#	" Shows in last column when characters extend past pane
+set listchars+=extends:>	" Shows in last column when characters extend past pane to the right
+set listchars+=precedes:<	" Shows in first column when characters extend past pane to the left
 set listchars+=nbsp:.
+set listchars+=eol:%
 
 set listchars+=tab:▸\ 		" Replace <TAB> with ▸
 set listchars+=eol:¬		" Replace EOL with ¬
@@ -45,7 +47,7 @@ set smartcase               " Ignores 'set ignorecase' if search contains upper 
 set splitbelow				" Split new buffer below instead of above
 set splitright				" Split new buffer right instead of left
 set nowrap                  " Don't wrap long lines automatically
-set textwidth       =70     " Set textwidth to <n> chars, wrap after that
+set textwidth       =79     " Set textwidth to <n> chars, wrap after that
 
 " Default format options: tcqj (in vimrc: jcroql)
 set formatoptions   +=t     " Automatically wrap lines after <textwidth> chars
@@ -82,8 +84,15 @@ au BufNewFile,BufRead *.cson set filetype=coffee
 au BufNewFile,BufRead .shrc set filetype=sh     " Sets .shrc files to use sh syntax
 au BufNewFile,Bufread *.wiki set filetype=vimwiki
 au BufNewFile,Bufread Pipfile.lock set filetype=json
+au BufNewFile,Bufread poetry.lock set filetype=toml
 au BufNewFile,BufRead *.sbt set filetype=scala
-au BufNewFile,BufRead *.cls set filetype=java    " Sets .cls files to use java syntax (Salesforce)
+
+" Use 'apex' as the syntax and set our style information
+au BufEnter *.cls set syntax=apex tabstop=4 shiftwidth=4 softtabstop=4 nowrap
+"au BufEnter *.cls exec 'match Todo /\%>80v.\+/'
+au BufEnter *.trigger set syntax=apex tabstop=4 shiftwidth=4 softtabstop=4 nowrap
+"au BufEnter *.trigger exec 'match Todo /\%>80v.\+/'
+"au BufEnter *.page set tabstop=4 shiftwidth=4 softtabstop=4 nowrap
 
 " Usually for OpenFOAM/foam files
 au BufRead * if search('\M-*- C++ -*-', 'n', 1) | setlocal ft=cpp | endif
