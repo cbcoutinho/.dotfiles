@@ -14,8 +14,12 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
+    strategy:
+      matrix:
+        platform: [ubuntu-20.04, macos-latest]
+
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.platform }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -23,11 +27,12 @@ jobs:
     - uses: actions/checkout@v2
 
     # Runs a single command using the runners shell
-    - name: Run a one-line script
-      run: echo Hello, world!
+    - name: Update apt-get cache if Linux
+      run: command -v apt-get >/dev/null && sudo apt-get update || echo '-- apt-get not found'
 
-    # Runs a set of commands using the runners shell
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+    - name: Install packages
+      run: command -v apt-get >/dev/null && sudo apt-get install neovim python3-setuptools python3-wheel || echo '-- apt-get not found'
+
+    # Runs a single command using the runners shell
+    - name: Deploy script
+      run: ./deploy.sh
