@@ -4,7 +4,8 @@
 
 set -e
 
-dotfiles=~/Projects/.dotfiles
+# Use GITHUB_WORKSPACE env var if available
+dotfiles="${GITHUB_WORKSPACE:-$HOME/Projects/.dotfiles}"
 
 # Install rust
 if [ ! -d ~/.cargo ]; then
@@ -27,10 +28,13 @@ fi
 ln -s $dotfiles/config ~/.config
 
 # Create link zsh env file to homedir
+mv ~/.zshenv ~/.zshenv.old || echo 'No previous .zshenv found to move'
 ln -s $dotfiles/.zshenv ~/.zshenv
+mv ~/.profile ~/.profile.old || echo 'No previous .profile found to move'
 ln -s $dotfiles/.profile ~/.profile
 
 # Create link gpg config files to homedir
+mkdir -p ~/.gnupg
 ln -s $dotfiles/.gnupg/gpg.conf ~/.gnupg/gpg.conf
 ln -s $dotfiles/.gnupg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
 ln -s $dotfiles/.gnupg/sshcontrol ~/.gnupg/sshcontrol
@@ -39,25 +43,26 @@ ln -s $dotfiles/.gnupg/sshcontrol ~/.gnupg/sshcontrol
 ln -s $dotfiles/.nvmrc ~/.nvmrc
 
 # Python
-if command -v python3 >/dev/null
-then
+if command -v python3 >/dev/null; then
 	python3 -m pip install --user -U virtualenvwrapper
 else
 	echo 'Python3 not found - skipping virtualenvwrapper'
 fi
 
 # Xorg
-if [[ $(uname -s) != "Darwin" ]]
-then
+if [[ $(uname -s) == "Linux" ]]; then
+	mv ~/.xinitrc ~/.xinitrc.old || echo 'No previous .xinitrc found'
 	ln -s $dotfiles/.xinitrc ~/.xinitrc
 fi
 
 # Clojure
 echo 'Installing Leiningen'
-if [[ $(uname -s) == "Darwin" ]]
-then
+if [[ $(uname -s) == "Darwin" ]]; then
 	brew install leiningen clojure
-else
+	brew tap adoptopenjdk/openjdk
+	brew cask install adoptopenjdk{8,11,14}
+else # Assuming linux
+	mkdir -p ~/bin
 	curl -L https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > ~/bin/lein
 	chmod +x ~/bin/lein
 fi
@@ -69,4 +74,8 @@ ln -s $dotfiles/.gemrc ~/.gemrc
 ln -s $dotfiles/.sqliterc ~/.sqliterc
 
 # Neovim (plugins)
+echo 'Installing neovim'
+if [[ $(uname -s) == "Darwin" ]]; then
+	brew install nvim
+fi
 nvim --headless +PlugUpdate! +qall
