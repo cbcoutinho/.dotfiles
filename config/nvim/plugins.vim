@@ -126,7 +126,7 @@ if has('unix')
 	" Fuzzy search for vim - doesn't work on windows
 	Plug 'junegunn/fzf', {
 				\ 'dir': '~/.fzf',
-				\ 'do': './install --all' }
+				\ 'do': './install --all --no-update-rc' }
 	Plug 'junegunn/fzf.vim'
 endif
 

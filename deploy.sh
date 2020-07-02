@@ -39,7 +39,12 @@ ln -s $dotfiles/.gnupg/sshcontrol ~/.gnupg/sshcontrol
 ln -s $dotfiles/.nvmrc ~/.nvmrc
 
 # Python
-python3 -m pip install --user -U virtualenvwrapper
+if command -v python3 >/dev/null
+then
+	python3 -m pip install --user -U virtualenvwrapper
+else
+	echo 'Python3 not found - skipping virtualenvwrapper'
+fi
 
 # Xorg
 if [[ $(uname -s) != "Darwin" ]]
@@ -48,8 +53,11 @@ then
 fi
 
 # Clojure
-if [[ $(uname -s) != "Darwin" ]]
+echo 'Installing Leiningen'
+if [[ $(uname -s) == "Darwin" ]]
 then
+	brew install leiningen clojure
+else
 	curl -L https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > ~/bin/lein
 	chmod +x ~/bin/lein
 fi
@@ -59,3 +67,6 @@ ln -s $dotfiles/.gemrc ~/.gemrc
 
 # Sqlite
 ln -s $dotfiles/.sqliterc ~/.sqliterc
+
+# Neovim (plugins)
+nvim --headless +PlugUpdate! +qall

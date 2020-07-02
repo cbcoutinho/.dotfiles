@@ -6,7 +6,7 @@ set termguicolors
 
 set background=dark			" Options: [light/dark]
 
-colorscheme gruvbox
+silent! colorscheme gruvbox
 let g:gruvbox_italic=1
 
 " Rainbow parens options for all parentheses => defaults to `ON`
