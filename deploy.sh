@@ -12,7 +12,7 @@ if [ ! -d ~/.cargo ]; then
 fi
 
 # Install homebrew on mac
-if [[ $(uname -s) == "Darwin" ]]
+if [[ $(uname -s) == "Darwin" ]] && ! command -v brew &> /dev/null
 then
 	/usr/bin/ruby -e \
 		"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -28,6 +28,7 @@ ln -s $dotfiles/config ~/.config
 
 # Create link zsh env file to homedir
 ln -s $dotfiles/.zshenv ~/.zshenv
+ln -s $dotfiles/.profile ~/.profile
 
 # Create link gpg config files to homedir
 ln -s $dotfiles/.gnupg/gpg.conf ~/.gnupg/gpg.conf
@@ -38,14 +39,20 @@ ln -s $dotfiles/.gnupg/sshcontrol ~/.gnupg/sshcontrol
 ln -s $dotfiles/.nvmrc ~/.nvmrc
 
 # Python
-pip3 install --user -U virtualenvwrapper
+python3 -m pip install --user -U virtualenvwrapper
 
 # Xorg
-ln -s $dotfiles/.xinitrc ~/.xinitrc
+if [[ $(uname -s) != "Darwin" ]]
+then
+	ln -s $dotfiles/.xinitrc ~/.xinitrc
+fi
 
 # Clojure
-curl -L https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > ~/bin/lein
-chmod +x ~/bin/lein
+if [[ $(uname -s) != "Darwin" ]]
+then
+	curl -L https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > ~/bin/lein
+	chmod +x ~/bin/lein
+fi
 
 # Ruby
 ln -s $dotfiles/.gemrc ~/.gemrc
