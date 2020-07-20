@@ -104,7 +104,7 @@ unsetopt EQUALS
 
 # colours from neovim/gruvbox - assumes nvim has installed gruvbox
 # package
-if [ -d ~/.local/share/nvim/plugged/gruvbox ]; then
+if [[ -d ~/.local/share/nvim/plugged/gruvbox ]]; then
 	source ~/.local/share/nvim/plugged/gruvbox/gruvbox_256palette.sh
 else
 	echo "Gruvbox not found, download via 'nvim'"
@@ -116,8 +116,9 @@ fi
 # Fish shell like syntax highlighting for Zsh
 #
 # @link: http://github.com/zsh-users/zsh-syntax-highlighting
-if [ -d ~/Software/zsh-syntax-highlighting ]; then
-	source ~/Software/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+file=$(find ~/Software /usr/share /usr/local/share -name 'zsh-syntax-highlighting.zsh' 2>/dev/null)
+if [[ -f $file ]]; then
+	source $file
 	ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
 	# To have commands starting with `rm -rf /` in red:
@@ -129,14 +130,16 @@ fi
 # Fish-like fast/unobtrusive autosuggestions for zsh.
 #
 # @link: http://github.com/zsh-users/zsh-autosuggestions
-if [ -d ~/Software/zsh-autosuggestions ]; then 
-	source ~/Software/zsh-autosuggestions/zsh-autosuggestions.zsh
+file=$(find ~/Software /usr/share /usr/local/share -name 'zsh-autosuggestions.zsh' 2>/dev/null)
+if [[ -f $file ]]; then
+	source $file
 fi
 
 # Append personal zsh-completions to fpath
 fpath=(
 	$ZDOTDIR/completions
 	/usr/local/share/zsh-completions
+	/etc/zsh_completion.d
 	$fpath
 )
 
@@ -146,13 +149,13 @@ compinit -i
 
 # Sources aws completion if exists
 file=$(find /usr/local/share -name 'aws_zsh_completer.sh')
-if [ -f $file ]; then
+if [[ -f $file ]]; then
 	source $file
 fi
 
-for file in $(find -E /usr/local/etc -regex '.*(nvm|az)$')
+for file in $(find /usr/etc /usr/local -regextype posix-extended -regex '.*(nvm|az)$')
 do
-	if [ -f $file ]; then
+	if [[ -f $file ]]; then
 		# Add bash completion for some bash-only completion scripts
 		autoload -U +X bashcompinit && bashcompinit
 		source $file
@@ -181,4 +184,4 @@ setopt HIST_FIND_NO_DUPS
 
 unsetopt beep
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
