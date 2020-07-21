@@ -19,8 +19,9 @@ endfunction
 " Language-specfic plugins {{{
 " Completions in neovim {{{
 
-Plug 'dense-analysis/ale'					" Async linting/fixing using LSP
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'dense-analysis/ale'					" Async linting/fixing using LSP
+Plug 'neoclide/coc.nvim',
+		\ {'branch': 'release'}
 
 " }}}
 " Rust {{{
@@ -67,7 +68,8 @@ Plug 'ktvoelker/sbt-vim'
 " View rendered markdown in vim
 Plug 'euclio/vim-markdown-composer', {
 			\ 'do': function('BuildRust') }
-Plug 'nelstrom/vim-markdown-folding'	" Easily fold markdown files by section
+"Plug 'nelstrom/vim-markdown-folding'	" Easily fold markdown files by section
+Plug 'plasticboy/vim-markdown'
 
 " }}}
 " Apex/Salesforce {{{
@@ -108,6 +110,8 @@ Plug 'tmhedberg/SimpylFold'				" Fold python source files
 
 Plug 'neomutt/neomutt.vim'				" Vim syntax for neomutt
 Plug 'vito-c/jq.vim' 					" Vim syntax for jq
+Plug 'pearofducks/ansible-vim'			" Vim syntax for ansible playbooks
+Plug 'gurpreetatwal/vim-avro'			" Vim syntax for avro
 
 " }}}
 " Vim/git-related plugins {{{
@@ -126,6 +130,7 @@ if has('unix')
 	" Fuzzy search for vim - doesn't work on windows
 	Plug 'junegunn/fzf', {
 				\ 'dir': '~/.fzf',
+				"\ 'do': { -> fzf#install() }
 				\ 'do': './install --all --no-update-rc' }
 	Plug 'junegunn/fzf.vim'
 endif
@@ -144,19 +149,19 @@ vmap gx <Plug>(openbrowser-open)
 " }}}
 call plug#end()
 
-let g:ale_linters = {
-			\ 'python': ['flake8', 'pylint'],
-			\ 'clojure': ['clj-kondo', 'joker'],
-			\ 'rust': ['rls', 'cargo', 'rustc'],
-			\ 'scala': ['metals' ],
-			\ 'cs': ['OmniSharp']
-			\}
-let g:ale_fixers = {
-			\ 'rust': ['rustfmt'],
-			\ 'python': ['black'],
-			\ 'scala': ['scalafmt']
-			\}
-let g:ale_completion_enabled = 1
+"let g:ale_linters = {
+			"\ 'python': ['flake8', 'pylint'],
+			"\ 'clojure': ['clj-kondo', 'joker'],
+			"\ 'rust': ['rls', 'cargo', 'rustc'],
+			"\ 'scala': ['metals'],
+			"\ 'cs': ['OmniSharp']
+			"\}
+"let g:ale_fixers = {
+			"\ 'rust': ['rustfmt'],
+			"\ 'python': ['black'],
+			"\ 'scala': ['scalafmt']
+			"\}
+"let g:ale_completion_enabled = 1
 
 let g:float_preview#docked = 0
 let g:float_preview#max_width = 80
@@ -166,3 +171,5 @@ let g:apex_backup_folder = '/tmp/apex/backup'
 let g:apex_temp_folder = '/tmp/apex/tmp'
 "let g:apex_properties_folder =
 "let g:apex_tooling_force_dot_com_path = expand('~/Downloads/tooling-force.com-0.4.4.0.jar')
+"
+let g:fugitive_gitlab_domains = ['https://gitlab.carnext.io']

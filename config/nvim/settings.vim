@@ -79,13 +79,15 @@ let b:SimpylFold_fold_docstring = 0
 "let g:SimpylFold_fold_import = 0
 "let b:SimpylFold_fold_import = 0
 
+let g:vim_markdown_folding_disabled = 1
+
 " Filetype associations
 au BufNewFile,BufRead *.cson set filetype=coffee
 au BufNewFile,BufRead .shrc set filetype=sh     " Sets .shrc files to use sh syntax
 au BufNewFile,Bufread *.wiki set filetype=vimwiki
-au BufNewFile,Bufread Pipfile.lock set filetype=json
+au BufNewFile,Bufread Pipfile.lock,*.avsc set filetype=json
 au BufNewFile,Bufread poetry.lock set filetype=toml
-au BufNewFile,BufRead *.sbt set filetype=scala
+au BufNewFile,BufRead *.sbt,.scalafmt.conf,.scalafix.conf set filetype=scala
 
 " Use 'apex' as the syntax and set our style information
 au BufEnter *.cls set syntax=apex tabstop=4 shiftwidth=4 softtabstop=4 nowrap

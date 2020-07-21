@@ -1,3 +1,40 @@
 {
-	"metals.statusBarEnabled": true
+  "metals.statusBarEnabled": true,
+  "coc.preferences.useQuickfixForLocations": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    // "scala",
+    "python"
+  ],
+  "python.venvFolders": [
+    ".venv",
+    "venv",
+    "envs",
+    ".pyenv",
+    ".direnv"
+  ],
+  "python.formatting.provider": "black",
+  "python.linting.lintOnSave": true,
+  "languageserver": {
+    "clojure-lsp": {
+      "command": "bash",
+      "args": [
+        "-c",
+        "/usr/local/bin/clojure-lsp"
+      ],
+      "filetypes": [
+        "clojure"
+      ],
+      "rootPatterns": [
+        "project.clj"
+      ],
+      "additionalSchemes": [
+        "jar",
+        "zipfile"
+      ],
+      "trace.server": "verbose",
+      "initializationOptions": {
+        "ignore-classpath-directories": true
+      }
+    }
+  }
 }
