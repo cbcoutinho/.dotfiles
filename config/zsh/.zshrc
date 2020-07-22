@@ -118,7 +118,7 @@ fi
 # Fish shell like syntax highlighting for Zsh
 #
 # @link: http://github.com/zsh-users/zsh-syntax-highlighting
-file=$(find ~/Software /usr/share /usr/local/share -name 'zsh-syntax-highlighting.zsh' 2>/dev/null)
+file=$(find /usr/local/share /usr/share -name 'zsh-syntax-highlighting.zsh' -print -quit 2>/dev/null)
 if [[ -f $file ]]; then
 	source $file
 	ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
@@ -132,7 +132,7 @@ fi
 # Fish-like fast/unobtrusive autosuggestions for zsh.
 #
 # @link: http://github.com/zsh-users/zsh-autosuggestions
-file=$(find ~/Software /usr/share /usr/local/share -name 'zsh-autosuggestions.zsh' 2>/dev/null)
+file=$(find /usr/local/share /usr/share -name 'zsh-autosuggestions.zsh' -print -quit 2>/dev/null)
 if [[ -f $file ]]; then
 	source $file
 fi
@@ -141,24 +141,23 @@ fi
 fpath=(
 	$ZDOTDIR/completions
 	/usr/local/share/zsh-completions
+	/home/linuxbrew/.linuxbrew/share/zsh/site-functions
 	/etc/zsh_completion.d
 	$fpath
 )
 
-# Add zsh completions from brew
-command -v brew >/dev/null && fpath+=$(brew --prefix)/share/zsh/site-functions
 
 # completions
 autoload -Uz compinit && compinit -i
-compinit -i
 
-# Sources aws completion if exists
-file=$(find /usr/local/share -name 'aws_zsh_completer.sh')
+# Sources aws completion if exists, ignore permission errors
+file=$(find /home/linuxbrew/.linuxbrew/share /usr/local/share /usr/share -name 'aws_zsh_completer.sh' -print -quit 2>/dev/null)
 if [[ -f $file ]]; then
+	# Source completion file installed normally (via pkg mgr)
 	source $file
 fi
 
-for file in $(find /usr/etc /usr/local -regextype posix-extended -regex '.*(nvm|az)$')
+for file in $(find /home/linuxbrew/.linuxbrew/etc /usr/local/etc /usr/etc -regextype posix-extended -regex '.*(nvm|az)$' -print 2>/dev/null)
 do
 	if [[ -f $file ]]; then
 		# Add bash completion for some bash-only completion scripts

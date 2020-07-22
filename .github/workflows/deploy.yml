@@ -36,3 +36,6 @@ jobs:
     # Runs a single command using the runners shell
     - name: Deploy script
       run: ./deploy.sh
+
+    - name: Test if zsh works
+      run: zsh --interactive -c 'echo Hello World'
