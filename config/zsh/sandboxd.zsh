@@ -57,17 +57,6 @@ sandbox_init_nvm() {
 	fi
 }
 
-sandbox_init_conda() {
-	CONDA_ROOT=$HOME/Software/anaconda3
-	if [ -d $CONDA_ROOT ]; then
-		source $CONDA_ROOT/etc/profile.d/conda.sh
-		conda activate
-		eval "$(register-python-argcomplete conda)"
-	else
-		echo "You're trying to use 'anaconda', but it's not installed"
-	fi
-}
-
 # Don't load modules unless used
 sandbox_hook rvm rvm
 
@@ -75,9 +64,3 @@ sandbox_hook nvm nvm
 sandbox_hook nvm npm
 sandbox_hook nvm node
 sandbox_hook nvm yarn
-
-# Anaconda
-sandbox_hook conda conda
-sandbox_hook conda conda-build
-sandbox_hook conda conda-index
-sandbox_hook conda conda-convert
