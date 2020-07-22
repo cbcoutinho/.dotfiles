@@ -71,7 +71,9 @@ export LESS_TERMCAP_us=$'\e[0;35m'
 #-------------------------------------------------------------
 
 export COLUMNS  # Remember columns for subprocesses.
-eval "$(dircolors)"
+if [[ $(uname -s) == "Linux" ]]; then
+	eval "$(dircolors)"
+fi
 
 #-------------------------------------------------------------
 # zsh options

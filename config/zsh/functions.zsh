@@ -1,13 +1,22 @@
-# NOTE: cannot comment inside bash functions, so 'execute' them instead
 function ls {
-	command ls \
-		-F \
-		-h \
-		--color \
-		--author \
-		--time-style=long-iso \
-		-C "$@" \
-		| less
+	if [[ $(uname -s) == "Linux" ]]; then
+		command ls \
+			-F \
+			-h \
+			--color \
+			--author \
+			--time-style=long-iso \
+			-C "$@" \
+			| less
+	elif [[ $(uname -s) == "Darwin" ]]; then
+		export CLICOLOR_FORCE=1
+		command ls \
+			-F \
+			-h \
+			-G \
+			-C "$@" \
+			| less
+	fi
 }
 
 # -F Append indicator {*,/,=,>,@,|}

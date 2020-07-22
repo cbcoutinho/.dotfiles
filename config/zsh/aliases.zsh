@@ -1,5 +1,8 @@
 # ls aliases
-alias ls="ls --group-directories-first"
+if [[ $(uname -s) == "Linux" ]]; then
+	# BSD ls on mac doesn't support this option
+	alias ls="ls --group-directories-first"
+fi
 alias ll="ls -l"
 alias la="ls -a"
 alias l="ls -la"
