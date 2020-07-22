@@ -5,9 +5,10 @@
 
 # If no input is supplied, use the Software directory
 input=${1:-$HOME/Software}
+depth=${2:-2}
 
 #gitdirs=$( fd '\.git$' --absolute-path --hidden --type directory --max-depth 2 $input --exec dirname | sort)
-gitdirs=$( find $input -maxdepth 2 -type d -name '.git' -exec dirname {} \; | sort)
+gitdirs=$( find $input -maxdepth $depth -type d -name '.git' -exec dirname {} \; | sort)
 
 for ii in $gitdirs; do
 	echo && echo $ii

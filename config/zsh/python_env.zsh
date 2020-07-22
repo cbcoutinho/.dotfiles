@@ -6,10 +6,15 @@ export PIP_FIND_LINKS="file://${WHEELHOUSE}"
 export PIP_WHEEL_DIR="${WHEELHOUSE}"
 
 # Poetry dependency manager
-[ -d "$HOME/.poetry/bin" ] && export PATH=$HOME/.poetry/bin:$PATH
+if [ -d "$HOME/.poetry/bin" ]; then
+	export PATH=$HOME/.poetry/bin:$PATH
+	export POETRY_VIRTUALENVS_IN_PROJECT=true
+fi
+
 
 # IPython directory
 export IPYTHONDIR=$HOME/.config/ipython
 
 # Virtualenvwrapper
 export WORKON_HOME=~/.local/share/virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3

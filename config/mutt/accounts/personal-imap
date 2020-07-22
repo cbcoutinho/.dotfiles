@@ -3,6 +3,14 @@
 set imap_user="chrisbcoutinho@gmail.com"
 set imap_pass=`pass Mail/Gmail-offlineimap`
 
+set realname="Chris Coutinho"
+set from="chrisbcoutinho@gmail.com"
+
+set smtp_url="smtps://chrisbcoutinho@gmail.com@smtp.gmail.com:465"
+set smtp_authenticators="plain"
+set ssl_starttls = yes
+set ssl_force_tls = yes
+
 # Don't cache the body of messages
 unset message_cachedir
 
@@ -35,15 +43,4 @@ mailboxes +INBOX \
 			+Mailing-Lists.Pass \
 			+Mailing-Lists.PostgreSQL \
 			+Mailing-Lists.Python-dev \
-			+Mailing-Lists.Rotaract \
-
-
-set realname="Chris Coutinho"
-set from="chrisbcoutinho@gmail.com"
-
-set smtp_url="smtps://chrisbcoutinho@gmail.com@smtp.gmail.com:465"
-set imap_pass=`pass Mail/Gmail-offlineimap`
-set smtp_authenticators="plain"
-
-set ssl_starttls = yes
-set ssl_force_tls = yes
+			+Mailing-Lists.Rotaract

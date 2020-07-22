@@ -13,7 +13,9 @@ rusty-tags.vi
 .rebl/
 
 # Scala LSP
+metals.sbt
 .metals/
+.bloop/
 
 # Azurite
 __azurite_db*.json

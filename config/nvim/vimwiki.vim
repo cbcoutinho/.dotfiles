@@ -1,6 +1,8 @@
 " Some info for multiple vimwikis:
 "	https://vi.stackexchange.com/a/7911/15268
 
+let g:vimwiki_global_ext = 0
+
 let g:vimwiki_list = [{
 			\ 'path': '~/vimwiki',
 			\ 'template_path': '~/vimwiki/templates/',
