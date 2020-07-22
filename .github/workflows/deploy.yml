@@ -31,7 +31,7 @@ jobs:
       run: command -v apt-get >/dev/null && sudo apt-get update || echo '-- apt-get not found'
 
     - name: Install packages
-      run: command -v apt-get >/dev/null && sudo apt-get install neovim python3-setuptools python3-wheel || echo '-- apt-get not found'
+      run: command -v apt-get >/dev/null && sudo apt-get install neovim python3-setuptools python3-wheel zsh || echo '-- apt-get not found'
 
     # Runs a single command using the runners shell
     - name: Deploy script
