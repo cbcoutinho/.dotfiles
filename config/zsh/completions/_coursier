@@ -2,7 +2,7 @@
 
 _coursier() {
   local -a cmds
-  
+
   cmds=(
     'bootstrap:generates tiny bootstrap launchers'
     'fetch:fetches a set of dependencies'
@@ -74,19 +74,19 @@ _coursier() {
     launch)
       _arguments -C $mainClass $extraJars $isolated $isolateTarget $keepOptional $mode $ttl $quiet $verbose $progress $maxIterations $repository $sourcesR $noDefault $sbtPluginHack $dropInfoAttr $forceVersion $exclude $scalaVersion $intransitive $classifier $defaultConfiguration $parallel $checksum $benchmark $tree $reverseTree $profile $typelevel $cache
       ;;
-    
+
     fetch)
       _arguments -C $sourcesS $javadoc $classpath $artifactType $force $keepOptional $mode $ttl $quiet $verbose $progress $maxIterations $repository $sources $noDefault $sbtPluginHack $dropInfoAttr $forceVersion $exclude $scalaVersion $intransitive $classifier $defaultConfiguration $parallel $checksum $benchmark $tree $reverseTree $profile $typelevel $cache
       ;;
-    
+
     resolve)
       _arguments -C $keepOptional $mode $ttl $quiet $verbose $progress $maxIterations $repository $sourcesR $noDefault $sbtPluginHack $dropInfoAttr $forceVersion $exclude $scalaVersion $intransitive $classifier $defaultConfiguration $parallel $checksum $benchmark $tree $reverseTree $profile $typelevel $cache
       ;;
-    
+
     spark-submit)
       _arguments -C $mainClass $extraJars $yarnIdFile $autoAssembly $defaultAssemblyDependencies  $assemblyDependencies $sparkAssemblyDependencies $noDefaultSubmitDependencies $submitDependencies $sparkVersion $yarnVersion $maxIdleTime $artifactType $force $keepOptional $mode $ttl $quiet $verbose $progress $maxIterations $repository $sourcesR $noDefault $sbtPluginHack $dropInfoAttr $forceVersion $exclude $scalaVersion $intransitive $classifier $defaultConfiguration $parallel $checksum $benchmark $tree $reverseTree $profile $typelevel $cache
       ;;
-    
+
     *)
       ;;
 

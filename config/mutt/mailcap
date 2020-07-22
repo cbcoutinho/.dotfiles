@@ -1,5 +1,5 @@
 # MS Word documents
-#application/msword;	~/.config/mutt/view_attachment.sh %s	"-"	
+#application/msword;	~/.config/mutt/view_attachment.sh %s	"-"
 
 # Images
 image/jpg; ~/.config/mutt/view_attachment.sh %s jpg

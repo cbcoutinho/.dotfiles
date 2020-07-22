@@ -46,7 +46,7 @@ function sandbox_hook() {
 
 # Node Version Manager (NVM)
 sandbox_init_nvm() {
-	if [[ $(uname -s) == "Darwin" ]]; then
+	if [[ $(uname -s) == "Darwin" ]] || command -v brew >/dev/null; then
 		# This assumes 'nvm' is already installed via brew
 		export NVM_DIR=$HOME/.nvm
 		source $(brew --prefix nvm)/nvm.sh

@@ -166,3 +166,5 @@ let g:apex_backup_folder = '/tmp/apex/backup'
 let g:apex_temp_folder = '/tmp/apex/tmp'
 "let g:apex_properties_folder =
 "let g:apex_tooling_force_dot_com_path = expand('~/Downloads/tooling-force.com-0.4.4.0.jar')
+
+let g:fugitive_gitlab_domains = ['https://gitlab.carnext.io']

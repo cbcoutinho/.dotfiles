@@ -13,6 +13,8 @@ source $ZDOTDIR/sandboxd.zsh
 # The user prompt (PS1)
 source $ZDOTDIR/prompt.zsh
 
+test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+
 # Use pyenv to handle python in interactive shells
 if command -v pyenv >/dev/null; then
 	eval "$(pyenv init -)"
@@ -143,6 +145,9 @@ fpath=(
 	$fpath
 )
 
+# Add zsh completions from brew
+command -v brew >/dev/null && fpath+=$(brew --prefix)/share/zsh/site-functions
+
 # completions
 autoload -Uz compinit && compinit -i
 compinit -i
@@ -185,3 +190,5 @@ setopt HIST_FIND_NO_DUPS
 unsetopt beep
 
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
+
+[[ -f ~/.config/broot/launcher/bash/br ]] && source ~/.config/broot/launcher/bash/br

@@ -3,7 +3,7 @@
 set imap_user="c.coutinho@focuscura.nl	"
 set imap_pass=`pass Mail/FocusCura-offlineimap`
 
-# Don't cache the body of messages 
+# Don't cache the body of messages
 unset message_cachedir
 
 set folder="imaps://outlook.office365.com:993"

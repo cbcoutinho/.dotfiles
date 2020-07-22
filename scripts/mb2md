@@ -10,7 +10,7 @@
 #
 # Usage:
 #   mb2md mbox maildir
-# where mbox must exist, and maildir must not exist. 
+# where mbox must exist, and maildir must not exist.
 #
 # https://www.gerg.ca/hacks/mb2md/
 

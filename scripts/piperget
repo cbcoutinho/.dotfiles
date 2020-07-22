@@ -6,7 +6,7 @@
 # mbox file to be read by neomutt.
 #
 # NOTE: Remember the final slash!
-# Usage: 
+# Usage:
 # 	piperget https://link/to/pipermail/archive/
 
 set -x
