@@ -1,0 +1,11 @@
+# Ignore everything
+*
+
+# Except these files
+!.gitignore
+!build.sbt
+!plugins.sbt
+
+# And these directories
+!0.13/
+!1.0/

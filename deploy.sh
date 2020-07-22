@@ -73,6 +73,9 @@ ln -s $dotfiles/.gemrc ~/.gemrc
 # Sqlite
 ln -s $dotfiles/.sqliterc ~/.sqliterc
 
+# SBT
+ln -s $dotfiles/sbt ~/.sbt
+
 # Neovim (plugins)
 echo 'Installing neovim'
 if [[ $(uname -s) == "Darwin" ]]; then
