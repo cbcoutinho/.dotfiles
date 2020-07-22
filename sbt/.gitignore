@@ -9,3 +9,4 @@
 # And these directories
 !0.13/
 !1.0/
+!plugins/
