@@ -1,0 +1,1227 @@
+#compdef _ccloud ccloud
+
+
+function _ccloud {
+  local -a commands
+
+  _arguments -C \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "api-key:Manage the API keys."
+      "completion:Print shell completion code."
+      "config:Modify the CLI configuration."
+      "connector:Manage Kafka Connect."
+      "connector-catalog:Catalog of connectors and their configurations."
+      "environment:Manage and select ccloud environments."
+      "feedback:Submit feedback about the ccloud CLI."
+      "help:Help about any command"
+      "init:Initialize a context."
+      "kafka:Manage Apache Kafka."
+      "ksql:Manage KSQL applications."
+      "login:Log in to Confluent Cloud."
+      "logout:Logout of Confluent Cloud."
+      "prompt:Print ccloud CLI context for your terminal prompt."
+      "schema-registry:Manage Schema Registry."
+      "service-account:Manage service accounts."
+      "update:Update the ccloud CLI."
+      "version:Print the ccloud CLI version."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  api-key)
+    _ccloud_api-key
+    ;;
+  completion)
+    _ccloud_completion
+    ;;
+  config)
+    _ccloud_config
+    ;;
+  connector)
+    _ccloud_connector
+    ;;
+  connector-catalog)
+    _ccloud_connector-catalog
+    ;;
+  environment)
+    _ccloud_environment
+    ;;
+  feedback)
+    _ccloud_feedback
+    ;;
+  help)
+    _ccloud_help
+    ;;
+  init)
+    _ccloud_init
+    ;;
+  kafka)
+    _ccloud_kafka
+    ;;
+  ksql)
+    _ccloud_ksql
+    ;;
+  login)
+    _ccloud_login
+    ;;
+  logout)
+    _ccloud_logout
+    ;;
+  prompt)
+    _ccloud_prompt
+    ;;
+  schema-registry)
+    _ccloud_schema-registry
+    ;;
+  service-account)
+    _ccloud_service-account
+    ;;
+  update)
+    _ccloud_update
+    ;;
+  version)
+    _ccloud_version
+    ;;
+  esac
+}
+
+
+function _ccloud_api-key {
+  local -a commands
+
+  _arguments -C \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "create:Create API keys for a given resource."
+      "delete:Delete API keys."
+      "list:List the API keys."
+      "store:Store an API key/secret locally to use in the CLI."
+      "update:Update API key."
+      "use:Make API key active for use in other commands."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  create)
+    _ccloud_api-key_create
+    ;;
+  delete)
+    _ccloud_api-key_delete
+    ;;
+  list)
+    _ccloud_api-key_list
+    ;;
+  store)
+    _ccloud_api-key_store
+    ;;
+  update)
+    _ccloud_api-key_update
+    ;;
+  use)
+    _ccloud_api-key_use
+    ;;
+  esac
+}
+
+function _ccloud_api-key_create {
+  _arguments \
+    '--resource[REQUIRED: The resource ID. Use "cloud" to create a Cloud API key.]:' \
+    '--service-account[Service account ID. If not specified, the API key will have full access on the cluster.]:' \
+    '--description[Description of API key.]:' \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_api-key_delete {
+  _arguments \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_api-key_list {
+  _arguments \
+    '--resource[The resource ID to filter by. Use "cloud" to show only Cloud API keys.]:' \
+    '--current-user[Show only API keys belonging to current user.]' \
+    '--service-account[The service account ID to filter by.]:' \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_api-key_store {
+  _arguments \
+    '--resource[REQUIRED: The resource ID.]:' \
+    '(-f --force)'{-f,--force}'[Force overwrite existing secret for this key.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_api-key_update {
+  _arguments \
+    '--description[Description of the API key.]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_api-key_use {
+  _arguments \
+    '--resource[REQUIRED: The resource ID.]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_completion {
+  _arguments \
+    '(-h --help)'{-h,--help}'[help for completion]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+
+function _ccloud_config {
+  local -a commands
+
+  _arguments -C \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "context:Manage config contexts."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  context)
+    _ccloud_config_context
+    ;;
+  esac
+}
+
+
+function _ccloud_config_context {
+  local -a commands
+
+  _arguments -C \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "current:Show the current config context."
+      "delete:Delete a config context."
+      "list:List all config contexts."
+      "use:Use a config context."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  current)
+    _ccloud_config_context_current
+    ;;
+  delete)
+    _ccloud_config_context_delete
+    ;;
+  list)
+    _ccloud_config_context_list
+    ;;
+  use)
+    _ccloud_config_context_use
+    ;;
+  esac
+}
+
+function _ccloud_config_context_current {
+  _arguments \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_config_context_delete {
+  _arguments \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_config_context_list {
+  _arguments \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_config_context_use {
+  _arguments \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+
+function _ccloud_connector {
+  local -a commands
+
+  _arguments -C \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "create:Create a connector."
+      "delete:Delete a connector."
+      "describe:Describe a connector."
+      "list:List connectors."
+      "pause:Pause a connector."
+      "resume:Resume a connector."
+      "update:Update connector configuration."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  create)
+    _ccloud_connector_create
+    ;;
+  delete)
+    _ccloud_connector_delete
+    ;;
+  describe)
+    _ccloud_connector_describe
+    ;;
+  list)
+    _ccloud_connector_list
+    ;;
+  pause)
+    _ccloud_connector_pause
+    ;;
+  resume)
+    _ccloud_connector_resume
+    ;;
+  update)
+    _ccloud_connector_update
+    ;;
+  esac
+}
+
+function _ccloud_connector_create {
+  _arguments \
+    '--config[JSON connector config file.]:' \
+    '--cluster[Kafka cluster ID.]:' \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_connector_delete {
+  _arguments \
+    '--cluster[Kafka cluster ID.]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_connector_describe {
+  _arguments \
+    '--cluster[Kafka cluster ID.]:' \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_connector_list {
+  _arguments \
+    '--cluster[Kafka cluster ID.]:' \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_connector_pause {
+  _arguments \
+    '--cluster[Kafka cluster ID.]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_connector_resume {
+  _arguments \
+    '--cluster[Kafka cluster ID.]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_connector_update {
+  _arguments \
+    '--config[JSON connector config file.]:' \
+    '--cluster[Kafka cluster ID.]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+
+function _ccloud_connector-catalog {
+  local -a commands
+
+  _arguments -C \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "describe:Describe a connector plugin type."
+      "list:List connector plugin types."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  describe)
+    _ccloud_connector-catalog_describe
+    ;;
+  list)
+    _ccloud_connector-catalog_list
+    ;;
+  esac
+}
+
+function _ccloud_connector-catalog_describe {
+  _arguments \
+    '--cluster[Kafka cluster ID.]:' \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_connector-catalog_list {
+  _arguments \
+    '--cluster[Kafka cluster ID.]:' \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+
+function _ccloud_environment {
+  local -a commands
+
+  _arguments -C \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "create:Create a new Confluent Cloud environment."
+      "delete:Delete a Confluent Cloud environment and all its resources."
+      "list:List Confluent Cloud environments."
+      "update:Update an existing Confluent Cloud environment."
+      "use:Switch to the specified Confluent Cloud environment."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  create)
+    _ccloud_environment_create
+    ;;
+  delete)
+    _ccloud_environment_delete
+    ;;
+  list)
+    _ccloud_environment_list
+    ;;
+  update)
+    _ccloud_environment_update
+    ;;
+  use)
+    _ccloud_environment_use
+    ;;
+  esac
+}
+
+function _ccloud_environment_create {
+  _arguments \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_environment_delete {
+  _arguments \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_environment_list {
+  _arguments \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_environment_update {
+  _arguments \
+    '--name[New name for Confluent Cloud environment.]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_environment_use {
+  _arguments \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_feedback {
+  _arguments \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_help {
+  _arguments \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_init {
+  _arguments \
+    '--kafka-auth[Initialize with bootstrap url, API key, and API secret. Can be done interactively, with flags, or both.]' \
+    '--bootstrap[Bootstrap URL.]:' \
+    '--api-key[API key.]:' \
+    '--api-secret[API secret. Can be specified as plaintext, as a file, starting with '\''@'\'', or as stdin, starting with '\''-'\''.]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+
+function _ccloud_kafka {
+  local -a commands
+
+  _arguments -C \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "acl:Manage Kafka ACLs."
+      "cluster:Manage Kafka clusters."
+      "region:Manage Confluent Cloud regions."
+      "topic:Manage Kafka topics."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  acl)
+    _ccloud_kafka_acl
+    ;;
+  cluster)
+    _ccloud_kafka_cluster
+    ;;
+  region)
+    _ccloud_kafka_region
+    ;;
+  topic)
+    _ccloud_kafka_topic
+    ;;
+  esac
+}
+
+
+function _ccloud_kafka_acl {
+  local -a commands
+
+  _arguments -C \
+    '--cluster[Kafka cluster ID.]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "create:Create a Kafka ACL."
+      "delete:Delete a Kafka ACL."
+      "list:List Kafka ACLs for a resource."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  create)
+    _ccloud_kafka_acl_create
+    ;;
+  delete)
+    _ccloud_kafka_acl_delete
+    ;;
+  list)
+    _ccloud_kafka_acl_list
+    ;;
+  esac
+}
+
+function _ccloud_kafka_acl_create {
+  _arguments \
+    '--allow[Set the ACL to grant access.]' \
+    '--deny[Set the ACL to restrict access to resource.]' \
+    '--service-account[The service account ID.]:' \
+    '*--operation[Set ACL Operations to: (alter, alter-configs, cluster-action, create, delete, describe, describe-configs, idempotent-write, read, write).]:' \
+    '--cluster-scope[Set the cluster resource. With this option the ACL grants
+access to the provided operations on the Kafka cluster itself.]' \
+    '--consumer-group[Set the Consumer Group resource.]:' \
+    '--prefix[Set to match all resource names prefixed with this value.]' \
+    '--topic[Set the topic resource. With this option the ACL grants the provided
+operations on the topics that start with that prefix, depending on whether
+the --prefix option was also passed.]:' \
+    '--transactional-id[Set the TransactionalID resource.]:' \
+    '--cluster[Kafka cluster ID.]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_kafka_acl_delete {
+  _arguments \
+    '--allow[Set the ACL to grant access.]' \
+    '--deny[Set the ACL to restrict access to resource.]' \
+    '--service-account[The service account ID.]:' \
+    '*--operation[Set ACL Operations to: (alter, alter-configs, cluster-action, create, delete, describe, describe-configs, idempotent-write, read, write).]:' \
+    '--cluster-scope[Set the cluster resource. With this option the ACL grants
+access to the provided operations on the Kafka cluster itself.]' \
+    '--consumer-group[Set the Consumer Group resource.]:' \
+    '--prefix[Set to match all resource names prefixed with this value.]' \
+    '--topic[Set the topic resource. With this option the ACL grants the provided
+operations on the topics that start with that prefix, depending on whether
+the --prefix option was also passed.]:' \
+    '--transactional-id[Set the TransactionalID resource.]:' \
+    '--cluster[Kafka cluster ID.]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_kafka_acl_list {
+  _arguments \
+    '--cluster-scope[Set the cluster resource. With this option the ACL grants
+access to the provided operations on the Kafka cluster itself.]' \
+    '--consumer-group[Set the Consumer Group resource.]:' \
+    '--prefix[Set to match all resource names prefixed with this value.]' \
+    '--topic[Set the topic resource. With this option the ACL grants the provided
+operations on the topics that start with that prefix, depending on whether
+the --prefix option was also passed.]:' \
+    '--transactional-id[Set the TransactionalID resource.]:' \
+    '--service-account[Service account ID.]:' \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '--cluster[Kafka cluster ID.]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+
+function _ccloud_kafka_cluster {
+  local -a commands
+
+  _arguments -C \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "create:Create a Kafka cluster."
+      "delete:Delete a Kafka cluster."
+      "describe:Describe a Kafka cluster."
+      "list:List Kafka clusters."
+      "update:Update a Kafka cluster."
+      "use:Make the Kafka cluster active for use in other commands."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  create)
+    _ccloud_kafka_cluster_create
+    ;;
+  delete)
+    _ccloud_kafka_cluster_delete
+    ;;
+  describe)
+    _ccloud_kafka_cluster_describe
+    ;;
+  list)
+    _ccloud_kafka_cluster_list
+    ;;
+  update)
+    _ccloud_kafka_cluster_update
+    ;;
+  use)
+    _ccloud_kafka_cluster_use
+    ;;
+  esac
+}
+
+function _ccloud_kafka_cluster_create {
+  _arguments \
+    '--cloud[Cloud provider ID (e.g. '\''aws'\'' or '\''gcp'\'').]:' \
+    '--region[Cloud region ID for cluster (e.g. '\''us-west-2'\'').]:' \
+    '--availability[Availability of the cluster. Allowed Values: single-zone, multi-zone.]:' \
+    '--type[Type of the Kafka cluster. Allowed values: basic, standard, dedicated.]:' \
+    '--cku[Number of Confluent Kafka Units (non-negative). Required for Kafka clusters of type '\''dedicated'\''.]:' \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_kafka_cluster_delete {
+  _arguments \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_kafka_cluster_describe {
+  _arguments \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_kafka_cluster_list {
+  _arguments \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_kafka_cluster_update {
+  _arguments \
+    '--name[Name of the Kafka cluster.]:' \
+    '--cku[Number of Confluent Kafka Units (non-negative). For Kafka clusters of type '\''dedicated'\'' only.]:' \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_kafka_cluster_use {
+  _arguments \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+
+function _ccloud_kafka_region {
+  local -a commands
+
+  _arguments -C \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "list:List cloud provider regions."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  list)
+    _ccloud_kafka_region_list
+    ;;
+  esac
+}
+
+function _ccloud_kafka_region_list {
+  _arguments \
+    '--cloud[The cloud ID to filter by.]:' \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+
+function _ccloud_kafka_topic {
+  local -a commands
+
+  _arguments -C \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "consume:Consume messages from a Kafka topic."
+      "create:Create a Kafka topic."
+      "delete:Delete a Kafka topic."
+      "describe:Describe a Kafka topic."
+      "list:List Kafka topics."
+      "produce:Produce messages to a Kafka topic."
+      "update:Update a Kafka topic."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  consume)
+    _ccloud_kafka_topic_consume
+    ;;
+  create)
+    _ccloud_kafka_topic_create
+    ;;
+  delete)
+    _ccloud_kafka_topic_delete
+    ;;
+  describe)
+    _ccloud_kafka_topic_describe
+    ;;
+  list)
+    _ccloud_kafka_topic_list
+    ;;
+  produce)
+    _ccloud_kafka_topic_produce
+    ;;
+  update)
+    _ccloud_kafka_topic_update
+    ;;
+  esac
+}
+
+function _ccloud_kafka_topic_consume {
+  _arguments \
+    '--cluster[Kafka cluster ID.]:' \
+    '--group[Consumer group ID.]:' \
+    '(-b --from-beginning)'{-b,--from-beginning}'[Consume from beginning of the topic.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_kafka_topic_create {
+  _arguments \
+    '--cluster[Kafka cluster ID.]:' \
+    '--partitions[Number of topic partitions.]:' \
+    '*--config[A comma-separated list of topics. Configuration ('\''key=value'\'') overrides for the topic being created.]:' \
+    '--dry-run[Run the command without committing changes to Kafka.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_kafka_topic_delete {
+  _arguments \
+    '--cluster[Kafka cluster ID.]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_kafka_topic_describe {
+  _arguments \
+    '--cluster[Kafka cluster ID.]:' \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_kafka_topic_list {
+  _arguments \
+    '--cluster[Kafka cluster ID.]:' \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_kafka_topic_produce {
+  _arguments \
+    '--cluster[Kafka cluster ID.]:' \
+    '--delimiter[The key/value delimiter.]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_kafka_topic_update {
+  _arguments \
+    '--cluster[Kafka cluster ID.]:' \
+    '*--config[A comma-separated list of topics. Configuration ('\''key=value'\'') overrides for the topic being created.]:' \
+    '--dry-run[Execute request without committing changes to Kafka.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+
+function _ccloud_ksql {
+  local -a commands
+
+  _arguments -C \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "app:Manage KSQL apps."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  app)
+    _ccloud_ksql_app
+    ;;
+  esac
+}
+
+
+function _ccloud_ksql_app {
+  local -a commands
+
+  _arguments -C \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "configure-acls:Configure ACLs for a KSQL cluster."
+      "create:Create a KSQL app."
+      "delete:Delete a KSQL app."
+      "describe:Describe a KSQL app."
+      "list:List KSQL apps."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  configure-acls)
+    _ccloud_ksql_app_configure-acls
+    ;;
+  create)
+    _ccloud_ksql_app_create
+    ;;
+  delete)
+    _ccloud_ksql_app_delete
+    ;;
+  describe)
+    _ccloud_ksql_app_describe
+    ;;
+  list)
+    _ccloud_ksql_app_list
+    ;;
+  esac
+}
+
+function _ccloud_ksql_app_configure-acls {
+  _arguments \
+    '--cluster[Kafka cluster ID.]:' \
+    '--dry-run[If specified, print the ACLs that will be set and exit.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_ksql_app_create {
+  _arguments \
+    '--cluster[Kafka cluster ID.]:' \
+    '--csu[Number of CSUs to use in the cluster.]:' \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_ksql_app_delete {
+  _arguments \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_ksql_app_describe {
+  _arguments \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_ksql_app_list {
+  _arguments \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_login {
+  _arguments \
+    '--url[Confluent Cloud service URL.]:' \
+    '--no-browser[Do not open browser when authenticating via Single Sign-On.]' \
+    '--save[Save login credentials or refresh token (in the case of SSO) to local netrc file.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_logout {
+  _arguments \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_prompt {
+  _arguments \
+    '(-f --format)'{-f,--format}'[The format string to use. See the help for details.]:' \
+    '(-g --no-color)'{-g,--no-color}'[Do not include ANSI color codes in the output.]' \
+    '(-t --timeout)'{-t,--timeout}'[The maximum execution time in milliseconds.]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+
+function _ccloud_schema-registry {
+  local -a commands
+
+  _arguments -C \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "cluster:Manage Schema Registry cluster."
+      "schema:Manage Schema Registry schemas."
+      "subject:Manage Schema Registry subjects."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  cluster)
+    _ccloud_schema-registry_cluster
+    ;;
+  schema)
+    _ccloud_schema-registry_schema
+    ;;
+  subject)
+    _ccloud_schema-registry_subject
+    ;;
+  esac
+}
+
+
+function _ccloud_schema-registry_cluster {
+  local -a commands
+
+  _arguments -C \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "describe:Describe the Schema Registry cluster for this environment."
+      "enable:Enable Schema Registry for this environment."
+      "update:Update global mode or compatibility of Schema Registry."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  describe)
+    _ccloud_schema-registry_cluster_describe
+    ;;
+  enable)
+    _ccloud_schema-registry_cluster_enable
+    ;;
+  update)
+    _ccloud_schema-registry_cluster_update
+    ;;
+  esac
+}
+
+function _ccloud_schema-registry_cluster_describe {
+  _arguments \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_schema-registry_cluster_enable {
+  _arguments \
+    '--cloud[Cloud provider (e.g. '\''aws'\'', '\''azure'\'', or '\''gcp'\'').]:' \
+    '--geo[Either '\''us'\'', '\''eu'\'', or '\''apac'\''.]:' \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_schema-registry_cluster_update {
+  _arguments \
+    '--compatibility[Can be BACKWARD, BACKWARD_TRANSITIVE, FORWARD, FORWARD_TRANSITIVE, FULL, FULL_TRANSITIVE, or NONE.]:' \
+    '--mode[Can be READWRITE, READ, OR WRITE.]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+
+function _ccloud_schema-registry_schema {
+  local -a commands
+
+  _arguments -C \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "create:Create a schema."
+      "delete:Delete one or more schemas."
+      "describe:Get schema either by schema-id, or by subject/version."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  create)
+    _ccloud_schema-registry_schema_create
+    ;;
+  delete)
+    _ccloud_schema-registry_schema_delete
+    ;;
+  describe)
+    _ccloud_schema-registry_schema_describe
+    ;;
+  esac
+}
+
+function _ccloud_schema-registry_schema_create {
+  _arguments \
+    '(-S --subject)'{-S,--subject}'[Subject of the schema.]:' \
+    '--schema[The path to the schema file.]:' \
+    '--type[The schema type.]:' \
+    '--refs[The path to the references file.]:' \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_schema-registry_schema_delete {
+  _arguments \
+    '(-S --subject)'{-S,--subject}'[Subject of the schema.]:' \
+    '(-V --version)'{-V,--version}'[Version of the schema. Can be a specific version, '\''all'\'', or '\''latest'\''.]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_schema-registry_schema_describe {
+  _arguments \
+    '(-S --subject)'{-S,--subject}'[Subject of the schema.]:' \
+    '(-V --version)'{-V,--version}'[Version of the schema. Can be a specific version or '\''latest'\''.]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+
+function _ccloud_schema-registry_subject {
+  local -a commands
+
+  _arguments -C \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "describe:Describe subject versions and compatibility."
+      "list:List subjects."
+      "update:Update subject compatibility or mode."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  describe)
+    _ccloud_schema-registry_subject_describe
+    ;;
+  list)
+    _ccloud_schema-registry_subject_list
+    ;;
+  update)
+    _ccloud_schema-registry_subject_update
+    ;;
+  esac
+}
+
+function _ccloud_schema-registry_subject_describe {
+  _arguments \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_schema-registry_subject_list {
+  _arguments \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_schema-registry_subject_update {
+  _arguments \
+    '--compatibility[Can be BACKWARD, BACKWARD_TRANSITIVE, FORWARD, FORWARD_TRANSITIVE, FULL, FULL_TRANSITIVE, or NONE.]:' \
+    '--mode[Can be READWRITE, READ, OR WRITE.]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+
+function _ccloud_service-account {
+  local -a commands
+
+  _arguments -C \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "create:Create a service account."
+      "delete:Delete a service account."
+      "list:List service accounts."
+      "update:Update a service account."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  create)
+    _ccloud_service-account_create
+    ;;
+  delete)
+    _ccloud_service-account_delete
+    ;;
+  list)
+    _ccloud_service-account_list
+    ;;
+  update)
+    _ccloud_service-account_update
+    ;;
+  esac
+}
+
+function _ccloud_service-account_create {
+  _arguments \
+    '--description[Description of the service account.]:' \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_service-account_delete {
+  _arguments \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_service-account_list {
+  _arguments \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_service-account_update {
+  _arguments \
+    '--description[Description of the service account.]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_update {
+  _arguments \
+    '--yes[Update without prompting.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _ccloud_version {
+  _arguments \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+

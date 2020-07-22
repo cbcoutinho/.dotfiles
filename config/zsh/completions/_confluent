@@ -1,0 +1,524 @@
+#compdef _confluent confluent
+
+
+function _confluent {
+  local -a commands
+
+  _arguments -C \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "cluster:Retrieve metadata about Confluent clusters."
+      "completion:Print shell completion code."
+      "help:Help about any command"
+      "iam:Manage RBAC, ACL and IAM permissions."
+      "local:Manage a local Confluent Platform development environment."
+      "login:Log in to Confluent Platform (required for RBAC)."
+      "logout:Logout of Confluent Platform."
+      "secret:Manage secrets for Confluent Platform."
+      "version:Print the confluent CLI version."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  cluster)
+    _confluent_cluster
+    ;;
+  completion)
+    _confluent_completion
+    ;;
+  help)
+    _confluent_help
+    ;;
+  iam)
+    _confluent_iam
+    ;;
+  local)
+    _confluent_local
+    ;;
+  login)
+    _confluent_login
+    ;;
+  logout)
+    _confluent_logout
+    ;;
+  secret)
+    _confluent_secret
+    ;;
+  version)
+    _confluent_version
+    ;;
+  esac
+}
+
+
+function _confluent_cluster {
+  local -a commands
+
+  _arguments -C \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "describe:Describe a Confluent cluster."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  describe)
+    _confluent_cluster_describe
+    ;;
+  esac
+}
+
+function _confluent_cluster_describe {
+  _arguments \
+    '--url[URL to a Confluent cluster.]:' \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_completion {
+  _arguments \
+    '(-h --help)'{-h,--help}'[help for completion]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_help {
+  _arguments \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+
+function _confluent_iam {
+  local -a commands
+
+  _arguments -C \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "acl:Manage Kafka ACLs (5.4+ only)."
+      "role:Manage RBAC and IAM roles."
+      "rolebinding:Manage RBAC and IAM role bindings."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  acl)
+    _confluent_iam_acl
+    ;;
+  role)
+    _confluent_iam_role
+    ;;
+  rolebinding)
+    _confluent_iam_rolebinding
+    ;;
+  esac
+}
+
+
+function _confluent_iam_acl {
+  local -a commands
+
+  _arguments -C \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "create:Create a Kafka ACL."
+      "delete:Delete a Kafka ACL."
+      "list:List Kafka ACLs for a resource."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  create)
+    _confluent_iam_acl_create
+    ;;
+  delete)
+    _confluent_iam_acl_delete
+    ;;
+  list)
+    _confluent_iam_acl_list
+    ;;
+  esac
+}
+
+function _confluent_iam_acl_create {
+  _arguments \
+    '--kafka-cluster-id[Kafka cluster ID for scope of acl commands.]:' \
+    '--allow[ACL permission to allow access.]' \
+    '--deny[ACL permission to restrict access to resource.]' \
+    '--principal[Principal for this operation with User: or Group: prefix.]:' \
+    '--host[Set host for access.]:' \
+    '--operation[Set ACL Operation to: (all, alter, alter-configs, cluster-action, create, delete, describe, describe-configs, idempotent-write, read, write).]:' \
+    '--cluster-scope[Set the cluster resource. With this option the ACL grants
+access to the provided operations on the Kafka cluster itself.]' \
+    '--consumer-group[Set the Consumer Group resource.]:' \
+    '--transactional-id[Set the TransactionalID resource.]:' \
+    '--topic[Set the topic resource. With this option the ACL grants the provided
+operations on the topics that start with that prefix, depending on whether
+the --prefix option was also passed.]:' \
+    '--prefix[Set to match all resource names prefixed with this value.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_iam_acl_delete {
+  _arguments \
+    '--kafka-cluster-id[Kafka cluster ID for scope of acl commands.]:' \
+    '--allow[ACL permission to allow access.]' \
+    '--deny[ACL permission to restrict access to resource.]' \
+    '--principal[Principal for this operation with User: or Group: prefix.]:' \
+    '--host[Set host for access.]:' \
+    '--operation[Set ACL Operation to: (all, alter, alter-configs, cluster-action, create, delete, describe, describe-configs, idempotent-write, read, write).]:' \
+    '--cluster-scope[Set the cluster resource. With this option the ACL grants
+access to the provided operations on the Kafka cluster itself.]' \
+    '--consumer-group[Set the Consumer Group resource.]:' \
+    '--transactional-id[Set the TransactionalID resource.]:' \
+    '--topic[Set the topic resource. With this option the ACL grants the provided
+operations on the topics that start with that prefix, depending on whether
+the --prefix option was also passed.]:' \
+    '--prefix[Set to match all resource names prefixed with this value.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_iam_acl_list {
+  _arguments \
+    '--kafka-cluster-id[Kafka cluster ID for scope of acl commands.]:' \
+    '--allow[ACL permission to allow access.]' \
+    '--deny[ACL permission to restrict access to resource.]' \
+    '--principal[Principal for this operation with User: or Group: prefix.]:' \
+    '--host[Set host for access.]:' \
+    '--operation[Set ACL Operation to: (all, alter, alter-configs, cluster-action, create, delete, describe, describe-configs, idempotent-write, read, write).]:' \
+    '--cluster-scope[Set the cluster resource. With this option the ACL grants
+access to the provided operations on the Kafka cluster itself.]' \
+    '--consumer-group[Set the Consumer Group resource.]:' \
+    '--transactional-id[Set the TransactionalID resource.]:' \
+    '--topic[Set the topic resource. With this option the ACL grants the provided
+operations on the topics that start with that prefix, depending on whether
+the --prefix option was also passed.]:' \
+    '--prefix[Set to match all resource names prefixed with this value.]' \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+
+function _confluent_iam_role {
+  local -a commands
+
+  _arguments -C \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "describe:Describe the resources and operations allowed for a role."
+      "list:List the available roles."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  describe)
+    _confluent_iam_role_describe
+    ;;
+  list)
+    _confluent_iam_role_list
+    ;;
+  esac
+}
+
+function _confluent_iam_role_describe {
+  _arguments \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_iam_role_list {
+  _arguments \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+
+function _confluent_iam_rolebinding {
+  local -a commands
+
+  _arguments -C \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "create:Create a role binding."
+      "delete:Delete an existing role binding."
+      "list:List role bindings."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  create)
+    _confluent_iam_rolebinding_create
+    ;;
+  delete)
+    _confluent_iam_rolebinding_delete
+    ;;
+  list)
+    _confluent_iam_rolebinding_list
+    ;;
+  esac
+}
+
+function _confluent_iam_rolebinding_create {
+  _arguments \
+    '--role[Role name of the new role binding.]:' \
+    '--resource[Qualified resource name for the role binding.]:' \
+    '--prefix[Whether the provided resource name is treated as a prefix pattern.]' \
+    '--principal[Qualified principal name for the role binding.]:' \
+    '--kafka-cluster-id[Kafka cluster ID for the role binding.]:' \
+    '--schema-registry-cluster-id[Schema Registry cluster ID for the role binding.]:' \
+    '--ksql-cluster-id[KSQL cluster ID for the role binding.]:' \
+    '--connect-cluster-id[Kafka Connect cluster ID for the role binding.]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_iam_rolebinding_delete {
+  _arguments \
+    '--role[Role name of the existing role binding.]:' \
+    '--resource[Qualified resource name associated with the role binding.]:' \
+    '--prefix[Whether the provided resource name is treated as a prefix pattern.]' \
+    '--principal[Qualified principal name associated with the role binding.]:' \
+    '--kafka-cluster-id[Kafka cluster ID for the role binding.]:' \
+    '--schema-registry-cluster-id[Schema Registry cluster ID for the role binding.]:' \
+    '--ksql-cluster-id[KSQL cluster ID for the role binding.]:' \
+    '--connect-cluster-id[Kafka Connect cluster ID for the role binding.]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_iam_rolebinding_list {
+  _arguments \
+    '--principal[Principal whose rolebindings should be listed.]:' \
+    '--role[List rolebindings under a specific role given to a principal. Or if no principal is specified, list principals with the role.]:' \
+    '--resource[If specified with a role and no principals, list principals with rolebindings to the role for this qualified resource.]:' \
+    '--kafka-cluster-id[Kafka cluster ID for scope of rolebinding listings.]:' \
+    '--schema-registry-cluster-id[Schema Registry cluster ID for scope of rolebinding listings.]:' \
+    '--ksql-cluster-id[KSQL cluster ID for scope of rolebinding listings.]:' \
+    '--connect-cluster-id[Kafka Connect cluster ID for scope of rolebinding listings.]:' \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local {
+  _arguments \
+    '--path[Path to Confluent Platform install directory.]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_login {
+  _arguments \
+    '--url[Metadata service URL.]:' \
+    '--ca-cert-path[Self-signed certificate chain in PEM format.]:' \
+    '--no-browser[Do not open browser when authenticating via Single Sign-On.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_logout {
+  _arguments \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+
+function _confluent_secret {
+  local -a commands
+
+  _arguments -C \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "file:Secure secrets in a configuration properties file."
+      "master-key:Manage the master key for Confluent Platform."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  file)
+    _confluent_secret_file
+    ;;
+  master-key)
+    _confluent_secret_master-key
+    ;;
+  esac
+}
+
+
+function _confluent_secret_file {
+  local -a commands
+
+  _arguments -C \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "add:Add encrypted secrets to a configuration properties file."
+      "decrypt:Decrypt encrypted secrets from the configuration properties file."
+      "encrypt:Encrypt secrets in a configuration properties file."
+      "remove:Delete the configuration values from the configuration properties file."
+      "rotate:Rotate master or data key."
+      "update:Update the encrypted secrets from the configuration properties file."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  add)
+    _confluent_secret_file_add
+    ;;
+  decrypt)
+    _confluent_secret_file_decrypt
+    ;;
+  encrypt)
+    _confluent_secret_file_encrypt
+    ;;
+  remove)
+    _confluent_secret_file_remove
+    ;;
+  rotate)
+    _confluent_secret_file_rotate
+    ;;
+  update)
+    _confluent_secret_file_update
+    ;;
+  esac
+}
+
+function _confluent_secret_file_add {
+  _arguments \
+    '--config-file[Path to the configuration properties file.]:' \
+    '--local-secrets-file[Path to the local encrypted configuration properties file.]:' \
+    '--remote-secrets-file[Path to the remote encrypted configuration properties file.]:' \
+    '--config[List of key/value pairs of configuration properties.]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_secret_file_decrypt {
+  _arguments \
+    '--config-file[Path to the configuration properties file.]:' \
+    '--local-secrets-file[Path to the local encrypted configuration properties file.]:' \
+    '--output-file[Output file path.]:' \
+    '--config[List of configuration keys.]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_secret_file_encrypt {
+  _arguments \
+    '--config-file[Path to the configuration properties file.]:' \
+    '--local-secrets-file[Path to the local encrypted configuration properties file.]:' \
+    '--remote-secrets-file[Path to the remote encrypted configuration properties file.]:' \
+    '--config[List of configuration keys.]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_secret_file_remove {
+  _arguments \
+    '--config-file[Path to the configuration properties file.]:' \
+    '--local-secrets-file[Path to the local encrypted configuration properties file.]:' \
+    '--config[List of configuration keys.]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_secret_file_rotate {
+  _arguments \
+    '--master-key[Rotate the master key. Generates a new master key and re-encrypts with the new key.]' \
+    '--data-key[Rotate data key. Generates a new data key and re-encrypts the file with the new key.]' \
+    '--local-secrets-file[Path to the encrypted configuration properties file.]:' \
+    '--passphrase[Master key passphrase. You can use dash ("-") to pipe from stdin or @file.txt to read from file.]:' \
+    '--passphrase-new[New master key passphrase. You can use dash ("-") to pipe from stdin or @file.txt to read from file.]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_secret_file_update {
+  _arguments \
+    '--config-file[Path to the configuration properties file.]:' \
+    '--local-secrets-file[Path to the local encrypted configuration properties file.]:' \
+    '--remote-secrets-file[Path to the remote encrypted configuration properties file.]:' \
+    '--config[List of key/value pairs of configuration properties.]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+
+function _confluent_secret_master-key {
+  local -a commands
+
+  _arguments -C \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "generate:Generate a master key for Confluent Platform."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  generate)
+    _confluent_secret_master-key_generate
+    ;;
+  esac
+}
+
+function _confluent_secret_master-key_generate {
+  _arguments \
+    '--passphrase[The key passphrase. To pipe from stdin use "-", e.g. "--passphrase -";
+to read from a file use "@<path-to-file>", e.g. "--passphrase @/User/bob/secret.properties".]:' \
+    '--local-secrets-file[Path to the local encrypted configuration properties file.]:' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_version {
+  _arguments \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+

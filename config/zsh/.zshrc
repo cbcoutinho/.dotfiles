@@ -182,3 +182,5 @@ setopt HIST_FIND_NO_DUPS
 unsetopt beep
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source ~/.config/broot/launcher/bash/br
