@@ -72,17 +72,6 @@ Plug 'euclio/vim-markdown-composer', {
 Plug 'plasticboy/vim-markdown'
 
 " }}}
-" Apex/Salesforce {{{
-
-"Plug 'neowit/vim-force.com'
-
-" }}}
-" C# {{{
-
-"Plug 'OrangeT/vim-csharp', {'for':['cs','csx','cshtml.html','csproj','solution']}
-Plug 'OmniSharp/omnisharp-vim', {'for':['cs','csx','cshtml.html','csproj','solution'], 'on': ['OmniSharpInstall']}
-
-" }}}
 " }}}
 " Color {{{
 
@@ -112,6 +101,7 @@ Plug 'neomutt/neomutt.vim'				" Vim syntax for neomutt
 Plug 'vito-c/jq.vim' 					" Vim syntax for jq
 Plug 'pearofducks/ansible-vim'			" Vim syntax for ansible playbooks
 Plug 'gurpreetatwal/vim-avro'			" Vim syntax for avro
+Plug 'tmsvg/pear-tree'					" Automatically match parens/brackets
 
 " }}}
 " Vim/git-related plugins {{{
@@ -166,10 +156,3 @@ call plug#end()
 let g:float_preview#docked = 0
 let g:float_preview#max_width = 80
 let g:float_preview#max_height = 40
-
-let g:apex_backup_folder = '/tmp/apex/backup'
-let g:apex_temp_folder = '/tmp/apex/tmp'
-"let g:apex_properties_folder =
-"let g:apex_tooling_force_dot_com_path = expand('~/Downloads/tooling-force.com-0.4.4.0.jar')
-
-let g:fugitive_gitlab_domains = ['https://gitlab.carnext.io']

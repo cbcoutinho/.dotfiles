@@ -58,6 +58,11 @@ function path {
 /g'
 }
 
+function fpath {
+	echo $FPATH | sed 's/:/\
+/g'
+}
+
 function libpath {
 	echo $LD_LIBRARY_PATH | sed 's/:/\
 /g'
