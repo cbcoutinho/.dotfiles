@@ -27,7 +27,7 @@ export VIRTUALENVWRAPPER_SCRIPT="$USER_BASE/bin/virtualenvwrapper.sh"
 export PATH="$USER_BASE/bin:$PATH"
 
 # NOTE: This assumes that virtualenvwrapper is installed
-if command -v pyenv >/dev/null && grep -q system <(pyenv version); then
+if command -v pyenv >/dev/null; then
 	source "$USER_BASE/bin/virtualenvwrapper_lazy.sh"
 fi
 

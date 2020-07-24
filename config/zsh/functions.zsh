@@ -86,3 +86,29 @@ function workdir {
     mkdir -p $dir
     cd $dir
 }
+
+function pull-git-repos {
+
+	fetch-git-repos ${1-$HOME/Software} ${2:-2} true
+
+}
+
+function fetch-git-repos {
+
+	_input=${1:-$HOME/Software}
+	_depth=${2:-2}
+	_pull=${3:-false}
+
+	_gitdirs=($( find $_input -maxdepth $_depth -type d -name '.git' -exec dirname {} \; | sort))
+
+	for ii in $_gitdirs; do
+		echo $ii
+		git -C $ii fetch --all --tags --prune
+		git -C $ii submodule update --init --recursive
+		#if $_pull
+		#then
+			#git -C $ii pull --ff-only --recurse-submodules
+		#fi
+	done
+
+}
