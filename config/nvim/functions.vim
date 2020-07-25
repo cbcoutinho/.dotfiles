@@ -74,7 +74,7 @@ autocmd BufLeave *.cljs,*.clj,*.cljs.hl  call SetBasicStatusLine()
 
 " }}}
 
-" Highlights the current word under the cursor {{{
+" Highlights the current word under the cursor {
 
 let g:highlight_current_keyword = 0
 function! ToggleKeywordHighlight()
@@ -94,7 +94,15 @@ function! ToggleKeywordHighlight()
 endfunction
 "call ToggleKeywordHighlight()
 
-" }}}
+" }
+
+" Function to source only if file exists {
+function! SourceIfExists(file)
+  if filereadable(expand(a:file))
+    exe 'source' a:file
+  endif
+endfunction
+" }
 
 " https://gist.github.com/aroben/d54d002269d9c39f0d5c89d910f7307e
 " BufRead seems more appropriate here but for some reason the final `wincmd p` doesn't work if we do that.

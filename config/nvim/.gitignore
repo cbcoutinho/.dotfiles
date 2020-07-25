@@ -1,10 +1,12 @@
 # Blacklist files/folders in same directory as the .gitignore file
-/*
+*
 
 # But not these files...
 !.gitignore
 !*.vim
 !coc-settings.json
+!local.vim.template
+local.vim
 
 #Or these directories
 !after/

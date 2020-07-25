@@ -148,6 +148,9 @@ fpath=(
 	$fpath
 )
 
+# Disable checking if zsh completions is owned by current user
+#	https://stackoverflow.com/questions/54061286/setting-zsh-disable-compfix-true-in-zshrc-doesnt-work
+ZSH_DISABLE_COMPFIX="true"
 
 # completions
 autoload -Uz compinit && compinit -i
