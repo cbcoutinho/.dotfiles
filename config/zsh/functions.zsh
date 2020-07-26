@@ -105,10 +105,10 @@ function fetch-git-repos {
 		echo $ii
 		git -C $ii fetch --all --tags --prune
 		git -C $ii submodule update --init --recursive
-		#if $_pull
-		#then
-			#git -C $ii pull --ff-only --recurse-submodules
-		#fi
+		if $_pull
+		then
+			git -C $ii pull --ff-only --recurse-submodules
+		fi
 	done
 
 }
