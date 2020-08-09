@@ -1,10 +1,12 @@
 {
   "metals.statusBarEnabled": true,
+  "codeLens.enable":true,
   "coc.preferences.useQuickfixForLocations": true,
   "coc.preferences.formatOnSaveFiletypes": [
-    // "scala",
+    "scala",
     "python"
   ],
+  // "java.home": "~/.jenv/versions/11",
   "python.venvFolders": [
     ".venv",
     "venv",

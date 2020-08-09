@@ -16,6 +16,7 @@ rusty-tags.vi
 metals.sbt
 .metals/
 .bloop/
+.ammonite/
 
 # Azurite
 __azurite_db*.json

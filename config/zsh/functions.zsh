@@ -37,7 +37,7 @@ function extract {
 			*.tar.xz)    tar xvf $1      ;;
 			*.bz2)       bunzip2 $1      ;;
 			*.rar)       unrar x $1      ;;
-			*.gz)        gunzip $1       ;;
+			*.gz)        gunzip -k $1    ;;
 			*.tar)       tar xvf $1      ;;
 			*.tbz2)      tar xvjf $1     ;;
 			*.tgz)       tar xvzf $1     ;;
@@ -76,8 +76,8 @@ function terminal-scheme {
 	# Return with message if no input specified
 	readonly color=${1:?"The color scheme must be specified"}
 
-    config_file=~/.config/alacritty/alacritty.yml
-    sed -i '' "s/\(^colors: \*\).*/\1$color/g" $config_file
+    sed -i -E "s/(^colors: \*).*/\1$color/g" ~/.config/alacritty/alacritty.yml
+	sed -i -E "s/^(set background=)(\w+)(.*)/\1$(echo $color | sed 's/gruvbox-//')\3/" ~/.config/nvim/colors.vim
 }
 
 function workdir {
@@ -89,20 +89,19 @@ function workdir {
 
 function pull-git-repos {
 
-	fetch-git-repos ${1-$HOME/Software} ${2:-2} true
+	fetch-git-repos ${1-$HOME/Software} true
 
 }
 
 function fetch-git-repos {
 
 	_input=${1:-$HOME/Software}
-	_depth=${2:-2}
-	_pull=${3:-false}
+	_pull=${2:-false}
 
-	_gitdirs=($( find $_input -maxdepth $_depth -type d -name '.git' -exec dirname {} \; | sort))
+	_gitdirs=($( fd '\.git$' $_input --type d --hidden --exec dirname {} \; | sort))
 
 	for ii in $_gitdirs; do
-		echo $ii
+		echo && echo $ii
 		git -C $ii fetch --all --tags --prune
 		git -C $ii submodule update --init --recursive
 		if $_pull

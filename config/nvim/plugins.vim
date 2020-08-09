@@ -88,11 +88,11 @@ Plug 'tpope/vim-surround'				" Easily surround text with parens, quotes, etc.
 Plug 'itchyny/lightline.vim'			" Status line for vim
 Plug 'godlygeek/tabular'				" Easily align text based on a characher - see http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
 Plug 'sjl/gundo.vim'					" View vim 'undo' as a tree
-Plug 'vimwiki/vimwiki', {
-			\ 'branch': 'dev' }			" Personal diary/wiki
+Plug 'vimwiki/vimwiki'					" Personal diary/wiki
 Plug 'mattn/calendar-vim'				" Places calendar into a pane
 Plug 'junegunn/goyo.vim'				" Distraction-free writing in vim
 Plug 'junegunn/limelight.vim'			" Highlight current paragraph in Goyo-mode
+Plug 'vifm/vifm.vim'
 
 Plug 'Konfekt/FastFold'					" Recommended by SimpylFold
 Plug 'tmhedberg/SimpylFold'				" Fold python source files
@@ -101,7 +101,9 @@ Plug 'neomutt/neomutt.vim'				" Vim syntax for neomutt
 Plug 'vito-c/jq.vim' 					" Vim syntax for jq
 Plug 'pearofducks/ansible-vim'			" Vim syntax for ansible playbooks
 Plug 'gurpreetatwal/vim-avro'			" Vim syntax for avro
+Plug 'hashivim/vim-terraform'			" Vim syntax for terraform
 Plug 'tmsvg/pear-tree'					" Automatically match parens/brackets
+Plug 'wgwoods/vim-systemd-syntax'		" Vim syntax for systemd files
 
 " }}}
 " Vim/git-related plugins {{{
@@ -156,3 +158,6 @@ call plug#end()
 let g:float_preview#docked = 0
 let g:float_preview#max_width = 80
 let g:float_preview#max_height = 40
+
+let g:terraform_align=1
+"let g:terraform_fmt_on_save=1
