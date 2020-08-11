@@ -5,6 +5,7 @@
 !.gitignore
 !build.sbt
 !plugins.sbt
+!.scalafmt.conf
 
 # And these directories
 !0.13/
