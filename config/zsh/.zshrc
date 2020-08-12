@@ -144,8 +144,8 @@ fpath=(
 	$ZDOTDIR/completions
 	/usr/local/share/zsh-completions
 	/home/linuxbrew/.linuxbrew/share/zsh/site-functions
-	/etc/zsh_completion.d
 	$fpath
+	/etc/zsh_completion.d
 )
 
 # Disable checking if zsh completions is owned by current user
