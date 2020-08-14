@@ -6,7 +6,8 @@
     "scala",
     "python"
   ],
-  // "java.home": "~/.jenv/versions/11",
+  "java.enabled": false,
+  "java.home": "~/.jenv/versions/11",
   "python.venvFolders": [
     ".venv",
     "venv",
