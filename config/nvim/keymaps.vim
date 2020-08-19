@@ -41,12 +41,18 @@ autocmd! FileType vim-plug nmap <buffer> o <plug>(plug-preview)<c-w>P
 
 " fzf plugins
 " 	https://statico.github.io/vim3.html
-nnoremap ; :Buffers<CR>
-nnoremap <Leader>t :Files<CR>
-nnoremap <Leader>r :Tags<CR>
-nnoremap <leader>v :FzfFiles<cr>
-nnoremap <leader>u :FzfTags<cr>
-nnoremap <leader>j :call fzf#vim#tags("'".expand('<cword>'))<cr>
+" 	http://seenaburns.com/vim-setup-for-scala/
+if executable('rg')
+  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --no-messages "" .'
+endif
+
+" Use FZF for files and tags if available, otherwise fall back onto CtrlP
+" <leader>j will search for tag using word under cursor
+let g:fzf_command_prefix = 'Fzf'
+nnoremap ; 			:FzfBuffers<CR>
+nnoremap <leader>t 	:FzfFiles<cr>
+nnoremap <leader>r 	:FzfTags<cr>
+nnoremap <leader>j 	:call fzf#vim#tags("'".expand('<cword>'))<cr>
 
 
 autocmd! User GoyoEnter Limelight

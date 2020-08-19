@@ -72,6 +72,11 @@ Plug 'euclio/vim-markdown-composer', {
 Plug 'plasticboy/vim-markdown'
 
 " }}}
+" Golang {{{
+
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+	
+"}}}
 " }}}
 " Color {{{
 
@@ -112,7 +117,8 @@ Plug 'tpope/vim-fugitive'               " Git plugin for vim
 Plug 'tpope/vim-rhubarb'                " Git plugin for vim - extension for Github
 Plug 'shumphrey/fugitive-gitlab.vim'    " Git plugin for vim - extension for Gitlab
 Plug 'Xuyuanp/nerdtree-git-plugin'      " Git plugin for vim - extension for NERDTree
-Plug 'octref/RootIgnore'                " Git Plugin for Vim - ignore files in .gitignore
+"Plug 'octref/RootIgnore'                " Git Plugin for Vim - ignore files in .gitignore
+Plug 'jason0x43/vim-wildgitignore' 		" Git plugin to ignore files from .gitignore
 Plug 'airblade/vim-gitgutter'			" Git status in gutter (next to line numbers)
 
 " }}}
