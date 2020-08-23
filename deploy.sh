@@ -81,4 +81,4 @@ echo 'Installing neovim'
 if [[ $(uname -s) == "Darwin" ]]; then
 	brew install nvim
 fi
-nvim --headless +PlugUpdate! +qall
+#nvim --headless +PlugUpdate! +qall
