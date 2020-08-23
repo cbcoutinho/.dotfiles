@@ -1,6 +1,6 @@
 {
   "metals.statusBarEnabled": true,
-  "codeLens.enable":true,
+  "codeLens.enable": true,
   "coc.preferences.useQuickfixForLocations": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "scala",
@@ -37,6 +37,32 @@
       "trace.server": "verbose",
       "initializationOptions": {
         "ignore-classpath-directories": true
+      }
+    },
+    "ccls": {
+      "command": "ccls",
+      "args": [
+        "-v=1",
+        "--log-file=/tmp/ccls.log"
+      ],
+      "filetypes": [
+        "c",
+        "cpp",
+        "cuda",
+        "objc",
+        "objcpp"
+      ],
+      "rootPatterns": [
+        ".ccls-root",
+        "compile_commands.json"
+      ],
+      "initializationOptions": {
+        "cache": {
+          "directory": ".ccls-cache"
+        },
+        "client": {
+          "snippetSupport": true
+        }
       }
     }
   }
