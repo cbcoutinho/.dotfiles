@@ -14,3 +14,6 @@ fi
 
 # My environment
 source $ZDOTDIR/environment.zsh
+
+# GPG Auth for SSH
+export SSH_AUTH_SOCK=$(gpgconf --list-dir agent-ssh-socket)

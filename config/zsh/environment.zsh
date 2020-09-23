@@ -118,7 +118,11 @@ export CMAKE_PREFIX_PATH="$LD_LIBRARY_PATH"
 export NOTMUCH_CONFIG=~/.config/notmuch/config
 
 # For clojure/clj CLI tools
-export CLJ_CONFIG=~/.config/clojure/
+export CLJ_CONFIG=~/.config/clojure
 
 # Leiningen directory
-export LEIN_HOME=$HOME/.config/lein/
+export LEIN_HOME=$HOME/.config/lein
+
+# Amazon Web Services (AWS)
+export AWS_DEFAULT_REGION=eu-west-1
+export AWS_PAGER=

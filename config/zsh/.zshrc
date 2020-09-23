@@ -196,3 +196,6 @@ unsetopt beep
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 
 [[ -f ~/.config/broot/launcher/bash/br ]] && source ~/.config/broot/launcher/bash/br
+
+# opam configuration
+test -r ~/.opam/opam-init/init.zsh && . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true

@@ -6,7 +6,7 @@
     "scala",
     "python"
   ],
-  "java.enabled": false,
+  //"java.enabled": false,
   "java.home": "~/.jenv/versions/11",
   "python.venvFolders": [
     ".venv",
@@ -36,7 +36,16 @@
       ],
       "trace.server": "verbose",
       "initializationOptions": {
-        "ignore-classpath-directories": true
+        "ignore-classpath-directories": true,
+        "project-specs": [
+          {
+            "project-path": "deps.edn",
+            "classpath-cmd": [
+              "clj",
+              "-Spath"
+            ]
+          }
+        ]
       }
     },
     "ccls": {
@@ -64,6 +73,18 @@
           "snippetSupport": true
         }
       }
+    },
+    "terraform": {
+      "command": "terraform-ls",
+      "args": [
+        "serve"
+      ],
+      "filetypes": [
+        "terraform",
+        "tf"
+      ],
+      "initializationOptions": {},
+      "settings": {}
     }
   }
 }

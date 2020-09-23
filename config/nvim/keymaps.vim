@@ -43,7 +43,7 @@ autocmd! FileType vim-plug nmap <buffer> o <plug>(plug-preview)<c-w>P
 " 	https://statico.github.io/vim3.html
 " 	http://seenaburns.com/vim-setup-for-scala/
 if executable('rg')
-  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --no-messages "" .'
+  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --glob="!.git" --no-messages "" .'
 endif
 
 " Use FZF for files and tags if available, otherwise fall back onto CtrlP
