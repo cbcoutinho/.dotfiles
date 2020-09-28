@@ -12,7 +12,8 @@ set showcmd					" Show command being typed on bottom right - useful for keymaps
 set autoread				" Automatically reloads files that were edited externally
 
 "set spell					" By default spelling is `OFF`
-set spelllang=en_us,nl		" Spelling language [en|nl]
+set spelllang=en_us,nl		" Spelling language [en,nl]
+syntax spell toplevel
 
 " Encoding
 set encoding=utf-8
