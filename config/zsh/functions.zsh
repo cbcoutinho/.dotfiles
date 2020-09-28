@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 function ls {
 	if [[ $(uname -s) == "Linux" ]]; then
 		command ls \
@@ -109,5 +111,45 @@ function fetch-git-repos {
 			git -C $ii pull --ff-only --recurse-submodules
 		fi
 	done
+
+}
+
+function awslogin() {
+
+	if [ $# -ne 2 ]; then
+		echo "Usage: aws-login <PROFILE> <MFA_TOKEN_CODE>"
+		exit
+	fi
+
+	local AWS_USER_PROFILE=datamesh
+	local AWS_2AUTH_PROFILE=$1
+	local MFA_TOKEN_CODE=$2
+
+	# Get role_arn associated with a profile
+	local role=$(rg "$AWS_2AUTH_PROFILE" ~/.aws/config -A 3 | rg 'role_arn' | awk -F= '{print $2}' | tr -d '[:space:]' |  head -1)
+	local mfa_serial=$(rg "$AWS_2AUTH_PROFILE" ~/.aws/config -A 3 | rg 'mfa_serial' | awk -F= '{print $2}' | tr -d '[:space:]' |  head -1)
+
+	local output=$(aws sts assume-role \
+		--profile "$AWS_USER_PROFILE" \
+		--role-arn "$role" \
+		--serial-number "$mfa_serial" \
+		--token-code "$MFA_TOKEN_CODE" \
+		--role-session-name "datamesh-session-cli-$(shuf -i 1-100000 -n 1)" \
+		--output json | jq -c)
+
+	echo $output | jq
+
+	if [ -z $(echo $output | jq '.Credentials.AccessKeyId') ]
+	then
+		echo Unable to retrieve access credentials
+		return 1
+	fi
+
+	export AWS_ACCESS_KEY_ID=$(echo $output | jq -r '.Credentials.AccessKeyId')
+	export AWS_SECRET_ACCESS_KEY=$(echo $output | jq -r '.Credentials.SecretAccessKey')
+	export AWS_SESSION_TOKEN=$(echo $output | jq -r '.Credentials.SessionToken')
+	local Expiration=$(echo $output | jq -r '.Credentials.Expiration')
+
+	echo "AWS Credentials for '$role' available until: '$Expiration'"
 
 }
