@@ -35,6 +35,13 @@
 	st = status
 	ci = commit
 	br = branch
+	cl = clean --exclude .envrc --exclude .direnv
+[status]
+	# Include submodule diff in git status
+	submoduleSummary = true
+[pull]
+	# Avoid merging if not able to fast-forward during pull
+	ff = only
 
 
 [color]

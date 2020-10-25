@@ -18,16 +18,17 @@ test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew
 # Use pyenv to handle python in interactive shells
 if command -v pyenv >/dev/null; then
 	eval "$(pyenv init -)"
+	eval "$(pyenv virtualenv-init -)"
 fi
 
 # Python virtualenvwrapper
 USER_BASE=$(python3 -c 'import site; print(site.USER_BASE)')
-export VIRTUALENVWRAPPER_PYTHON=$(which python3)
-export VIRTUALENVWRAPPER_SCRIPT="$USER_BASE/bin/virtualenvwrapper.sh"
 export PATH="$USER_BASE/bin:$PATH"
 
 # NOTE: This assumes that virtualenvwrapper is installed
-if command -v pyenv >/dev/null; then
+if ! command -v pyenv >/dev/null; then
+	export VIRTUALENVWRAPPER_PYTHON=$(which python3)
+	export VIRTUALENVWRAPPER_SCRIPT="$USER_BASE/bin/virtualenvwrapper.sh"
 	source "$USER_BASE/bin/virtualenvwrapper_lazy.sh"
 fi
 
@@ -199,3 +200,5 @@ unsetopt beep
 
 # opam configuration
 test -r ~/.opam/opam-init/init.zsh && . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+source /home/chris/.config/broot/launcher/bash/br

@@ -89,6 +89,8 @@ au BufNewFile,Bufread *.wiki set filetype=vimwiki
 au BufNewFile,Bufread Pipfile.lock,*.avsc set filetype=json
 au BufNewFile,Bufread poetry.lock set filetype=toml
 au BufNewFile,BufRead *.sbt,.scalafmt.conf,.scalafix.conf set filetype=scala
+au BufNewFile,BufRead ~/.kube/config,*.yml.in set filetype=yaml
+au BufNewFile,BufRead */*playbook*/*.yml set filetype=yaml.ansible
 
 " Use 'apex' as the syntax and set our style information
 au BufEnter *.cls set syntax=apex tabstop=4 shiftwidth=4 softtabstop=4 nowrap

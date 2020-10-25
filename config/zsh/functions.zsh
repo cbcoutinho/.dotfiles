@@ -116,19 +116,25 @@ function fetch-git-repos {
 
 function awslogin() {
 
-	if [ $# -ne 2 ]; then
-		echo "Usage: aws-login <PROFILE> <MFA_TOKEN_CODE>"
-		exit
+	if [[ $# -eq 1 && ! -z "$AWS_PROFILE" ]]; then
+		local AWS_2AUTH_PROFILE=$AWS_PROFILE
+		local MFA_TOKEN_CODE=$1
+	elif [[ $# -eq 2 ]]; then
+		local AWS_2AUTH_PROFILE=$1
+		local MFA_TOKEN_CODE=$2
+	else # $# -eq 1 and AWS_PROFILE is set
+		echo $# $*
+		echo "Usage: aws-login [<AWS_PROFILE>] <MFA_TOKEN_CODE>"
+		return 1
 	fi
 
-	local AWS_USER_PROFILE=datamesh
-	local AWS_2AUTH_PROFILE=$1
-	local MFA_TOKEN_CODE=$2
+	local AWS_USER_PROFILE=carnext-master
 
 	# Get role_arn associated with a profile
 	local role=$(rg "$AWS_2AUTH_PROFILE" ~/.aws/config -A 3 | rg 'role_arn' | awk -F= '{print $2}' | tr -d '[:space:]' |  head -1)
 	local mfa_serial=$(rg "$AWS_2AUTH_PROFILE" ~/.aws/config -A 3 | rg 'mfa_serial' | awk -F= '{print $2}' | tr -d '[:space:]' |  head -1)
 
+	# 43200 seconds = 12 hrs
 	local output=$(aws sts assume-role \
 		--profile "$AWS_USER_PROFILE" \
 		--role-arn "$role" \
@@ -136,8 +142,6 @@ function awslogin() {
 		--token-code "$MFA_TOKEN_CODE" \
 		--role-session-name "datamesh-session-cli-$(shuf -i 1-100000 -n 1)" \
 		--output json | jq -c)
-
-	echo $output | jq
 
 	if [ -z $(echo $output | jq '.Credentials.AccessKeyId') ]
 	then
@@ -150,6 +154,28 @@ function awslogin() {
 	export AWS_SESSION_TOKEN=$(echo $output | jq -r '.Credentials.SessionToken')
 	local Expiration=$(echo $output | jq -r '.Credentials.Expiration')
 
+	aws configure --profile "$AWS_2AUTH_PROFILE" set aws_access_key_id "$AWS_ACCESS_KEY_ID"
+	aws configure --profile "$AWS_2AUTH_PROFILE" set aws_secret_access_key "$AWS_SECRET_ACCESS_KEY"
+	aws configure --profile "$AWS_2AUTH_PROFILE" set aws_session_token "$AWS_SESSION_TOKEN"
+	echo "# Expiration: $Expiration" >> ~/.aws/credentials
+
 	echo "AWS Credentials for '$role' available until: '$Expiration'"
 
 }
+
+function awslogout() {
+	set -x
+	unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN
+}
+
+# Shadow git commands
+# https://stackoverflow.com/a/39357426/5536001
+function git {
+	if [[ "$1" == "clean" && "$@" != *"--help"* ]]; then
+		shift 1
+		command git cl "$@"
+	else
+		command git "$@"
+	fi
+}
+

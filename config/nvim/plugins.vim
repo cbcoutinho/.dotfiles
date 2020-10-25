@@ -72,6 +72,11 @@ Plug 'euclio/vim-markdown-composer', {
 Plug 'plasticboy/vim-markdown'
 
 " }}}
+" YAML {{{
+
+Plug 'Yggdroot/indentLine', { 'for': ['yaml', 'yaml.ansible'] }
+
+" }}}
 " Golang {{{
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }

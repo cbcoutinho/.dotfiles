@@ -62,5 +62,6 @@ sandbox_hook rvm rvm
 
 sandbox_hook nvm nvm
 sandbox_hook nvm npm
+sandbox_hook nvm npx
 sandbox_hook nvm node
 sandbox_hook nvm yarn

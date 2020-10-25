@@ -5,39 +5,58 @@ function _confluent {
   local -a commands
 
   _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
     '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    '--version[Show version of the Confluent CLI.]' \
     "1: :->cmnds" \
     "*::arg:->args"
 
   case $state in
   cmnds)
     commands=(
-      "cluster:Retrieve metadata about Confluent clusters."
+      "audit-log:Manage audit log configuration."
+      "cluster:Retrieve metadata about Confluent Platform clusters."
       "completion:Print shell completion code."
+      "connect:Manage Connect."
       "help:Help about any command"
       "iam:Manage RBAC, ACL and IAM permissions."
+      "kafka:Manage Apache Kafka."
+      "ksql:Manage ksqlDB applications."
       "local:Manage a local Confluent Platform development environment."
       "login:Log in to Confluent Platform (required for RBAC)."
-      "logout:Logout of Confluent Platform."
+      "logout:Log out of Confluent Platform."
+      "schema-registry:Manage Schema Registry."
       "secret:Manage secrets for Confluent Platform."
-      "version:Print the confluent CLI version."
+      "version:Show version of the Confluent CLI."
     )
     _describe "command" commands
     ;;
   esac
 
   case "$words[1]" in
+  audit-log)
+    _confluent_audit-log
+    ;;
   cluster)
     _confluent_cluster
     ;;
   completion)
     _confluent_completion
     ;;
+  connect)
+    _confluent_connect
+    ;;
   help)
     _confluent_help
     ;;
   iam)
     _confluent_iam
+    ;;
+  kafka)
+    _confluent_kafka
+    ;;
+  ksql)
+    _confluent_ksql
     ;;
   local)
     _confluent_local
@@ -47,6 +66,9 @@ function _confluent {
     ;;
   logout)
     _confluent_logout
+    ;;
+  schema-registry)
+    _confluent_schema-registry
     ;;
   secret)
     _confluent_secret
@@ -58,10 +80,11 @@ function _confluent {
 }
 
 
-function _confluent_cluster {
+function _confluent_audit-log {
   local -a commands
 
   _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
     '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
     "1: :->cmnds" \
     "*::arg:->args"
@@ -69,7 +92,176 @@ function _confluent_cluster {
   case $state in
   cmnds)
     commands=(
-      "describe:Describe a Confluent cluster."
+      "config:Manage the audit log configuration specification."
+      "migrate:Migrate legacy audit log configurations."
+      "route:Return the audit log route rules."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  config)
+    _confluent_audit-log_config
+    ;;
+  migrate)
+    _confluent_audit-log_migrate
+    ;;
+  route)
+    _confluent_audit-log_route
+    ;;
+  esac
+}
+
+
+function _confluent_audit-log_config {
+  local -a commands
+
+  _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "describe:Prints the audit log configuration spec object."
+      "edit:Edit the audit-log config spec interactively."
+      "update:Submits audit-log config spec object to the API."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  describe)
+    _confluent_audit-log_config_describe
+    ;;
+  edit)
+    _confluent_audit-log_config_edit
+    ;;
+  update)
+    _confluent_audit-log_config_update
+    ;;
+  esac
+}
+
+function _confluent_audit-log_config_describe {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_audit-log_config_edit {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_audit-log_config_update {
+  _arguments \
+    '--file[A local file path to the JSON configuration file, read as input. Otherwise the command will read from standard input.]:' \
+    '--force[Updates the configuration, overwriting any concurrent modifications.]' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+
+function _confluent_audit-log_migrate {
+  local -a commands
+
+  _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "config:Migrate legacy audit log configurations."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  config)
+    _confluent_audit-log_migrate_config
+    ;;
+  esac
+}
+
+function _confluent_audit-log_migrate_config {
+  _arguments \
+    '--combine[A comma-separated list of k=v pairs, where keys are Kafka cluster IDs, and values are the path to that cluster'\''s server.properties file.]:' \
+    '*--bootstrap-servers[A public hostname:port of a broker in the Kafka cluster that will receive audit log events.]:' \
+    '--authority[The CRN authority to use in all route patterns.]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+
+function _confluent_audit-log_route {
+  local -a commands
+
+  _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "list:List routes matching a resource & sub-resources."
+      "lookup:Return the matching audit-log route rule."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  list)
+    _confluent_audit-log_route_list
+    ;;
+  lookup)
+    _confluent_audit-log_route_lookup
+    ;;
+  esac
+}
+
+function _confluent_audit-log_route_list {
+  _arguments \
+    '(-r --resource)'{-r,--resource}'[The Confluent resource name (CRN) that is the subject of the query.]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_audit-log_route_lookup {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+
+function _confluent_cluster {
+  local -a commands
+
+  _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "describe:Describe a Kafka cluster."
+      "list:List registered clusters."
+      "register:Register cluster."
+      "unregister:Unregister cluster."
     )
     _describe "command" commands
     ;;
@@ -79,24 +271,121 @@ function _confluent_cluster {
   describe)
     _confluent_cluster_describe
     ;;
+  list)
+    _confluent_cluster_list
+    ;;
+  register)
+    _confluent_cluster_register
+    ;;
+  unregister)
+    _confluent_cluster_unregister
+    ;;
   esac
 }
 
 function _confluent_cluster_describe {
   _arguments \
     '--url[URL to a Confluent cluster.]:' \
-    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json", or "yaml".]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_cluster_list {
+  _arguments \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json", or "yaml".]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_cluster_register {
+  _arguments \
+    '--cluster-name[Cluster name.]:' \
+    '--kafka-cluster-id[Kafka cluster ID.]:' \
+    '--schema-registry-cluster-id[Schema Registry cluster ID.]:' \
+    '--ksql-cluster-id[ksqlDB cluster ID.]:' \
+    '--connect-cluster-id[Kafka Connect cluster ID.]:' \
+    '--hosts[A comma separated list of hosts.]:' \
+    '--protocol[Security protocol.]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_cluster_unregister {
+  _arguments \
+    '--cluster-name[Cluster Name.]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
     '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
 }
 
 function _confluent_completion {
   _arguments \
-    '(-h --help)'{-h,--help}'[help for completion]' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+
+function _confluent_connect {
+  local -a commands
+
+  _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "cluster:Manage Connect clusters."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  cluster)
+    _confluent_connect_cluster
+    ;;
+  esac
+}
+
+
+function _confluent_connect_cluster {
+  local -a commands
+
+  _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "list:List registered Connect clusters."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  list)
+    _confluent_connect_cluster_list
+    ;;
+  esac
+}
+
+function _confluent_connect_cluster_list {
+  _arguments \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json", or "yaml".]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
     '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
 }
 
 function _confluent_help {
   _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
     '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
 }
 
@@ -105,6 +394,7 @@ function _confluent_iam {
   local -a commands
 
   _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
     '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
     "1: :->cmnds" \
     "*::arg:->args"
@@ -138,6 +428,7 @@ function _confluent_iam_acl {
   local -a commands
 
   _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
     '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
     "1: :->cmnds" \
     "*::arg:->args"
@@ -168,7 +459,7 @@ function _confluent_iam_acl {
 
 function _confluent_iam_acl_create {
   _arguments \
-    '--kafka-cluster-id[Kafka cluster ID for scope of acl commands.]:' \
+    '--kafka-cluster-id[Kafka cluster ID for scope of ACL commands.]:' \
     '--allow[ACL permission to allow access.]' \
     '--deny[ACL permission to restrict access to resource.]' \
     '--principal[Principal for this operation with User: or Group: prefix.]:' \
@@ -182,12 +473,13 @@ access to the provided operations on the Kafka cluster itself.]' \
 operations on the topics that start with that prefix, depending on whether
 the --prefix option was also passed.]:' \
     '--prefix[Set to match all resource names prefixed with this value.]' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
     '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
 }
 
 function _confluent_iam_acl_delete {
   _arguments \
-    '--kafka-cluster-id[Kafka cluster ID for scope of acl commands.]:' \
+    '--kafka-cluster-id[Kafka cluster ID for scope of ACL commands.]:' \
     '--allow[ACL permission to allow access.]' \
     '--deny[ACL permission to restrict access to resource.]' \
     '--principal[Principal for this operation with User: or Group: prefix.]:' \
@@ -201,12 +493,13 @@ access to the provided operations on the Kafka cluster itself.]' \
 operations on the topics that start with that prefix, depending on whether
 the --prefix option was also passed.]:' \
     '--prefix[Set to match all resource names prefixed with this value.]' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
     '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
 }
 
 function _confluent_iam_acl_list {
   _arguments \
-    '--kafka-cluster-id[Kafka cluster ID for scope of acl commands.]:' \
+    '--kafka-cluster-id[Kafka cluster ID for scope of ACL commands.]:' \
     '--allow[ACL permission to allow access.]' \
     '--deny[ACL permission to restrict access to resource.]' \
     '--principal[Principal for this operation with User: or Group: prefix.]:' \
@@ -220,7 +513,8 @@ access to the provided operations on the Kafka cluster itself.]' \
 operations on the topics that start with that prefix, depending on whether
 the --prefix option was also passed.]:' \
     '--prefix[Set to match all resource names prefixed with this value.]' \
-    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json", or "yaml".]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
     '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
 }
 
@@ -229,6 +523,7 @@ function _confluent_iam_role {
   local -a commands
 
   _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
     '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
     "1: :->cmnds" \
     "*::arg:->args"
@@ -237,7 +532,7 @@ function _confluent_iam_role {
   cmnds)
     commands=(
       "describe:Describe the resources and operations allowed for a role."
-      "list:List the available roles."
+      "list:List the available RBAC roles."
     )
     _describe "command" commands
     ;;
@@ -255,13 +550,15 @@ function _confluent_iam_role {
 
 function _confluent_iam_role_describe {
   _arguments \
-    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json", or "yaml".]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
     '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
 }
 
 function _confluent_iam_role_list {
   _arguments \
-    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json", or "yaml".]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
     '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
 }
 
@@ -270,6 +567,7 @@ function _confluent_iam_rolebinding {
   local -a commands
 
   _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
     '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
     "1: :->cmnds" \
     "*::arg:->args"
@@ -301,26 +599,32 @@ function _confluent_iam_rolebinding {
 function _confluent_iam_rolebinding_create {
   _arguments \
     '--role[Role name of the new role binding.]:' \
-    '--resource[Qualified resource name for the role binding.]:' \
-    '--prefix[Whether the provided resource name is treated as a prefix pattern.]' \
     '--principal[Qualified principal name for the role binding.]:' \
+    '--prefix[Whether the provided resource name is treated as a prefix pattern.]' \
+    '--resource[Qualified resource name for the role binding.]:' \
     '--kafka-cluster-id[Kafka cluster ID for the role binding.]:' \
     '--schema-registry-cluster-id[Schema Registry cluster ID for the role binding.]:' \
-    '--ksql-cluster-id[KSQL cluster ID for the role binding.]:' \
+    '--ksql-cluster-id[ksqlDB cluster ID for the role binding.]:' \
     '--connect-cluster-id[Kafka Connect cluster ID for the role binding.]:' \
+    '--cluster-name[Cluster name to uniquely identify the cluster for rolebinding listings.]:' \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json", or "yaml".]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
     '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
 }
 
 function _confluent_iam_rolebinding_delete {
   _arguments \
     '--role[Role name of the existing role binding.]:' \
-    '--resource[Qualified resource name associated with the role binding.]:' \
-    '--prefix[Whether the provided resource name is treated as a prefix pattern.]' \
     '--principal[Qualified principal name associated with the role binding.]:' \
+    '--prefix[Whether the provided resource name is treated as a prefix pattern.]' \
+    '--resource[Qualified resource name associated with the role binding.]:' \
     '--kafka-cluster-id[Kafka cluster ID for the role binding.]:' \
     '--schema-registry-cluster-id[Schema Registry cluster ID for the role binding.]:' \
-    '--ksql-cluster-id[KSQL cluster ID for the role binding.]:' \
+    '--ksql-cluster-id[ksqlDB cluster ID for the role binding.]:' \
     '--connect-cluster-id[Kafka Connect cluster ID for the role binding.]:' \
+    '--cluster-name[Cluster name to uniquely identify the cluster for rolebinding listings.]:' \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json", or "yaml".]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
     '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
 }
 
@@ -328,18 +632,1079 @@ function _confluent_iam_rolebinding_list {
   _arguments \
     '--principal[Principal whose rolebindings should be listed.]:' \
     '--role[List rolebindings under a specific role given to a principal. Or if no principal is specified, list principals with the role.]:' \
-    '--resource[If specified with a role and no principals, list principals with rolebindings to the role for this qualified resource.]:' \
     '--kafka-cluster-id[Kafka cluster ID for scope of rolebinding listings.]:' \
+    '--resource[If specified with a role and no principals, list principals with rolebindings to the role for this qualified resource.]:' \
     '--schema-registry-cluster-id[Schema Registry cluster ID for scope of rolebinding listings.]:' \
-    '--ksql-cluster-id[KSQL cluster ID for scope of rolebinding listings.]:' \
+    '--ksql-cluster-id[ksqlDB cluster ID for scope of rolebinding listings.]:' \
     '--connect-cluster-id[Kafka Connect cluster ID for scope of rolebinding listings.]:' \
-    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json" or "yaml".]:' \
+    '--cluster-name[Cluster name to uniquely identify the cluster for rolebinding listings.]:' \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json", or "yaml".]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
     '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
 }
 
-function _confluent_local {
+
+function _confluent_kafka {
+  local -a commands
+
+  _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "cluster:Manage Kafka clusters."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  cluster)
+    _confluent_kafka_cluster
+    ;;
+  esac
+}
+
+
+function _confluent_kafka_cluster {
+  local -a commands
+
+  _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "list:List registered Kafka clusters."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  list)
+    _confluent_kafka_cluster_list
+    ;;
+  esac
+}
+
+function _confluent_kafka_cluster_list {
   _arguments \
-    '--path[Path to Confluent Platform install directory.]:' \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json", or "yaml".]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+
+function _confluent_ksql {
+  local -a commands
+
+  _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "cluster:Manage ksqlDB clusters."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  cluster)
+    _confluent_ksql_cluster
+    ;;
+  esac
+}
+
+
+function _confluent_ksql_cluster {
+  local -a commands
+
+  _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "list:List registered ksqlDB clusters."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  list)
+    _confluent_ksql_cluster_list
+    ;;
+  esac
+}
+
+function _confluent_ksql_cluster_list {
+  _arguments \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json", or "yaml".]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+
+function _confluent_local {
+  local -a commands
+
+  _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "current:Get the path of the current Confluent run."
+      "destroy:Delete the data and logs for the current Confluent run."
+      "services:Manage Confluent Platform services."
+      "version:Print the Confluent Platform version."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  current)
+    _confluent_local_current
+    ;;
+  destroy)
+    _confluent_local_destroy
+    ;;
+  services)
+    _confluent_local_services
+    ;;
+  version)
+    _confluent_local_version
+    ;;
+  esac
+}
+
+function _confluent_local_current {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_destroy {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+
+function _confluent_local_services {
+  local -a commands
+
+  _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "connect:Manage Connect."
+      "control-center:Manage Control Center."
+      "kafka:Manage Apache Kafka®."
+      "kafka-rest:Manage Kafka REST."
+      "ksql-server:Manage ksqlDB Server."
+      "list:List all Confluent Platform services."
+      "schema-registry:Manage Schema Registry."
+      "start:Start all Confluent Platform services."
+      "status:Check the status of all Confluent Platform services."
+      "stop:Stop all Confluent Platform services."
+      "top:View resource usage for all Confluent Platform services."
+      "zookeeper:Manage Apache ZooKeeper™."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  connect)
+    _confluent_local_services_connect
+    ;;
+  control-center)
+    _confluent_local_services_control-center
+    ;;
+  kafka)
+    _confluent_local_services_kafka
+    ;;
+  kafka-rest)
+    _confluent_local_services_kafka-rest
+    ;;
+  ksql-server)
+    _confluent_local_services_ksql-server
+    ;;
+  list)
+    _confluent_local_services_list
+    ;;
+  schema-registry)
+    _confluent_local_services_schema-registry
+    ;;
+  start)
+    _confluent_local_services_start
+    ;;
+  status)
+    _confluent_local_services_status
+    ;;
+  stop)
+    _confluent_local_services_stop
+    ;;
+  top)
+    _confluent_local_services_top
+    ;;
+  zookeeper)
+    _confluent_local_services_zookeeper
+    ;;
+  esac
+}
+
+
+function _confluent_local_services_connect {
+  local -a commands
+
+  _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "connector:Manage connectors."
+      "log:Print logs showing Connect output."
+      "plugin:Manage Connect plugins."
+      "start:Start Connect."
+      "status:Check if Connect is running."
+      "stop:Stop Connect."
+      "top:View resource usage for Connect."
+      "version:Print the current version of Connect."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  connector)
+    _confluent_local_services_connect_connector
+    ;;
+  log)
+    _confluent_local_services_connect_log
+    ;;
+  plugin)
+    _confluent_local_services_connect_plugin
+    ;;
+  start)
+    _confluent_local_services_connect_start
+    ;;
+  status)
+    _confluent_local_services_connect_status
+    ;;
+  stop)
+    _confluent_local_services_connect_stop
+    ;;
+  top)
+    _confluent_local_services_connect_top
+    ;;
+  version)
+    _confluent_local_services_connect_version
+    ;;
+  esac
+}
+
+
+function _confluent_local_services_connect_connector {
+  local -a commands
+
+  _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "config:View or set connector configurations."
+      "list:List all bundled connectors."
+      "load:Load a connector."
+      "status:Check the status of all connectors, or a single connector."
+      "unload:Unload a connector."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  config)
+    _confluent_local_services_connect_connector_config
+    ;;
+  list)
+    _confluent_local_services_connect_connector_list
+    ;;
+  load)
+    _confluent_local_services_connect_connector_load
+    ;;
+  status)
+    _confluent_local_services_connect_connector_status
+    ;;
+  unload)
+    _confluent_local_services_connect_connector_unload
+    ;;
+  esac
+}
+
+function _confluent_local_services_connect_connector_config {
+  _arguments \
+    '(-c --config)'{-c,--config}'[Configuration file for a connector.]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_connect_connector_list {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_connect_connector_load {
+  _arguments \
+    '(-c --config)'{-c,--config}'[Configuration file for a connector.]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_connect_connector_status {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_connect_connector_unload {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_connect_log {
+  _arguments \
+    '(-f --follow)'{-f,--follow}'[Log additional output until the command is interrupted.]' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+
+function _confluent_local_services_connect_plugin {
+  local -a commands
+
+  _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "list:List available Connect plugins."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  list)
+    _confluent_local_services_connect_plugin_list
+    ;;
+  esac
+}
+
+function _confluent_local_services_connect_plugin_list {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_connect_start {
+  _arguments \
+    '(-c --config)'{-c,--config}'[Configure Connect with a specific properties file.]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_connect_status {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_connect_stop {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_connect_top {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_connect_version {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+
+function _confluent_local_services_control-center {
+  local -a commands
+
+  _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "log:Print logs showing Control Center output."
+      "start:Start Control Center."
+      "status:Check if Control Center is running."
+      "stop:Stop Control Center."
+      "top:View resource usage for Control Center."
+      "version:Print the current version of Control Center."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  log)
+    _confluent_local_services_control-center_log
+    ;;
+  start)
+    _confluent_local_services_control-center_start
+    ;;
+  status)
+    _confluent_local_services_control-center_status
+    ;;
+  stop)
+    _confluent_local_services_control-center_stop
+    ;;
+  top)
+    _confluent_local_services_control-center_top
+    ;;
+  version)
+    _confluent_local_services_control-center_version
+    ;;
+  esac
+}
+
+function _confluent_local_services_control-center_log {
+  _arguments \
+    '(-f --follow)'{-f,--follow}'[Log additional output until the command is interrupted.]' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_control-center_start {
+  _arguments \
+    '(-c --config)'{-c,--config}'[Configure Control Center with a specific properties file.]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_control-center_status {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_control-center_stop {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_control-center_top {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_control-center_version {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+
+function _confluent_local_services_kafka {
+  local -a commands
+
+  _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "consume:Consume from a Kafka topic."
+      "log:Print logs showing Apache Kafka® output."
+      "produce:Produce to a Kafka topic."
+      "start:Start Apache Kafka®."
+      "status:Check if Apache Kafka® is running."
+      "stop:Stop Apache Kafka®."
+      "top:View resource usage for Apache Kafka®."
+      "version:Print the current version of Apache Kafka®."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  consume)
+    _confluent_local_services_kafka_consume
+    ;;
+  log)
+    _confluent_local_services_kafka_log
+    ;;
+  produce)
+    _confluent_local_services_kafka_produce
+    ;;
+  start)
+    _confluent_local_services_kafka_start
+    ;;
+  status)
+    _confluent_local_services_kafka_status
+    ;;
+  stop)
+    _confluent_local_services_kafka_stop
+    ;;
+  top)
+    _confluent_local_services_kafka_top
+    ;;
+  version)
+    _confluent_local_services_kafka_version
+    ;;
+  esac
+}
+
+function _confluent_local_services_kafka_consume {
+  _arguments \
+    '--bootstrap-server[The server(s) to connect to. The broker list string has the form HOST1:PORT1,HOST2:PORT2.]:' \
+    '--cloud[Consume from Confluent Cloud.]' \
+    '--config[Change the Confluent Cloud configuration file.]:' \
+    '--consumer-property[A mechanism to pass user-defined properties in the form key=value to the consumer.]:' \
+    '--consumer.config[Consumer config properties file. Note that [consumer-property] takes precedence over this config.]:' \
+    '--enable-systest-events[Log lifecycle events of the consumer in addition to logging consumed messages. (This is specific for system tests.)]' \
+    '--formatter[The name of a class to use for formatting kafka messages for display. (default "kafka.tools.DefaultMessageFormatter")]:' \
+    '--from-beginning[If the consumer does not already have an established offset to consume from, start with the earliest message present in the log rather than the latest message.]' \
+    '--group[The consumer group id of the consumer.]:' \
+    '--isolation-level[Set to read_committed in order to filter out transactional messages which are not committed. Set to read_uncommitted to read all messages. (default "read_uncommitted")]:' \
+    '--key-deserializer[]:' \
+    '--max-messages[The maximum number of messages to consume before exiting. If not set, consumption is continual.]:' \
+    '--offset[The offset id to consume from (a non-negative number), or "earliest" which means from beginning, or "latest" which means from end (default "latest")]:' \
+    '--partition[The partition to consume from. Consumption starts from the end of the partition unless "--offset" is specified.]:' \
+    '*--property[The properties to initialize the message formatter. Default properties include:
+	print.timestamp=true|false
+	print.key=true|false
+	print.value=true|false
+	key.separator=<key.separator>
+	line.separator=<line.separator>
+	key.deserializer=<key.deserializer>
+	value.deserializer=<value.deserializer>
+Users can also pass in customized properties for their formatter; more specifically, users can pass in properties keyed with "key.deserializer." and "value.deserializer." prefixes to configure their deserializers.]:' \
+    '--skip-message-on-error[If there is an error when processing a message, skip it instead of halting.]' \
+    '--timeout-ms[If specified, exit if no messages are available for consumption for the specified interval.]:' \
+    '--value-deserializer[]:' \
+    '--value-format[Format output data: avro, json, or protobuf.]:' \
+    '--whitelist[Regular expression specifying whitelist of topics to include for consumption.]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_kafka_log {
+  _arguments \
+    '(-f --follow)'{-f,--follow}'[Log additional output until the command is interrupted.]' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_kafka_produce {
+  _arguments \
+    '--batch-size[Number of messages to send in a single batch if they are not being sent synchronously. (default 200)]:' \
+    '--bootstrap-server[The server(s) to connect to. The broker list string has the form HOST1:PORT1,HOST2:PORT2.]:' \
+    '--cloud[Consume from Confluent Cloud.]' \
+    '--compression-codec[The compression codec: either "none", "gzip", "snappy", "lz4", or "zstd". If specified without value, the it defaults to "gzip".]:' \
+    '--config[Change the Confluent Cloud configuration file.]:' \
+    '--line-reader[The class name of the class to use for reading lines from stdin. By default each line is read as a separate message. (default "kafka.tools.ConsoleProducer$LineMessageReader")]:' \
+    '--max-block-ms[The max time that the producer will block for during a send request (default 60000)]:' \
+    '--max-memory-bytes[The total memory used by the producer to buffer records waiting to be sent to the server. (default 33554432)]:' \
+    '--max-partition-memory-bytes[The buffer size allocated for a partition. When records are received which are small than this size, the producer will attempt to optimistically group them together until this size is reached. (default 16384)]:' \
+    '--message-send-max-retries[This property specifies the number of retries before the producer gives up and drops this message. Brokers can fail receiving a message for multiple reasons, and being unavailable transiently is just one of them. (default 3)]:' \
+    '--metadata-expiry-ms[The amount of time in milliseconds before a forced metadata refresh. This will occur independent of any leadership changes. (default 300000)]:' \
+    '--producer-property[A mechanism to pass user-defined properties in the form key=value to the producer.]:' \
+    '--producer.config[Producer config properties file. Note that [producer-property] takes precedence over this config.]:' \
+    '*--property[A mechanism to pass user-defined properties in the form key=value to the message reader. This allows custom configuration for a user-defined message reader. Default properties include:
+	parse.key=true|false
+	key.separator=<key.separator>
+	ignore.error=true|false]:' \
+    '--request-required-acks[The required ACKs of the producer requests (default 1)]:' \
+    '--request-timeout-ms[The ACK timeout of the producer requests. Value must be positive (default 1500)]:' \
+    '--retry-backoff-ms[Before each retry, the producer refreshes the metadata of relevant topics. Since leader election takes a bit of time, this property specifies the amount of time that the producer waits before refreshing the metadata. (default 100)]:' \
+    '--socket-buffer-size[The size of the TCP RECV size. (default 102400)]:' \
+    '--sync[If set, message send requests to brokers arrive synchronously.]' \
+    '--timeout[If set and the producer is running in asynchronous mode, this gives the maximum amount of time a message will queue awaiting sufficient batch size. The value is given in ms. (default 1000)]:' \
+    '--value-format[Format output data: avro, json, or protobuf.]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_kafka_start {
+  _arguments \
+    '(-c --config)'{-c,--config}'[Configure Apache Kafka® with a specific properties file.]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_kafka_status {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_kafka_stop {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_kafka_top {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_kafka_version {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+
+function _confluent_local_services_kafka-rest {
+  local -a commands
+
+  _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "log:Print logs showing Kafka REST output."
+      "start:Start Kafka REST."
+      "status:Check if Kafka REST is running."
+      "stop:Stop Kafka REST."
+      "top:View resource usage for Kafka REST."
+      "version:Print the current version of Kafka REST."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  log)
+    _confluent_local_services_kafka-rest_log
+    ;;
+  start)
+    _confluent_local_services_kafka-rest_start
+    ;;
+  status)
+    _confluent_local_services_kafka-rest_status
+    ;;
+  stop)
+    _confluent_local_services_kafka-rest_stop
+    ;;
+  top)
+    _confluent_local_services_kafka-rest_top
+    ;;
+  version)
+    _confluent_local_services_kafka-rest_version
+    ;;
+  esac
+}
+
+function _confluent_local_services_kafka-rest_log {
+  _arguments \
+    '(-f --follow)'{-f,--follow}'[Log additional output until the command is interrupted.]' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_kafka-rest_start {
+  _arguments \
+    '(-c --config)'{-c,--config}'[Configure Kafka REST with a specific properties file.]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_kafka-rest_status {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_kafka-rest_stop {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_kafka-rest_top {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_kafka-rest_version {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+
+function _confluent_local_services_ksql-server {
+  local -a commands
+
+  _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "log:Print logs showing ksqlDB Server output."
+      "start:Start ksqlDB Server."
+      "status:Check if ksqlDB Server is running."
+      "stop:Stop ksqlDB Server."
+      "top:View resource usage for ksqlDB Server."
+      "version:Print the current version of ksqlDB Server."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  log)
+    _confluent_local_services_ksql-server_log
+    ;;
+  start)
+    _confluent_local_services_ksql-server_start
+    ;;
+  status)
+    _confluent_local_services_ksql-server_status
+    ;;
+  stop)
+    _confluent_local_services_ksql-server_stop
+    ;;
+  top)
+    _confluent_local_services_ksql-server_top
+    ;;
+  version)
+    _confluent_local_services_ksql-server_version
+    ;;
+  esac
+}
+
+function _confluent_local_services_ksql-server_log {
+  _arguments \
+    '(-f --follow)'{-f,--follow}'[Log additional output until the command is interrupted.]' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_ksql-server_start {
+  _arguments \
+    '(-c --config)'{-c,--config}'[Configure ksqlDB Server with a specific properties file.]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_ksql-server_status {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_ksql-server_stop {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_ksql-server_top {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_ksql-server_version {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_list {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+
+function _confluent_local_services_schema-registry {
+  local -a commands
+
+  _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "acl:Specify an ACL for Schema Registry."
+      "log:Print logs showing Schema Registry output."
+      "start:Start Schema Registry."
+      "status:Check if Schema Registry is running."
+      "stop:Stop Schema Registry."
+      "top:View resource usage for Schema Registry."
+      "version:Print the current version of Schema Registry."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  acl)
+    _confluent_local_services_schema-registry_acl
+    ;;
+  log)
+    _confluent_local_services_schema-registry_log
+    ;;
+  start)
+    _confluent_local_services_schema-registry_start
+    ;;
+  status)
+    _confluent_local_services_schema-registry_status
+    ;;
+  stop)
+    _confluent_local_services_schema-registry_stop
+    ;;
+  top)
+    _confluent_local_services_schema-registry_top
+    ;;
+  version)
+    _confluent_local_services_schema-registry_version
+    ;;
+  esac
+}
+
+function _confluent_local_services_schema-registry_acl {
+  _arguments \
+    '--add[Indicates you are trying to add ACLs.]' \
+    '--list[List all the current ACLs.]' \
+    '--remove[Indicates you are trying to remove ACLs.]' \
+    '(-o --operation)'{-o,--operation}'[Operation that is being authorized. Valid operation names are SUBJECT_READ, SUBJECT_WRITE, SUBJECT_DELETE, SUBJECT_COMPATIBILITY_READ, SUBJECT_COMPATIBILITY_WRITE, GLOBAL_COMPATIBILITY_READ, GLOBAL_COMPATIBILITY_WRITE, and GLOBAL_SUBJECTS_READ.]:' \
+    '(-p --principal)'{-p,--principal}'[Principal to which the ACL is being applied to. Use * to apply to all principals.]:' \
+    '(-s --subject)'{-s,--subject}'[Subject to which the ACL is being applied to. Only applicable for SUBJECT operations. Use * to apply to all subjects.]:' \
+    '(-t --topic)'{-t,--topic}'[Topic to which the ACL is being applied to. The corresponding subjects would be topic-key and topic-value. Only applicable for SUBJECT operations. Use * to apply to all subjects.]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_schema-registry_log {
+  _arguments \
+    '(-f --follow)'{-f,--follow}'[Log additional output until the command is interrupted.]' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_schema-registry_start {
+  _arguments \
+    '(-c --config)'{-c,--config}'[Configure Schema Registry with a specific properties file.]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_schema-registry_status {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_schema-registry_stop {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_schema-registry_top {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_schema-registry_version {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_start {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_status {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_stop {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_top {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+
+function _confluent_local_services_zookeeper {
+  local -a commands
+
+  _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "log:Print logs showing Apache ZooKeeper™ output."
+      "start:Start Apache ZooKeeper™."
+      "status:Check if Apache ZooKeeper™ is running."
+      "stop:Stop Apache ZooKeeper™."
+      "top:View resource usage for Apache ZooKeeper™."
+      "version:Print the current version of Apache ZooKeeper™."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  log)
+    _confluent_local_services_zookeeper_log
+    ;;
+  start)
+    _confluent_local_services_zookeeper_start
+    ;;
+  status)
+    _confluent_local_services_zookeeper_status
+    ;;
+  stop)
+    _confluent_local_services_zookeeper_stop
+    ;;
+  top)
+    _confluent_local_services_zookeeper_top
+    ;;
+  version)
+    _confluent_local_services_zookeeper_version
+    ;;
+  esac
+}
+
+function _confluent_local_services_zookeeper_log {
+  _arguments \
+    '(-f --follow)'{-f,--follow}'[Log additional output until the command is interrupted.]' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_zookeeper_start {
+  _arguments \
+    '(-c --config)'{-c,--config}'[Configure Apache ZooKeeper™ with a specific properties file.]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_zookeeper_status {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_zookeeper_stop {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_zookeeper_top {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_services_zookeeper_version {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+function _confluent_local_version {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
     '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
 }
 
@@ -348,11 +1713,73 @@ function _confluent_login {
     '--url[Metadata service URL.]:' \
     '--ca-cert-path[Self-signed certificate chain in PEM format.]:' \
     '--no-browser[Do not open browser when authenticating via Single Sign-On.]' \
+    '--save[Save login credentials or refresh token (in the case of SSO) to local netrc file.]' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
     '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
 }
 
 function _confluent_logout {
   _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
+}
+
+
+function _confluent_schema-registry {
+  local -a commands
+
+  _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "cluster:Manage Schema Registry clusters."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  cluster)
+    _confluent_schema-registry_cluster
+    ;;
+  esac
+}
+
+
+function _confluent_schema-registry_cluster {
+  local -a commands
+
+  _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "list:List registered Schema Registry clusters."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  list)
+    _confluent_schema-registry_cluster_list
+    ;;
+  esac
+}
+
+function _confluent_schema-registry_cluster_list {
+  _arguments \
+    '(-o --output)'{-o,--output}'[Specify the output format as "human", "json", or "yaml".]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
     '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
 }
 
@@ -361,6 +1788,7 @@ function _confluent_secret {
   local -a commands
 
   _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
     '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
     "1: :->cmnds" \
     "*::arg:->args"
@@ -390,6 +1818,7 @@ function _confluent_secret_file {
   local -a commands
 
   _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
     '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
     "1: :->cmnds" \
     "*::arg:->args"
@@ -436,6 +1865,7 @@ function _confluent_secret_file_add {
     '--local-secrets-file[Path to the local encrypted configuration properties file.]:' \
     '--remote-secrets-file[Path to the remote encrypted configuration properties file.]:' \
     '--config[List of key/value pairs of configuration properties.]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
     '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
 }
 
@@ -445,6 +1875,7 @@ function _confluent_secret_file_decrypt {
     '--local-secrets-file[Path to the local encrypted configuration properties file.]:' \
     '--output-file[Output file path.]:' \
     '--config[List of configuration keys.]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
     '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
 }
 
@@ -454,6 +1885,7 @@ function _confluent_secret_file_encrypt {
     '--local-secrets-file[Path to the local encrypted configuration properties file.]:' \
     '--remote-secrets-file[Path to the remote encrypted configuration properties file.]:' \
     '--config[List of configuration keys.]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
     '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
 }
 
@@ -462,6 +1894,7 @@ function _confluent_secret_file_remove {
     '--config-file[Path to the configuration properties file.]:' \
     '--local-secrets-file[Path to the local encrypted configuration properties file.]:' \
     '--config[List of configuration keys.]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
     '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
 }
 
@@ -472,6 +1905,7 @@ function _confluent_secret_file_rotate {
     '--local-secrets-file[Path to the encrypted configuration properties file.]:' \
     '--passphrase[Master key passphrase. You can use dash ("-") to pipe from stdin or @file.txt to read from file.]:' \
     '--passphrase-new[New master key passphrase. You can use dash ("-") to pipe from stdin or @file.txt to read from file.]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
     '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
 }
 
@@ -481,6 +1915,7 @@ function _confluent_secret_file_update {
     '--local-secrets-file[Path to the local encrypted configuration properties file.]:' \
     '--remote-secrets-file[Path to the remote encrypted configuration properties file.]:' \
     '--config[List of key/value pairs of configuration properties.]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
     '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
 }
 
@@ -489,6 +1924,7 @@ function _confluent_secret_master-key {
   local -a commands
 
   _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
     '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]' \
     "1: :->cmnds" \
     "*::arg:->args"
@@ -514,11 +1950,13 @@ function _confluent_secret_master-key_generate {
     '--passphrase[The key passphrase. To pipe from stdin use "-", e.g. "--passphrase -";
 to read from a file use "@<path-to-file>", e.g. "--passphrase @/User/bob/secret.properties".]:' \
     '--local-secrets-file[Path to the local encrypted configuration properties file.]:' \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
     '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
 }
 
 function _confluent_version {
   _arguments \
+    '(-h --help)'{-h,--help}'[Show help for this command.]' \
     '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
 }
 

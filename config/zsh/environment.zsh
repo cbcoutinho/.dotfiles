@@ -125,4 +125,16 @@ export LEIN_HOME=$HOME/.config/lein
 
 # Amazon Web Services (AWS)
 export AWS_DEFAULT_REGION=eu-west-1
+export AWS_DEFAULT_OUTPUT=json
 export AWS_PAGER=
+
+if [[ -d "${CONFLUENT_HOME:=/opt/confluent-6.0.0}" ]]; then
+	export CONFLUENT_HOME #=/opt/confluent-6.0.0
+	export PATH=$CONFLUENT_HOME/bin:$PATH
+elif command -v brew >/dev/null && command -v confluent >/dev/null; then
+	export CONFLUENT_HOME=$(brew --prefix confluent-platform)/libexec
+fi
+
+if command -v ruby >/dev/null && command -v gem >/dev/null; then
+    PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi

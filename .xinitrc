@@ -43,11 +43,6 @@ esac
 #       ssh-add < /dev/null
 # fi
 
-
-
-
-
-
 #
 # Add your own lines here...
 #
@@ -61,6 +56,12 @@ done
 
 # This is for switching between pinentry_tty and pinentry_gtk
 export PINENTRY_USER_DATA="gtk"
+
+# This is required by `safeeyes` on GNOME3
+#if [ "$DISPLAY" != "" ]
+#then
+    #xhost si:localuser:chris
+#fi
 
 
 # day planer deamon
