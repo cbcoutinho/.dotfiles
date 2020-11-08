@@ -59,8 +59,6 @@ fi
 echo 'Installing Leiningen'
 if [[ $(uname -s) == "Darwin" ]]; then
 	brew install leiningen clojure
-	brew tap adoptopenjdk/openjdk
-	brew cask install adoptopenjdk{8,11,14}
 else # Assuming linux
 	mkdir -p ~/bin
 	curl -L https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > ~/bin/lein
