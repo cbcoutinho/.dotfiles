@@ -19,7 +19,7 @@
 	smtpencryption = tls
 	smtpserver = /usr/bin/msmtp
 [diff]
-	algorithm = minimal
+	algorithm = histogram
 	tool = vimdiff
 [merge]
 	tool = vimdiff

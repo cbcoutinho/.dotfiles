@@ -18,6 +18,7 @@ metals.sbt
 .bloop/
 .ammonite/
 .bsp/
+.java-version
 
 # Azurite
 __azurite_db*.json
@@ -27,3 +28,4 @@ __azurite_db*.json
 
 # Python
 .venv
+.python-version

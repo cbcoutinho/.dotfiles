@@ -1545,13 +1545,13 @@ function _confluent_local_services_schema-registry {
 
 function _confluent_local_services_schema-registry_acl {
   _arguments \
-    '--add[Indicates you are trying to add ACLs.]' \
     '--list[List all the current ACLs.]' \
     '--remove[Indicates you are trying to remove ACLs.]' \
     '(-o --operation)'{-o,--operation}'[Operation that is being authorized. Valid operation names are SUBJECT_READ, SUBJECT_WRITE, SUBJECT_DELETE, SUBJECT_COMPATIBILITY_READ, SUBJECT_COMPATIBILITY_WRITE, GLOBAL_COMPATIBILITY_READ, GLOBAL_COMPATIBILITY_WRITE, and GLOBAL_SUBJECTS_READ.]:' \
     '(-p --principal)'{-p,--principal}'[Principal to which the ACL is being applied to. Use * to apply to all principals.]:' \
     '(-s --subject)'{-s,--subject}'[Subject to which the ACL is being applied to. Only applicable for SUBJECT operations. Use * to apply to all subjects.]:' \
     '(-t --topic)'{-t,--topic}'[Topic to which the ACL is being applied to. The corresponding subjects would be topic-key and topic-value. Only applicable for SUBJECT operations. Use * to apply to all subjects.]:' \
+    '--add[Indicates you are trying to add ACLs.]' \
     '(-h --help)'{-h,--help}'[Show help for this command.]' \
     '(-v --verbose)'{-v,--verbose}'[Increase verbosity (-v for warn, -vv for info, -vvv for debug, -vvvv for trace).]'
 }
