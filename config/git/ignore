@@ -6,7 +6,8 @@
 rusty-tags.vi
 
 # Language server cache
-.lsp
+.lsp/
+.ccls-cache/
 
 # Clojure/deps
 .rebel_readline_history

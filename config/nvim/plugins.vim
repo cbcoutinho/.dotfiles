@@ -114,6 +114,7 @@ Plug 'gurpreetatwal/vim-avro'			" Vim syntax for avro
 Plug 'hashivim/vim-terraform'			" Vim syntax for terraform
 Plug 'tmsvg/pear-tree'					" Automatically match parens/brackets
 Plug 'wgwoods/vim-systemd-syntax'		" Vim syntax for systemd files
+Plug 'chunkhang/vim-mbsync'				" Vim syntax for mbsync rc files
 
 " }}}
 " Vim/git-related plugins {{{
