@@ -63,4 +63,4 @@ sandbox_hook nvm npx
 sandbox_hook nvm node
 sandbox_hook nvm yarn
 sandbox_hook nvm sfdx
-sandbox_hook nvm fast-cli
+sandbox_hook nvm fast
