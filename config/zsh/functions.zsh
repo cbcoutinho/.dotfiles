@@ -157,9 +157,10 @@ function awslogin() {
 	aws configure --profile "$AWS_2AUTH_PROFILE" set aws_access_key_id "$AWS_ACCESS_KEY_ID"
 	aws configure --profile "$AWS_2AUTH_PROFILE" set aws_secret_access_key "$AWS_SECRET_ACCESS_KEY"
 	aws configure --profile "$AWS_2AUTH_PROFILE" set aws_session_token "$AWS_SESSION_TOKEN"
-	echo "# Expiration: $Expiration" >> ~/.aws/credentials
 
+	echo
 	echo "AWS Credentials for '$role' available until: '$Expiration'"
+	echo
 
 }
 
@@ -179,3 +180,20 @@ function git {
 	fi
 }
 
+function pyenv {
+	eval "$( command pyenv init - )"
+	eval "$( pyenv virtualenv-init - )"
+	pyenv "$@"
+}
+
+function jenv {
+	export PATH="$HOME/.jenv/bin:$PATH"
+	eval "$( command jenv init - )"
+	jenv "$@"
+}
+
+function rbenv {
+	export PATH="$HOME/.rbenv/bin:$PATH"
+	eval "$( command rbenv init - )"
+	rbenv "$@"
+}

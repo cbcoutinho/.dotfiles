@@ -8,14 +8,9 @@
   ],
   //"java.enabled": false,
   "java.home": "~/.jenv/versions/11",
-  "python.venvFolders": [
-    ".venv",
-    "venv",
-    "envs",
-    ".pyenv",
-    ".direnv"
-  ],
+  "python.venvPath": ".direnv",
   "python.formatting.provider": "black",
+  "python.linting.pylintEnabled": true,
   "python.linting.lintOnSave": true,
   "languageserver": {
     "clojure-lsp": {

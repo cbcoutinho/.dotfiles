@@ -15,38 +15,20 @@ source $ZDOTDIR/prompt.zsh
 
 test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
-# Use pyenv to handle python in interactive shells
-if command -v pyenv >/dev/null; then
-	eval "$(pyenv init -)"
-	eval "$(pyenv virtualenv-init -)"
-fi
-
-# Python virtualenvwrapper
-USER_BASE=$(python3 -c 'import site; print(site.USER_BASE)')
-export PATH="$USER_BASE/bin:$PATH"
-
-# NOTE: This assumes that virtualenvwrapper is installed
-if ! command -v pyenv >/dev/null; then
-	export VIRTUALENVWRAPPER_PYTHON=$(which python3)
-	export VIRTUALENVWRAPPER_SCRIPT="$USER_BASE/bin/virtualenvwrapper.sh"
-	source "$USER_BASE/bin/virtualenvwrapper_lazy.sh"
-fi
-
-# Jenv is like pyenv for java (on mac osx)
-if command -v jenv >/dev/null; then
-	export PATH="$HOME/.jenv/bin:$PATH"
-	eval "$(jenv init -)"
-fi
-
-if command -v rbenv >/dev/null; then
-	export PATH="$HOME/.rbenv/bin:$PATH"
-	eval "$(rbenv init -)"
-fi
 
 # Pip zsh completions are already saved in $ZDOTDIR/.zfunc/_pip
 # This line associates the completions with pip3 as well if available
 if command -v pip3 >/dev/null; then
 	compctl -K _pip_completion pip3
+fi
+
+# OpenSUSE-specific
+if [[ $(uname -s) == "Linux" ]] && test -x /usr/bin/aws >/dev/null; then
+	source /etc/zsh_completion.d/_aws
+fi
+
+if command -v brew >/dev/null && command -v aws-vault >/dev/null; then
+	source $(brew --prefix aws-vault)/share/zsh/site-functions/aws-vault.zsh
 fi
 
 #-------------------------------------------------------------

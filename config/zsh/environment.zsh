@@ -128,6 +128,9 @@ export AWS_DEFAULT_REGION=eu-west-1
 export AWS_DEFAULT_OUTPUT=json
 export AWS_PAGER=
 
+export AWS_VAULT_BACKEND=pass
+export AWS_VAULT_PASS_PREFIX=aws-vault
+
 if [[ -d "${CONFLUENT_HOME:=/opt/confluent-6.0.0}" ]]; then
 	export CONFLUENT_HOME #=/opt/confluent-6.0.0
 	export PATH=$CONFLUENT_HOME/bin:$PATH

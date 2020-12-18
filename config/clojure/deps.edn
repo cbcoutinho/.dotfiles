@@ -53,13 +53,13 @@
 
             ;; Complement is a clojure completion library
             ;; - see https://github.com/bbatsov/compliment
-            :comp {:extra-deps {compliment {:mvn/version "RELEASE"}}}
+            :comp {:extra-deps {compliment/compliment {:mvn/version "RELEASE"}}}
 
             ;; - start a Socket REPL on port 50505:
             :socket {:jvm-opts ["-Dclojure.server.repl={:port,50505,:accept,clojure.core.server/repl}"]}
 
             ;; - start a modern nREPL server on a random available port:
-            :nrepl {:extra-deps {nrepl {:mvn/version "RELEASE"}}
+            :nrepl {:extra-deps {nrepl/nrepl {:mvn/version "RELEASE"}}
                     :main-opts ["-m" "nrepl.cmdline"]}
 
             ;; Easily create new clojure projects
@@ -72,12 +72,12 @@
                           org.openjfx/javafx-controls {:mvn/version "15-ea+6"}
                           org.openjfx/javafx-swing    {:mvn/version "15-ea+6"}
                           org.openjfx/javafx-base     {:mvn/version "15-ea+6"}
-                          org.openjfx/javafx-web      {:mvn/version "15-ea+6"}}
-             :main-opts ["-m" "cognitect.rebl"]}
+                          org.openjfx/javafx-web      {:mvn/version "15-ea+6"}}}
+             ;:main-opts ["-m" "cognitect.rebl"]}
 
             :rebl-jdk8   ;; for JDK 8
-            {:extra-deps {com.cognitect/rebl {:mvn/version "0.9.242"}}
-             :main-opts ["-m" "cognitect.rebl"]}
+            {:extra-deps {com.cognitect/rebl {:mvn/version "0.9.242"}}}
+             ;:main-opts ["-m" "cognitect.rebl"]}
 
             ; Create a (dot) graph of dependencies
             :graph {:deps {org.clojure/tools.deps.graph {:mvn/version "0.1.14"}}
